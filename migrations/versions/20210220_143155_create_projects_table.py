@@ -1,7 +1,7 @@
 """create projects table
 
 Revision ID: 9e3661790015
-Revises: 9a3024fa6b17
+Revises: ffdc0a98111c
 Create Date: 2021-02-20 14:31:55.737268
 
 """

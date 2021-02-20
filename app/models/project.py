@@ -12,3 +12,5 @@ class Project(db.Model):
     minPledge = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates="projects")
+    donations = db.relationship("Donation", back_populates="project")
+    images = db.relationship("Image", back_populates="project")

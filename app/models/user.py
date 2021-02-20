@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     state = db.Column(db.String(50), nullable=False)
 
     projects = db.relationship("Project", back_populates="user")
+    donations = db.relationship("Donation", back_populates="user")
 
     @property
     def password(self):
