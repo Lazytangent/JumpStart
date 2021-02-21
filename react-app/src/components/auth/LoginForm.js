@@ -38,7 +38,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     {showModal &&
     <Modal onClose={() => setShowModal(false)}>
       <form onSubmit={onLogin}>
-      <button id="close-button" onClick={(event) => setShowModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
+      <button id="close-button" onClick={(e) => setShowModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
         <div>
           {errors.map((error) => (
             <div>{error}</div>
