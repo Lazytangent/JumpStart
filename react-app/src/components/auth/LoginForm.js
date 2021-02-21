@@ -9,6 +9,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showModal, setShowModal] = useState(true);
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -34,15 +35,16 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-    {/* <Modal > */}
+    {showModal &&
+    <Modal onClose={() => setShowModal(false)}>
       <form onSubmit={onLogin}>
+      <button id="close-button" onClick={(event) => setShowModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
         <div>
           {errors.map((error) => (
             <div>{error}</div>
           ))}
         </div>
         <div>
-          <label htmlFor="email">Email</label>
           <input
             name="email"
             type="text"
@@ -52,7 +54,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
           <input
             name="password"
             type="password"
@@ -60,10 +61,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             value={password}
             onChange={updatePassword}
           />
-          <button type="submit">Login</button>
+            <button id="submit-button" onClick={(event) =>
+                        setShowModal(false)}>Login</button>
         </div>
       </form>
-    {/* </Modal> */}
+    </Modal>
+    }
     </>
   );
 };
