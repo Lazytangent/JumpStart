@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -29,7 +29,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <NavBar setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/login" exact={true}>
@@ -51,7 +51,7 @@ function App() {
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 
