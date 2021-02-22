@@ -1,5 +1,5 @@
 .navBar {
-    height: 5%;
+    height: 7%;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -16,4 +16,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+}
+
+.navBar-home {
+    display: inline-flex;
+    text-decoration: none;
+    color: #02a95c;
+    font-size: 1.75rem;
+}
+
+.navBar-logo {
+    padding-top: 3%;
+    height: 1.5rem;
+    padding-left: 1%;
 }

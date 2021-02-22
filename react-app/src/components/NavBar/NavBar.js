@@ -8,11 +8,6 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
     <nav className="navBar">
       <ul className="navBar-items">
         <div>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-        </div>
-        <div>
           <NavLink to="/login" exact={true} activeClassName="active">
             Login
           </NavLink>
@@ -20,6 +15,11 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
         <div>
           <NavLink to="/sign-up" exact={true} activeClassName="active">
             Sign Up
+          </NavLink>
+        </div>
+        <div>
+          <NavLink className='navBar-home' to="/" exact={true} activeClassName="active">
+          JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
           </NavLink>
         </div>
         <div>
