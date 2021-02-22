@@ -13,6 +13,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    setShowModal(false);
     const user = await dispatch(login(email, password))
     if (!user.errors) {
       setAuthenticated(true);
@@ -61,8 +62,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             value={password}
             onChange={updatePassword}
           />
-            <button id="submit-button" onClick={(event) =>
-                        setShowModal(false)}>Login</button>
+          <button id="submit-button">Login</button>
         </div>
       </form>
     </Modal>

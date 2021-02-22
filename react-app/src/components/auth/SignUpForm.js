@@ -14,6 +14,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setShowModal(false);
     if (password === repeatPassword) {
       const user = await dispatch(signUp(username, email, password));
       if (!user.errors) {
