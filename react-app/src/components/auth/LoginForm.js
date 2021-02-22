@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect } from "react-router-dom";
 import { login } from '../../store/session';
-import { Modal } from '../../context/Modal';
+import { Modal, useModalContext } from '../../context/Modal';
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
+  const { showLoginModal, setShowLoginModal } = useModalContext();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showModal, setShowModal] = useState(true);
+  // const [showModal, setShowModal] = useState(true);
 
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await dispatch(login(email, password))
     if (!user.errors) {
       setAuthenticated(true);
-      setShowModal(false);
+      setShowLoginModal(false);
     } else {
       setErrors(user.errors);
     }
@@ -36,11 +37,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-      {showModal &&
-        <Modal onClose={() => setShowModal(false)}>
+      {showLoginModal &&
+        <Modal onClose={() => setShowLoginModal(false)}>
           <form onSubmit={onLogin}>
 
-            <button id="close-button" onClick={(e) => setShowModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
+            <button id="close-button" onClick={() => setShowLoginModal((prev) => !prev)}><i id="close-icon" className="far fa-window-close"></i></button>
 
             <div>
               {errors.map((error, idx) => (

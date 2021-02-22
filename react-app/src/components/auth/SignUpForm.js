@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import { Modal } from '../../context/Modal';
+import { Modal, useModalContext } from '../../context/Modal';
 import csc from 'country-state-city';
 
 // test change
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
+  const { showSignUpModal, setShowSignUpModal } = useModalContext();
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
@@ -16,7 +17,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [state, setState] = useState("");
   const [stateCode, setStateCode] = useState("");
   const [city, setCity] = useState("");
-  const [showModal, setShowModal] = useState(true);
+  // const [showModal, setShowModal] = useState(true);
 
   const listOfStates = csc.getStatesOfCountry("US")
   const listOfCities = csc.getCitiesOfState("US", stateCode)
@@ -29,7 +30,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     if (password === repeatPassword) {
       if (!user.errors) {
         setAuthenticated(true);
-        setShowModal(false);
+        setShowSignUpModal(false);
       } else {
         setErrors(user.errors)
       }
@@ -79,10 +80,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-      {showModal &&
-        <Modal onClose={() => setShowModal(false)}>
+      {showSignUpModal &&
+        <Modal onClose={() => setShowSignUpModal(false)}>
           <form onSubmit={onSignUp}>
-            <button id="close-button" onClick={(event) => setShowModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
+            <button id="close-button" onClick={(event) => setShowSignUpModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
             <div>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>

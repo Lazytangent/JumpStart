@@ -3,12 +3,14 @@ import { NavLink } from 'react-router-dom';
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../auth/SignUpForm'
 import LogoutButton from '../auth/LogoutButton';
+import { useModalContext } from '../../context/Modal';
 import './NavBar.css';
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
+  const { showLoginModal, setShowLoginModal, showSignUpModal, setShowSignUpModal } = useModalContext();
 
-  const [showLoginForm, setLoginForm] = useState(false)
-  const [showSignUpForm, setSignUpForm] = useState(false)
+  // const [showLoginForm, setLoginForm] = useState(false)
+  // const [showSignUpForm, setSignUpForm] = useState(false)
 
 
   return (
@@ -23,15 +25,15 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {/* <NavLink to="/login" exact={true} activeClassName="active">
             Login
           </NavLink> */}
-          <button onClick={() => setLoginForm((prev) => !prev)}>Login</button>
-          {showLoginForm && <LoginForm />}
+          <button onClick={() => setShowLoginModal((prev) => !prev)}>Login</button>
+          {showLoginModal && <LoginForm />}
         </div>
         <div>
           {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
             Sign Up
           </NavLink> */}
-          <button onClick={() => setSignUpForm(!showSignUpForm)}>Sign Up</button>
-          {showSignUpForm && <SignUpForm />}
+          <button onClick={() => setShowSignUpModal((prev) => !prev)}>Sign Up</button>
+          {showSignUpModal && <SignUpForm />}
         </div>
         <div>
           {/* <NavLink to="/users" exact={true} activeClassName="active">
