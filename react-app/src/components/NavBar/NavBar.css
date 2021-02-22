@@ -1,22 +1,41 @@
 .navBar {
     height: 7%;
     width: 100%;
+    position: fixed;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     margin: 0;
     padding: 0;
     top: 0;
     left: 0;
     background-color: white;
-    position: fixed;
     border-bottom: 1px solid lightgrey;
     z-index: 1;
 }
 
-.navBar-items {
+.navBar-first-fraction {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+
+
 }
+.navBar-second-fraction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.navBar-third-fraction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
 
 .navBar-home {
     display: inline-flex;

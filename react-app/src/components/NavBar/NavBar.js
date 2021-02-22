@@ -14,26 +14,32 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
   console.log(user)
 
   return (
-    <nav className="navBar">
-      <ul className="navBar-items">
-        <div>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
+    <div>
+      <ul className="navBar">
+        <div className="navBar-first-fraction">
+          <div>
+            {!user && <button onClick={() => {
+              setShowSignUpModal(false)
+              setShowLoginModal((prev) => !prev)
+            }}>Login</button>}
+            {showLoginModal && <LoginForm />}
+          </div>
         </div>
-        <div>
-          {!user && <button onClick={() => {
-            setShowSignUpModal(false)
-            setShowLoginModal((prev) => !prev)
-          }}>Login</button>}
-          {showLoginModal && <LoginForm />}
+        <div className="navBar-second-fraction">
+          <div>
+            <NavLink className="navBar-home" to="/" exact={true} activeClassName="active">
+            JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
+            </NavLink>
+          </div>
         </div>
-        <div>
-          {!user && <button onClick={() => {
-            setShowLoginModal(false)
-            setShowSignUpModal((prev) => !prev)
-          }}>Sign Up</button>}
-          {showSignUpModal && <SignUpForm />}
+        <div className="navBar-third-fraction">
+          <div>
+            {!user && <button onClick={() => {
+              setShowLoginModal(false)
+              setShowSignUpModal((prev) => !prev)
+            }}>Sign Up</button>}
+            {showSignUpModal && <SignUpForm />}
+          </div>
         </div>
         <div>
           {/* <NavLink to="/users" exact={true} activeClassName="active">
@@ -44,7 +50,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {user && <LogoutButton setAuthenticated={setAuthenticated} />}
         </div>
       </ul>
-    </nav >
+    </div >
   );
 }
 
