@@ -23,9 +23,9 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           </NavLink>
         </div>
         <div>
-          <NavLink to="/users" exact={true} activeClassName="active">
+          {/* <NavLink to="/users" exact={true} activeClassName="active">
             Users
-          </NavLink>
+          </NavLink> */}
         </div>
         <div>
           <LogoutButton setAuthenticated={setAuthenticated} />

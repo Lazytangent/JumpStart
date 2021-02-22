@@ -15,7 +15,7 @@ const removeUser = () => {
 };
 
 export const authenticate = () => async (dispatch) => {
-  const response = await fetch('/api/auth/',{
+  const response = await fetch('/api/auth/', {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -79,6 +79,9 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
+      if (action.payload.errors[0] === "Unauthorized") {
+        return { ...state, user: null }
+      }
       return { ...state, user: action.payload }
     case REMOVE_USER:
       return { ...state, user: null }
