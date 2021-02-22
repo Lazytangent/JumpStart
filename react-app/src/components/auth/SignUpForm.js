@@ -83,7 +83,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       {showSignUpModal &&
         <Modal onClose={() => setShowSignUpModal(false)}>
           <form onSubmit={onSignUp}>
-            <button id="close-button" onClick={(event) => setShowSignUpModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
+            <button id="close-button" onClick={() => setShowSignUpModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
             <div>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
@@ -112,7 +112,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               <select name="state" onChange={updateState} value={state} >
                 <option value="" disabled selected>Select your state</option>
                 {
-                  listOfStates.map((state, idx) => (
+                  listOfStates.map((state) => (
                     <option key={state.name}>{state.name}</option>
                   ))
                 }
@@ -123,7 +123,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               <select name="city" onChange={updateCity} value={city} >
                 <option value="" disabled selected>Select your city</option>
                 {stateCode !== "" &&
-                  listOfCities.map((city, idx) => (
+                  listOfCities.map((city) => (
                     <option key={city.name}>{city.name}</option>
                   ))
                 }
