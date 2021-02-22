@@ -6,13 +6,14 @@ import SignUpForm from '../auth/SignUpForm'
 import LogoutButton from '../auth/LogoutButton';
 import { useModalContext } from '../../context/Modal';
 import CreateProject from '../CreateProject'
+import { useHistory } from 'react-router-dom'
 import './NavBar.css';
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
   const { showLoginModal, setShowLoginModal, showSignUpModal, setShowSignUpModal } = useModalContext();
   const user = useSelector(state => state.session.user)
+  const history = useHistory()
 
-  console.log(user)
 
   return (
     <nav className="navBar">
@@ -42,7 +43,15 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {showSignUpModal && <SignUpForm />}
         </div>
         <div>
-          <button>Create a project</button>
+          <button onClick={() => {
+            if (user) {
+              history.push('/new-project')
+            } else {
+              setShowSignUpModal(false)
+              setShowLoginModal((prev) => !prev)
+            }
+          }}>Create a project</button>
+          {showLoginModal && <LoginForm />}
         </div>
         <div>
           {user && <LogoutButton setAuthenticated={setAuthenticated} />}
