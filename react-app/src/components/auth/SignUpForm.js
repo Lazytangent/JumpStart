@@ -17,12 +17,12 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [state, setState] = useState("");
   const [stateCode, setStateCode] = useState("");
   const [city, setCity] = useState("");
-  // const [showModal, setShowModal] = useState(true);
+
 
   const listOfStates = csc.getStatesOfCountry("US")
   const listOfCities = csc.getCitiesOfState("US", stateCode)
 
-  // console.log(state)
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
