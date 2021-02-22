@@ -23,7 +23,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {/* <NavLink to="/login" exact={true} activeClassName="active">
             Login
           </NavLink> */}
-          <button onClick={() => setLoginForm(!showLoginForm)}>Login</button>
+          <button onClick={() => setLoginForm((prev) => !prev)}>Login</button>
           {showLoginForm && <LoginForm />}
         </div>
         <div>
