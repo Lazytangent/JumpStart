@@ -5,6 +5,7 @@ import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../auth/SignUpForm'
 import LogoutButton from '../auth/LogoutButton';
 import { useModalContext } from '../../context/Modal';
+import CreateProject from '../CreateProject'
 import './NavBar.css';
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
@@ -41,9 +42,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {showSignUpModal && <SignUpForm />}
         </div>
         <div>
-          {/* <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink> */}
+          <button>Create a project</button>
         </div>
         <div>
           {user && <LogoutButton setAuthenticated={setAuthenticated} />}
