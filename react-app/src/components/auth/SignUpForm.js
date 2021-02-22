@@ -152,8 +152,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               <input
                 type="file"
                 name="image"
-                onChange={updateProfileImage}
-                value={profileImage} />
+                onChange={updateProfileImage} />
             </div>
             <button type="submit">Sign Up</button>
           </form>
