@@ -16,7 +16,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     e.preventDefault();
     const user = await dispatch(login(email, password))
     if (!user.errors) {
-      setAuthenticated(true);
+      // setAuthenticated(true);
       setShowLoginModal(false);
     } else {
       setErrors(user.errors);
