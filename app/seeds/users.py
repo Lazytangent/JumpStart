@@ -6,17 +6,49 @@ from app.models import db, User
 
 def seed_users():
 
-    demo = User(username='Demo', email='demo@aa.io',
-                password='password', city='Dallas',
-                state='Texas')
+    demo = User(
+                username='Demo',
+                email='demo@aa.io',
+                password='password',
+                city='Dallas',
+                state='Texas',
+               )
 
-    reed = User(username='reed', email='reed@jumpstart.com',
-                password='password', city='Austin', state='Texas')
+    jesse = User(
+                 username='jesse',
+                 email='jesse@jumpstart.io',
+                 password='password',
+                 city='Milwaukee',
+                 state='Wisconsin',
+                )
 
-    dillon = User(username='dillon', email='dillon@jumpstart.com',
-                  password='password', city='Buena Vista', state='Colorado')
+    peter = User(
+                 username='peter',
+                 email='peter@jumpstart.io',
+                 password='password',
+                 city='Dallas',
+                 state='Texas'
+                )
+
+    reed = User(
+                username='reed',
+                email='reed@jumpstart.com',
+                password='password',
+                city='Austin',
+                state='Texas'
+                )
+
+    dillon = User(
+                  username='dillon',
+                  email='dillon@jumpstart.com',
+                  password='password',
+                  city='Buena Vista',
+                  state='Colorado'
+                )
 
     db.session.add(demo)
+    db.session.add(jesse)
+    db.session.add(peter)
     db.session.add(reed)
     db.session.add(dillon)
 
