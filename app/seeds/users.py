@@ -30,9 +30,27 @@ def seed_users():
                  state='Texas'
                 )
 
+    reed = User(
+                username='reed',
+                email='reed@jumpstart.com',
+                password='password',
+                city='Austin',
+                state='Texas'
+                )
+
+    dillon = User(
+                  username='dillon',
+                  email='dillon@jumpstart.com',
+                  password='password',
+                  city='Buena Vista',
+                  state='Colorado'
+                )
+
     db.session.add(demo)
     db.session.add(jesse)
     db.session.add(peter)
+    db.session.add(reed)
+    db.session.add(dillon)
 
     db.session.commit()
 
