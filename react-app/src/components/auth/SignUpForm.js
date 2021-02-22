@@ -20,12 +20,13 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const listOfStates = csc.getStatesOfCountry("US")
   const listOfCities = csc.getCitiesOfState("US", stateCode)
-  console.log(listOfStates)
+
+  // console.log(state)
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    const user = await dispatch(signUp(username, email, password));
-
+    const user = await dispatch(signUp(username, email, password, city, state));
+    console.log(user)
     if (password === repeatPassword) {
       if (!user.errors) {
         setAuthenticated(true);
@@ -55,6 +56,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const updateState = (e) => {
+    // console.log(e.target.value)
+    setState(e.target.value)
+    // console.log(state)
     const stateName = e.target.value
     let result = ""
     listOfStates.forEach((state) => {
@@ -67,6 +71,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const updateCity = (e) => {
     setCity(e.target.value)
+    // console.log(city)
   }
 
   if (authenticated) {
@@ -104,7 +109,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             </div>
             <div>
               <label>State</label>
-              <select onChange={updateState}>
+              <select name="state" onChange={updateState} value={state} >
                 <option value="" disabled selected>Select your state</option>
                 {
                   listOfStates.map((state, idx) => (
@@ -115,7 +120,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             </div>
             <div>
               <label>City</label>
-              <select onChange={updateCity}>
+              <select name="city" onChange={updateCity} value={city} >
                 <option value="" disabled selected>Select your city</option>
                 {stateCode !== "" &&
                   listOfCities.map((city, idx) => (
