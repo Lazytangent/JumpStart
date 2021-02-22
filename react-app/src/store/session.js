@@ -64,9 +64,6 @@ export const signUp = (username, email, password, city, state, profileImage) => 
 
   const response = await fetch("/api/auth/signup", {
     method: "POST",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
     body: formData,
   });
   const user = await response.json();

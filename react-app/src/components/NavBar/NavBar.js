@@ -21,14 +21,14 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
               setShowSignUpModal(false)
               setShowLoginModal((prev) => !prev)
             }}>Login</button>}
-            {showLoginModal && <LoginForm />}
+            {showLoginModal && <LoginForm setAuthenticated={setAuthenticated} />}
           </div>
           <div>
             {!user && <button onClick={() => {
               setShowLoginModal(false)
               setShowSignUpModal((prev) => !prev)
             }}>Sign Up</button>}
-            {showSignUpModal && <SignUpForm />}
+            {showSignUpModal && <SignUpForm setAuthenticated={setAuthenticated} />}
           </div>
         </div>
         <div className="navBar-second-fraction">

@@ -81,7 +81,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     <>
       {showSignUpModal &&
         <Modal onClose={() => setShowSignUpModal(false)}>
-          <form onSubmit={onSignUp}>
+          <form onSubmit={onSignUp} encType="multipart/form-data">
             <button id="close-button" onClick={() => setShowSignUpModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
             <div>
               {errors.map((error, idx) => (
