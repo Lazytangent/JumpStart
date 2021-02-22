@@ -9,13 +9,15 @@ def seed_users():
     demo = User(username='Demo', email='demo@aa.io',
                 password='password', city='Dallas', state='Texas')
 
-    Jesse = User(username='jesse' email='jesse@jumpstart.io',
+    jesse = User(username='jesse' email='jesse@jumpstart.io',
                  password='password', city='Milwaukee', state='Wisconsin')
 
-    Peter = User(username='peter' email='peter@jumpstart.io',
+    peter = User(username='peter' email='peter@jumpstart.io',
                  password='password', city='Dallas', state='Texas')
 
     db.session.add(demo)
+    db.session.add(jesse)
+    db.session.add(peter)
 
     db.session.commit()
 
