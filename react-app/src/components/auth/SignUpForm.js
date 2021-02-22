@@ -50,6 +50,11 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <Modal onClose={() => setShowModal(false)}>
           <form onSubmit={onSignUp}>
             <button id="close-button" onClick={(event) => setShowModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
+            {/* <div>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </div> */}
             <div>
               <label>User Name</label>
               <input
