@@ -15,7 +15,7 @@ const removeUser = () => {
 };
 
 export const authenticate = () => async (dispatch) => {
-  const response = await fetch('/api/auth/',{
+  const response = await fetch('/api/auth/', {
     headers: {
       'Content-Type': 'application/json'
     }
@@ -53,7 +53,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (username, email, password, city, state) => async (dispatch) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
@@ -63,6 +63,8 @@ export const signUp = (username, email, password) => async (dispatch) => {
       username,
       email,
       password,
+      city,
+      state
     }),
   });
   const user = await response.json();
@@ -77,6 +79,9 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
+      if (action.payload.errors && action.payload.errors[0] === "Unauthorized") {
+        return { ...state, user: null }
+      }
       return { ...state, user: action.payload }
     case REMOVE_USER:
       return { ...state, user: null }
