@@ -73,14 +73,9 @@ def sign_up():
             image = request.files['profileImage']
             image.filename = secure_filename(image.filename)
             profileImageUrl = upload_file_to_s3(image, Config.S3_BUCKET)
-        user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            password=form.data['password'],
-            city=form.data['city'],
-            state=form.data['state'],
-            profileImageUrl=profileImageUrl,
-        )
+        user = User()
+        form.populate_obj(user)
+        user.profileImageUrl = profileImageUrl
         db.session.add(user)
         db.session.commit()
         login_user(user)
