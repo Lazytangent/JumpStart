@@ -5,6 +5,7 @@ import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../auth/SignUpForm'
 import LogoutButton from '../auth/LogoutButton';
 import { useModalContext } from '../../context/Modal';
+import CreateProject from '../CreateProject'
 import './NavBar.css';
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
@@ -24,15 +25,6 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
             }}>Login</button>}
             {showLoginModal && <LoginForm />}
           </div>
-        </div>
-        <div className="navBar-second-fraction">
-          <div>
-            <NavLink className="navBar-home" to="/" exact={true} activeClassName="active">
-            JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
-            </NavLink>
-          </div>
-        </div>
-        <div className="navBar-third-fraction">
           <div>
             {!user && <button onClick={() => {
               setShowLoginModal(false)
@@ -41,10 +33,18 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
             {showSignUpModal && <SignUpForm />}
           </div>
         </div>
-        <div>
-          {/* <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink> */}
+        <div className="navBar-second-fraction">
+          <NavLink className="navBar-home" to="/" exact={true} activeClassName="active" onClick={() => {
+            setShowSignUpModal(false)
+            setShowLoginModal(false)
+            }}>
+            JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
+          </NavLink>
+        </div>
+        <div className="navBar-third-fraction">
+          <div>
+            <button>Create a project</button>
+          </div>
         </div>
         <div>
           {user && <LogoutButton setAuthenticated={setAuthenticated} />}
