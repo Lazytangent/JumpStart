@@ -6,14 +6,29 @@ from app.models import db, User
 
 def seed_users():
 
-    demo = User(username='Demo', email='demo@aa.io',
-                password='password', city='Dallas', state='Texas')
+    demo = User(
+                username='Demo',
+                email='demo@aa.io',
+                password='password',
+                city='Dallas',
+                state='Texas',
+               )
 
-    jesse = User(username='jesse' email='jesse@jumpstart.io',
-                 password='password', city='Milwaukee', state='Wisconsin')
+    jesse = User(
+                 username='jesse',
+                 email='jesse@jumpstart.io',
+                 password='password',
+                 city='Milwaukee',
+                 state='Wisconsin',
+                )
 
-    peter = User(username='peter' email='peter@jumpstart.io',
-                 password='password', city='Dallas', state='Texas')
+    peter = User(
+                 username='peter',
+                 email='peter@jumpstart.io',
+                 password='password',
+                 city='Dallas',
+                 state='Texas'
+                )
 
     db.session.add(demo)
     db.session.add(jesse)

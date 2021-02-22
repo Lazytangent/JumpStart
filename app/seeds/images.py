@@ -4,10 +4,12 @@ from app.models import db, Image
 # Adds a demo user, you can add other users here if you want
 
 
-def seed_image():
+def seed_images():
 
-    one = Image(projectId=1,
-                imageUrl="https://wiweddingvenues.com/wp-content/uploads/2020/11/DSC_3140.jpg")
+    one = Image(
+                projectId=1,
+                imageUrl="https://wiweddingvenues.com/wp-content/uploads/2020/11/DSC_3140.jpg"
+               )
 
     db.session.add(one)
 
@@ -19,6 +21,6 @@ def seed_image():
 # the auto incrementing primary key
 
 
-def undo_image():
+def undo_images():
     db.session.execute('TRUNCATE users;')
     db.session.commit()
