@@ -3,24 +3,37 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import { Modal } from '../../context/Modal';
+import csc from 'country-state-city';
 
 // test change
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
+  const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
   const [showModal, setShowModal] = useState(true);
+
+  const listOfStates = csc.getStatesOfCountry("US")
+  const listOfCities = csc.getCitiesOfCountry("US")
+  console.log(listOfCities)
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    setShowModal(false);
+    const user = await dispatch(signUp(username, email, password));
+
     if (password === repeatPassword) {
-      const user = await dispatch(signUp(username, email, password));
       if (!user.errors) {
         setAuthenticated(true);
+        setShowModal(false);
+      } else {
+        setErrors(user.errors)
       }
+    } else {
+      setErrors(['Confirm Password field must be the same as the Password field'])
     }
   };
 
@@ -40,6 +53,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateState = (e) => {
+    setState(e.target.value)
+  }
+
+  const updateCity = (e) => {
+    setCity(e.target.value)
+  }
+
   if (authenticated) {
     return <Redirect to="/" />;
   }
@@ -50,11 +71,11 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         <Modal onClose={() => setShowModal(false)}>
           <form onSubmit={onSignUp}>
             <button id="close-button" onClick={(event) => setShowModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
-            {/* <div>
+            <div>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
-            </div> */}
+            </div>
             <div>
               <label>User Name</label>
               <input
@@ -72,6 +93,26 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 onChange={updateEmail}
                 value={email}
               ></input>
+            </div>
+            <div>
+              <label>State</label>
+              <select>
+                {
+                  listOfStates.map((state, idx) => (
+                    <option onChange={updateState}>{state.name}</option>
+                  ))
+                }
+              </select>
+            </div>
+            <div>
+              <label>City</label>
+              <select>
+                {
+                  listOfCities.map((city, idx) => (
+                    <option onChange={updateCity}>{city.name}</option>
+                  ))
+                }
+              </select>
             </div>
             <div>
               <label>Password</label>
