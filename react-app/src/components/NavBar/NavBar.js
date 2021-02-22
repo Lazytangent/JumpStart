@@ -15,40 +15,42 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
   console.log(user)
 
   return (
-    <nav className="navBar">
-      <ul className="navBar-items">
-        <div>
-          <NavLink to="/" exact={true} activeClassName="active" onClick={() => {
+    <div>
+      <ul className="navBar">
+        <div className="navBar-first-fraction">
+          <div>
+            {!user && <button onClick={() => {
+              setShowSignUpModal(false)
+              setShowLoginModal((prev) => !prev)
+            }}>Login</button>}
+            {showLoginModal && <LoginForm />}
+          </div>
+          <div>
+            {!user && <button onClick={() => {
+              setShowLoginModal(false)
+              setShowSignUpModal((prev) => !prev)
+            }}>Sign Up</button>}
+            {showSignUpModal && <SignUpForm />}
+          </div>
+        </div>
+        <div className="navBar-second-fraction">
+          <NavLink className="navBar-home" to="/" exact={true} activeClassName="active" onClick={() => {
             setShowSignUpModal(false)
             setShowLoginModal(false)
-          }}>
-            Home
+            }}>
+            JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
           </NavLink>
         </div>
-        <div>
-
-          {!user && <button onClick={() => {
-            setShowSignUpModal(false)
-            setShowLoginModal((prev) => !prev)
-          }}>Login</button>}
-          {showLoginModal && <LoginForm />}
-        </div>
-        <div>
-
-          {!user && <button onClick={() => {
-            setShowLoginModal(false)
-            setShowSignUpModal((prev) => !prev)
-          }}>Sign Up</button>}
-          {showSignUpModal && <SignUpForm />}
-        </div>
-        <div>
-          <button>Create a project</button>
+        <div className="navBar-third-fraction">
+          <div>
+            <button>Create a project</button>
+          </div>
         </div>
         <div>
           {user && <LogoutButton setAuthenticated={setAuthenticated} />}
         </div>
       </ul>
-    </nav >
+    </div >
   );
 }
 
