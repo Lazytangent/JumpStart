@@ -10,13 +10,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [showModal, setShowModal] = useState(true);
+
 
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await dispatch(login(email, password))
     if (!user.errors) {
-      // setAuthenticated(true);
+
       setShowLoginModal(false);
     } else {
       setErrors(user.errors);

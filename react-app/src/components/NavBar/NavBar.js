@@ -22,9 +22,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           </NavLink>
         </div>
         <div>
-          {/* <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink> */}
+
           {!user && <button onClick={() => {
             setShowSignUpModal(false)
             setShowLoginModal((prev) => !prev)
@@ -32,9 +30,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {showLoginModal && <LoginForm />}
         </div>
         <div>
-          {/* <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink> */}
+
           {!user && <button onClick={() => {
             setShowLoginModal(false)
             setShowSignUpModal((prev) => !prev)
