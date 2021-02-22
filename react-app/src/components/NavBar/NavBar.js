@@ -12,8 +12,6 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
   const { showLoginModal, setShowLoginModal, showSignUpModal, setShowSignUpModal } = useModalContext();
   const user = useSelector(state => state.session.user)
 
-  console.log(user)
-
   return (
     <nav className="navBar">
       <ul className="navBar-items">
