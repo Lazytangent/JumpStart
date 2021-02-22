@@ -26,7 +26,6 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     const user = await dispatch(signUp(username, email, password, city, state));
-    console.log(user)
     if (password === repeatPassword) {
       if (!user.errors) {
         setAuthenticated(true);
