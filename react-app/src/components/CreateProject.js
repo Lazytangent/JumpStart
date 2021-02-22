@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 
 const CreateProject = () => {
+
+  const history = useHistory()
 
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
@@ -66,6 +69,7 @@ const CreateProject = () => {
           ></input>
         </div>
         <button type="submit">Create</button>
+        <button type="submit" onClick={() => history.push("/")}>Cancel</button>
       </form>
     </>
   )
