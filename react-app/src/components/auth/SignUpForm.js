@@ -16,13 +16,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [state, setState] = useState("");
   const [stateCode, setStateCode] = useState("");
   const [city, setCity] = useState("");
+  const [profileImage, setProfileImage] = useState();
 
   const listOfStates = csc.getStatesOfCountry("US")
   const listOfCities = csc.getCitiesOfState("US", stateCode)
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    const user = await dispatch(signUp(username, email, password, city, state));
+    const user = await dispatch(signUp(username, email, password, city, state, profileImage));
     if (password === repeatPassword) {
       if (!user.errors) {
         setAuthenticated(true);
@@ -65,6 +66,11 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const updateCity = (e) => {
     setCity(e.target.value)
+  }
+
+  const updateProfileImage = (e) => {
+    const file = e.target.files[0];
+    if (file) setProfileImage(file);
   }
 
   if (authenticated) {
@@ -140,6 +146,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 value={repeatPassword}
                 required={true}
               ></input>
+            </div>
+            <div>
+              <label>Profile Image</label>
+              <input
+                type="file"
+                name="image"
+                onChange={updateProfileImage}
+                value={profileImage} />
             </div>
             <button type="submit">Sign Up</button>
           </form>
