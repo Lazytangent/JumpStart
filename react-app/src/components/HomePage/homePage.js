@@ -2,14 +2,17 @@ import React from "react";
 
 
 
-const H = ({venue}) => {
+const HomePage = ({}) => {
 
 
     return (
         <>
+        <div>
+
+        </div>
         </>
     );
 
 }
 
-export default SingleVenueMap;
+export default HomePage;
