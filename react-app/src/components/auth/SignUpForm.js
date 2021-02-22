@@ -5,7 +5,6 @@ import { signUp } from '../../store/session';
 import { Modal, useModalContext } from '../../context/Modal';
 import csc from 'country-state-city';
 
-// test change
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const { showSignUpModal, setShowSignUpModal } = useModalContext();
   const dispatch = useDispatch();
@@ -17,12 +16,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [state, setState] = useState("");
   const [stateCode, setStateCode] = useState("");
   const [city, setCity] = useState("");
-  // const [showModal, setShowModal] = useState(true);
 
   const listOfStates = csc.getStatesOfCountry("US")
   const listOfCities = csc.getCitiesOfState("US", stateCode)
-
-  // console.log(state)
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -56,9 +52,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const updateState = (e) => {
-    // console.log(e.target.value)
     setState(e.target.value)
-    // console.log(state)
     const stateName = e.target.value
     let result = ""
     listOfStates.forEach((state) => {
@@ -71,7 +65,6 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   const updateCity = (e) => {
     setCity(e.target.value)
-    // console.log(city)
   }
 
   if (authenticated) {
