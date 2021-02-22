@@ -14,12 +14,13 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [state, setState] = useState("");
+  const [stateCode, setStateCode] = useState("");
   const [city, setCity] = useState("");
   const [showModal, setShowModal] = useState(true);
 
   const listOfStates = csc.getStatesOfCountry("US")
-  const listOfCities = csc.getCitiesOfCountry("US")
-  console.log(listOfCities)
+  const listOfCities = csc.getCitiesOfState("US", stateCode)
+  console.log(listOfStates)
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -54,7 +55,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const updateState = (e) => {
-    setState(e.target.value)
+    const stateName = e.target.value
+    let result = ""
+    listOfStates.forEach((state) => {
+      if (state.name === stateName) {
+        result = state.isoCode
+      }
+    })
+    setStateCode(result)
   }
 
   const updateCity = (e) => {
@@ -96,18 +104,20 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             </div>
             <div>
               <label>State</label>
-              <select>
+              <select onChange={updateState}>
+                <option value="" disabled selected>Select your state</option>
                 {
                   listOfStates.map((state, idx) => (
-                    <option onChange={updateState}>{state.name}</option>
+                    <option>{state.name}</option>
                   ))
                 }
               </select>
             </div>
             <div>
               <label>City</label>
-              <select>
-                {
+              <select onChange={updateCity}>
+                <option value="" disabled selected>Select your city</option>
+                {stateCode !== "" &&
                   listOfCities.map((city, idx) => (
                     <option onChange={updateCity}>{city.name}</option>
                   ))
