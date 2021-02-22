@@ -1,8 +1,12 @@
 from flask import Blueprint, jsonify, session, request
+from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.utils import secure_filename
+
+from app.config import Config
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
-from flask_login import current_user, login_user, logout_user, login_required
+from app.helpers import allowed_file, upload_file_to_s3
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -62,19 +66,20 @@ def sign_up():
     """
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data)
-    if 'profileImage' in request.files:
-        image = request.files['profileImage']
-        print('-------------------------------------')
-        print(image)
     if form.validate_on_submit():
         print(form.data)
+        profileImageUrl = None
+        if 'profileImage' in request.files:
+            image = request.files['profileImage']
+            image.filename = secure_filename(image.filename)
+            profileImageUrl = upload_file_to_s3(image, Config.S3_BUCKET)
         user = User(
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
             city=form.data['city'],
-            state=form.data['state']
+            state=form.data['state'],
+            profileImageUrl=profileImageUrl,
         )
         db.session.add(user)
         db.session.commit()
