@@ -113,7 +113,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 <option value="" disabled selected>Select your state</option>
                 {
                   listOfStates.map((state, idx) => (
-                    <option>{state.name}</option>
+                    <option key={state.name}>{state.name}</option>
                   ))
                 }
               </select>
@@ -124,7 +124,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 <option value="" disabled selected>Select your city</option>
                 {stateCode !== "" &&
                   listOfCities.map((city, idx) => (
-                    <option onChange={updateCity}>{city.name}</option>
+                    <option key={city.name}>{city.name}</option>
                   ))
                 }
               </select>
