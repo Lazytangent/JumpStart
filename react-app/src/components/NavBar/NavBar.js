@@ -17,7 +17,10 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
     <nav className="navBar">
       <ul className="navBar-items">
         <div>
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/" exact={true} activeClassName="active" onClick={() => {
+            setShowSignUpModal(false)
+            setShowLoginModal(false)
+          }}>
             Home
           </NavLink>
         </div>
