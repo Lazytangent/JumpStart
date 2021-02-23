@@ -28,9 +28,11 @@ def get_homepage_projects(optional_parameter):
 
 @project_routes.route('/homepage/<int:userId>')
 def get_homepage_projects_by_location(userId):
-    user = User.query.filter(User.id == userId)
+    user = User.query.filter(User.id == userId).one()
+    all_projects = Project.query.all()
     state = user.state
-    projects = Project.query.filter(Project.state == state).limit(3).all()
+    # projects = [project.user.to_dict() for project in all_projects if project.]
+
     return jsonify(projects)
 
 
