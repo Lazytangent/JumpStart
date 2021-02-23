@@ -17,7 +17,7 @@ def get_homepage_projects(optional_parameter):
         projects = \
             Project.query.join(Donation). \
             group_by(Project.id). \
-            order_by(desc(func.count(Donation.projectId))).all()
+            order_by(desc(func.count(Donation.projectId))).limit(3).all()
         projects = [project.to_dict() for project in projects]
         return jsonify(projects)
     elif optional_parameter == 'recent':
