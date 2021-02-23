@@ -3,3 +3,20 @@
     height: 150vh;
     width: 100%;
 }
+
+
+html:not([data-scroll="0"]) .homePage {
+  padding-top: 3em;
+}
+html:not([data-scroll="0"]) .navBar {
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.navBar {
+  box-sizing: border-box;
+  padding: 1em;
+  transition: background-color 0.25s;
+}
