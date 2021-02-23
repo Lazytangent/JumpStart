@@ -52,6 +52,9 @@ function App() {
         <Route path="/" exact={true} authenticated={authenticated}>
           <HomePage />
         </Route>
+        <Route path="/new-project" exact={true} authenticated={authenticated}>
+          <CreateProject />
+        </Route>
       </Switch>
     </>
   );
