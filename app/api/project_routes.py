@@ -39,8 +39,7 @@ def get_homepage_projects_by_location(userId):
     state = user.state
     all_projects = Project.query.join(User).filter(
         User.state == state).limit(3).all()
-    projects = [project.to_dict()
-                for project in all_projects]
+    projects = [project.to_dict() for project in all_projects]
     return jsonify(projects)
 
 
@@ -72,6 +71,5 @@ def get_discoverpage_projects_by_location(userId):
     state = user.state
     all_projects = Project.query.join(User). \
         filter(User.state == state).all()
-    projects = [project.to_dict()
-                for project in all_projects]
+    projects = [project.to_dict() for project in all_projects]
     return jsonify(projects)
