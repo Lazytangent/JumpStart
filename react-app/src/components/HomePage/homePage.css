@@ -43,6 +43,26 @@
     grid-template-rows: 25% 8.3% 25% 8.3% 25% 8.3%;
 }
 
+#homePage-project-grid {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 10% 90%;
+}
+
+.homePage-grid-most-recent {
+    grid-row-start: 1;
+}
+
+.homePage-grid-most-popular {
+    grid-row-start: 3;
+}
+
+.homePage-grid-near-you {
+    grid-row-start: 5;
+}
+
 html:not([data-scroll="0"]) .navBar {
   background-color: #fff;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
