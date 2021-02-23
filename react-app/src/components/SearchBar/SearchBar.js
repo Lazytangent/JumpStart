@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Modal, useModalContext } from "../../context/Modal";
+import { SearchModal, useModalContext } from "../../context/Modal";
 import "./SearchBar.css";
 
 const SearchBar = () => {
@@ -66,7 +66,7 @@ const SearchBar = () => {
   return (
     <>
       {showSearchBarModal && (
-        <Modal onClose={() => setShowSearchBarModal(false)}>
+        <SearchModal onClose={() => setShowSearchBarModal(false)}>
           <div className="searchBar-container">
             <input
               type="search"
@@ -80,7 +80,10 @@ const SearchBar = () => {
               }}
             />
           </div>
-        </Modal>
+          <div>
+            
+          </div>
+        </SearchModal>
       )}
     </>
   );

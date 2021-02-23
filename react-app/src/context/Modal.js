@@ -55,3 +55,16 @@ export const Modal = ({ onClose, children }) => {
     value
   );
 };
+
+export const SearchModal = ({ onClose, children }) => {
+  const { value } = useContext(ModalContext);
+  if (!value) return null;
+
+  return ReactDOM.createPortal(
+    <div id="searchModal">
+      <div id="searchModal-background" onClick={onClose} />
+      <div id="searchModal-content">{children}</div>
+    </div>,
+    value
+  );
+};
