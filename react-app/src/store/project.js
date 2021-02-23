@@ -88,6 +88,13 @@ export const getHomePageProjectsByLocation = (userId) => async (dispatch) => {
   return projects;
 };
 
+export const getDiscoverPageProjectsByLocation = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/projects/discoverpage/${userId}`)
+  const projects = await response.json();
+  dispatch(setNearYou(projects))
+  return projects;
+};
+
 export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) => {
   const response = await fetch(`/api/projects/discoverpage/${optionalParameter}`)
   const projects = await response.json();
@@ -100,12 +107,6 @@ export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) =
       break
     case 'trending':
       dispatch(setTrending(projects))
-      break
-    case 'location':
-      dispatch(setNearYou(projects))
-      break
-    case 'searchedFor':
-      dispatch(setSearchedFor(projects))
       break
     default:
       return projects

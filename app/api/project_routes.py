@@ -50,6 +50,17 @@ def get_homepage_projects_by_location(userId):
     return jsonify(projects)
 
 
+@project_routes.route('/discoverpage/<int:userId>')
+def get_homepage_projects_by_location(userId):
+    user = User.query.filter(User.id == userId).one()
+    state = user.state
+    all_projects = Project.query.join(User). \
+        filter(User.state == state).all()
+    projects = [project.to_dict()
+                for project in all_projects]
+    return jsonify(projects)
+
+
 @project_routes.route('/discoverpage/<string:optional_parameter>')
 def get_discoverpage_projects(optional_parameter):
     if optional_parameter == 'popular':
