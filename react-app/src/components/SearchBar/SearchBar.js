@@ -81,7 +81,14 @@ const SearchBar = () => {
             />
           </div>
           <div>
-            
+            {matches &&
+              matches.map((project) => (
+                <li className="searchBarModal-matches">
+                  <div>
+                    <p>DELETE THIS P PLACEHOLDER</p>
+                  </div>
+                </li>
+              ))}
           </div>
         </SearchModal>
       )}
