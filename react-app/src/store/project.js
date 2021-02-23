@@ -58,12 +58,16 @@ export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
     case 'trending':
       dispatch(setTrending(projects))
       break
-    case 'location':
-      dispatch(setNearYou(projects))
-      break
     default:
       return projects
   }
+  return projects;
+}
+
+export const getHomePageProjectsByLocation = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/projects/homepage/${userId}`)
+  const projects = await response.json();
+  dispatch(setNearYou(projects))
   return projects;
 }
 

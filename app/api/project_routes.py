@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from sqlalchemy import asc, desc
-from app.models import Project, Donation
+from app.models import Project, Donation, User
 
 project_routes = Blueprint('projects', __name__)
 
@@ -19,6 +19,14 @@ def get_homepage_projects(optional_parameter):
         pass
     elif optional_parameter == 'location':
         pass
+
+
+@project_routes.route('/homepage/<int:userId')
+def get_homepage_projects_by_location(userId):
+    user = User.query.filter(User.id == userId)
+    state = user.state
+    projects = Project.query.filter(Project.state == state).limit(3).all()
+    return jsonify(projects)
 
 
 @project_routes.route('/discoverpage/<string:optional_parameter>')
