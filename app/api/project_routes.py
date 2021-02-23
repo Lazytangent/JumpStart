@@ -25,7 +25,13 @@ def get_homepage_projects(optional_parameter):
         projects = [project.to_dict() for project in projects]
         return jsonify(projects)
     elif optional_parameter == 'trending':
-        pass
+        projects = \
+            Project.query.join(Donation). \
+            group_by(Project.id). \
+            order_by(desc(func.count(Donation.projectId)),
+                     desc(Project.id)).all()
+        projects = [project.to_dict() for project in projects]
+        return jsonify(projects)
 
 
 @project_routes.route('/homepage/<int:userId>')
