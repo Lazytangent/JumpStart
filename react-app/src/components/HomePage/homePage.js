@@ -15,7 +15,7 @@ const HomePage = () => {
     return (
         <div className="homePage">
             <div className="homePage-image-container">
-                <img className="homePage-image" src="homePage1.jpg" alt=""></img>
+                {/* <img className="homePage-image" src="homePage1.jpg" alt=""></img> */}
             </div>
             <div className="homePage-description-box">
                 <img className="homePage-description-image" src="homePage-description.jpg" alt=""></img>
