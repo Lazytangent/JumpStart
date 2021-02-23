@@ -8,7 +8,6 @@ project_routes = Blueprint('projects', __name__)
 @project_routes.route('/<int:projectId>')
 def get_project_by_id(projectId):
     project = Project.query.filter(Project.id == projectId).one()
-    # projects = project.to_dict() for project in projects
     return jsonify(project.to_dict())
 
 
@@ -19,7 +18,6 @@ def get_homepage_projects(optional_parameter):
             Project.query.join(Donation). \
             group_by(Project.id). \
             order_by(desc(func.count(Donation.projectId))).all()
-        print(projects)
         projects = [project.to_dict() for project in projects]
         return jsonify(projects)
     elif optional_parameter == 'recent':
