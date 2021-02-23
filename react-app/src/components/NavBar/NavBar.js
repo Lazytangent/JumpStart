@@ -7,7 +7,9 @@ import LogoutButton from "../auth/LogoutButton";
 import SearchBar from "../SearchBar/SearchBar";
 import { useModalContext } from "../../context/Modal";
 import CreateProject from "../CreateProject";
+import { useHistory } from "react-router-dom";
 import "./NavBar.css";
+import "../HomePage/homePage.css";
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
   const {
@@ -19,11 +21,10 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
     setShowSearchBarModal,
   } = useModalContext();
   const user = useSelector((state) => state.session.user);
-
-  console.log(user);
+  const history = useHistory();
 
   return (
-    <div>
+    <nav>
       <ul className="navBar">
         <div className="navBar-first-fraction">
           <div>
@@ -37,7 +38,9 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
                 Login
               </button>
             )}
-            {showLoginModal && <LoginForm />}
+            {showLoginModal && (
+              <LoginForm setAuthenticated={setAuthenticated} />
+            )}
           </div>
           <div>
             {!user && (
@@ -50,7 +53,9 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
                 Sign Up
               </button>
             )}
-            {showSignUpModal && <SignUpForm />}
+            {showSignUpModal && (
+              <SignUpForm setAuthenticated={setAuthenticated} />
+            )}
           </div>
         </div>
         <div className="navBar-second-fraction">
@@ -91,7 +96,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {user && <LogoutButton setAuthenticated={setAuthenticated} />}
         </div>
       </ul>
-    </div>
+    </nav>
   );
 };
 

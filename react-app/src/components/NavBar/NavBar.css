@@ -1,16 +1,15 @@
 .navBar {
-    height: 7%;
+    height: 7vh;
     width: 100%;
-    position: fixed;
     display: grid;
+    position: fixed;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     margin: 0;
     padding: 0;
     top: 0;
     left: 0;
-    background-color: white;
-    border-bottom: 1px solid lightgrey;
+    background-color: rgba(0, 0, 0, 0);
     z-index: 1;
 }
 
@@ -44,3 +43,5 @@
     height: 1.5rem;
     padding-left: 1%;
 }
+
+
