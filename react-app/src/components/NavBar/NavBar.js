@@ -7,13 +7,14 @@ import LogoutButton from '../auth/LogoutButton';
 import { useModalContext } from '../../context/Modal';
 import CreateProject from '../CreateProject'
 import './NavBar.css';
+import "../HomePage/homePage.css";
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
   const { showLoginModal, setShowLoginModal, showSignUpModal, setShowSignUpModal } = useModalContext();
   const user = useSelector(state => state.session.user)
 
   return (
-    <div>
+    <nav>
       <ul className="navBar">
         <div className="navBar-first-fraction">
           <div>
@@ -48,7 +49,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           {user && <LogoutButton setAuthenticated={setAuthenticated} />}
         </div>
       </ul>
-    </div >
+    </nav >
   );
 }
 
