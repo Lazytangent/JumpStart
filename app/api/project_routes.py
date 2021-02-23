@@ -7,10 +7,10 @@ project_routes = Blueprint('projects', __name__)
 
 @project_routes.route('/homepage/<string:optional_parameter>')
 def get_homepage_projects(optional_parameter):
-    projects = Project.query.all()
     if optional_parameter == 'popular':
-        # filtered_projects =
-        pass
+        projects = \
+            Project.query.order_by().all()
+        print(projects)
     elif optional_parameter == 'recent':
         projects = Project.query.order_by(Project.id.desc()).limit(3).all()
         projects = [project.to_dict() for project in projects]
