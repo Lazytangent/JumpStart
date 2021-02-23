@@ -18,46 +18,49 @@ const setCurrentProject = (project) => {
     type: SET_CURRENT_PROJECT,
     project
   }
-}
+};
 
 const setMostPopular = (projects) => {
   return {
     type: SET_MOST_POPULAR,
     projects
   }
-}
+};
 
 const setMostRecent = (projects) => {
   return {
     type: SET_MOST_RECENT,
     projects
   }
-}
+};
+
 const setTrending = (projects) => {
   return {
     type: SET_TRENDING,
     projects
   }
-}
+};
+
 const setNearYou = (projects) => {
   return {
     type: SET_NEAR_YOU,
     projects
   }
-}
+};
+
 const setSearchedFor = (projects) => {
   return {
     type: SET_SEARCHED_FOR,
     projects
   }
-}
+};
 
 export const getProjectById = (projectId) => async (dispatch) => {
   const response = await fetch(`/api/projects/${projectId}`)
   const projects = await response.json()
   dispatch(setCurrentProject(projects))
   return projects
-}
+};
 
 export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
   const response = await fetch(`/api/projects/homepage/${optionalParameter}`)
@@ -76,15 +79,21 @@ export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
       return projects
   }
   return projects;
-}
+};
 
 export const getHomePageProjectsByLocation = (userId) => async (dispatch) => {
   const response = await fetch(`/api/projects/homepage/${userId}`)
   const projects = await response.json();
   dispatch(setNearYou(projects))
   return projects;
-}
+};
 
+export const getDiscoverPageProjectsByLocation = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/projects/discoverpage/${userId}`)
+  const projects = await response.json();
+  dispatch(setNearYou(projects))
+  return projects;
+};
 
 export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) => {
   const response = await fetch(`/api/projects/discoverpage/${optionalParameter}`)
@@ -99,17 +108,11 @@ export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) =
     case 'trending':
       dispatch(setTrending(projects))
       break
-    case 'location':
-      dispatch(setNearYou(projects))
-      break
-    case 'searchedFor':
-      dispatch(setSearchedFor(projects))
-      break
     default:
       return projects
   }
   return projects;
-}
+};
 
 const initialState = {
   mostPopular: null,
@@ -118,8 +121,7 @@ const initialState = {
   nearYou: null,
   searchedFor: null,
   currentProject: null
-}
-
+};
 
 const projectReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -134,10 +136,10 @@ const projectReducer = (state = initialState, action) => {
     case SET_SEARCHED_FOR:
       return { ...state, searchedFor: action.projects }
     case SET_CURRENT_PROJECT:
-      return { ...state, currentProject: action.projects }
+      return { ...state, currentProject: action.project }
     default:
       return state
   }
-}
+};
 
 export default projectReducer;
