@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import logo_30x30 from "../../../public/logo_30x30.png";
 import { SearchModal, useModalContext } from "../../context/Modal";
 import "./SearchBar.css";
 
@@ -83,9 +83,18 @@ const SearchBar = () => {
           <div>
             {matches &&
               matches.map((project) => (
-                <li className="searchBarModal-matches">
+                <li className="searchBar-matches">
+                  {!project.thumbnailImgUrl && (
+                    <div>
+                      <img
+                        className="logo_30x30"
+                        src={logo_30x30}
+                        alt="A small heart with an EKG graph of the electrical impulses that move through the heart displayed inside of it."
+                      />
+                    </div>
+                  )}
                   <div>
-                    <p>DELETE THIS P PLACEHOLDER</p>
+                    <p>{project.name}</p>
                   </div>
                 </li>
               ))}

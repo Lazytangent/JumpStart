@@ -7,6 +7,11 @@
 .searchBar-input {
   padding: 0.5rem;
   margin: 2rem;
-  margin-left: 2.5%;
+  /* margin-left: 2.5%; */
   width: 95%;
+}
+
+.searchBar-matches {
+  list-style-type: none;
+  margin: 2rem;
 }
