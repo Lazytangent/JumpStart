@@ -26,7 +26,9 @@ def get_discoverpage_projects(optional_parameter):
     if optional_parameter == 'popular':
         pass
     elif optional_parameter == 'recent':
-        pass
+        projects = Project.query.order_by(Project.id.desc()).all()
+        projects = [project.to_dict() for project in projects]
+        return jsonify(projects)
     elif optional_parameter == 'trending':
         pass
     elif optional_parameter == 'location':
