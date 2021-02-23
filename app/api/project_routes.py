@@ -36,25 +36,9 @@ def get_homepage_projects(optional_parameter):
 @project_routes.route('/homepage/<int:userId>')
 def get_homepage_projects_by_location(userId):
     user = User.query.filter(User.id == userId).one()
-    # all_projects = Project.query.all()
     state = user.state
     all_projects = Project.query.join(User).filter(
         User.state == state).limit(3).all()
-
-    projects = [project.to_dict()
-                for project in all_projects]
-    # projects = [project.to_dict()
-    #             for project in all_projects if project.user.state == state]
-
-    return jsonify(projects)
-
-
-@project_routes.route('/discoverpage/<int:userId>')
-def get_homepage_projects_by_location(userId):
-    user = User.query.filter(User.id == userId).one()
-    state = user.state
-    all_projects = Project.query.join(User). \
-        filter(User.state == state).all()
     projects = [project.to_dict()
                 for project in all_projects]
     return jsonify(projects)
@@ -79,4 +63,15 @@ def get_discoverpage_projects(optional_parameter):
             order_by(desc(func.count(Donation.projectId)),
                      desc(Project.id)).all()
         projects = [project.to_dict() for project in projects]
+    return jsonify(projects)
+
+
+@project_routes.route('/discoverpage/<int:userId>')
+def get_discoverpage_projects_by_location(userId):
+    user = User.query.filter(User.id == userId).one()
+    state = user.state
+    all_projects = Project.query.join(User). \
+        filter(User.state == state).all()
+    projects = [project.to_dict()
+                for project in all_projects]
     return jsonify(projects)
