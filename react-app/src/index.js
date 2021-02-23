@@ -8,12 +8,14 @@ import configureStore from './store';
 import { ModalProvider } from './context/Modal';
 
 import * as sessionActions from './store/session';
+import * as projectActions from './store/project';
 
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
   window.store = store;
   window.sessionActions = sessionActions;
+  window.projectActions = projectActions;
 }
 
 ReactDOM.render(

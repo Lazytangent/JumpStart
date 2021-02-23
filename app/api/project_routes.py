@@ -13,48 +13,63 @@ def get_project_by_id(projectId):
 
 @project_routes.route('/homepage/<string:optional_parameter>')
 def get_homepage_projects(optional_parameter):
+    projects = []
     if optional_parameter == 'popular':
         projects = \
             Project.query.join(Donation). \
             group_by(Project.id). \
             order_by(desc(func.count(Donation.projectId))).limit(3).all()
         projects = [project.to_dict() for project in projects]
-        return jsonify(projects)
     elif optional_parameter == 'recent':
         projects = Project.query.order_by(Project.id.desc()).limit(3).all()
         projects = [project.to_dict() for project in projects]
-        return jsonify(projects)
     elif optional_parameter == 'trending':
-        pass
+        projects = \
+            Project.query.join(Donation). \
+            group_by(Project.id). \
+            order_by(desc(func.count(Donation.projectId)),
+                     desc(Project.id)).limit(3).all()
+        projects = [project.to_dict() for project in projects]
+    return jsonify(projects)
 
 
 @project_routes.route('/homepage/<int:userId>')
 def get_homepage_projects_by_location(userId):
     user = User.query.filter(User.id == userId).one()
-    # all_projects = Project.query.all()
     state = user.state
     all_projects = Project.query.join(User).filter(
         User.state == state).limit(3).all()
-
-    projects = [project.to_dict()
-                for project in all_projects]
-    # projects = [project.to_dict()
-    #             for project in all_projects if project.user.state == state]
-
+    projects = [project.to_dict() for project in all_projects]
     return jsonify(projects)
 
 
 @project_routes.route('/discoverpage/<string:optional_parameter>')
 def get_discoverpage_projects(optional_parameter):
+    projects = []
     if optional_parameter == 'popular':
-        pass
+        projects = \
+            Project.query.join(Donation). \
+            group_by(Project.id). \
+            order_by(desc(func.count(Donation.projectId))).all()
+        projects = [project.to_dict() for project in projects]
     elif optional_parameter == 'recent':
         projects = Project.query.order_by(Project.id.desc()).all()
         projects = [project.to_dict() for project in projects]
-        return jsonify(projects)
     elif optional_parameter == 'trending':
-        pass
-    elif optional_parameter == 'location':
-        pass
-    elif optional_parameter == 'searchedFor':
-        pass
+        projects = \
+            Project.query.join(Donation). \
+            group_by(Project.id). \
+            order_by(desc(func.count(Donation.projectId)),
+                     desc(Project.id)).all()
+        projects = [project.to_dict() for project in projects]
+    return jsonify(projects)
+
+
+@project_routes.route('/discoverpage/<int:userId>')
+def get_discoverpage_projects_by_location(userId):
+    user = User.query.filter(User.id == userId).one()
+    state = user.state
+    all_projects = Project.query.join(User). \
+        filter(User.state == state).all()
+    projects = [project.to_dict() for project in all_projects]
+    return jsonify(projects)
