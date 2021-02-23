@@ -4,11 +4,18 @@ const SET_MOST_RECENT = 'project/SET_MOST_RECENT'
 const SET_TRENDING = 'project/SET_TRENDING'
 const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
 const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
-
+const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
 
 const createNewProject = (project) => {
   return {
     type: CREATE_PROJECT,
+    project
+  }
+}
+
+const setCurrentProject = (project) => {
+  return {
+    type: SET_CURRENT_PROJECT,
     project
   }
 }
@@ -43,6 +50,13 @@ const setSearchedFor = (projects) => {
     type: SET_SEARCHED_FOR,
     projects
   }
+}
+
+export const getProjectById = (projectId) => async (dispatch) => {
+  const response = await fetch(`/api/projects/${projectId}`)
+  const projects = await response.json()
+  dispatch(setCurrentProject(projects))
+  return projects
 }
 
 export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
@@ -102,7 +116,8 @@ const initialState = {
   mostRecent: null,
   trending: null,
   nearYou: null,
-  searchedFor: null
+  searchedFor: null,
+  currentProject: null
 }
 
 
@@ -118,6 +133,8 @@ const projectReducer = (state = initialState, action) => {
       return { ...state, nearYou: action.projects }
     case SET_SEARCHED_FOR:
       return { ...state, searchedFor: action.projects }
+    case SET_CURRENT_PROJECT:
+      return { ...state, currentProject: action.projects }
     default:
       return state
   }
