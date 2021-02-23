@@ -1,13 +1,46 @@
 .homePage {
     height: 200vh;
-    width: 100vw;
+    width: 99vw;
 }
 
 .homePage-image {
     height: 65vh;
-    width: 100vw;
+    width: 99vw;
     margin: 0;
     padding: 0;
+}
+
+.homePage-description-box {
+    height: 25%;
+    width: 65%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+    position: absolute;
+    top: 55%;
+    left:17.5%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.homePage-description-image {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 10px 0 40% 10px;
+}
+
+.homePage-grid {
+    height: 100%;
+    width: 55%;
+    margin-top: 10%;
+    margin-left: 22.5%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 25% 8.3% 25% 8.3% 25% 8.3%;
 }
 
 html:not([data-scroll="0"]) .navBar {
