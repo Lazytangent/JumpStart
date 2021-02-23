@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import HomePage from "./components/HomePage/homePage"
 import { authenticate } from './store/session';
 import CreateProject from './components/CreateProject'
 
@@ -48,11 +49,8 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-        <Route path='/new-project'>
-          <CreateProject />
+        <Route path="/" exact={true} authenticated={authenticated}>
+          <HomePage />
         </Route>
       </Switch>
     </>

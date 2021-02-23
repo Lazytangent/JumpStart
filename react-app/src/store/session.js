@@ -53,19 +53,18 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password, city, state) => async (dispatch) => {
+export const signUp = (username, email, password, city, state, profileImage) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("city", city);
+  formData.append("state", state);
+  formData.append("profileImage", profileImage);
+
   const response = await fetch("/api/auth/signup", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-      city,
-      state
-    }),
+    body: formData,
   });
   const user = await response.json();
   dispatch(setUser(user));

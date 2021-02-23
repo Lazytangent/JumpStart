@@ -1,19 +1,47 @@
 .navBar {
-    height: 5%;
+    height: 7vh;
     width: 100%;
+    display: grid;
+    position: fixed;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     margin: 0;
     padding: 0;
     top: 0;
     left: 0;
-    background-color: white;
-    position: fixed;
-    border-bottom: 1px solid lightgrey;
+    background-color: rgba(0, 0, 0, 0);
     z-index: 1;
 }
 
-.navBar-items {
+.navBar-first-fraction {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
+
+.navBar-second-fraction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBar-third-fraction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBar-home {
+    display: inline-flex;
+    text-decoration: none;
+    color: #02a95c;
+    font-size: 1.75rem;
+}
+
+.navBar-logo {
+    padding-top: 3%;
+    height: 1.5rem;
+    padding-left: 1%;
+}
+
+
