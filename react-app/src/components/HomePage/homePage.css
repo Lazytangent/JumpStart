@@ -101,6 +101,14 @@ html:not([data-scroll="0"]) .navBar-logo {
     filter:none;
 }
 
+html:not([data-scroll="0"]) #navBar-buttons {
+    color: black;
+}
+
+html:not([data-scroll="0"]) #navBar-buttons:hover {
+    border: 1px solid black;
+}
+
 .navBar-home {
     display: inline-flex;
     text-decoration: none;

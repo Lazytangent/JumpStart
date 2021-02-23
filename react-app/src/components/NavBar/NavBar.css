@@ -64,6 +64,10 @@ button:hover {
     width: 80px;
     font-size: 18px;
     background-color: transparent;
-    color: black;
-    border: 1px solid black;
+    color: white;
+    border: 1px solid transparent;
+}
+
+#navBar-buttons:hover {
+    border: 1px solid white;
 }
