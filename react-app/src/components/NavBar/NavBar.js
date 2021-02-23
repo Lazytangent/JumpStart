@@ -6,14 +6,14 @@ import SignUpForm from '../auth/SignUpForm'
 import LogoutButton from '../auth/LogoutButton';
 import { useModalContext } from '../../context/Modal';
 import CreateProject from '../CreateProject'
+import { useHistory } from 'react-router-dom'
 import './NavBar.css';
 import "../HomePage/homePage.css";
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
   const { showLoginModal, setShowLoginModal, showSignUpModal, setShowSignUpModal } = useModalContext();
   const user = useSelector(state => state.session.user)
-
-  console.log(user)
+  const history = useHistory()
 
   return (
     <nav>
@@ -24,21 +24,21 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
               setShowSignUpModal(false)
               setShowLoginModal((prev) => !prev)
             }}>Login</button>}
-            {showLoginModal && <LoginForm />}
+            {showLoginModal && <LoginForm setAuthenticated={setAuthenticated} />}
           </div>
           <div>
             {!user && <button onClick={() => {
               setShowLoginModal(false)
               setShowSignUpModal((prev) => !prev)
             }}>Sign Up</button>}
-            {showSignUpModal && <SignUpForm />}
+            {showSignUpModal && <SignUpForm setAuthenticated={setAuthenticated} />}
           </div>
         </div>
         <div className="navBar-second-fraction">
           <NavLink className="navBar-home" to="/" exact={true} activeClassName="active" onClick={() => {
             setShowSignUpModal(false)
             setShowLoginModal(false)
-            }}>
+          }}>
             JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
           </NavLink>
         </div>
