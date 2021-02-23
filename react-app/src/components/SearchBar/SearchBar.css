@@ -1,0 +1,13 @@
+.searchBar-container {
+  /* width: 100%; */
+  background-color: whitesmoke;
+  display: block;
+  text-align: center;
+  float: left;
+  clear: both;
+  width: 900px;
+}
+
+.searchBar-input {
+  position: relative;
+}
