@@ -1,17 +1,18 @@
 import React from "react";
+import "./homePage.css"
 
 
 
-const HomePage = ({}) => {
-
+const HomePage = () => {
 
     return (
-        <>
-        <div>
+        <div className="homePage">
+            <div className>
 
+            </div>
         </div>
-        </>
-    );
+
+  );
 
 }
 
