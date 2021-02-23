@@ -45,9 +45,56 @@ const setSearchedFor = (projects) => {
   }
 }
 
+export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
+  const response = await fetch(`/api/projects/homepage/${optionalParameter}`)
+  const projects = await response.json();
+  switch (optionalParameter) {
+    case 'popular':
+      dispatch(setMostPopular(projects))
+      break
+    case 'recent':
+      dispatch(setMostRecent(projects))
+      break
+    case 'trending':
+      dispatch(setTrending(projects))
+      break
+    case 'location':
+      dispatch(setNearYou(projects))
+      break
+    case 'searchedFor':
+      dispatch(setSearchedFor(projects))
+      break
+    default:
+      return projects
+  }
+  return projects;
+}
 
 
-
+export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) => {
+  const response = await fetch(`/api/projects/discoverpage/${optionalParameter}`)
+  const projects = await response.json();
+  switch (optionalParameter) {
+    case 'popular':
+      dispatch(setMostPopular(projects))
+      break
+    case 'recent':
+      dispatch(setMostRecent(projects))
+      break
+    case 'trending':
+      dispatch(setTrending(projects))
+      break
+    case 'location':
+      dispatch(setNearYou(projects))
+      break
+    case 'searchedFor':
+      dispatch(setSearchedFor(projects))
+      break
+    default:
+      return projects
+  }
+  return projects;
+}
 
 const initialState = {
   mostPopular: null,
@@ -63,13 +110,13 @@ const projectReducer = (state = initialState, action) => {
     case SET_MOST_POPULAR:
       return { ...state, mostPopular: action.projects }
     case SET_MOST_RECENT:
-      return { ...state }
+      return { ...state, mostRecent: action.projects }
     case SET_TRENDING:
-      return { ...state }
+      return { ...state, trending: action.projects }
     case SET_NEAR_YOU:
-      return { ...state }
+      return { ...state, nearYou: action.projects }
     case SET_SEARCHED_FOR:
-      return { ...state }
+      return { ...state, searchedFor: action.projects }
     default:
       return state
   }
