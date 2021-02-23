@@ -19,8 +19,6 @@ def get_homepage_projects(optional_parameter):
         pass
     elif optional_parameter == 'location':
         pass
-    elif optional_parameter == 'searchedFor':
-        pass
 
 
 @project_routes.route('/discoverpage/<string:optional_parameter>')
