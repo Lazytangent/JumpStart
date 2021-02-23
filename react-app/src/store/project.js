@@ -1,9 +1,9 @@
 const CREATE_PROJECT = 'project/CREATE_PROJECT'
-const GET_MOST_POPULAR = 'project/GET_MOST_POPULAR'
-const GET_MOST_RECENT = 'project/GET_MOST_RECENT'
-const GET_TRENDING = 'project/GET_TRENDING'
-const GET_NEAR_YOU = 'project/GET_NEAR_YOU'
-const GET_SEARCHED_FOR = 'project/GET_SEARCHED_FOR'
+const SET_MOST_POPULAR = 'project/SET_MOST_POPULAR'
+const SET_MOST_RECENT = 'project/SET_MOST_RECENT'
+const SET_TRENDING = 'project/SET_TRENDING'
+const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
+const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
 
 
 const createNewProject = (project) => {
@@ -13,37 +13,40 @@ const createNewProject = (project) => {
   }
 }
 
-const getMostPopular = (projects) => {
+const setMostPopular = (projects) => {
   return {
-    type: GET_MOST_POPULAR,
+    type: SET_MOST_POPULAR,
     projects
   }
 }
 
-const getMostRecent = (projects) => {
+const setMostRecent = (projects) => {
   return {
-    type: GET_MOST_RECENT,
+    type: SET_MOST_RECENT,
     projects
   }
 }
-const getTrending = (projects) => {
+const setTrending = (projects) => {
   return {
-    type: GET_TRENDING,
+    type: SET_TRENDING,
     projects
   }
 }
-const getNearYou = (projects) => {
+const setNearYou = (projects) => {
   return {
-    type: GET_NEAR_YOU,
+    type: SET_NEAR_YOU,
     projects
   }
 }
-const getSearchedFor = (projects) => {
+const setSearchedFor = (projects) => {
   return {
-    type: GET_SEARCHED_FOR,
+    type: SET_SEARCHED_FOR,
     projects
   }
 }
+
+
+
 
 
 const initialState = {
@@ -57,15 +60,15 @@ const initialState = {
 
 const projectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_MOST_POPULAR:
+    case SET_MOST_POPULAR:
       return { ...state, mostPopular: action.projects }
-    case GET_MOST_RECENT:
+    case SET_MOST_RECENT:
       return { ...state }
-    case GET_TRENDING:
+    case SET_TRENDING:
       return { ...state }
-    case GET_NEAR_YOU:
+    case SET_NEAR_YOU:
       return { ...state }
-    case GET_SEARCHED_FOR:
+    case SET_SEARCHED_FOR:
       return { ...state }
     default:
       return state
