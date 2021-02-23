@@ -15,6 +15,21 @@ html:not([data-scroll="0"]) .navBar {
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
 }
 
+html:not([data-scroll="0"]) .navBar-home {
+    color: #02a95c;
+}
+
+html:not([data-scroll="0"]) .navBar-logo {
+    filter:none;
+}
+
+.navBar-home {
+    display: inline-flex;
+    text-decoration: none;
+    color: white;
+    font-size: 1.75rem;
+}
+
 .navBar {
   box-sizing: border-box;
   padding: 1em;
