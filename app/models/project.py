@@ -21,4 +21,4 @@ class Project(db.Model):
                 "thumbnailImgUrl": self.thumbnailImgUrl, "description":
                 self.description, "goalAmount": self.goalAmount, "minPledge":
                 self.minPledge, "donations": [donation.to_dict() for donation
-                                              in self.donations]}
+                                              in self.donations], "user": self.user.to_dict()}
