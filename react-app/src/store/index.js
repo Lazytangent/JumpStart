@@ -5,7 +5,7 @@ import sessionReducer from './session';
 import projectReducer from './project'
 const rootReducer = combineReducers({
   session: sessionReducer,
-  projects: projectReducer
+  project: projectReducer
 });
 
 let enhancer;
