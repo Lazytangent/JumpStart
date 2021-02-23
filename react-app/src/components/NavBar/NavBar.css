@@ -1,9 +1,9 @@
 .navBar {
-    height: 7vh;
+    height: 8vh;
     width: 100%;
     display: grid;
     position: fixed;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 17.5% 20% 25% 20% 17.5%;
     grid-template-rows: 1fr;
     margin: 0;
     padding: 0;
@@ -14,9 +14,10 @@
 }
 
 .navBar-first-fraction {
+    grid-column-start: 2;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .navBar-second-fraction {
@@ -28,13 +29,12 @@
 .navBar-third-fraction {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .navBar-home {
     display: inline-flex;
     text-decoration: none;
-    color: #02a95c;
     font-size: 1.75rem;
 }
 
@@ -42,6 +42,32 @@
     padding-top: 3%;
     height: 1.5rem;
     padding-left: 1%;
+    filter:  brightness(0) invert(1);
 }
 
+button:hover {
+    cursor: pointer;
+}
 
+.navBar-buttons-login {
+    height: 25px;
+    width: 60px;
+    font-size: 18px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+    margin-right: 50px;
+}
+
+.navBar-buttons-signup {
+    height: 25px;
+    width: 80px;
+    font-size: 18px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+}
+
+#navBar-buttons:hover {
+    border: 1px solid white;
+}

@@ -20,14 +20,14 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
       <ul className="navBar">
         <div className="navBar-first-fraction">
           <div>
-            {!user && <button onClick={() => {
+            {!user && <button id="navBar-buttons" className="navBar-buttons-login" onClick={() => {
               setShowSignUpModal(false)
               setShowLoginModal((prev) => !prev)
             }}>Login</button>}
             {showLoginModal && <LoginForm setAuthenticated={setAuthenticated} />}
           </div>
           <div>
-            {!user && <button onClick={() => {
+            {!user && <button id="navBar-buttons" className="navBar-buttons-signup" onClick={() => {
               setShowLoginModal(false)
               setShowSignUpModal((prev) => !prev)
             }}>Sign Up</button>}
@@ -44,7 +44,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
         </div>
         <div className="navBar-third-fraction">
           <div>
-            <button>Create a project</button>
+            <button id="navBar-buttons" className="navBar-buttons">Create a project</button>
           </div>
         </div>
         <div>
