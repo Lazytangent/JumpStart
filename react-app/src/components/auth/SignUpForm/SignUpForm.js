@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { signUp } from '../../store/session';
-import { Modal, useModalContext } from '../../context/Modal';
+import { signUp } from '../../../store/session';
+import { Modal, useModalContext } from '../../../context/Modal';
 import csc from 'country-state-city';
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {

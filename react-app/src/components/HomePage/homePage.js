@@ -20,9 +20,15 @@ const HomePage = () => {
     const trending = useSelector((state) => state.project.trending)
 
     const getPercentage = (project) => {
+        let sum = 0
 
+        for (let i = 0; i < project.donations.length; i++ ) {
+            sum += project.donations[i].donationAmount;
+        }
+
+        return (sum/project.goalAmount) * 100
     }
-
+    
     const getStateAbbreviation = (project) => {
         let result;
         const allStates = csc.getStatesOfCountry('US')
@@ -60,8 +66,8 @@ const HomePage = () => {
                                         <div id="projectCard-title">{project.name}</div>
                                         <div>{project.description}</div>
                                         {/* limit project description to two lines */}
-                                        <div>
-                                            {/* <span id="progressBar" style=width:getPercentage(project)></span> */}
+                                        <div className="meter">
+                                            <span id="progressBar" style={{width: getPercentage(project)}}></span>
                                         </div>
                                     </div>
                                 </Link>
