@@ -19,6 +19,7 @@ const HomePage = () => {
             </div>
             <div className="homePage-description-box">
                 <img className="homePage-description-image" src="homePage-description.jpg" alt=""></img>
+
             </div>
             <div className="homePage-grid">
                 <div className="homePage-grid-most-recent">
