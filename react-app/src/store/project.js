@@ -61,9 +61,6 @@ export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
     case 'location':
       dispatch(setNearYou(projects))
       break
-    case 'searchedFor':
-      dispatch(setSearchedFor(projects))
-      break
     default:
       return projects
   }
