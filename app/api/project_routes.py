@@ -31,7 +31,10 @@ def get_homepage_projects_by_location(userId):
     user = User.query.filter(User.id == userId).one()
     all_projects = Project.query.all()
     state = user.state
-    # projects = [project.user.to_dict() for project in all_projects if project.]
+    # projects = [project.user.to_dict()
+    #             for project in all_projects if project.user.state == state]
+    projects = [project.to_dict()
+                for project in all_projects if project.user.state == state]
 
     return jsonify(projects)
 
