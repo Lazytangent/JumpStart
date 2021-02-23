@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 import "./homePage.css"
 
 
 
 const HomePage = () => {
+    const dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     dispatch()
+    // }, [dispatch])
 
     return (
         <div className="homePage">
@@ -16,17 +23,65 @@ const HomePage = () => {
             <div className="homePage-grid">
                 <div className="homePage-grid-most-recent">
                     <div id="homePage-project-grid">
-                        {/* map over the projects based upon query */}
+                        {/* {mostPopular &&
+                        mostPopular.map((project) => (
+                            <Link className ='homePage-project-card-link' key={project.id} to={`${project.id}`}>
+                                <div id="homePage-project-card" value={project.id}>
+                                        <div>
+                                            <img>{project.thumbnailImgUrl}</img>
+                                        </div>
+                                        <div>{project.location}</div>
+                                        <div>{project.name}</div>
+                                        <div>{project.description}</div> two lines
+                                        <div>
+                                            <span id="progressBar" style=`width: ${}`></span>
+                                        </div>
+                                </div>
+                            </Link>
+                        ))}
+                         <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link> */}
                     </div>
                 </div>
                 <div className="homePage-grid-most-popular">
                     <div id="homePage-project-grid">
-                        {/* map over the projects based upon query */}
+                        {/* {mostRecent &&
+                            mostRecent.map((project) => (
+                                <Link className ='homePage-project-card-link' key={project.id} to={`${project.id}`}>
+                                    <div id="homePage-project-card" value={project.id}>
+                                            <div>
+                                                <img>{project.thumbnailImgUrl}</img>
+                                            </div>
+                                            <div>{project.location}</div>
+                                            <div>{project.name}</div>
+                                            <div>{project.description}</div> two lines
+                                            <div>
+                                                <span id="progressBar" style=`width: ${}`></span>
+                                            </div>
+                                    </div>
+                                </Link>
+                            ))}
+                         <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link> */}
                     </div>
                 </div>
                 <div className="homePage-grid-near-you">
                     <div id="homePage-project-grid">
-                        {/* map over the projects based upon query */}
+                        {/* {thirdGroup &&
+                            thirdGroup.map((project) => (
+                                <Link className ='homePage-project-card-link' key={project.id} to={`${project.id}`}>
+                                    <div id="homePage-project-card" value={project.id}>
+                                            <div>
+                                                <img>{project.thumbnailImgUrl}</img>
+                                            </div>
+                                            <div>{`${project.User.city},${project.User.state}`}</div>
+                                            <div>{project.name}</div>
+                                            <div>{project.description}</div> two lines
+                                            <div>
+                                                <span id="progressBar" style=`width: ${}`></span>
+                                            </div>
+                                    </div>
+                                </Link>
+                            ))}
+                         <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link> */}
                     </div>
                 </div>
             </div>

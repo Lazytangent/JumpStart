@@ -1,5 +1,5 @@
 .homePage {
-    height: 200vh;
+    height: 210vh;
     width: 99vw;
 }
 
@@ -36,7 +36,7 @@
 .homePage-grid {
     height: 100%;
     width: 55%;
-    margin-top: 10%;
+    margin-top: 15%;
     margin-left: 22.5%;
     display: grid;
     grid-template-columns: 1fr;
@@ -48,6 +48,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 95% 5%;
 }
 
 .homePage-grid-most-recent {
@@ -60,6 +61,23 @@
 
 .homePage-grid-near-you {
     grid-row-start: 5;
+}
+
+#homePage-see-more {
+    text-decoration: none;
+    color: #02a95c;
+    font-size: 18px;
+}
+
+#homePage-right-arrow {
+    padding-left: .3%;
+}
+
+#homePage-see-more:hover {
+    transition: all .3s ease-out;
+    cursor: pointer;
+    transform: translate(5px);
+    font-size: 20px;
 }
 
 html:not([data-scroll="0"]) .navBar {
