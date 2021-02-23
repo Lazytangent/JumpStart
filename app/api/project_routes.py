@@ -7,8 +7,9 @@ project_routes = Blueprint('projects', __name__)
 
 @project_routes.route('/<int:projectId>')
 def get_project_by_id(projectId):
-    project = Project.query.filter(Project.id == projectId)
-    return jsonify(projects)
+    project = Project.query.filter(Project.id == projectId).one()
+    # projects = project.to_dict() for project in projects
+    return jsonify(project.to_dict())
 
 
 @project_routes.route('/homepage/<string:optional_parameter>')
