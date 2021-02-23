@@ -1,18 +1,119 @@
 .homePage {
-    height: 200vh;
-    width: 100vw;
+    height: 210vh;
+    width: 99vw;
 }
 
 .homePage-image {
-    height: 65vh;
-    width: 100vw;
+    height: 60vh;
+    width: 99vw;
     margin: 0;
     padding: 0;
+}
+
+.homePage-image-container {
+    background-color: black;
+    height: 60vh;
+    width: 99vw;
+    margin: 0;
+    padding: 0;
+}
+
+.homePage-description-box {
+    height: 25%;
+    width: 65%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+    position: absolute;
+    top: 50%;
+    left:17.5%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
+.homePage-description-image {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 10px 0 40% 10px;
+}
+
+.homePage-grid {
+    height: 100%;
+    width: 55%;
+    margin-top: 15%;
+    margin-left: 22.5%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 25% 8.3% 25% 8.3% 25% 8.3%;
+}
+
+#homePage-project-grid {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 95% 5%;
+}
+
+.homePage-grid-most-recent {
+    grid-row-start: 1;
+}
+
+.homePage-grid-most-popular {
+    grid-row-start: 3;
+}
+
+.homePage-grid-near-you {
+    grid-row-start: 5;
+}
+
+#homePage-see-more {
+    text-decoration: none;
+    color: #02a95c;
+    font-size: 18px;
+}
+
+#homePage-right-arrow {
+    padding-left: .3%;
+}
+
+#homePage-see-more:hover {
+    transition: all .3s ease-out;
+    cursor: pointer;
+    transform: translate(5px);
+    font-size: 20px;
 }
 
 html:not([data-scroll="0"]) .navBar {
   background-color: #fff;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+}
+
+html:not([data-scroll="0"]) .navBar-home {
+    color: #02a95c;
+}
+
+html:not([data-scroll="0"]) .navBar-logo {
+    filter:none;
+}
+
+html:not([data-scroll="0"]) #navBar-buttons {
+    color: black;
+}
+
+html:not([data-scroll="0"]) #navBar-buttons:hover {
+    border: 1px solid black;
+}
+
+.navBar-home {
+    display: inline-flex;
+    text-decoration: none;
+    color: white;
+    font-size: 1.75rem;
 }
 
 .navBar {
