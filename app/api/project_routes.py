@@ -5,6 +5,13 @@ from app.models import Project, Donation, User
 project_routes = Blueprint('projects', __name__)
 
 
+@project_routes.route('/<int:projectId>')
+def get_project_by_id(projectId):
+    project = Project.query.filter(Project.id == projectId).one()
+    # projects = project.to_dict() for project in projects
+    return jsonify(project.to_dict())
+
+
 @project_routes.route('/homepage/<string:optional_parameter>')
 def get_homepage_projects(optional_parameter):
     if optional_parameter == 'popular':
@@ -21,15 +28,15 @@ def get_homepage_projects(optional_parameter):
         return jsonify(projects)
     elif optional_parameter == 'trending':
         pass
-    elif optional_parameter == 'location':
-        pass
 
 
 @project_routes.route('/homepage/<int:userId>')
 def get_homepage_projects_by_location(userId):
-    user = User.query.filter(User.id == userId)
+    user = User.query.filter(User.id == userId).one()
+    all_projects = Project.query.all()
     state = user.state
-    projects = Project.query.filter(Project.state == state).limit(3).all()
+    # projects = [project.user.to_dict() for project in all_projects if project.]
+
     return jsonify(projects)
 
 
