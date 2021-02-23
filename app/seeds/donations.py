@@ -44,11 +44,20 @@ def seed_donations():
                     anonymous=False
                    )
 
+    six = Donation(
+                     userId=1,
+                     projectId=3,
+                     donationAmount=20,
+                     comment="I wanted to help!",
+                     anonymous=False
+                    )
+
     db.session.add(one)
     db.session.add(two)
     db.session.add(three)
     db.session.add(four)
     db.session.add(five)
+    db.session.add(six)
 
     db.session.commit()
 

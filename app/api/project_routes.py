@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from sqlalchemy import asc, desc
+from sqlalchemy import asc, desc, func
 from app.models import Project, Donation, User
 
 project_routes = Blueprint('projects', __name__)
@@ -16,8 +16,12 @@ def get_project_by_id(projectId):
 def get_homepage_projects(optional_parameter):
     if optional_parameter == 'popular':
         projects = \
-            Project.query.order_by().all()
+            Project.query.join(Donation). \
+            group_by(Project.id). \
+            order_by(desc(func.count(Donation.projectId))).all()
         print(projects)
+        projects = [project.to_dict() for project in projects]
+        return jsonify(projects)
     elif optional_parameter == 'recent':
         projects = Project.query.order_by(Project.id.desc()).limit(3).all()
         projects = [project.to_dict() for project in projects]
