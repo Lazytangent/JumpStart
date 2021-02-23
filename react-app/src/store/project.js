@@ -51,14 +51,21 @@ export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
   switch (optionalParameter) {
     case 'popular':
       dispatch(setMostPopular(projects))
+      break
     case 'recent':
       dispatch(setMostRecent(projects))
+      break
     case 'trending':
       dispatch(setTrending(projects))
+      break
     case 'location':
       dispatch(setNearYou(projects))
+      break
     case 'searchedFor':
       dispatch(setSearchedFor(projects))
+      break
+    default:
+      return projects
   }
   return projects;
 }
@@ -70,14 +77,21 @@ export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) =
   switch (optionalParameter) {
     case 'popular':
       dispatch(setMostPopular(projects))
+      break
     case 'recent':
       dispatch(setMostRecent(projects))
+      break
     case 'trending':
       dispatch(setTrending(projects))
+      break
     case 'location':
       dispatch(setNearYou(projects))
+      break
     case 'searchedFor':
       dispatch(setSearchedFor(projects))
+      break
+    default:
+      return projects
   }
   return projects;
 }
