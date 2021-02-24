@@ -1,6 +1,4 @@
-body {
-  margin-top: 8vh;
-}
+
 
 .thumbnail img{
   /* height: 430px; */
@@ -13,15 +11,9 @@ body {
 
 }
 
-/* .project-container {
-  height: 100%;
-  width: 55%;
-  margin: 10% 0px 0px 22.5%;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  background-color: blue;
-  min-width: 730px;
-} */
+.project-container {
+  margin-top: 50px;
+}
 
 .item1 { grid-area: header; }
 .item2 { grid-area: menu; }
