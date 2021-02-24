@@ -118,7 +118,6 @@
 
 #projectCard-description {
   padding-top: 5%;
-  padding-bottom: 5%;
   font-size: 18px;
   color: black;
   overflow: hidden;
@@ -126,12 +125,10 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-
-
 }
 
 
-#projectCar-amount {
+#projectCard-amount {
   font-weight: bold;
   padding-top: .5%;
   font-size: 20px;
@@ -204,7 +201,7 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
     box-sizing: content-box;
     height: 10px; /* Can be anything */
     position: relative;
-    margin-top: 5px; /* Just for demo spacing */
+    margin-top: 5%; /* Just for demo spacing */
     background: rgb(214, 214, 214);
     border-radius: 10px;
     /* box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); */
