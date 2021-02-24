@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import projectReducer, { getProjectById } from '../../store/project'
 import './projectPage.css'
 
-
+//a single change
 const ProjectPage = () => {
 
   const project = useSelector(state => state.project.currentProject)
