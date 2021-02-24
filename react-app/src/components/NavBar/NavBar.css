@@ -75,6 +75,16 @@ button:hover {
     background-color: transparent;
     color: white;
     border: 1px solid transparent;
+    margin-right: 30px;
+}
+
+.navBar-buttons-search {
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
 }
 
 #navBar-buttons:hover {

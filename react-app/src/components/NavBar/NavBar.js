@@ -30,6 +30,8 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           <div>
             {!user && (
               <button
+              id="navBar-buttons"
+              className="navBar-buttons-login"
                 onClick={() => {
                   setShowSignUpModal(false);
                   setShowLoginModal((prev) => !prev);
@@ -45,6 +47,8 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           <div>
             {!user && (
               <button
+              id="navBar-buttons"
+              className="navBar-buttons-signup"
                 onClick={() => {
                   setShowLoginModal(false);
                   setShowSignUpModal((prev) => !prev);
@@ -76,7 +80,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           <div>
             <button
               id="navBar-buttons"
-              className="navBar-buttons"
+              className="navBar-buttons-create"
               onClick={() => {
                 if (user) {
                   setShowLoginModal(false);
@@ -94,6 +98,8 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           <div>
             {
               <button
+              id="navBar-buttons"
+              className="navBar-buttons-search"
                 onClick={() => {
                   setShowSignUpModal(false);
                   setShowLoginModal(false);

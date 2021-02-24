@@ -18,7 +18,7 @@ def seed_projects():
                   goalAmount=1000,
                   minPledge=5)
     three = Project(userId=1, name="Pursuing a Nascar career",
-                    thumbnailImgUrl="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-brian-60881.jpg",
+                    thumbnailImgUrl="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-garvin-st-villier-3311574+(1).jpg",
                     description="Need money for new car! I really want to try and become a Nascar driver, I would appreciate any help you can give",
                     goalAmount=10000,
                     minPledge=5)
