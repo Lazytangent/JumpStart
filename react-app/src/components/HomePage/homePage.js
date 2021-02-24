@@ -20,15 +20,16 @@ const HomePage = () => {
     const trending = useSelector((state) => state.project.trending)
 
     const getPercentage = (project) => {
-        let sum = 0
+        // let sum = 0
 
-        for (let i = 0; i < project.donations.length; i++ ) {
-            sum += project.donations[i].donationAmount;
-        }
+        // for (let i = 0; i < project.donations.length; i++ ) {
+        //     sum += project.donations[i].donationAmount;
+        // }
 
-        return (sum/project.goalAmount) * 100
+        // return (sum/project.goalAmount) * 100
+        return 50
     }
-    
+
     const getStateAbbreviation = (project) => {
         let result;
         const allStates = csc.getStatesOfCountry('US')
