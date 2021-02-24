@@ -10,8 +10,8 @@ def seed_users():
                 username='Demo',
                 email='demo@aa.io',
                 password='password',
-                city='Dallas',
-                state='Texas',
+                city='Nashville',
+                state='Tennessee',
                )
 
     jesse = User(
