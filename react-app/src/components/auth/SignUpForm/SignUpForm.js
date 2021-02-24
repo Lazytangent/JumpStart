@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import csc from 'country-state-city';
+
+import styles from './SignUpForm.module.css';
 import { signUp } from '../../../store/session';
 import { Modal, useModalContext } from '../../../context/Modal';
-import csc from 'country-state-city';
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const { showSignUpModal, setShowSignUpModal } = useModalContext();
   const dispatch = useDispatch();
+
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -62,16 +65,16 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       }
     })
     setStateCode(result)
-  }
+  };
 
   const updateCity = (e) => {
     setCity(e.target.value)
-  }
+  };
 
   const updateProfileImage = (e) => {
     const file = e.target.files[0];
     if (file) setProfileImage(file);
-  }
+  };
 
   if (authenticated) {
     return <Redirect to="/" />;
