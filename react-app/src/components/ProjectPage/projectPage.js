@@ -8,17 +8,22 @@ import './projectPage.css'
 const ProjectPage = () => {
 
   const { projectId } = useParams()
-
-
   const dispatch = useDispatch()
-
 
   useEffect(() => {
     dispatch(getProjectById(projectId))
   }, [dispatch])
 
+  const project = useSelector(state => state.project.currentProject)
+
+  // console.log(project)
+
   return (
-    <h1>Hello</h1>
+    <>
+      {/* <h1>{project.name}</h1> */}
+      {/* <img src={project.thumbnailImgUrl} className='thumbnail'></img> */}
+      {/* <div>{project.description}</div> */}
+    </>
   )
 }
 
