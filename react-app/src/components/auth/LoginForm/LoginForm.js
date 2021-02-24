@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect } from "react-router-dom";
+
+import './LoginForm.css';
 import { login } from '../../../store/session';
 import { Modal, useModalContext } from '../../../context/Modal';
 
@@ -11,12 +13,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await dispatch(login(email, password))
     if (!user.errors) {
-
       setShowLoginModal(false);
     } else {
       setErrors(user.errors);
@@ -39,10 +39,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     <>
       {showLoginModal &&
         <Modal onClose={() => setShowLoginModal(false)}>
-          <form onSubmit={onLogin}>
-
+          <form className="form" onSubmit={onLogin}>
             <button id="close-button" onClick={() => setShowLoginModal((prev) => !prev)}><i id="close-icon" className="far fa-window-close"></i></button>
-
             <div>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
@@ -55,6 +53,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                 placeholder="Email"
                 value={email}
                 onChange={updateEmail}
+                className="form-field"
               />
             </div>
             <div>
@@ -64,8 +63,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                 placeholder="Password"
                 value={password}
                 onChange={updatePassword}
+                className="form-field"
               />
-              <button id="submit-button">Login</button>
+            </div>
+            <div className="btn-container">
+              <button id="submit-button" className="submit-btn">Login</button>
             </div>
           </form>
         </Modal>
