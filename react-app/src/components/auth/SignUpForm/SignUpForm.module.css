@@ -40,6 +40,14 @@
 .closeBtn {
   padding: 0.15rem;
   border-radius: 0.35rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.closeBtn:hover {
+  color: red;
 }
 
 .title {
@@ -54,11 +62,13 @@
 }
 
 .imageBtn {
-  margin-bottom: 0.25rem;
   padding: 0.35rem;
   background-color: rgba(0, 0, 0, 0);
   border-radius: 0.5rem;
-  width: 50%;
+  width: 75%;
+  outline: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 .imageBtn:hover {
@@ -69,6 +79,7 @@
 .btnContainer {
   display: flex;
   justify-content: center;
+  padding: 0.25rem;
 }
 
 .submitBtn {
@@ -77,6 +88,8 @@
   width: 75%;
   background-color: rgba(0, 0, 0, 0);
   outline: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 .submitBtn:hover {
@@ -86,4 +99,25 @@
 
 .fileInput {
   display: none;
+}
+
+.demoBtnContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.demoBtn {
+  padding: 0.35rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0);
+  width: 75%;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.demoBtn:hover {
+  border-color: #02a95c;
+  border-style: solid;
 }

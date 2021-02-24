@@ -27,8 +27,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     e.preventDefault();
     const demoEmail = "demo@aa.io";
     const demoPassword = "password";
-    setEmail(demoEmail);
-    setPassword(demoPassword);
     setTimeout(await dispatch(login(demoEmail, demoPassword)), 1000);
     setShowLoginModal(false);
   };
@@ -56,7 +54,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                 className={styles.closeBtn}
                 onClick={() => setShowLoginModal((prev) => !prev)}
               >
-                <i id="close-icon" className="far fa-window-close"></i>
+                <i id="close-icon" className="far fa-times fa-2x"></i>
               </button>
             </div>
             <div className={styles.title}>
@@ -94,9 +92,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                 Login
               </button>
             </div>
-          <div className={styles.demoBtnContainer}>
-            <button onClick={demoLogin} className={styles.demoBtn}>Login as Demo</button>
-          </div>
+            <div className={styles.demoBtnContainer}>
+              <button onClick={demoLogin} className={styles.demoBtn}>
+                Login as Demo
+              </button>
+            </div>
           </form>
         </Modal>
       )}

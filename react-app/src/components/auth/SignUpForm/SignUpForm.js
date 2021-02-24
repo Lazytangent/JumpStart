@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import csc from "country-state-city";
 
 import styles from "./SignUpForm.module.css";
-import { signUp } from "../../../store/session";
+import { signUp, login } from "../../../store/session";
 import { Modal, useModalContext } from "../../../context/Modal";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
@@ -42,6 +42,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
       ]);
     }
   };
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const demoEmail = "demo@aa.io";
+    const demoPassword = "password";
+    setTimeout(await dispatch(login(demoEmail, demoPassword)), 1000);
+    setShowSignUpModal(false);
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -95,7 +103,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           <form className={styles.form} onSubmit={onSignUp} encType="multipart/form-data">
             <div className={styles.closeBtnContainer}>
               <button className={styles.closeBtn} id="close-button" onClick={() => setShowSignUpModal(false)}>
-                <i id="close-icon" className="far fa-window-close"></i>
+                <i id="close-icon" className="far fa-times fa-2x"></i>
               </button>
             </div>
             <div className={styles.title}>
@@ -166,12 +174,17 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 required={true}
               ></input>
             </div>
-            <div className={styles.formFieldContainer}>
+            <div className={styles.btnContainer}>
               <input type="button" className={styles.imageBtn} id="loadFile" value="Choose a Profile Image" onClick={chooseImage}/>
               <input placeholder="Choose a Profile Image" id="file" className={`${styles.formField} ${styles.fileInput}`} type="file" name="image" onChange={updateProfileImage} />
             </div>
             <div className={styles.btnContainer}>
               <button className={styles.submitBtn} type="submit">Sign Up</button>
+            </div>
+            <div className={styles.demoBtnContainer}>
+              <button onClick={demoLogin} className={styles.demoBtn}>
+                Login as Demo
+              </button>
             </div>
           </form>
         </Modal>

@@ -31,6 +31,14 @@
 .closeBtn {
   padding: 0.15rem;
   border-radius: 0.35rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.closeBtn:hover {
+  color: red;
 }
 
 .title {
@@ -47,13 +55,17 @@
 .btnContainer {
   display: flex;
   justify-content: center;
+  padding: 0.25rem;
 }
 
 .submitBtn {
   padding: 0.35rem;
   border-radius: 0.5rem;
   width: 75%;
-  background-color: rgba(0, 0, 0, 0)
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 .submitBtn:hover {
@@ -64,7 +76,7 @@
 .demoBtnContainer {
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 0.25rem;
   padding-bottom: 0.25rem;
 }
 
@@ -73,6 +85,9 @@
   border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0);
   width: 75%;
+  outline: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 .demoBtn:hover {
