@@ -52,12 +52,12 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             <div className={styles.title}>
               <h2 className={styles.header}>Log In</h2>
             </div>
-            <div>
+            <div className={styles.errorsDiv}>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </div>
-            <div>
+            <div className={styles.formFieldContainer}>
               <input
                 name="email"
                 type="text"
@@ -67,7 +67,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                 className={styles.formField}
               />
             </div>
-            <div>
+            <div className={styles.formFieldContainer}>
               <input
                 name="password"
                 type="password"

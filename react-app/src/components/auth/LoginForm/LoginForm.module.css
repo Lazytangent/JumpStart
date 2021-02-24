@@ -1,13 +1,25 @@
 .form {
   padding: 1rem;
   padding-top: 0.5rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.formFieldContainer {
+  display: flex;
+  justify-content: center;
+  min-width: 20rem;
 }
 
 .formField {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
+  width: 80%;
+  outline: none;
+}
+
+.formField:focus {
+  border: 0.15rem solid #02a95c;
 }
 
 .closeBtnContainer {
@@ -46,4 +58,5 @@
 
 .submitBtn:hover {
   border-color: #02a95c;
+  border-style: solid;
 }
