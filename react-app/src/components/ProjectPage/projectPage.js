@@ -26,16 +26,16 @@ const ProjectPage = () => {
           <img src={project.thumbnailImgUrl} className='thumbnail'></img>
           <div>{project.description}</div> */}
           <h1>Grid Layout</h1>
-
           <p>This grid layout contains six columns and three rows:</p>
 
           <div class="grid-container">
             <div class="item1">Header</div>
             <div class="item2">Menu</div>
-            <div class="item3">'
-              <div className=" item3 thumbnail">
+            <div class="item3">
+              {/* <div className="item3 thumbnail">
                 <img src={project.thumbnailImgUrl}></img>
-              </div>
+              </div> */}
+              Main
             </div>
             {/* <div class="item3">Main</div> */}
             <div class="item4">Donations</div>
