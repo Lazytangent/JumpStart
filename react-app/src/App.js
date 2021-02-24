@@ -7,9 +7,10 @@ import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import HomePage from "./components/HomePage/homePage"
+import HomePage from "./components/HomePage/homePage";
 import { authenticate } from './store/session';
-import CreateProject from './components/CreateProject'
+import CreateProject from './components/CreateProject';
+import DiscoverPage from './components/DiscoverPage/discoverPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route path="/new-project" exact={true} authenticated={authenticated}>
           <CreateProject />
+        </Route>
+        <Route path="/discover" exact ={true} authenticated={authenticated}>
+          <DiscoverPage />
         </Route>
       </Switch>
     </>
