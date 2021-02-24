@@ -14,31 +14,31 @@ const debounce = (fn) => {
     // The debounce function returns a new function that can receive a variable number of arguments
     return (...params) => {
 
-      // If the frame variable has been defined, clear it now, and queue for next frame
-      if (frame) {
-        cancelAnimationFrame(frame);
-      }
+        // If the frame variable has been defined, clear it now, and queue for next frame
+        if (frame) {
+            cancelAnimationFrame(frame);
+        }
 
-      // Queue our function call for the next frame
-      frame = requestAnimationFrame(() => {
+        // Queue our function call for the next frame
+        frame = requestAnimationFrame(() => {
 
-        // Call our function and pass any params we received
-        fn(...params);
-      });
+            // Call our function and pass any params we received
+            fn(...params);
+        });
 
     }
-  }
-  // Reads out the scroll position and stores it in the data attribute
-  // so we can use it in our stylesheets
-  const storeScroll = () => {
+}
+// Reads out the scroll position and stores it in the data attribute
+// so we can use it in our stylesheets
+const storeScroll = () => {
     document.documentElement.dataset.scroll = window.scrollY;
-  }
+}
 
-  // Listen for new scroll events, here we debounce our `storeScroll` function
-  document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+// Listen for new scroll events, here we debounce our `storeScroll` function
+document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 
-  // Update scroll position for first time
-  storeScroll();
+// Update scroll position for first time
+storeScroll();
 
 
 const HomePage = () => {
@@ -68,7 +68,7 @@ const HomePage = () => {
     const getSum = (project) => {
         let sum = 0
 
-        for (let i = 0; i < project.donations.length; i++ ) {
+        for (let i = 0; i < project.donations.length; i++) {
             sum += project.donations[i].donationAmount;
         }
         return sum
@@ -113,7 +113,7 @@ const HomePage = () => {
                                             <div id="projectCard-title">{project.name}</div>
                                             <div id="projectCard-description">{project.description}</div>
                                             <div id="meter">
-                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                                <span id="progressBar" style={{ width: `${getPercentage(project)}%` }}></span>
                                             </div>
                                             <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                         </div>
@@ -140,14 +140,14 @@ const HomePage = () => {
                                             <div id="projectCard-title">{project.name}</div>
                                             <div id="projectCard-description">{project.description}</div>
                                             <div id="meter">
-                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                                <span id="progressBar" style={{ width: `${getPercentage(project)}%` }}></span>
                                             </div>
                                             <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                         </div>
                                     </div>
                                 </Link>
                             ))}
-                         <div id="homePage-see-more">
+                        <div id="homePage-see-more">
                             <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ const HomePage = () => {
                                             <div id="projectCard-title">{project.name}</div>
                                             <div id="projectCard-description">{project.description}</div>
                                             <div id="meter">
-                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                                <span id="progressBar" style={{ width: `${getPercentage(project)}%` }}></span>
                                             </div>
                                             <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                         </div>
