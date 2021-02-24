@@ -51,6 +51,12 @@
     grid-template-rows: 6.25% 22% 10.75% 22% 10.75% 22% 6.25%;
 }
 
+.homePage-grid-header {
+  display: flex;
+  align-items: center;
+  grid-column-start: 1;
+}
+
 #homePage-project-grid {
     height: 100%;
     width: 100%;
@@ -183,7 +189,7 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
 .navBar {
   box-sizing: border-box;
   padding: 1em;
-  transition: background-color 0.8s;
+  transition: background-color 0.3s;
 }
 
 /* progress bar */

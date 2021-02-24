@@ -54,6 +54,7 @@ const HomePage = () => {
 
             </div>
             <div className="homePage-grid">
+                <h2 className="homePage-grid-header">Most Popular Causes</h2>
                 <div className="homePage-grid-most-popular">
                     <div id="homePage-project-grid">
                         {mostPopular &&
@@ -85,9 +86,9 @@ const HomePage = () => {
                                         <div>
                                             {/* <img>{project.thumbnailImgUrl}</img> */}
                                         </div>
-                                        <div>{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                        <div>{project.name}</div>
-                                        <div>{project.description}</div>
+                                        <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                        <div id="projectCard-title">{project.name}</div>
+                                        <div id="projectCard-description">{project.description}</div>
                                         <div>
                                             {/* <span id="progressBar" style={`width: ${}`}></span> */}
                                         </div>
