@@ -8,13 +8,13 @@ def seed_projects():
 
     one = Project(userId=2, name="Danny Needs Rent Money",
                   thumbnailImgUrl="https://i.imgur.com/xg4C3F2.jpg",
-                  description="I'm Danny and I can't afford to live here!",
+                  description="I'm Danny and I can't afford to live here, I broke my leg and can't work anymore. My parents passed away last year, and I need some money to pay my rent till I can work again",
                   goalAmount=10000,
                   minPledge=5)
 
     two = Project(userId=3, name="Single Mom need diapers",
                   thumbnailImgUrl="https://i.imgur.com/xg4C3F2.jpg",
-                  description="Anything helps! Please!",
+                  description="Anything helps! My husband passed away last year and I can't pay the bills till the insurance money comes in. Anything you can give would be really helpful.",
                   goalAmount=1000,
                   minPledge=5)
     three = Project(userId=1, name="Pursuing a Nascar career",

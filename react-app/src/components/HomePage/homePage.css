@@ -121,11 +121,15 @@
   padding-bottom: 5%;
   font-size: 18px;
   color: black;
-  display: -webkit-box;
   overflow: hidden;
-  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+
+
 }
+
 
 #projectCar-amount {
   font-weight: bold;
@@ -171,29 +175,11 @@ html:not([data-scroll="0"]) .navBar-home {
 html:not([data-scroll="0"]) .navBar-logo {
     filter:none;
     font-size: 35px;
-    padding-top: 10px;
+
 }
 
 html:not([data-scroll="0"]) #navBar-buttons {
     color: black;
-}
-
-html:not([data-scroll="0"]) .navBar-buttons-login {
-    height: 30px;
-    width: 55px;
-    font-size: 20px;
-}
-
-html:not([data-scroll="0"]) .navBar-buttons-signup {
-  height: 30px;
-  width: 80px;
-  font-size: 20px;
-}
-
-html:not([data-scroll="0"]) .navBar-buttons-create {
-  height: 30px;
-  width: 150px;
-  font-size: 20px;
 }
 
 html:not([data-scroll="0"]) #navBar-buttons:hover {
@@ -209,7 +195,7 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
 .navBar {
   box-sizing: border-box;
   padding: 1em;
-  transition: background-color 0.3s;
+  transition: background-color 0.6s;
 }
 
 /* progress bar */

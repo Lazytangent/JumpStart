@@ -87,7 +87,7 @@ const HomePage = () => {
                         <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                     </div>
                 </div>
-                <h2 className="homePage-mostRecent-header">Most recent fundraiser</h2>
+                <h2 className="homePage-mostRecent-header">Most recent fundraisers</h2>
                 <div className="homePage-grid-most-recent">
                     <div id="homePage-project-grid">
                         {mostRecent &&
