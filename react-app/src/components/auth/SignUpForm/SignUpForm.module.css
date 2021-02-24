@@ -1,0 +1,123 @@
+.form {
+  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+}
+
+.formFieldContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.formField {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  width: 80%;
+  outline: none;
+}
+
+.formField:focus {
+  border: 0.15rem solid #02a95c;
+}
+
+.closeBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.25rem;
+}
+
+.selectField {
+  width: 40%;
+}
+
+.locationFields {
+  justify-content: space-around;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+}
+
+.closeBtn {
+  padding: 0.15rem;
+  border-radius: 0.35rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.closeBtn:hover {
+  color: red;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  text-justify: center;
+  padding: 0.5rem;
+}
+
+.header {
+  margin-bottom: 0;
+}
+
+.imageBtn {
+  padding: 0.35rem;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0.5rem;
+  width: 75%;
+  outline: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.imageBtn:hover {
+  border-style: solid;
+  border-color: #02a95c;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
+}
+
+.submitBtn {
+  padding: 0.35rem;
+  border-radius: 0.5rem;
+  width: 75%;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.submitBtn:hover {
+  border-style: solid;
+  border-color: #02a95c;
+}
+
+.fileInput {
+  display: none;
+}
+
+.demoBtnContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.demoBtn {
+  padding: 0.35rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0);
+  width: 75%;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.demoBtn:hover {
+  border-color: #02a95c;
+  border-style: solid;
+}
