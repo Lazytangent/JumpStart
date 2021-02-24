@@ -30,6 +30,15 @@ const HomePage = () => {
         return 50
     }
 
+    const getSum = (project) => {
+        let sum = 0
+
+        for (let i = 0; i < project.donations.length; i++ ) {
+            sum += project.donations[i].donationAmount;
+        }
+        return sum
+    }
+
     const getStateAbbreviation = (project) => {
         let result;
         const allStates = csc.getStatesOfCountry('US')
@@ -54,7 +63,7 @@ const HomePage = () => {
 
             </div>
             <div className="homePage-grid">
-                <h2 className="homePage-grid-header">Most Popular Causes</h2>
+                <h2 className="homePage-mostPopular-header">Most popular causes</h2>
                 <div className="homePage-grid-most-popular">
                     <div id="homePage-project-grid">
                         {mostPopular &&
@@ -68,15 +77,17 @@ const HomePage = () => {
                                         <div id="projectCard-title">{project.name}</div>
                                         <div id="projectCard-description">{project.description}</div>
                                         {/* limit project description to two lines */}
-                                        <div className="meter">
+                                        <div id="meter">
                                             <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
                                         </div>
+                                        <div id="projectCar-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                     </div>
                                 </Link>
                             ))}
                         <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                     </div>
                 </div>
+                <h2 className="homePage-mostRecent-header">Most recent fundraiser</h2>
                 <div className="homePage-grid-most-recent">
                     <div id="homePage-project-grid">
                         {mostRecent &&
@@ -89,15 +100,17 @@ const HomePage = () => {
                                         <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
                                         <div id="projectCard-title">{project.name}</div>
                                         <div id="projectCard-description">{project.description}</div>
-                                        <div>
-                                            {/* <span id="progressBar" style={`width: ${}`}></span> */}
+                                        <div id="meter">
+                                            <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
                                         </div>
+                                        <div id="projectCar-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                     </div>
                                 </Link>
                             ))}
                         <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                     </div>
                 </div>
+                <h2 className="homePage-nearYou-header">Causes near you</h2>
                 <div className="homePage-grid-near-you">
                     <div id="homePage-project-grid">
                         {trending &&
@@ -107,12 +120,13 @@ const HomePage = () => {
                                         <div>
                                             {/* <img>{project.thumbnailImgUrl}</img> */}
                                         </div>
-                                        <div>{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                        <div>{project.name}</div>
-                                        <div>{project.description}</div> two lines
-                                        <div>
-                                            {/* <span id="progressBar" style=`width: ${}`></span> */}
+                                        <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                        <div id="projectCard-title">{project.name}</div>
+                                        <div id="projectCard-description">{project.description}</div>
+                                        <div id="meter">
+                                            <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
                                         </div>
+                                        <div id="projectCar-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                     </div>
                                 </Link>
                             ))}

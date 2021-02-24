@@ -51,10 +51,22 @@
     grid-template-rows: 6.25% 22% 10.75% 22% 10.75% 22% 6.25%;
 }
 
-.homePage-grid-header {
+.homePage-mostPopular-header {
   display: flex;
   align-items: center;
-  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.homePage-mostRecent-header {
+  display: flex;
+  align-items: center;
+  grid-row-start: 3;
+}
+
+.homePage-nearYou-header {
+  display: flex;
+  align-items: center;
+  grid-row-start: 5;
 }
 
 #homePage-project-grid {
@@ -106,12 +118,20 @@
 
 #projectCard-description {
   padding-top: 5%;
+  padding-bottom: 5%;
   font-size: 18px;
   color: black;
   display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+#projectCar-amount {
+  font-weight: bold;
+  padding-top: .5%;
+  font-size: 20px;
+  color: black;
 }
 
 #homePage-see-more {
@@ -194,7 +214,7 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
 
 /* progress bar */
 
-.meter {
+#meter {
     box-sizing: content-box;
     height: 10px; /* Can be anything */
     position: relative;
@@ -208,7 +228,7 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
   border-radius: 10px;
 }
 
-.meter > span {
+#meter > span {
     display: block;
     height: 100%;
     border-top-right-radius: 8px;
@@ -226,7 +246,7 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
     position: relative;
     overflow: hidden;
 }
-.meter > span:after,
+#meter > span:after,
 .animate > span > span {
   content: "";
   position: absolute;
