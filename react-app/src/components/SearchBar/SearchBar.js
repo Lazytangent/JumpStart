@@ -115,15 +115,15 @@ const SearchBar = () => {
                       <>
                         <div className="searchBarMatches-content">
                           <p className="projectName">{project.name}</p>
-                          <p>{project.description}</p>
+                          <p>By {project.user.username}</p>
                         </div>
-                        <div className="searchBarMatches-content">
+                        {/* <div className="searchBarMatches-content">
                           <p>Created by: {project.user.username}</p>
                           <p>
                             Created by: {project.user.city},{" "}
                             {getStateAbbreviation(project)}
                           </p>
-                        </div>
+                        </div> */}
                       </>
                     )}
                   </li>
