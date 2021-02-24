@@ -206,7 +206,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                 </div>
                 <div className="homePage-description-box">
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
-
                 </div>
                 <div className="homePage-grid">
                     <h2 className="homePage-mostPopular-header">Most popular causes</h2>

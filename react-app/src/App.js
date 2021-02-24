@@ -6,12 +6,11 @@ import SignUpForm from "./components/auth/SignUpForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-<<<<<<< HEAD
-import HomePage from "./components/HomePage/homePage";
-=======
+import HomePage from "./components/HomePage/homePage"
 import HomePage from "./components/HomePage/homePage"
 import ProjectPage from "./components/ProjectPage/projectPage"
->>>>>>> main
+import HomePage from "./components/HomePage/homePage"
+import ProjectPage from "./components/ProjectPage/projectPage"
 import { authenticate } from './store/session';
 import CreateProject from './components/CreateProject';
 import DiscoverPage from './components/DiscoverPage/discoverPage';
