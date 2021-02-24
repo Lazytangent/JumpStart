@@ -5,7 +5,6 @@ import { getHomePageProjects } from '../../store/project.js'
 import csc from "country-state-city"
 import "./homePage.css"
 
-//a change
 
 const HomePage = () => {
     const dispatch = useDispatch()
