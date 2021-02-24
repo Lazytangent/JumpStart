@@ -75,6 +75,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     setCity(e.target.value);
   };
 
+  const chooseImage = () => {
+    document.getElementById('file').click();
+  };
+
   const updateProfileImage = (e) => {
     const file = e.target.files[0];
     if (file) setProfileImage(file);
@@ -88,20 +92,23 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     <>
       {showSignUpModal && (
         <Modal onClose={() => setShowSignUpModal(false)}>
-          <form onSubmit={onSignUp} encType="multipart/form-data">
+          <form className={styles.form} onSubmit={onSignUp} encType="multipart/form-data">
             <div className={styles.closeBtnContainer}>
               <button className={styles.closeBtn} id="close-button" onClick={() => setShowSignUpModal(false)}>
                 <i id="close-icon" className="far fa-window-close"></i>
               </button>
+            </div>
+            <div className={styles.title}>
+              <h2 className={styles.header}>Sign Up</h2>
             </div>
             <div className={styles.errorsDiv}>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </div>
-            <div>
-              <label>User Name</label>
+            <div className={styles.formFieldContainer}>
               <input
+                placeholder="Username"
                 className={styles.formField}
                 type="text"
                 name="username"
@@ -109,9 +116,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 value={username}
               ></input>
             </div>
-            <div>
-              <label>Email</label>
+            <div className={styles.formFieldContainer}>
               <input
+                placeholder="Email"
                 className={styles.formField}
                 type="text"
                 name="email"
@@ -119,22 +126,18 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 value={email}
               ></input>
             </div>
-            <div>
-              <label>State</label>
+            <div className={styles.formFieldContainer}>
               <select className={styles.formField} name="state" onChange={updateState} value={state}>
                 <option value="" disabled selected>
-                  Select your state
+                  State
                 </option>
                 {listOfStates.map((state) => (
                   <option key={state.name}>{state.name}</option>
                 ))}
               </select>
-            </div>
-            <div>
-              <label>City</label>
               <select className={styles.formField} name="city" onChange={updateCity} value={city}>
                 <option value="" disabled selected>
-                  Select your city
+                  City
                 </option>
                 {stateCode !== "" &&
                   listOfCities.map((city) => (
@@ -142,9 +145,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                   ))}
               </select>
             </div>
-            <div>
-              <label>Password</label>
+            <div className={styles.formFieldContainer}>
               <input
+                placeholder="Password"
                 className={styles.formField}
                 type="password"
                 name="password"
@@ -152,9 +155,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 value={password}
               ></input>
             </div>
-            <div>
-              <label>Repeat Password</label>
+            <div className={styles.formFieldContainer}>
               <input
+                placeholder="Repeat Password"
                 className={styles.formField}
                 type="password"
                 name="repeat_password"
@@ -163,9 +166,9 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 required={true}
               ></input>
             </div>
-            <div>
-              <label>Profile Image</label>
-              <input className={styles.formField} type="file" name="image" onChange={updateProfileImage} />
+            <div className={styles.formFieldContainer}>
+              <input type="button" className={styles.imageBtn} id="loadFile" value="Pick an Image" onClick={chooseImage}/>
+              <input placeholder="Choose a Profile Image" id="file" className={`${styles.formField} ${styles.fileInput}`} type="file" name="image" onChange={updateProfileImage} />
             </div>
             <div className={styles.btnContainer}>
               <button className={styles.submitBtn} type="submit">Sign Up</button>
