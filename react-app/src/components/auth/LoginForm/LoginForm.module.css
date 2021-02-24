@@ -1,23 +1,29 @@
 .form {
-  padding: 0.75rem;
+  padding: 2rem;
 }
 
-.form-field {
+.formField {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
 }
 
-#close-button {
+.closeBtn {
   margin-bottom: 0.5rem;
 }
 
-.btn-container {
+.btnContainer {
   display: flex;
   justify-content: center;
 }
 
-#submit-button {
+.submitBtn {
   padding: 0.35rem;
   border-radius: 0.5rem;
+  width: 75%;
+  background-color: rgba(0, 0, 0, 0)
+}
+
+.submitBtn:hover {
+  border-color: #02a95c;
 }
