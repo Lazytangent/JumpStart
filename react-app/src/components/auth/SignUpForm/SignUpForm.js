@@ -167,7 +167,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               ></input>
             </div>
             <div className={styles.formFieldContainer}>
-              <input type="button" className={styles.imageBtn} id="loadFile" value="Pick an Image" onClick={chooseImage}/>
+              <input type="button" className={styles.imageBtn} id="loadFile" value="Choose a Profile Image" onClick={chooseImage}/>
               <input placeholder="Choose a Profile Image" id="file" className={`${styles.formField} ${styles.fileInput}`} type="file" name="image" onChange={updateProfileImage} />
             </div>
             <div className={styles.btnContainer}>
