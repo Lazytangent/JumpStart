@@ -6,7 +6,8 @@ import SignUpForm from "./components/auth/SignUpForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import HomePage from "./components/HomePage/homePage";
+import HomePage from "./components/HomePage/homePage"
+import ProjectPage from "./components/ProjectPage/projectPage"
 import { authenticate } from './store/session';
 import CreateProject from './components/CreateProject';
 import DiscoverPage from './components/DiscoverPage/discoverPage';
@@ -48,8 +49,12 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
+
         <Route path="/" exact={true} authenticated={authenticated}>
           <HomePage />
+        </Route>
+        <Route path="/:projectId" exact={true} authenticated={authenticated}>
+          <ProjectPage />
         </Route>
         <Route path="/new-project" exact={true} authenticated={authenticated}>
           <CreateProject />
