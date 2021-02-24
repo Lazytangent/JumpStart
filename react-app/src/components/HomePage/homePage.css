@@ -1,5 +1,5 @@
 .homePage {
-    height: 210vh;
+    height: 250vh;
     width: 99vw;
 }
 
@@ -38,17 +38,44 @@
   height: 100%;
   width: 100%;
   object-fit: fill;
-  border-radius: 10px 0 40% 10px;
+  border-radius: 10px 0% 20% 10px;
 }
 
 .homePage-grid {
     height: 100%;
     width: 55%;
-    margin-top: 15%;
+    margin-top: 10%;
     margin-left: 22.5%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 25% 8.3% 25% 8.3% 25% 8.3%;
+    grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%;
+}
+
+.homePage-mostPopular-header {
+  grid-row-start: 1;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  font-size: 30px;
+}
+
+.homePage-mostRecent-header {
+  grid-row-start: 3;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  font-size: 30px;
+}
+
+.homePage-nearYou-header {
+  grid-row-start: 5;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  font-size: 30px;
 }
 
 #homePage-project-grid {
@@ -56,49 +83,109 @@
     width: 100%;
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 95% 5%;
+    grid-template-rows: 85% 15%;
 }
 
 .homePage-grid-most-popular {
-    grid-row-start: 1;
+    grid-row-start: 2;
 }
 
 .homePage-grid-most-recent {
-    grid-row-start: 3;
+    grid-row-start: 4;
 }
 
 .homePage-grid-near-you {
-    grid-row-start: 5;
+    grid-row-start: 6;
 }
 
 #homePage-project-card-link {
     display: flex;
     justify-content: center;
     text-decoration: none;
+    transition: all 0.25s ease-in 0s;
 }
 
-/* #homePage-project-card {
-} */
+#homePage-project-card-link:hover {
+  cursor: pointer;
+  transform: translateY(-6px);
+
+}
+
+#projectCard-img {
+  margin: 0;
+  padding: 0;
+  border-radius: 5px 5px 0 0;
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 260px;
+  height: 220px;
+}
+
+#homePage-project-card {
+  width: 90%;
+  border-radius: 10px;
+  box-shadow:2px 2px 5px rgb(224, 223, 223);
+}
+
+#homePage-project-card-text {
+  width: 90%;
+  margin: auto;
+}
 
 #projectCard-location {
+    padding-top: 4%;
+    font-weight: bold;
+    font-size: 20px;
     color: #02a95c;
+}
+
+#projectCard-title {
+  font-weight: bold;
+  padding-top: .5%;
+  font-size: 20px;
+  color: black;
+  overflow: hidden;
+  max-width: 70ch;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+#projectCard-description {
+  padding-top: 5%;
+  font-size: 18px;
+  color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+#projectCard-amount {
+  font-weight:550;
+  padding-top: 2%;
+  font-size: 18px;
+  color: black;
 }
 
 #homePage-see-more {
+    grid-column-start: 3;
     display:flex;
     justify-content: flex-end;
-    grid-column-start: 3;
-    text-decoration: none;
-    color: #02a95c;
-    font-size: 18px;
+    align-items: center;
 }
 
-#homePage-right-arrow {
-    padding-left: .3%;
+#homePage-see-more-text {
+  text-decoration: none;
+  color: #02a95c;
+  font-size: 18px;
+  transition: all .3s ease-out;
 }
 
-#homePage-see-more:hover {
-    transition: all .3s ease-out;
+
+
+#homePage-see-more-text:hover {
     cursor: pointer;
     transform: translate(5px);
 }
@@ -106,16 +193,21 @@
 /* nav bar changing on scroll */
 
 html:not([data-scroll="0"]) .navBar {
+  height: 8vh;
   background-color: #fff;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+
 }
 
 html:not([data-scroll="0"]) .navBar-home {
     color: #02a95c;
+    font-size: 35px;
 }
 
 html:not([data-scroll="0"]) .navBar-logo {
     filter:none;
+    font-size: 35px;
+
 }
 
 html:not([data-scroll="0"]) #navBar-buttons {
@@ -130,84 +222,85 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
     display: inline-flex;
     text-decoration: none;
     color: white;
-    font-size: 1.75rem;
 }
 
 .navBar {
   box-sizing: border-box;
   padding: 1em;
-  transition: background-color 0.25s;
+  transition: background-color 0.6s;
 }
 
 /* progress bar */
 
-.meter {
+#meter {
     box-sizing: content-box;
     height: 10px; /* Can be anything */
     position: relative;
-    margin-top: 5px; /* Just for demo spacing */
-    background: #555;
-    border-radius: 25px;
-    padding: 10px;
+    margin-top: 5%; /* Just for demo spacing */
+    background: rgb(214, 214, 214);
+    border-radius: 10px;
     /* box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); */
-  }
-  .meter > span {
+}
+
+#progressBar {
+  border-radius: 10px;
+}
+
+#meter > span {
     display: block;
     height: 100%;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    background-color: rgb(43, 194, 83);
+    background-color: #02a95c;
     background-image: linear-gradient(
       center bottom,
-      rgb(43, 194, 83) 37%,
-      rgb(84, 240, 84) 69%
+      #02a95c 100%,
+      #02a95c 100%
     );
     /* box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
       inset 0 -2px 6px rgba(0, 0, 0, 0.4); */
     position: relative;
     overflow: hidden;
-  }
-  .meter > span:after,
-  .animate > span > span {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-image: linear-gradient(
-      -45deg,
-      rgba(255, 255, 255, 0.2) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(255, 255, 255, 0.2) 75%,
-      transparent 75%,
-      transparent
-    );
-    z-index: 1;
-    background-size: 50px 50px;
-    animation: move 5s linear infinite;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    overflow: hidden;
-  }
+}
+#meter > span:after,
+.animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: move 8s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
 
-  .animate > span:after {
-    display: none;
-  }
+.animate > span:after {
+  display: none;
+}
 
-  @keyframes move {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 50px 50px;
-    }
+@keyframes move {
+  0% {
+    background-position: 0 0;
   }
-
-  
+  100% {
+    background-position: 50px 50px;
+  }
+}
