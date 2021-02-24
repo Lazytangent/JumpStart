@@ -1,5 +1,5 @@
 .homePage {
-    height: 210vh;
+    height: 250vh;
     width: 99vw;
 }
 
@@ -44,11 +44,11 @@
 .homePage-grid {
     height: 100%;
     width: 55%;
-    margin-top: 15%;
+    margin-top: 10%;
     margin-left: 22.5%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 25% 8.3% 25% 8.3% 25% 8.3%;
+    grid-template-rows: 6.25% 22% 10.75% 22% 10.75% 22% 6.25%;
 }
 
 #homePage-project-grid {
@@ -60,15 +60,15 @@
 }
 
 .homePage-grid-most-popular {
-    grid-row-start: 1;
+    grid-row-start: 2;
 }
 
 .homePage-grid-most-recent {
-    grid-row-start: 3;
+    grid-row-start: 4;
 }
 
 .homePage-grid-near-you {
-    grid-row-start: 5;
+    grid-row-start: 6;
 }
 
 #homePage-project-card-link {
@@ -82,17 +82,30 @@
 }
 
 #projectCard-location {
+    font-weight: bold;
     font-size: 20px;
     color: #02a95c;
 }
 
 #projectCard-title {
+  font-weight: bold;
+  padding-top: .5%;
   font-size: 20px;
   color: black;
   overflow: hidden;
   max-width: 70ch;
   text-overflow: ellipsis;
   white-space: nowrap
+}
+
+#projectCard-description {
+  padding-top: 5%;
+  font-size: 18px;
+  color: black;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 #homePage-see-more {
