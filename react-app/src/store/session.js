@@ -21,7 +21,9 @@ export const authenticate = () => async (dispatch) => {
     }
   });
   const user = await response.json();
-  dispatch(setUser(user));
+  if (!user.errors) {
+    dispatch(setUser(user));
+  }
   return user;
 };
 
@@ -37,7 +39,9 @@ export const login = (email, password) => async (dispatch) => {
     })
   });
   const user = await response.json();
-  dispatch(setUser(user));
+  if (!user.errors) {
+    dispatch(setUser(user));
+  }
   return user;
 };
 
@@ -67,7 +71,9 @@ export const signUp = (username, email, password, city, state, profileImage) => 
     body: formData,
   });
   const user = await response.json();
-  dispatch(setUser(user));
+  if (!user.errors) {
+    dispatch(setUser(user));
+  }
   return user;
 };
 
