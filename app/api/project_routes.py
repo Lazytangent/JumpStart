@@ -5,6 +5,13 @@ from app.models import Project, Donation, User
 project_routes = Blueprint('projects', __name__)
 
 
+@project_routes.route('/all')
+def get_all_projects_for_search_bar():
+    project = Project.query.all()
+    project = [project.to_dict() for project in project]
+    return jsonify(project)
+
+
 @project_routes.route('/<int:projectId>')
 def get_project_by_id(projectId):
     project = Project.query.filter(Project.id == projectId).one()
