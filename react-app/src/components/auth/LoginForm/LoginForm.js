@@ -94,10 +94,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
                 Login
               </button>
             </div>
-          </form>
           <div className={styles.demoBtnContainer}>
             <button onClick={demoLogin} className={styles.demoBtn}>Login as Demo</button>
           </div>
+          </form>
         </Modal>
       )}
     </>

@@ -60,3 +60,22 @@
   border-color: #02a95c;
   border-style: solid;
 }
+
+.demoBtnContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.demoBtn {
+  padding: 0.35rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0);
+  width: 75%;
+}
+
+.demoBtn:hover {
+  border-color: #02a95c;
+  border-style: solid;
+}
