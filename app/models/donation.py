@@ -17,4 +17,5 @@ class Donation(db.Model):
     def to_dict(self):
         return {"id": self.id, "userId": self.userId, "projectId":
                 self.projectId, "donationAmount": self.donationAmount,
-                "comment": self.comment, "anonymous": self.anonymous}
+                "comment": self.comment, "anonymous": self.anonymous,
+                "donator": self.user.name}
