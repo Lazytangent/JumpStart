@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import logo_30x30 from "./logo_30x30.png";
+import logo_40x40 from "./logo_40x40.png";
 import { getHomePageProjects } from "../../store/project";
 import { SearchModal, useModalContext } from "../../context/Modal";
 import "./SearchBar.css";
@@ -18,61 +18,82 @@ const SearchBar = () => {
   const projects = [
     {
       userId: 2,
-      name: "Reed is the coding G.O.A.T.",
-      thumbnailImgUrl: "https://i.imgur.com/xg4C3F2.jpg",
-      description: "Big facts",
+      name: "Reed needs surgery to become less handsome",
+      thumbnailImgUrl: "https://i.imgur.com/k2uKyYB.png",
+      description: "Just trying to make it fair for everyone else",
       goalAmount: 0,
       minPledge: 10000,
     },
     {
       userId: 3,
       name: "Peter needs coding lessons",
-      thumbnailImgUrl: "https://i.imgur.com/xg4C3F2.jpg",
-      description: "I'm Peter and I need money because I'm the worst",
+      thumbnailImgUrl: "https://i.imgur.com/A4xP0LA.jpg",
+      description: "I'm Peter and I'm not very talented.",
       goalAmount: 10000000,
       minPledge: 1,
     },
     {
       userId: 1,
       name: "Dillon needs $ for ballroom dancing",
-      thumbnailImgUrl: "https://i.imgur.com/xg4C3F2.jpg",
-      description: "I just want to dance",
+      thumbnailImgUrl: "https://i.imgur.com/QfDRkkq.jpg",
+      description: "I'm just into that sort of thing",
       goalAmount: 1000,
       minPledge: 4,
     },
     {
-      userId: 3,
-      name: "Jesse is dying",
-      description: "Need money for new legs",
+      userId: 4,
+      name: "Jesse's state is irrelevant needs $ 2 move.",
+      description: "Where is Wisconsin anyway?",
       goalAmount: 10040,
       minPledge: 3,
     },
     {
       userId: 3,
       name: "Trump needs $ for a wall",
-      thumbnailImgUrl: "https://i.imgur.com/xg4C3F2.jpg",
       description: "Big Wall. Need money.",
       goalAmount: 9999999,
       minPledge: 2,
     },
     {
       userId: 2,
-      name: "Juliet was in hang gliding accident",
-      description: "Need money for surgery and my dog Juice",
+      name: "Matt Damon is a janitor with a gift for mathematics",
+      description: "How 'bout them apples?",
       goalAmount: 33555,
       minPledge: 4,
     },
     {
-      userId: 3,
-      name: "Justin shattered femur skateboarding",
-      description: "Kickflips are hard man.",
+      userId: 2,
+      name: "Walter White needs money for chemstry supplies",
+      description: "Looking to start an empire",
       goalAmount: 11555,
       minPledge: 3,
+    },
+    {
+      userId: 5,
+      name: "Family kidnaped by ninjas. Need $ 4 karate lessons",
+      description:
+        "I have excellent balance and revenge is my biggest motivator",
+      goalAmount: 493021,
+      minPledge: 5,
+    },
+    {
+      userId: 4,
+      name: "Dwight K. Schrute's Beet Farm Expansion",
+      description: "Beets. Bears. Battlestar Galactica.",
+      goalAmount: 72600,
+      minPledge: 5,
+    },
+    {
+      userId: 3,
+      name: "Help me prove the earth is flat",
+      description: "Maybe if we just keep going in a boat we'll fall",
+      goalAmount: 72600,
+      minPledge: 5,
     },
   ];
   const searchProjects = async (searchText) => {
     let projectMatches = projects.filter((project) => {
-      const regex = new RegExp(`^${searchText}`, "gi");
+      const regex = new RegExp(`${searchText}`, "gi");
       return project.name.match(regex);
     });
 
@@ -81,6 +102,9 @@ const SearchBar = () => {
     }
 
     setMatches(projectMatches);
+
+    // if (searchText.length > 0 && projectMatches.length() === 0) {
+    // }
   };
 
   useEffect(() => {
@@ -104,7 +128,7 @@ const SearchBar = () => {
                 type="search"
                 name="search"
                 className="searchBar-input"
-                placeholder="Search by project or location?"
+                placeholder="Search by project... For testing purposes type: d, j, p, t, or r"
                 value={search}
                 onChange={(e) => {
                   searchProjects(e.target.value);
@@ -118,10 +142,19 @@ const SearchBar = () => {
                 matches.map((project) => (
                   <li className="searchBarMatches">
                     {!project.thumbnailImgUrl && (
-                      <div>
+                      <div className="logo_30x30-container">
                         <img
                           className="logo_30x30"
-                          src={logo_30x30}
+                          src={logo_40x40}
+                          alt="A small heart with an EKG graph of the electrical impulses that move through the heart displayed inside of it."
+                        />
+                      </div>
+                    )}
+                    {project.thumbnailImgUrl && (
+                      <div className="logo_30x30-container">
+                        <img
+                          className="logo_30x30"
+                          src={project.thumbnailImgUrl}
                           alt="A small heart with an EKG graph of the electrical impulses that move through the heart displayed inside of it."
                         />
                       </div>

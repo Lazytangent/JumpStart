@@ -26,8 +26,8 @@ li:last-child {
   /* margin-bottom: 0.5rem; */
   border-top: 1px solid lightgrey;
   min-height: 30px;
-  padding: 0.75rem 0rem 1.25rem 0rem;
-  display: block;
+  padding: 1rem 0rem;
+  display: flex;
 }
 .searchBarMatches-content {
   padding-left: 1rem;
@@ -36,9 +36,18 @@ li:last-child {
   /* height: 70px; */
 }
 
+.logo_30x30-container {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
 .logo_30x30 {
+  /* display: inline-block; */
   float: left;
-  padding-left: 1rem;
+  padding: 0px 0px 0px 1rem;
+  /* vertical-align: middle;
+  height: 100%; */
 }
 
 .searchBarMatches:hover {
@@ -61,5 +70,9 @@ li:last-child {
 
 #inputClose-icon {
   background-color: white;
-  color: rgb(32, 32, 32);
+  color: rgb(43, 43, 43);
+}
+
+.searchBarMatches-content > p {
+  display: block;
 }

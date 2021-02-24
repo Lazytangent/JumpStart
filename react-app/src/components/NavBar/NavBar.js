@@ -74,31 +74,37 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
         </div>
         <div className="navBar-third-fraction">
           <div>
-            <button id="navBar-buttons" className="navBar-buttons" onClick={() => {
-              if (user) {
-                setShowLoginModal(false)
-                setShowSignUpModal(false)
-                history.push('/new-project')
-              } else {
-                setShowLoginModal((prev) => !prev)
-                setShowSignUpModal(false)
-              }
-            }}>Create a project</button>
-          </div>
-        </div>
-        <div>
-          {
             <button
+              id="navBar-buttons"
+              className="navBar-buttons"
               onClick={() => {
-                setShowSignUpModal(false);
-                setShowLoginModal(false);
-                setShowSearchBarModal((prev) => !prev);
+                if (user) {
+                  setShowLoginModal(false);
+                  setShowSignUpModal(false);
+                  history.push("/new-project");
+                } else {
+                  setShowLoginModal((prev) => !prev);
+                  setShowSignUpModal(false);
+                }
               }}
             >
-              Search
+              Create a project
             </button>
-          }
-          {showSearchBarModal && <SearchBar />}
+          </div>
+          <div>
+            {
+              <button
+                onClick={() => {
+                  setShowSignUpModal(false);
+                  setShowLoginModal(false);
+                  setShowSearchBarModal((prev) => !prev);
+                }}
+              >
+                Search
+              </button>
+            }
+            {showSearchBarModal && <SearchBar />}
+          </div>
         </div>
 
         <div>
