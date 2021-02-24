@@ -39,9 +39,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     <>
       {showLoginModal &&
         <Modal onClose={() => setShowLoginModal(false)}>
-          <form onSubmit={onLogin}>
+          <form onSubmit={onLogin}><button id="close-button" onClick={() => setShowLoginModal((prev) => !prev)}><i id="close-icon" className="far fa-window-close"></i></button>
 
-            <button id="close-button" onClick={() => setShowLoginModal((prev) => !prev)}><i id="close-icon" className="far fa-window-close"></i></button>
+            
 
             <div>
               {errors.map((error, idx) => (

@@ -1,6 +1,12 @@
-import React, { createContext, useRef, useState, useEffect, useContext } from 'react';
-import ReactDOM from 'react-dom';
-import './Modal.css';
+import React, {
+  createContext,
+  useRef,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
+import ReactDOM from "react-dom";
+import "./Modal.css";
 
 const ModalContext = createContext();
 
@@ -11,6 +17,7 @@ export const ModalProvider = ({ children }) => {
   const [value, setValue] = useState();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [showSearchBarModal, setShowSearchBarModal] = useState(false);
 
   useEffect(() => {
     setValue(modalRef.current);
@@ -18,7 +25,17 @@ export const ModalProvider = ({ children }) => {
 
   return (
     <>
-      <ModalContext.Provider value={{ value, showLoginModal, setShowLoginModal, showSignUpModal, setShowSignUpModal }}>
+      <ModalContext.Provider
+        value={{
+          value,
+          showLoginModal,
+          setShowLoginModal,
+          showSignUpModal,
+          setShowSignUpModal,
+          showSearchBarModal,
+          setShowSearchBarModal,
+        }}
+      >
         {children}
       </ModalContext.Provider>
       <div ref={modalRef} />
@@ -33,9 +50,20 @@ export const Modal = ({ onClose, children }) => {
   return ReactDOM.createPortal(
     <div id="modal">
       <div id="modal-background" onClick={onClose} />
-      <div id="modal-content">
-        {children}
-      </div>
+      <div id="modal-content">{children}</div>
+    </div>,
+    value
+  );
+};
+
+export const SearchModal = ({ onClose, children }) => {
+  const { value } = useContext(ModalContext);
+  if (!value) return null;
+
+  return ReactDOM.createPortal(
+    <div id="searchModal">
+      <div id="searchModal-background" onClick={onClose} />
+      <div id="searchModal-content">{children}</div>
     </div>,
     value
   );
