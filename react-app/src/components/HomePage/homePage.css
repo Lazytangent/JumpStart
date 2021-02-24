@@ -74,7 +74,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 95% 5%;
+    grid-template-rows: 85% 15%;
 }
 
 .homePage-grid-most-popular {
@@ -93,13 +93,33 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
+    transition: all 0.25s ease-in 0s;
+}
+
+#homePage-project-card-link:hover {
+  cursor: pointer;
+  transform: translateY(-6px);
+
+}
+
+.projectCard-img {
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
 }
 
 #homePage-project-card {
-  width: 80%;
+  width: 90%;
+  border-radius: 10px;
+  box-shadow:2px 2px 5px rgb(224, 223, 223);
+}
+
+#homePage-project-card-text {
+  width: 90%;
+  margin: auto;
 }
 
 #projectCard-location {
+    padding-top: 4%;
     font-weight: bold;
     font-size: 20px;
     color: #02a95c;
@@ -129,15 +149,16 @@
 
 
 #projectCard-amount {
-  font-weight: bold;
-  padding-top: .5%;
-  font-size: 20px;
+  font-weight:550;
+  padding-top: 2%;
+  font-size: 18px;
   color: black;
 }
 
 #homePage-see-more {
     display:flex;
     justify-content: flex-end;
+    align-items: center;
     grid-column-start: 3;
     text-decoration: none;
     color: #02a95c;

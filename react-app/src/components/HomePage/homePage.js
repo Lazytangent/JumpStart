@@ -108,14 +108,17 @@ const HomePage = () => {
                                         <div>
                                             <img className="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
                                         </div>
-                                        <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                        <div id="projectCard-title">{project.name}</div>
-                                        <div id="projectCard-description">{project.description}</div>
-                                        <div id="meter">
-                                            <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                        <div id="homePage-project-card-text">
+                                            <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                            <div id="projectCard-title">{project.name}</div>
+                                            <div id="projectCard-description">{project.description}</div>
+                                            <div id="meter">
+                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                            </div>
+                                            <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                         </div>
-                                        <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                     </div>
+
                                 </Link>
                             ))}
                         <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>

@@ -13,18 +13,18 @@ def seed_projects():
                   minPledge=5)
 
     two = Project(userId=3, name="Single Mom need diapers",
-                  thumbnailImgUrl="",
+                  thumbnailImgUrl="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-pixabay-235554.jpg",
                   description="Anything helps! My husband passed away last year and I can't pay the bills till the insurance money comes in. Anything you can give would be really helpful.",
                   goalAmount=1000,
                   minPledge=5)
     three = Project(userId=1, name="Pursuing a Nascar career",
                     thumbnailImgUrl="",
-                    description="Need money for new car!",
+                    description="Need money for new car! I really want to try and become a Nascar driver, I would appreciate any help you can give",
                     goalAmount=10000,
                     minPledge=5)
     four = Project(userId=4, name="Kidney Failure need money to pay donor",
                    thumbnailImgUrl="",
-                   description="My doctor said I only have one month to live if I do not get a transplant.Only 1 kidney left!",
+                   description="My doctor said I only have one month to live if I do not get a transplant. Only 1 kidney left!",
                    goalAmount=15000,
                    minPledge=5)
 
