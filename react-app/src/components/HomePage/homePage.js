@@ -106,7 +106,7 @@ const HomePage = () => {
                                 <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
                                     <div id="homePage-project-card" value={project.id}>
                                         <div>
-                                            <img className="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
+                                            <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
                                         </div>
                                         <div id="homePage-project-card-text">
                                             <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
@@ -118,10 +118,11 @@ const HomePage = () => {
                                             <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                         </div>
                                     </div>
-
                                 </Link>
                             ))}
-                        <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                        <div id="homePage-see-more">
+                            <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                        </div>
                     </div>
                 </div>
                 <h2 className="homePage-mostRecent-header">Most recent fundraisers</h2>
@@ -132,19 +133,23 @@ const HomePage = () => {
                                 <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
                                     <div id="homePage-project-card" value={project.id}>
                                         <div>
-                                            {/* <img>{project.thumbnailImgUrl}</img> */}
+                                            <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
                                         </div>
-                                        <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                        <div id="projectCard-title">{project.name}</div>
-                                        <div id="projectCard-description">{project.description}</div>
-                                        <div id="meter">
-                                            <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                        <div id="homePage-project-card-text">
+                                            <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                            <div id="projectCard-title">{project.name}</div>
+                                            <div id="projectCard-description">{project.description}</div>
+                                            <div id="meter">
+                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                            </div>
+                                            <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                         </div>
-                                        <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                     </div>
                                 </Link>
                             ))}
-                        <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                         <div id="homePage-see-more">
+                            <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                        </div>
                     </div>
                 </div>
                 <h2 className="homePage-nearYou-header">Causes near you</h2>
@@ -155,19 +160,23 @@ const HomePage = () => {
                                 <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
                                     <div id="homePage-project-card" value={project.id}>
                                         <div>
-                                            {/* <img>{project.thumbnailImgUrl}</img> */}
+                                            <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
                                         </div>
-                                        <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                        <div id="projectCard-title">{project.name}</div>
-                                        <div id="projectCard-description">{project.description}</div>
-                                        <div id="meter">
-                                            <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                        <div id="homePage-project-card-text">
+                                            <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                            <div id="projectCard-title">{project.name}</div>
+                                            <div id="projectCard-description">{project.description}</div>
+                                            <div id="meter">
+                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                            </div>
+                                            <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                         </div>
-                                        <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
                                     </div>
                                 </Link>
                             ))}
-                        <Link id="homePage-see-more" to=''>See more<i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                        <div id="homePage-see-more">
+                            <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                        </div>
                     </div>
                 </div>
             </div>

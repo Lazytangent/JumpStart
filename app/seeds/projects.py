@@ -18,18 +18,18 @@ def seed_projects():
                   goalAmount=1000,
                   minPledge=5)
     three = Project(userId=1, name="Pursuing a Nascar career",
-                    thumbnailImgUrl="",
+                    thumbnailImgUrl="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-brian-60881.jpg",
                     description="Need money for new car! I really want to try and become a Nascar driver, I would appreciate any help you can give",
                     goalAmount=10000,
                     minPledge=5)
     four = Project(userId=4, name="Kidney Failure need money to pay donor",
-                   thumbnailImgUrl="",
+                   thumbnailImgUrl="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-shvets-4483327.jpg",
                    description="My doctor said I only have one month to live if I do not get a transplant. Only 1 kidney left!",
                    goalAmount=15000,
                    minPledge=5)
 
     five = Project(userId=5, name="Basketball Lessons",
-                   thumbnailImgUrl="",
+                   thumbnailImgUrl="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-cottonbro-6764351.jpg",
                    description="I am trying to pay for a basketball lesson from Lebron James for a kid in my neighbor hood. He was diagnosed with cancer last year and Lebron is his favorite player. Help him pursue his dreams!",
                    goalAmount=20000,
                    minPledge=5)
