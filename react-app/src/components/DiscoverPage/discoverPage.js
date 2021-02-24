@@ -1,11 +1,15 @@
 import React from 'react';
+import Navigation from '../Navigation/navigation'
 
 
 const DiscoverPage = () => {
     return (
-        <div className="discoverPage">
-            <h2>DiscoverPage</h2>
-        </div>
+        <>
+            <Navigation />
+            <div className="discoverPage">
+                <h2>DiscoverPage</h2>
+            </div>
+        </>
     )
 }
 
