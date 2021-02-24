@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect } from "react-router-dom";
-import { login } from '../../store/session';
-import { Modal, useModalContext } from '../../context/Modal';
+import { login } from '../../../store/session';
+import { Modal, useModalContext } from '../../../context/Modal';
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const { showLoginModal, setShowLoginModal } = useModalContext();

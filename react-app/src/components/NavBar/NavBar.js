@@ -74,7 +74,16 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
         </div>
         <div className="navBar-third-fraction">
           <div>
-            <button>Create a project</button>
+            <button id="navBar-buttons" className="navBar-buttons" onClick={() => {
+              if (user) {
+                setShowLoginModal(false)
+                setShowSignUpModal(false)
+                history.push('/new-project')
+              } else {
+                setShowLoginModal((prev) => !prev)
+                setShowSignUpModal(false)
+              }
+            }}>Create a project</button>
           </div>
         </div>
         <div>
