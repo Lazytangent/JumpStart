@@ -5,6 +5,7 @@ import { getHomePageProjects } from '../../store/project.js'
 import csc from "country-state-city"
 import "./homePage.css"
 
+//a change
 
 const HomePage = () => {
     const dispatch = useDispatch()
@@ -22,13 +23,13 @@ const HomePage = () => {
     const getPercentage = (project) => {
         let sum = 0
 
-        for (let i = 0; i < project.donations.length; i++ ) {
+        for (let i = 0; i < project.donations.length; i++) {
             sum += project.donations[i].donationAmount;
         }
 
-        return (sum/project.goalAmount) * 100
+        return (sum / project.goalAmount) * 100
     }
-    
+
     const getStateAbbreviation = (project) => {
         let result;
         const allStates = csc.getStatesOfCountry('US')
@@ -67,7 +68,7 @@ const HomePage = () => {
                                         <div>{project.description}</div>
                                         {/* limit project description to two lines */}
                                         <div className="meter">
-                                            <span id="progressBar" style={{width: getPercentage(project)}}></span>
+                                            <span id="progressBar" style={{ width: getPercentage(project) }}></span>
                                         </div>
                                     </div>
                                 </Link>
