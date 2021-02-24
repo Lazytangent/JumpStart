@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import csc from 'country-state-city';
+import { useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import csc from "country-state-city";
 
-import styles from './SignUpForm.module.css';
-import { signUp } from '../../../store/session';
-import { Modal, useModalContext } from '../../../context/Modal';
+import styles from "./SignUpForm.module.css";
+import { signUp } from "../../../store/session";
+import { Modal, useModalContext } from "../../../context/Modal";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const { showSignUpModal, setShowSignUpModal } = useModalContext();
@@ -21,21 +21,25 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [city, setCity] = useState("");
   const [profileImage, setProfileImage] = useState();
 
-  const listOfStates = csc.getStatesOfCountry("US")
-  const listOfCities = csc.getCitiesOfState("US", stateCode)
+  const listOfStates = csc.getStatesOfCountry("US");
+  const listOfCities = csc.getCitiesOfState("US", stateCode);
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    const user = await dispatch(signUp(username, email, password, city, state, profileImage));
+    const user = await dispatch(
+      signUp(username, email, password, city, state, profileImage)
+    );
     if (password === repeatPassword) {
       if (!user.errors) {
         setAuthenticated(true);
         setShowSignUpModal(false);
       } else {
-        setErrors(user.errors)
+        setErrors(user.errors);
       }
     } else {
-      setErrors(['Confirm Password field must be the same as the Password field'])
+      setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ]);
     }
   };
 
@@ -56,19 +60,19 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   const updateState = (e) => {
-    setState(e.target.value)
-    const stateName = e.target.value
-    let result = ""
+    setState(e.target.value);
+    const stateName = e.target.value;
+    let result = "";
     listOfStates.forEach((state) => {
       if (state.name === stateName) {
-        result = state.isoCode
+        result = state.isoCode;
       }
-    })
-    setStateCode(result)
+    });
+    setStateCode(result);
   };
 
   const updateCity = (e) => {
-    setCity(e.target.value)
+    setCity(e.target.value);
   };
 
   const updateProfileImage = (e) => {
@@ -82,11 +86,15 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-      {showSignUpModal &&
+      {showSignUpModal && (
         <Modal onClose={() => setShowSignUpModal(false)}>
           <form onSubmit={onSignUp} encType="multipart/form-data">
-            <button id="close-button" onClick={() => setShowSignUpModal(false)}><i id="close-icon" className="far fa-window-close"></i></button>
-            <div>
+            <div className={styles.closeBtnContainer}>
+              <button className={styles.closeBtn} id="close-button" onClick={() => setShowSignUpModal(false)}>
+                <i id="close-icon" className="far fa-window-close"></i>
+              </button>
+            </div>
+            <div className={styles.errorsDiv}>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
@@ -94,6 +102,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             <div>
               <label>User Name</label>
               <input
+                className={styles.formField}
                 type="text"
                 name="username"
                 onChange={updateUsername}
@@ -103,6 +112,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             <div>
               <label>Email</label>
               <input
+                className={styles.formField}
                 type="text"
                 name="email"
                 onChange={updateEmail}
@@ -111,29 +121,31 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             </div>
             <div>
               <label>State</label>
-              <select name="state" onChange={updateState} value={state} >
-                <option value="" disabled selected>Select your state</option>
-                {
-                  listOfStates.map((state) => (
-                    <option key={state.name}>{state.name}</option>
-                  ))
-                }
+              <select className={styles.formField} name="state" onChange={updateState} value={state}>
+                <option value="" disabled selected>
+                  Select your state
+                </option>
+                {listOfStates.map((state) => (
+                  <option key={state.name}>{state.name}</option>
+                ))}
               </select>
             </div>
             <div>
               <label>City</label>
-              <select name="city" onChange={updateCity} value={city} >
-                <option value="" disabled selected>Select your city</option>
+              <select className={styles.formField} name="city" onChange={updateCity} value={city}>
+                <option value="" disabled selected>
+                  Select your city
+                </option>
                 {stateCode !== "" &&
                   listOfCities.map((city) => (
                     <option key={city.name}>{city.name}</option>
-                  ))
-                }
+                  ))}
               </select>
             </div>
             <div>
               <label>Password</label>
               <input
+                className={styles.formField}
                 type="password"
                 name="password"
                 onChange={updatePassword}
@@ -143,6 +155,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             <div>
               <label>Repeat Password</label>
               <input
+                className={styles.formField}
                 type="password"
                 name="repeat_password"
                 onChange={updateRepeatPassword}
@@ -152,15 +165,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
             </div>
             <div>
               <label>Profile Image</label>
-              <input
-                type="file"
-                name="image"
-                onChange={updateProfileImage} />
+              <input className={styles.formField} type="file" name="image" onChange={updateProfileImage} />
             </div>
-            <button type="submit">Sign Up</button>
+            <div className={styles.btnContainer}>
+              <button className={styles.submitBtn} type="submit">Sign Up</button>
+            </div>
           </form>
         </Modal>
-      }
+      )}
     </>
   );
 };

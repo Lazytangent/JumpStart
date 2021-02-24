@@ -1,0 +1,47 @@
+.form {
+  padding: 1rem;
+}
+
+.formField {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.closeBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.25rem;
+}
+
+.closeBtn {
+  padding: 0.15rem;
+  border-radius: 0.35rem;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  text-justify: center;
+  padding: 0.5rem;
+}
+
+.header {
+  margin-bottom: 0;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.submitBtn {
+  padding: 0.35rem;
+  border-radius: 0.5rem;
+  width: 75%;
+  background-color: rgba(0, 0, 0, 0)
+}
+
+.submitBtn:hover {
+  border-color: #02a95c;
+}
