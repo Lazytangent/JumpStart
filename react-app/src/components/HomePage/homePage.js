@@ -65,10 +65,10 @@ const HomePage = () => {
                                         </div>
                                         <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
                                         <div id="projectCard-title">{project.name}</div>
-                                        <div>{project.description}</div>
+                                        <div id="projectCard-description">{project.description}</div>
                                         {/* limit project description to two lines */}
                                         <div className="meter">
-                                            <span id="progressBar" style={{width: getPercentage(project)}}></span>
+                                            <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
                                         </div>
                                     </div>
                                 </Link>
@@ -87,7 +87,7 @@ const HomePage = () => {
                                         </div>
                                         <div>{`${project.user.city},${getStateAbbreviation(project)}`}</div>
                                         <div>{project.name}</div>
-                                        <div>{project.description}</div> two lines
+                                        <div>{project.description}</div>
                                         <div>
                                             {/* <span id="progressBar" style={`width: ${}`}></span> */}
                                         </div>

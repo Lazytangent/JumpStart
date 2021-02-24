@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import LoginForm from '../auth/LoginForm/'
 import SignUpForm from '../auth/SignUpForm'
 import LogoutButton from '../auth/LogoutButton';
 import { useModalContext } from '../../context/Modal';
-import CreateProject from '../CreateProject'
 import { useHistory } from 'react-router-dom'
 import './NavBar.css';
 import "../HomePage/homePage.css";
