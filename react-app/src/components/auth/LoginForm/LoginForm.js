@@ -41,7 +41,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         <Modal onClose={() => setShowLoginModal(false)}>
           <form className={styles.form} onSubmit={onLogin}>
             <div className={styles.closeBtnContainer}>
-              <button id="close-button" className={styles.closeBtn} onClick={() => setShowLoginModal((prev) => !prev)}>
+              <button
+                id="close-button"
+                className={styles.closeBtn}
+                onClick={() => setShowLoginModal((prev) => !prev)}
+              >
                 <i id="close-icon" className="far fa-window-close"></i>
               </button>
             </div>
@@ -54,10 +58,24 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               ))}
             </div>
             <div>
-              <input name="email" type="text" placeholder="Email" value={email} onChange={updateEmail} className={styles.formField} />
+              <input
+                name="email"
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={updateEmail}
+                className={styles.formField}
+              />
             </div>
             <div>
-              <input name="password" type="password" placeholder="Password" value={password} onChange={updatePassword} className={styles.formField} />
+              <input
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={updatePassword}
+                className={styles.formField}
+              />
             </div>
             <div className={styles.btnContainer}>
               <button id="submit-button" className={styles.submitBtn}>

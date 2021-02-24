@@ -68,5 +68,5 @@ def seed_donations():
 
 
 def undo_donations():
-    db.session.execute('TRUNCATE users;')
+    db.session.execute('TRUNCATE donations CASCADE;')
     db.session.commit()
