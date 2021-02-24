@@ -77,9 +77,6 @@
     text-decoration: none;
 }
 
-/* #homePage-project-card {
-} */
-
 #projectCard-location {
     color: #02a95c;
 }
@@ -106,20 +103,43 @@
 /* nav bar changing on scroll */
 
 html:not([data-scroll="0"]) .navBar {
+  height: 8vh;
   background-color: #fff;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+
 }
 
 html:not([data-scroll="0"]) .navBar-home {
     color: #02a95c;
+    font-size: 35px;
 }
 
 html:not([data-scroll="0"]) .navBar-logo {
     filter:none;
+    font-size: 35px;
+    padding-top: 10px;
 }
 
 html:not([data-scroll="0"]) #navBar-buttons {
     color: black;
+}
+
+html:not([data-scroll="0"]) .navBar-buttons-login {
+    height: 30px;
+    width: 55px;
+    font-size: 20px;
+}
+
+html:not([data-scroll="0"]) .navBar-buttons-signup {
+  height: 30px;
+  width: 80px;
+  font-size: 20px;
+}
+
+html:not([data-scroll="0"]) .navBar-buttons-create {
+  height: 30px;
+  width: 150px;
+  font-size: 20px;
 }
 
 html:not([data-scroll="0"]) #navBar-buttons:hover {

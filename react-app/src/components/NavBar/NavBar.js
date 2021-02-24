@@ -44,7 +44,7 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
         </div>
         <div className="navBar-third-fraction">
           <div>
-            <button id="navBar-buttons" className="navBar-buttons" onClick={() => {
+            <button id="navBar-buttons" className="navBar-buttons-create" onClick={() => {
               if (user) {
                 setShowLoginModal(false)
                 setShowSignUpModal(false)

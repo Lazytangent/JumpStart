@@ -32,14 +32,14 @@
     justify-content: flex-end;
 }
 
-.navBar-home {
+.navBar-home.active {
     display: inline-flex;
     text-decoration: none;
-    font-size: 1.75rem;
+    font-size: 45px;
 }
 
 .navBar-logo {
-    padding-top: 3%;
+    padding-top: 7%;
     height: 1.5rem;
     padding-left: 1%;
     filter:  brightness(0) invert(1);
@@ -50,9 +50,9 @@ button:hover {
 }
 
 .navBar-buttons-login {
-    height: 25px;
-    width: 60px;
-    font-size: 18px;
+    height: 35px;
+    width: 73px;
+    font-size: 25px;
     background-color: transparent;
     color: white;
     border: 1px solid transparent;
@@ -60,9 +60,18 @@ button:hover {
 }
 
 .navBar-buttons-signup {
-    height: 25px;
-    width: 80px;
-    font-size: 18px;
+    height: 35px;
+    width: 100px;
+    font-size: 25px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+}
+
+.navBar-buttons-create {
+    height: 35px;
+    width: 190px;
+    font-size: 25px;
     background-color: transparent;
     color: white;
     border: 1px solid transparent;
