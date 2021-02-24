@@ -23,6 +23,16 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const demoEmail = "demo@aa.io";
+    const demoPassword = "password";
+    setEmail(demoEmail);
+    setPassword(demoPassword);
+    setTimeout(await dispatch(login(demoEmail, demoPassword)), 1000);
+    setShowLoginModal(false);
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -59,6 +69,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             </div>
             <div className={styles.formFieldContainer}>
               <input
+                id="input-email"
                 name="email"
                 type="text"
                 placeholder="Email"
@@ -69,6 +80,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             </div>
             <div className={styles.formFieldContainer}>
               <input
+                id="input-password"
                 name="password"
                 type="password"
                 placeholder="Password"
@@ -83,6 +95,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               </button>
             </div>
           </form>
+          <div className={styles.demoBtnContainer}>
+            <button onClick={demoLogin} className={styles.demoBtn}>Login as Demo</button>
+          </div>
         </Modal>
       )}
     </>
