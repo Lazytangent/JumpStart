@@ -7,6 +7,7 @@ import './projectPage.css'
 
 const ProjectPage = () => {
 
+  const project = useSelector(state => state.project.currentProject)
   const { projectId } = useParams()
   const dispatch = useDispatch()
 
@@ -14,15 +15,17 @@ const ProjectPage = () => {
     dispatch(getProjectById(projectId))
   }, [dispatch])
 
-  const project = useSelector(state => state.project.currentProject)
 
   // console.log(project)
 
   return (
     <>
-      {/* <h1>{project.name}</h1> */}
-      {/* <img src={project.thumbnailImgUrl} className='thumbnail'></img> */}
-      {/* <div>{project.description}</div> */}
+      {project && <div>
+        <h1>{project.name}</h1>
+        <img src={project.thumbnailImgUrl} className='thumbnail'></img>
+        <div>{project.description}</div>
+      </div>
+      }
     </>
   )
 }
