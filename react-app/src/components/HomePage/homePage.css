@@ -1,6 +1,7 @@
 .homePage {
     height: 250vh;
     width: 99vw;
+    
 }
 
 .homePage-image {
@@ -201,13 +202,10 @@ html:not([data-scroll="0"]) .navBar {
 
 html:not([data-scroll="0"]) .navBar-home {
     color: #02a95c;
-    font-size: 35px;
 }
 
 html:not([data-scroll="0"]) .navBar-logo {
     filter:none;
-    font-size: 35px;
-
 }
 
 html:not([data-scroll="0"]) #navBar-buttons {

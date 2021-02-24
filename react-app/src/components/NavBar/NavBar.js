@@ -9,7 +9,7 @@ import { useModalContext } from "../../context/Modal";
 import CreateProject from "../CreateProject";
 import { useHistory } from "react-router-dom";
 import "./NavBar.css";
-import "../HomePage/homePage.css";
+// import "../HomePage/homePage.css";
 
 const NavBar = ({ setAuthenticated, setShowModal }) => {
   const {

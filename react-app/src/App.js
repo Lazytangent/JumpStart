@@ -34,32 +34,32 @@ function App() {
   return (
     <>
       <NavBar setAuthenticated={setAuthenticated} />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
-        </ProtectedRoute>
-        <Route path="/" exact={true} authenticated={authenticated}>
-          <HomePage />
-        </Route>
-        <Route path="/new-project" exact={true} authenticated={authenticated}>
-          <CreateProject />
-        </Route>
-        <Route path="/discover" exact ={true} authenticated={authenticated}>
-          <DiscoverPage />
-        </Route>
-      </Switch>
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          </Route>
+          <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+            <User />
+          </ProtectedRoute>
+          <Route path="/" exact={true} authenticated={authenticated}>
+            <HomePage />
+          </Route>
+          <Route path="/new-project" exact={true} authenticated={authenticated}>
+            <CreateProject />
+          </Route>
+          <Route path="/discover" exact ={true} authenticated={authenticated}>
+            <DiscoverPage />
+          </Route>
+        </Switch>
     </>
   );
 }
