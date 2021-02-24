@@ -1,5 +1,5 @@
 .form {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .formField {
@@ -8,8 +8,26 @@
   border-radius: 0.5rem;
 }
 
+.closeBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.25rem;
+}
+
 .closeBtn {
-  margin-bottom: 0.5rem;
+  padding: 0.15rem;
+  border-radius: 0.35rem;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  text-justify: center;
+  padding: 0.5rem;
+}
+
+.header {
+  margin-bottom: 0;
 }
 
 .btnContainer {
