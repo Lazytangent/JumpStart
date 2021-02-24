@@ -91,10 +91,10 @@ const HomePage = () => {
     return (
         <div className="homePage">
             <div className="homePage-image-container">
-                {/* <img className="homePage-image" src="homePage1.jpg" alt=""></img> */}
+                {/* <img className="homePage-image" src="" alt=""></img> */}
             </div>
             <div className="homePage-description-box">
-                <img className="homePage-description-image" src="homePage-description.jpg" alt=""></img>
+                <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
 
             </div>
             <div className="homePage-grid">
@@ -106,12 +106,11 @@ const HomePage = () => {
                                 <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
                                     <div id="homePage-project-card" value={project.id}>
                                         <div>
-                                            {/* <img>{project.thumbnailImgUrl}</img> */}
+                                            <img className="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
                                         </div>
                                         <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
                                         <div id="projectCard-title">{project.name}</div>
                                         <div id="projectCard-description">{project.description}</div>
-                                        {/* limit project description to two lines */}
                                         <div id="meter">
                                             <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
                                         </div>
