@@ -1,4 +1,4 @@
-.navBar {
+.navigation {
     height: 8vh;
     width: 100%;
     display: grid;
@@ -9,84 +9,84 @@
     padding: 0;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
 
-.navBar-first-fraction {
+.navigation-first-fraction {
     grid-column-start: 2;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.navBar-second-fraction {
+.navigation-second-fraction {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.navBar-third-fraction {
+.navigation-third-fraction {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.navBar-home.active {
+.navigation-home.active {
     display: inline-flex;
     text-decoration: none;
     font-size: 35px;
 }
 
-.navBar-logo {
+.navigation-logo {
     padding-top: 5%;
     height: 1.5rem;
     padding-left: 1%;
-    filter:  brightness(0) invert(1);
+    /* filter:  brightness(0) invert(1); */
 }
 
 button:hover {
     cursor: pointer;
 }
 
-.navBar-buttons-login {
+.navigation-buttons-login {
     height: 30px;
     width: 55px;
     font-size: 20px;
     background-color: transparent;
-    color: white;
+    color: black;
     border: 1px solid transparent;
     margin-right: 30px;
 }
 
-.navBar-buttons-signup {
+.navigation-buttons-signup {
     height: 30px;
     width: 80px;
     font-size: 20px;
     background-color: transparent;
-    color: white;
+    color: black;
     border: 1px solid transparent;
 }
 
-.navBar-buttons-create {
+.navigation-buttons-create {
     height: 30px;
     width: 150px;
     font-size: 20px;
     background-color: transparent;
-    color: white;
+    color: black;
     border: 1px solid transparent;
     margin-right: 30px;
 }
 
-.navBar-buttons-search {
+.navigation-buttons-search {
     height: 30px;
     width: 80px;
     font-size: 20px;
     background-color: transparent;
-    color: white;
+    color: black;
     border: 1px solid transparent;
 }
 
-#navBar-buttons:hover {
-    border: 1px solid white;
+#navigation-buttons:hover {
+    border: 1px solid black;
 }
