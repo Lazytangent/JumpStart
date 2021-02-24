@@ -127,7 +127,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               ></input>
             </div>
             <div className={styles.formFieldContainer}>
-              <select className={styles.formField} name="state" onChange={updateState} value={state}>
+              <select className={`${styles.formField} ${styles.selectField}`} name="state" onChange={updateState} value={state}>
                 <option value="" disabled selected>
                   State
                 </option>
