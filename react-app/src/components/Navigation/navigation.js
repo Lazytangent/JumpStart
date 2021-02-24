@@ -8,10 +8,10 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useModalContext } from "../../context/Modal";
 import CreateProject from "../CreateProject";
 import { useHistory } from "react-router-dom";
-import "./NavBar.css";
+import "./navigation.css";
 import "../HomePage/homePage.css";
 
-const NavBar = ({ setAuthenticated, setShowModal }) => {
+const Navigation = ({ setAuthenticated, setShowModal }) => {
   const {
     showLoginModal,
     setShowLoginModal,
@@ -25,13 +25,13 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
 
   return (
     <nav>
-      <ul className="navBar">
-        <div className="navBar-first-fraction">
+      <ul className="navigation">
+        <div className="navigation-first-fraction">
           <div>
             {!user && (
               <button
-              id="navBar-buttons"
-              className="navBar-buttons-login"
+              id="navigation-buttons"
+              className="navigation-buttons-login"
                 onClick={() => {
                   setShowSignUpModal(false);
                   setShowLoginModal((prev) => !prev);
@@ -47,8 +47,8 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           <div>
             {!user && (
               <button
-              id="navBar-buttons"
-              className="navBar-buttons-signup"
+              id="navigation-buttons"
+              className="navigation-buttons-signup"
                 onClick={() => {
                   setShowLoginModal(false);
                   setShowSignUpModal((prev) => !prev);
@@ -62,9 +62,9 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
             )}
           </div>
         </div>
-        <div className="navBar-second-fraction">
+        <div className="navigation-second-fraction">
           <NavLink
-            className="navBar-home"
+            className="navigation-home"
             to="/"
             exact={true}
             activeClassName="active"
@@ -73,14 +73,14 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
               setShowLoginModal(false);
             }}
           >
-            JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
+            JumpStart<img className="navigation-logo" src="logo.png" alt=""></img>
           </NavLink>
         </div>
-        <div className="navBar-third-fraction">
+        <div className="navigation-third-fraction">
           <div>
             <button
-              id="navBar-buttons"
-              className="navBar-buttons-create"
+              id="navigation-buttons"
+              className="navigation-buttons-create"
               onClick={() => {
                 if (user) {
                   setShowLoginModal(false);
@@ -98,8 +98,8 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
           <div>
             {
               <button
-              id="navBar-buttons"
-              className="navBar-buttons-search"
+              id="navigation-buttons"
+              className="navigation-buttons-search"
                 onClick={() => {
                   setShowSignUpModal(false);
                   setShowLoginModal(false);
@@ -121,4 +121,4 @@ const NavBar = ({ setAuthenticated, setShowModal }) => {
   );
 };
 
-export default NavBar;
+export default Navigation;

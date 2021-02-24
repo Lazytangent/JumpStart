@@ -1,0 +1,92 @@
+.navigation {
+    height: 8vh;
+    width: 100%;
+    display: grid;
+    position: fixed;
+    grid-template-columns: 17.5% 20% 25% 20% 17.5%;
+    grid-template-rows: 1fr;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+}
+
+.navigation-first-fraction {
+    grid-column-start: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navigation-second-fraction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-third-fraction {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navigation-home.active {
+    display: inline-flex;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.navigation-logo {
+    padding-top: 5%;
+    height: 1.5rem;
+    padding-left: 1%;
+    filter:  brightness(0) invert(1);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.navigation-buttons-login {
+    height: 30px;
+    width: 55px;
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+    margin-right: 30px;
+}
+
+.navigation-buttons-signup {
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+}
+
+.navigation-buttons-create {
+    height: 30px;
+    width: 150px;
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+    margin-right: 30px;
+}
+
+.navigation-buttons-search {
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid transparent;
+}
+
+#navigation-buttons:hover {
+    border: 1px solid white;
+}

@@ -192,6 +192,100 @@
 
 /* nav bar changing on scroll */
 
+.navBar {
+  height: 8vh;
+  width: 100%;
+  display: grid;
+  position: fixed;
+  grid-template-columns: 17.5% 20% 25% 20% 17.5%;
+  grid-template-rows: 1fr;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+.navBar-first-fraction {
+  grid-column-start: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navBar-second-fraction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBar-third-fraction {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navBar-home.active {
+  display: inline-flex;
+  text-decoration: none;
+  font-size: 35px;
+}
+
+.navBar-logo {
+  padding-top: 5%;
+  height: 1.5rem;
+  padding-left: 1%;
+  filter:  brightness(0) invert(1);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.navBar-buttons-login {
+  height: 30px;
+  width: 55px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid transparent;
+  margin-right: 30px;
+}
+
+.navBar-buttons-signup {
+  height: 30px;
+  width: 80px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.navBar-buttons-create {
+  height: 30px;
+  width: 150px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid transparent;
+  margin-right: 30px;
+}
+
+.navBar-buttons-search {
+  height: 30px;
+  width: 80px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid transparent;
+}
+
+#navBar-buttons:hover {
+  border: 1px solid white;
+}
+
+
 html:not([data-scroll="0"]) .navBar {
   height: 8vh;
   background-color: #fff;

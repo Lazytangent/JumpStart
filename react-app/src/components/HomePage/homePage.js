@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, useHistory, NavLink } from "react-router-dom";
 import { getHomePageProjects } from '../../store/project.js';
+import { useModalContext } from "../../context/Modal";
+import SearchBar from "../SearchBar/SearchBar";
+import LoginForm from "../auth/LoginForm";
+import SignUpForm from "../auth/SignUpForm";
+import LogoutButton from "../auth/LogoutButton";
 import csc from "country-state-city";
 import "./homePage.css";
 
@@ -40,8 +45,19 @@ const debounce = (fn) => {
   // Update scroll position for first time
   storeScroll();
 
+const HomePage = ({ setAuthenticated, setShowModal }) => {
 
-const HomePage = () => {
+    const {
+        showLoginModal,
+        setShowLoginModal,
+        showSignUpModal,
+        setShowSignUpModal,
+        showSearchBarModal,
+        setShowSearchBarModal,
+      } = useModalContext();
+
+    const user = useSelector((state) => state.session.user);
+    const history = useHistory();
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -89,99 +105,194 @@ const HomePage = () => {
     }
 
     return (
-        <div className="homePage">
-            <div className="homePage-image-container">
-                {/* <img className="homePage-image" src="" alt=""></img> */}
-            </div>
-            <div className="homePage-description-box">
-                <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
+        <>
+            <nav>
+                <ul className="navBar">
+                    <div className="navBar-first-fraction">
+                    <div>
+                        {!user && (
+                        <button
+                        id="navBar-buttons"
+                        className="navBar-buttons-login"
+                            onClick={() => {
+                            setShowSignUpModal(false);
+                            setShowLoginModal((prev) => !prev);
+                            }}
+                        >
+                            Login
+                        </button>
+                        )}
+                        {showLoginModal && (
+                        <LoginForm setAuthenticated={setAuthenticated} />
+                        )}
+                    </div>
+                    <div>
+                        {!user && (
+                        <button
+                        id="navBar-buttons"
+                        className="navBar-buttons-signup"
+                            onClick={() => {
+                            setShowLoginModal(false);
+                            setShowSignUpModal((prev) => !prev);
+                            }}
+                        >
+                            Sign Up
+                        </button>
+                        )}
+                        {showSignUpModal && (
+                        <SignUpForm setAuthenticated={setAuthenticated} />
+                        )}
+                    </div>
+                    </div>
+                    <div className="navBar-second-fraction">
+                    <NavLink
+                        className="navBar-home"
+                        to="/"
+                        exact={true}
+                        activeClassName="active"
+                        onClick={() => {
+                        setShowSignUpModal(false);
+                        setShowLoginModal(false);
+                        }}
+                    >
+                        JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
+                    </NavLink>
+                    </div>
+                    <div className="navBar-third-fraction">
+                    <div>
+                        <button
+                        id="navBar-buttons"
+                        className="navBar-buttons-create"
+                        onClick={() => {
+                            if (user) {
+                            setShowLoginModal(false);
+                            setShowSignUpModal(false);
+                            history.push("/new-project");
+                            } else {
+                            setShowLoginModal((prev) => !prev);
+                            setShowSignUpModal(false);
+                            }
+                        }}
+                        >
+                        Create a project
+                        </button>
+                    </div>
+                    <div>
+                        {
+                        <button
+                        id="navBar-buttons"
+                        className="navBar-buttons-search"
+                            onClick={() => {
+                            setShowSignUpModal(false);
+                            setShowLoginModal(false);
+                            setShowSearchBarModal((prev) => !prev);
+                            }}
+                        >
+                            Search
+                        </button>
+                        }
+                        {showSearchBarModal && <SearchBar />}
+                    </div>
+                    </div>
 
-            </div>
-            <div className="homePage-grid">
-                <h2 className="homePage-mostPopular-header">Most popular causes</h2>
-                <div className="homePage-grid-most-popular">
-                    <div id="homePage-project-grid">
-                        {mostPopular &&
-                            mostPopular.map((project) => (
-                                <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
-                                    <div id="homePage-project-card" value={project.id}>
-                                        <div>
-                                            <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
-                                        </div>
-                                        <div id="homePage-project-card-text">
-                                            <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                            <div id="projectCard-title">{project.name}</div>
-                                            <div id="projectCard-description">{project.description}</div>
-                                            <div id="meter">
-                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
-                                            </div>
-                                            <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            ))}
-                        <div id="homePage-see-more">
-                            <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
-                        </div>
+                    <div>
+                    {user && <LogoutButton setAuthenticated={setAuthenticated} />}
                     </div>
+                </ul>
+            </nav>
+            <div className="homePage">
+                <div className="homePage-image-container">
+                    {/* <img className="homePage-image" src="" alt=""></img> */}
                 </div>
-                <h2 className="homePage-mostRecent-header">Most recent fundraisers</h2>
-                <div className="homePage-grid-most-recent">
-                    <div id="homePage-project-grid">
-                        {mostRecent &&
-                            mostRecent.map((project) => (
-                                <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
-                                    <div id="homePage-project-card" value={project.id}>
-                                        <div>
-                                            <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
-                                        </div>
-                                        <div id="homePage-project-card-text">
-                                            <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                            <div id="projectCard-title">{project.name}</div>
-                                            <div id="projectCard-description">{project.description}</div>
-                                            <div id="meter">
-                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
-                                            </div>
-                                            <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            ))}
-                         <div id="homePage-see-more">
-                            <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
-                        </div>
-                    </div>
-                </div>
-                <h2 className="homePage-nearYou-header">Causes near you</h2>
-                <div className="homePage-grid-near-you">
-                    <div id="homePage-project-grid">
-                        {trending &&
-                            trending.map((project) => (
-                                <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
-                                    <div id="homePage-project-card" value={project.id}>
-                                        <div>
-                                            <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
-                                        </div>
-                                        <div id="homePage-project-card-text">
-                                            <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
-                                            <div id="projectCard-title">{project.name}</div>
-                                            <div id="projectCard-description">{project.description}</div>
-                                            <div id="meter">
-                                                <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
-                                            </div>
-                                            <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            ))}
-                        <div id="homePage-see-more">
-                            <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <div className="homePage-description-box">
+                    <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
 
+                </div>
+                <div className="homePage-grid">
+                    <h2 className="homePage-mostPopular-header">Most popular causes</h2>
+                    <div className="homePage-grid-most-popular">
+                        <div id="homePage-project-grid">
+                            {mostPopular &&
+                                mostPopular.map((project) => (
+                                    <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
+                                        <div id="homePage-project-card" value={project.id}>
+                                            <div>
+                                                <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
+                                            </div>
+                                            <div id="homePage-project-card-text">
+                                                <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                                <div id="projectCard-title">{project.name}</div>
+                                                <div id="projectCard-description">{project.description}</div>
+                                                <div id="meter">
+                                                    <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                                </div>
+                                                <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            <div id="homePage-see-more">
+                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 className="homePage-mostRecent-header">Most recent fundraisers</h2>
+                    <div className="homePage-grid-most-recent">
+                        <div id="homePage-project-grid">
+                            {mostRecent &&
+                                mostRecent.map((project) => (
+                                    <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
+                                        <div id="homePage-project-card" value={project.id}>
+                                            <div>
+                                                <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
+                                            </div>
+                                            <div id="homePage-project-card-text">
+                                                <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                                <div id="projectCard-title">{project.name}</div>
+                                                <div id="projectCard-description">{project.description}</div>
+                                                <div id="meter">
+                                                    <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                                </div>
+                                                <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            <div id="homePage-see-more">
+                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 className="homePage-nearYou-header">Causes near you</h2>
+                    <div className="homePage-grid-near-you">
+                        <div id="homePage-project-grid">
+                            {trending &&
+                                trending.map((project) => (
+                                    <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
+                                        <div id="homePage-project-card" value={project.id}>
+                                            <div>
+                                                <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
+                                            </div>
+                                            <div id="homePage-project-card-text">
+                                                <div id="projectCard-location">{`${project.user.city},${getStateAbbreviation(project)}`}</div>
+                                                <div id="projectCard-title">{project.name}</div>
+                                                <div id="projectCard-description">{project.description}</div>
+                                                <div id="meter">
+                                                    <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+                                                </div>
+                                                <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            <div id="homePage-see-more">
+                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 
 }
