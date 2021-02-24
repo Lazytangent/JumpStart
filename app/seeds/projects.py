@@ -49,5 +49,5 @@ def seed_projects():
 
 
 def undo_projects():
-    db.session.execute('TRUNCATE projects;')
+    db.session.execute('TRUNCATE projects CASCADE;')
     db.session.commit()

@@ -22,5 +22,5 @@ def seed_images():
 
 
 def undo_images():
-    db.session.execute('TRUNCATE users;')
+    db.session.execute('TRUNCATE images CASCADE;')
     db.session.commit()
