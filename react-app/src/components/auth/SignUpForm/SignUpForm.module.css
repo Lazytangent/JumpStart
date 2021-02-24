@@ -1,7 +1,7 @@
 .form {
   padding: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
 }
 
 .formFieldContainer {
@@ -17,10 +17,24 @@
   outline: none;
 }
 
+.formField:focus {
+  border: 0.15rem solid #02a95c;
+}
+
 .closeBtnContainer {
   display: flex;
   justify-content: flex-end;
   padding: 0.25rem;
+}
+
+.selectField {
+  width: 40%;
+}
+
+.locationFields {
+  justify-content: space-around;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
 }
 
 .closeBtn {
@@ -42,6 +56,14 @@
 .imageBtn {
   margin-bottom: 0.25rem;
   padding: 0.35rem;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0.5rem;
+  width: 50%;
+}
+
+.imageBtn:hover {
+  border-style: solid;
+  border-color: #02a95c;
 }
 
 .btnContainer {
@@ -53,10 +75,12 @@
   padding: 0.35rem;
   border-radius: 0.5rem;
   width: 75%;
-  background-color: rgba(0, 0, 0, 0)
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
 }
 
 .submitBtn:hover {
+  border-style: solid;
   border-color: #02a95c;
 }
 
