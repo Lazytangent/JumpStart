@@ -4,4 +4,8 @@ from wtforms.validators import DataRequired
 
 
 class CreateProject(FlaskForm):
-    pass
+    name = StringField("name", validators=[DataRequired()])
+    description = StringField("description", validators=[DataRequired()])
+    goalAmount = IntegerField("goalAmount", validators=[DataRequired()])
+    minPledge = IntegerField("minPledge", validators=[DataRequired()])
+    thumbnailImg = FileField("thumbnailImg")
