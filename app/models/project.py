@@ -11,6 +11,7 @@ class Project(db.Model):
     description = db.Column(db.Text, nullable=False)
     goalAmount = db.Column(db.Integer, nullable=False)
     minPledge = db.Column(db.Integer, nullable=False)
+    isClosed = db.Column(db.Boolean, nullable=False, default=False)
 
     user = db.relationship("User", back_populates="projects")
     donations = db.relationship("Donation", back_populates="project")
