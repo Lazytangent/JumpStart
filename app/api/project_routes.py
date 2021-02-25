@@ -98,6 +98,8 @@ def create_new_project():
             image = request.files['thumbnailImg']
             image.filename = secure_filename(image.filename)
             thumbnailImgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
+        if 'images' in request.files:
+            pass
         project = Project()
         form.populate_obj(project)
         project.thumbnailImgUrl = thumbnailImgUrl
