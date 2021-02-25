@@ -4,7 +4,7 @@
   /* margin: 0px 5%; */
 }
 
-li:last-child {
+li.searchBarMatches:last-child {
   /* margin-top: 0.5rem; */
   /* background-color: yellow; */
   border-bottom: 1px solid lightgrey;
