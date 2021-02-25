@@ -9,3 +9,4 @@ class CreateProject(FlaskForm):
     goalAmount = IntegerField("goalAmount", validators=[DataRequired()])
     minPledge = IntegerField("minPledge", validators=[DataRequired()])
     thumbnailImg = FileField("thumbnailImg")
+    userId = IntegerField("userId")
