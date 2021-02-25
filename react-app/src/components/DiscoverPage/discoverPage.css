@@ -41,7 +41,7 @@
     border-radius: 5px;
 }
 
-/* .discoverPage-project-card-grid {
+.discoverPage-project-card-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 60%;
@@ -49,4 +49,25 @@
     margin-left: 20%;
     justify-items: center;
     justify-content: center;
-} */
+}
+
+
+#discoverPage-project-card-link {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.25s ease-in 0s;
+}
+
+#discoverPage-project-card-link:hover {
+    cursor: pointer;
+    transform: translateY(-6px);
+
+  }
+
+  #discoverPage-project-card {
+    width: 85%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow:2px 2px 5px rgb(224, 223, 223);
+  }

@@ -10,7 +10,15 @@ import './discoverPage.css';
 
 const DiscoverPage = () => {
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.session.user.id)
+    const userId = useSelector((state) => state.session.user.id);
+
+    const mostRecent = useSelector((state) => state.project.mostRecent)
+    const mostPopular = useSelector((state) => state.project.mostPopular)
+    const trending = useSelector((state) => state.project.trending)
+    const nearYou = useSelector((state) => state.project.nearYou)
+
+    const [cardFilter, setCardFilter] = useState([]);
+    const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
         dispatch(getDiscoverPageProjects("recent"))
@@ -19,11 +27,15 @@ const DiscoverPage = () => {
         dispatch(getDiscoverPageProjectsByLocation(userId))
     }, [dispatch])
 
-    const mostRecent = useSelector((state) => state.project.mostRecent)
-    const mostPopular = useSelector((state) => state.project.mostPopular)
-    const trending = useSelector((state) => state.project.trending)
+    useEffect(() => {
+        setLoaded(true)
+    }, [cardFilter])
 
-    const [cardFilter, setCardFilter] = useState(mostRecent)
+    useEffect(() => {
+        setCardFilter(mostRecent)
+    }, [mostRecent])
+
+
 
     const getPercentage = (project) => {
         // let sum = 0
@@ -59,6 +71,12 @@ const DiscoverPage = () => {
         return result;
     }
 
+    if(!loaded) {
+        return null;
+    }
+
+
+    console.log(cardFilter)
     return (
         <>
             <Navigation />
@@ -68,7 +86,7 @@ const DiscoverPage = () => {
                     <div className="discoverPage-grid-header-description">People around the world are raising money to help those in need.</div>
                     <div className="discoverPage-filter-box">
                         <p>Filters:</p>
-                        <button>Near You</button>
+                        <button onClick={(event) => setCardFilter(nearYou)}>Near You</button>
                         <button>Recently Added</button>
                         <button>Most Popular</button>
                         <button>Trending</button>
@@ -77,8 +95,8 @@ const DiscoverPage = () => {
                 <div className="discoverPage-project-card-grid">
                     {cardFilter &&
                         cardFilter.map((project) => (
-                            <Link id='homePage-project-card-link' key={project.id} to={`${project.id}`}>
-                                <div id="homePage-project-card" value={project.id}>
+                            <Link id='discoverPage-project-card-link' key={project.id} to={`${project.id}`}>
+                                <div id="discoverPage-project-card" value={project.id}>
                                     <div>
                                         <img id="projectCard-img" src={project.thumbnailImgUrl} alt=""></img>
                                     </div>
