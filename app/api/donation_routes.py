@@ -20,7 +20,8 @@ def create_donation():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@donation_routes.route('/donations/<int:donationId>', methods=["PUT", "DELETE"])
+@donation_routes.route('/donations/<int:donationId>',
+                       methods=["PUT", "DELETE"])
 def update_donation(donationId):
     donation = Donation.query.get(donationId)
     if request.method == "PUT":
