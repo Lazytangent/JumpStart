@@ -48,13 +48,6 @@ const setNearYou = (projects) => {
   }
 };
 
-const setSearchedFor = (projects) => {
-  return {
-    type: SET_SEARCHED_FOR,
-    projects
-  }
-};
-
 export const createProject = (name, description, goalAmount, minPledge, thumbnailImg) => async (dispatch) => {
   const formData = new FormData();
   formData.append('name', name);
