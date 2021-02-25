@@ -7,8 +7,14 @@
 li:last-child {
   /* margin-top: 0.5rem; */
   /* background-color: yellow; */
-  border-bottom: 1px solid lightgrey;
-  margin-bottom: 2rem;
+  /* border-bottom: 1px solid lightgrey; */
+  /* margin-bottom: 2rem; */
+}
+
+.a-link {
+  margin-bottom: 0px;
+  text-decoration: none;
+  border: none;
 }
 
 .searchBar-input {
@@ -23,12 +29,13 @@ li:last-child {
 }
 .searchBarMatches {
   list-style-type: none;
-  /* margin-bottom: 0.5rem; */
   border-top: 1px solid lightgrey;
   min-height: 30px;
   padding: 1rem 0rem;
   display: flex;
+  color: black;
 }
+
 .searchBarMatches-content {
   padding-left: 1rem;
   float: left;

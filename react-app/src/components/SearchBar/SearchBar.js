@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 // import { useDispatch } from "react-redux";
+import { NavLink, Link } from 'react-router-dom'
 import logo_40x40 from "./logo_40x40.png";
 import csc from "country-state-city";
 import { getHomePageProjects } from "../../store/project";
 import { SearchModal, useModalContext } from "../../context/Modal";
 import "./SearchBar.css";
+import Navigation from "../Navigation/navigation";
 
 const SearchBar = () => {
   // const dispatch = useDispatch();
@@ -93,41 +95,43 @@ const SearchBar = () => {
               {matches &&
 
                 matches.map((project, idx) => (
-                  <li key={idx} className="searchBarMatches">
-                    {!project.thumbnailImgUrl && (
-                      <div className="logo_30x30-container">
-                        <img
-                          className="logo_30x30"
-                          src={logo_40x40}
-                          alt="A small heart with an EKG graph of the electrical impulses that move through the heart displayed inside of it."
-                        />
-                      </div>
-                    )}
-                    {project.thumbnailImgUrl && (
-                      <div className="logo_30x30-container">
-                        <img
-                          className="logo_30x30"
-                          src={project.thumbnailImgUrl}
-                          alt="A small heart with an EKG graph of the electrical impulses that move through the heart displayed inside of it."
-                        />
-                      </div>
-                    )}
-                    {search && (
-                      <>
-                        <div className="searchBarMatches-content">
-                          <p className="projectName">{project.name}</p>
-                          <p>By {project.user.username}</p>
+                  <NavLink to={`/${project.id}`} className="a-link">
+                    <li key={idx} className="searchBarMatches">
+                      {!project.thumbnailImgUrl && (
+                        <div className="logo_30x30-container">
+                          <img
+                            className="logo_30x30"
+                            src={logo_40x40}
+                            alt="A small heart with an EKG graph of the electrical impulses that move through the heart displayed inside of it."
+                          />
                         </div>
-                        {/* <div className="searchBarMatches-content">
+                      )}
+                      {project.thumbnailImgUrl && (
+                        <div className="logo_30x30-container">
+                          <img
+                            className="logo_30x30"
+                            src={project.thumbnailImgUrl}
+                            alt="A small heart with an EKG graph of the electrical impulses that move through the heart displayed inside of it."
+                          />
+                        </div>
+                      )}
+                      {search && (
+                        <>
+                          <div className="searchBarMatches-content">
+                            <p className="projectName">{project.name}</p>
+                            <p>By {project.user.username}</p>
+                          </div>
+                          {/* <div className="searchBarMatches-content">
                           <p>Created by: {project.user.username}</p>
                           <p>
                           Created by: {project.user.city},{" "}
                           {getStateAbbreviation(project)}
                           </p>
                         </div> */}
-                      </>
-                    )}
-                  </li>
+                        </>
+                      )}
+                    </li>
+                  </NavLink>
                 ))
 
               }
