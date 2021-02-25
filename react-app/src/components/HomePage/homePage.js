@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { getHomePageProjects } from '../../store/project.js';
@@ -46,6 +46,7 @@ document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 storeScroll();
 
 const HomePage = ({ setAuthenticated, setShowModal }) => {
+    const [backgroundImg, setBackgroundImg] = useState("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697255+(3).jpg")
 
     const {
         showLoginModal,
@@ -64,6 +65,18 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         dispatch(getHomePageProjects("popular"));
         dispatch(getHomePageProjects("recent"));
         dispatch(getHomePageProjects("trending"));
+
+        setTimeout(() => {
+            setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697256+(2).jpg")
+        }, 2000)
+
+        // setTimeout(() => {
+        //     setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697257+(4).jpg")
+        // }, 3500)
+
+        setTimeout(() => {
+            setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697262+(2).jpg")
+        }, 4500)
     }, [dispatch])
 
     const mostPopular = useSelector((state) => state.project.mostPopular)
@@ -103,6 +116,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         })
         return result;
     }
+
 
     return (
         <>
@@ -198,7 +212,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
             </nav>
             <div className="homePage">
                 <div className="homePage-image-container">
-                    {/* <img className="homePage-image" src="" alt=""></img> */}
+                    <img className="homePage-image" src={backgroundImg} alt=""></img>
                 </div>
                 <div className="homePage-description-box">
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>

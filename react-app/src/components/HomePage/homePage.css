@@ -328,13 +328,14 @@
 .navBar-buttons-create {
   height: 35px;
   width: 160px;
-  font-size: 20px;
+  font-size: 18px;
   background-color: transparent;
   color: white;
   border-width: 2px;
   border-color: white;
   border-radius: 3px;
   display: inline-block;
+  margin-bottom: 3%;
 }
 
 .navBar-buttons-create:hover {
