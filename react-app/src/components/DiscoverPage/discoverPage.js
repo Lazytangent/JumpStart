@@ -87,9 +87,9 @@ const DiscoverPage = () => {
                     <div className="discoverPage-filter-box">
                         <p>Filters:</p>
                         <button onClick={(event) => setCardFilter(nearYou)}>Near You</button>
-                        <button>Recently Added</button>
-                        <button>Most Popular</button>
-                        <button>Trending</button>
+                        <button onClick={(event) => setCardFilter(mostRecent)}>Recently Added</button>
+                        <button onClick={(event) => setCardFilter(mostPopular)}>Most Popular</button>
+                        <button onClick={(event) => setCardFilter(trending)}>Trending</button>
                     </div>
                 </div>
                 <div className="discoverPage-project-card-grid">

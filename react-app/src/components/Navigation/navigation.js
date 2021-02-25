@@ -58,6 +58,7 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
                   Create a project
                   </button>
               </div>
+              {!user &&
               <div id="navigation-button-container">
                   {!user && (
                   <button
@@ -74,7 +75,8 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
                   {showSignUpModal && (
                   <SignUpForm setAuthenticated={setAuthenticated} />
                   )}
-              </div>
+              </div>}
+              {!user &&
               <div id="navigation-button-container">
                   {!user && (
                   <button
@@ -91,7 +93,11 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
                   {showLoginModal && (
                   <LoginForm setAuthenticated={setAuthenticated} />
                   )}
-              </div>
+              </div>}
+              {user &&
+                <div>
+                     <LogoutButton setAuthenticated={setAuthenticated} />
+                </div>}
               <div id="navigation-button-container">
                   {
                   <button
@@ -107,9 +113,6 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
                   </button>
                   }
                   {showSearchBarModal && <SearchBar />}
-              </div>
-              <div>
-                  {user && <LogoutButton setAuthenticated={setAuthenticated} />}
               </div>
           </div>
       </ul>

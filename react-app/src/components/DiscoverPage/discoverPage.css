@@ -7,8 +7,8 @@
 .discoverPage-grid {
     display: grid;
     height: 15%;
-    width: 60%;
-    margin-left: 20%;
+    width: 58%;
+    margin-left: 21%;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 25% 25% 15% 35%;
 }
