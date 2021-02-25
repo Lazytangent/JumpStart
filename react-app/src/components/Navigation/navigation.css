@@ -24,7 +24,7 @@
   .navigation-second-fraction {
     grid-column-start: 3;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-direction: row-reverse;
     align-items: center;
   }
