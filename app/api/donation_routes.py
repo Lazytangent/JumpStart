@@ -22,7 +22,15 @@ def create_donation():
 
 @donation_routes.route('/donations/<int:donationId>', methods=["PUT", "DELETE"])
 def update_donation(donationId):
+    donation = Donation.query.get(donationId)
     if request.method == "PUT":
-        pass
+        form = CreateDonation()
+        if form.validate_on_submit():
+            form.populate_obj(donation)
+            db.session.commit()
+            return donation.to_dict()
+        return {'errors': validation_errors_to_error_messages(form.errors)}
     elif request.method == "DELETE":
-        pass
+        db.session.delete(donation)
+        db.session.commit()
+        return {'message': 'Delete was successful'}
