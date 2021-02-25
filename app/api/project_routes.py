@@ -6,7 +6,7 @@ from app.config import Config
 from app.forms import CreateProject
 from app.helpers import allowed_file, upload_file_to_s3, \
     validation_errors_to_error_messages
-from app.models import Project, Donation, User, db
+from app.models import Project, Donation, User, Image, db
 
 project_routes = Blueprint('projects', __name__)
 
@@ -96,12 +96,22 @@ def create_new_project():
         thumbnailImgUrl = None
         if 'thumbnailImg' in request.files:
             image = request.files['thumbnailImg']
-            image.filename = secure_filename(image.filename)
-            thumbnailImgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
+            if allowed_file(image.filename):
+                image.filename = secure_filename(image.filename)
+                thumbnailImgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
         project = Project()
         form.populate_obj(project)
         project.thumbnailImgUrl = thumbnailImgUrl
         db.session.add(project)
+        db.session.commit()
+        if 'images' in request.files:
+            images = request.files.getlist('images')
+            for image in images:
+                if allowed_file(image.filename):
+                    image.filename = secure_filename(image.filename)
+                    image_url = upload_file_to_s3(image, Config.S3_BUCKET)
+                    image = Image(projectId=project.id, imageUrl=image_url)
+                    db.session.add(image)
         db.session.commit()
         return project.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
