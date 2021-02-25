@@ -39,7 +39,8 @@
   height: 100%;
   width: 100%;
   object-fit: fill;
-  border-radius: 10px 0% 20% 10px;
+  border-radius: 10px 0 0 10px;
+  /* clip-path: ellipse(250px at 0% 50%) */
 }
 
 .homePage-description-box-body {
