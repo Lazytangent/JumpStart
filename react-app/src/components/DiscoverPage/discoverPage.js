@@ -19,6 +19,7 @@ const DiscoverPage = () => {
 
     const [cardFilter, setCardFilter] = useState([]);
     const [loaded, setLoaded] = useState(false)
+    const [selected, setSelected] = useState("")
 
     useEffect(() => {
         dispatch(getDiscoverPageProjects("recent"))
@@ -75,21 +76,20 @@ const DiscoverPage = () => {
         return null;
     }
 
-
-    console.log(cardFilter)
     return (
         <>
+        {userId &&
+          <div>
             <Navigation />
             <div className="discoverPage">
                 <div className="discoverPage-grid">
                     <div className="discoverPage-grid-header">Discover new causes </div>
                     <div className="discoverPage-grid-header-description">People around the world are raising money to help those in need.</div>
                     <div className="discoverPage-filter-box">
-                        <p>Filters:</p>
-                        <button onClick={(event) => setCardFilter(nearYou)}>Near You</button>
-                        <button onClick={(event) => setCardFilter(mostRecent)}>Recently Added</button>
-                        <button onClick={(event) => setCardFilter(mostPopular)}>Most Popular</button>
-                        <button onClick={(event) => setCardFilter(trending)}>Trending</button>
+                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(mostRecent)}>Recently Added</button>
+                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(mostPopular)}>Most Popular</button>
+                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(trending)}>Trending</button>
+                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(nearYou)}>Near You</button>
                     </div>
                 </div>
                 <div className="discoverPage-project-card-grid">
@@ -114,6 +114,8 @@ const DiscoverPage = () => {
                         ))}
                 </div>
             </div>
+        </div>
+        }
         </>
     )
 }
