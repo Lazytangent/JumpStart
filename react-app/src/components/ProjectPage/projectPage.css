@@ -3,41 +3,40 @@
 .thumbnail img{
   /* height: 430px; */
   max-height: 100%;
-  max-width: 100%;
+  width: 100%;
   /* width: 730px; */
 
   /* display: block; */
   /* height: auto; */
-
+  object-fit: cover;
 }
 
 .project-container {
   margin-top: 50px;
 }
 
-.item1 { grid-area: header; }
+.item1 { grid-area: header;}
 .item2 { grid-area: menu; }
-.item3 { grid-area: main;
-        max-width: 80%;
-}
+.item3 { grid-area: main;}
 .item4 { grid-area: right; }
 .item5 { grid-area: footer; }
 .item6 {grid-area: a;}
 
 .grid-container {
   display: grid;
-  width: 70%;
+  width: 80%;
 
   margin: 0 auto;
   min-width: 800px;
+  grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
     'header header header header header header'
     'main main main main right right'
-    'menu footer footer footer footer footer'
-    'a a a a a a';
-  grid-gap: 10px;
+    'footer footer footer footer right right';
+    /* 'a a a a right right'; */
+  grid-gap: 20px;
   background-color: #2196F3;
-  padding: 10px;
+  padding: 20px;
 }
 
 .grid-container > div {
@@ -45,4 +44,12 @@
   text-align: center;
   padding: 20px 0;
   font-size: 30px;
+}
+
+.sticky-container {
+  background-color: blue;
+  height: 560px;
+  position: sticky;
+  top: 30px;
+
 }

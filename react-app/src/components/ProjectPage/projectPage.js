@@ -30,17 +30,27 @@ const ProjectPage = () => {
 
           <div class="grid-container">
             <div class="item1">Header</div>
-            <div class="item2">Menu</div>
+            {/* <div class="item2">Menu</div> */}
             <div class="item3">
-              {/* <div className="item3 thumbnail">
+              <div className="item3 thumbnail">
                 <img src={project.thumbnailImgUrl}></img>
-              </div> */}
-              Main
+              </div>
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
+              as;ldkjfa;slkdfja;sldkfja;sldfkj
             </div>
             {/* <div class="item3">Main</div> */}
-            <div class="item4">Donations</div>
-            <div class="item5">Footer</div>
-            <div class="item6">Another Footer</div>
+            <div class="item4"><div class="sticky-container">Donations</div></div>
+            <div class="item5">Comments</div>
+            {/* <div class="item6">Another Footer</div> */}
 
           </div>
         </div>
