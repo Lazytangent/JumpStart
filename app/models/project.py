@@ -17,8 +17,14 @@ class Project(db.Model):
     images = db.relationship("Image", back_populates="project")
 
     def to_dict(self):
-        return {"name": self.name, "userId": self.userId, "id": self.id,
-                "thumbnailImgUrl": self.thumbnailImgUrl, "description":
-                self.description, "goalAmount": self.goalAmount, "minPledge":
-                self.minPledge, "donations": [donation.to_dict() for donation
-                                              in self.donations], "user": self.user.to_dict()}
+        return {
+            "name": self.name,
+            "userId": self.userId,
+            "id": self.id,
+            "thumbnailImgUrl": self.thumbnailImgUrl,
+            "description": self.description,
+            "goalAmount": self.goalAmount,
+            "minPledge": self.minPledge,
+            "donations": [donation.to_dict() for donation in self.donations],
+            "user": self.user.to_dict()
+        }
