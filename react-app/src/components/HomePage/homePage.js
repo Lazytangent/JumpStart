@@ -109,94 +109,90 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
             <nav>
                 <ul className="navBar">
                     <div className="navBar-first-fraction">
-                    <div>
-                        {!user && (
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-login"
+                        <NavLink
+                            className="navBar-home"
+                            to="/"
+                            exact={true}
+                            activeClassName="active"
                             onClick={() => {
                             setShowSignUpModal(false);
-                            setShowLoginModal((prev) => !prev);
-                            }}
-                        >
-                            Login
-                        </button>
-                        )}
-                        {showLoginModal && (
-                        <LoginForm setAuthenticated={setAuthenticated} />
-                        )}
-                    </div>
-                    <div>
-                        {!user && (
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-signup"
-                            onClick={() => {
                             setShowLoginModal(false);
-                            setShowSignUpModal((prev) => !prev);
                             }}
                         >
-                            Sign Up
-                        </button>
-                        )}
-                        {showSignUpModal && (
-                        <SignUpForm setAuthenticated={setAuthenticated} />
-                        )}
-                    </div>
+                            JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
+                        </NavLink>
                     </div>
                     <div className="navBar-second-fraction">
-                    <NavLink
-                        className="navBar-home"
-                        to="/"
-                        exact={true}
-                        activeClassName="active"
-                        onClick={() => {
-                        setShowSignUpModal(false);
-                        setShowLoginModal(false);
-                        }}
-                    >
-                        JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
-                    </NavLink>
-                    </div>
-                    <div className="navBar-third-fraction">
-                    <div>
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-create"
-                        onClick={() => {
-                            if (user) {
-                            setShowLoginModal(false);
-                            setShowSignUpModal(false);
-                            history.push("/new-project");
-                            } else {
-                            setShowLoginModal((prev) => !prev);
-                            setShowSignUpModal(false);
-                            }
-                        }}
-                        >
-                        Create a project
-                        </button>
-                    </div>
-                    <div>
-                        {
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-search"
+                        <div id="navBar-button-container">
+                            <button
+                            className="navBar-buttons-create"
                             onClick={() => {
-                            setShowSignUpModal(false);
-                            setShowLoginModal(false);
-                            setShowSearchBarModal((prev) => !prev);
+                                if (user) {
+                                setShowLoginModal(false);
+                                setShowSignUpModal(false);
+                                history.push("/new-project");
+                                } else {
+                                setShowLoginModal((prev) => !prev);
+                                setShowSignUpModal(false);
+                                }
                             }}
-                        >
-                            Search
-                        </button>
-                        }
-                        {showSearchBarModal && <SearchBar />}
-                    </div>
-                    </div>
-
-                    <div>
-                    {user && <LogoutButton setAuthenticated={setAuthenticated} />}
+                            >
+                            Create a project
+                            </button>
+                        </div>
+                        <div id="navBar-button-container">
+                            {!user && (
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-signup"
+                                onClick={() => {
+                                setShowLoginModal(false);
+                                setShowSignUpModal((prev) => !prev);
+                                }}
+                            >
+                                Sign up
+                            </button>
+                            )}
+                            {showSignUpModal && (
+                            <SignUpForm setAuthenticated={setAuthenticated} />
+                            )}
+                        </div>
+                        <div id="navBar-button-container">
+                            {!user && (
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-login"
+                                onClick={() => {
+                                setShowSignUpModal(false);
+                                setShowLoginModal((prev) => !prev);
+                                }}
+                            >
+                                Login
+                            </button>
+                            )}
+                            {showLoginModal && (
+                            <LoginForm setAuthenticated={setAuthenticated} />
+                            )}
+                        </div>
+                        <div id="navBar-button-container">
+                            {
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-search"
+                                onClick={() => {
+                                setShowSignUpModal(false);
+                                setShowLoginModal(false);
+                                setShowSearchBarModal((prev) => !prev);
+                                }}
+                            >
+                                <i className="far fa-search"></i>Search
+                            </button>
+                            }
+                            {showSearchBarModal && <SearchBar />}
+                        </div>
+                        <div>
+                            {user && <LogoutButton setAuthenticated={setAuthenticated} />}
+                        </div>
                     </div>
                 </ul>
             </nav>
@@ -206,6 +202,10 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                 </div>
                 <div className="homePage-description-box">
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
+                    <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
+                    <div className="homePage-description-box-button-container">
+                        <button className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
+                    </div>
                 </div>
                 <div className="homePage-grid">
                     <h2 className="homePage-mostPopular-header">Most popular causes</h2>

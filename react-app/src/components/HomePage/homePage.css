@@ -30,7 +30,7 @@
     left:17.5%;
     background-color: white;
     border-radius: 10px;
-    box-shadow:3px 3px 3px 1px rgba(0, 0, 0, 0.1);
+    box-shadow:2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 .homePage-description-image {
@@ -40,6 +40,45 @@
   width: 100%;
   object-fit: fill;
   border-radius: 10px 0% 20% 10px;
+}
+
+.homePage-description-box-body {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  margin-left: 2%;
+  margin-top: 5%;
+  font-size: 25px;
+}
+
+.homePage-description-box-button-container {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  margin-top: 16.5%;
+  margin-left: 38%;
+  display: inline-flex;
+}
+
+.homePage-description-box-button {
+  margin: 0;
+  padding: 0;
+  width: 155px;
+  height: 45px;
+  font-size: 30px;
+  border: 1px solid #02a95c;
+  background-color: white;
+  border-radius: 3px;
+  color:#02a95c;
+}
+
+.homePage-description-box-button:hover {
+  border: 1px solid #049451;
+  color:#049451;
+}
+
+.description-box-logo {
+  margin-top: 2%;
+  height: 1.5rem;
+  padding-left: 1%;
 }
 
 .homePage-grid {
@@ -189,14 +228,14 @@
     transform: translate(5px);
 }
 
-/* nav bar changing on scroll */
+/* nav bar for home page changing on scroll */
 
 .navBar {
   height: 8vh;
   width: 100%;
   display: grid;
   position: fixed;
-  grid-template-columns: 17.5% 20% 25% 20% 17.5%;
+  grid-template-columns: 17.5% 32.5% 32.5% 17.5%;
   grid-template-rows: 1fr;
   margin: 0;
   padding: 0;
@@ -204,6 +243,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0);
   z-index: 1;
+  transition: background-color 0.6s;
 }
 
 .navBar-first-fraction {
@@ -214,15 +254,17 @@
 }
 
 .navBar-second-fraction {
+  grid-column-start: 3;
   display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
   align-items: center;
-  justify-content: center;
 }
 
-.navBar-third-fraction {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+.navBar-home {
+  display: inline-flex;
+  text-decoration: none;
+  color: white;
 }
 
 .navBar-home.active {
@@ -232,43 +274,23 @@
 }
 
 .navBar-logo {
-  padding-top: 5%;
+  padding-top: 2.5%;
   height: 1.5rem;
   padding-left: 1%;
   filter:  brightness(0) invert(1);
 }
 
-button:hover {
-  cursor: pointer;
-}
-
-.navBar-buttons-login {
-  height: 30px;
-  width: 55px;
-  font-size: 20px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid transparent;
-  margin-right: 30px;
-}
-
-.navBar-buttons-signup {
-  height: 30px;
-  width: 80px;
-  font-size: 20px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid transparent;
-}
-
+#navBar-buttons,
 .navBar-buttons-create {
-  height: 30px;
-  width: 150px;
-  font-size: 20px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid transparent;
-  margin-right: 30px;
+ display: flex;
+}
+
+.far {
+  display: inline;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 5%;
+  margin-right: 4px;
 }
 
 .navBar-buttons-search {
@@ -277,13 +299,55 @@ button:hover {
   font-size: 20px;
   background-color: transparent;
   color: white;
-  border: 1px solid transparent;
+  border: transparent;
+}
+
+.navBar-buttons-login {
+  height: 30px;
+  width: 55px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border:transparent;
+}
+
+.navBar-buttons-signup {
+  height: 30px;
+  width: 80px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border:transparent;
+}
+
+#navBar-button-container {
+  text-align: center;
+
+}
+
+.navBar-buttons-create {
+  height: 35px;
+  width: 160px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border-width: 2px;
+  border-color: white;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.navBar-buttons-create:hover {
+  color: rgb(206, 206, 206);
+  border-color: rgb(206, 206, 206);
+  /* temporary */
 }
 
 #navBar-buttons:hover {
-  border: 1px solid white;
+  color: rgb(206, 206, 206);
 }
 
+/* nav bar for home page changing on scroll */
 
 html:not([data-scroll="0"]) .navBar {
   height: 8vh;
@@ -305,19 +369,22 @@ html:not([data-scroll="0"]) #navBar-buttons {
 }
 
 html:not([data-scroll="0"]) #navBar-buttons:hover {
-    border: 1px solid black;
+  color: rgb(124, 124, 124);
 }
 
-.navBar-home {
-    display: inline-flex;
-    text-decoration: none;
-    color: white;
+
+html:not([data-scroll="0"]) .navBar-buttons-create {
+  color:white;
+  background-color:#02a95c ;
+  border-color: #02a95c;
+  border-radius: 3px;
 }
 
-.navBar {
-  box-sizing: border-box;
-  padding: 1em;
-  transition: background-color 0.6s;
+html:not([data-scroll="0"]) .navBar-buttons-create:hover {
+  color:white;
+  background-color:#049451 ;
+  border-color: #049451;
+  border-radius: 3px;
 }
 
 /* progress bar */
@@ -393,4 +460,8 @@ html:not([data-scroll="0"]) #navBar-buttons:hover {
   100% {
     background-position: 50px 50px;
   }
+}
+
+button:hover {
+  cursor: pointer;
 }
