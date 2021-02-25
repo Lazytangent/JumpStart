@@ -159,6 +159,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             Create a project
                             </button>
                         </div>
+                        {!user &&
                         <div id="navBar-button-container">
                             {!user && (
                             <button
@@ -175,8 +176,9 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             {showSignUpModal && (
                             <SignUpForm setAuthenticated={setAuthenticated} />
                             )}
-                        </div>
-                        <div id="navBar-button-container">
+                        </div>}
+                        {!user &&
+                            <div id="navBar-button-container">
                             {!user && (
                             <button
                             id="navBar-buttons"
@@ -192,7 +194,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             {showLoginModal && (
                             <LoginForm setAuthenticated={setAuthenticated} />
                             )}
-                        </div>
+                        </div>}
+                        { user &&
+                        <div>
+                            <LogoutButton setAuthenticated={setAuthenticated} />
+                        </div>}
                         <div id="navBar-button-container">
                             {
                             <button
@@ -208,9 +214,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             </button>
                             }
                             {showSearchBarModal && <SearchBar />}
-                        </div>
-                        <div>
-                            {user && <LogoutButton setAuthenticated={setAuthenticated} />}
                         </div>
                     </div>
                 </ul>
@@ -281,7 +284,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             </div>
                         </div>
                     </div>
-                    <h2 className="homePage-nearYou-header">Causes near you</h2>
+                    <h2 className="homePage-nearYou-header">Trending causes</h2>
                     <div className="homePage-grid-near-you">
                         <div id="homePage-project-grid">
                             {trending &&
