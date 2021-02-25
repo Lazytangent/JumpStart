@@ -7,7 +7,8 @@ const DiscoverPage = () => {
         <>
             <Navigation />
             <div className="discoverPage">
-                <h2>DiscoverPage</h2>
+                <h1 className="discoverPage-header">Start helping those in need</h1>
+                
             </div>
         </>
     )

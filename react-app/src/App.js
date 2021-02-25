@@ -10,7 +10,7 @@ import HomePage from "./components/HomePage/homePage"
 import ProjectPage from "./components/ProjectPage/projectPage"
 import { authenticate } from './store/session';
 import CreateProject from './components/CreateProject';
-import DiscoverPage from './components/DiscoverPage/discoverPage';
+import DiscoverPage from './components/DiscoverPage/discoverPage.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -53,14 +53,14 @@ function App() {
         <Route path="/" exact={true} authenticated={authenticated}>
           <HomePage />
         </Route>
+        <Route path="/discover" exact={true} authenticated={authenticated}>
+          <DiscoverPage />
+        </Route>
         <Route path="/:projectId" exact={true} authenticated={authenticated}>
           <ProjectPage />
         </Route>
         <Route path="/new-project" exact={true} authenticated={authenticated}>
           <CreateProject />
-        </Route>
-        <Route path="/discover" exact={true} authenticated={authenticated}>
-          <DiscoverPage />
         </Route>
       </Switch>
     </>

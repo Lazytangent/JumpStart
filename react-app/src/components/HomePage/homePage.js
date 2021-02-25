@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { getHomePageProjects } from '../../store/project.js';
@@ -46,6 +46,7 @@ document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 storeScroll();
 
 const HomePage = ({ setAuthenticated, setShowModal }) => {
+    const [backgroundImg, setBackgroundImg] = useState("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697255+(3).jpg")
 
     const {
         showLoginModal,
@@ -64,6 +65,18 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         dispatch(getHomePageProjects("popular"));
         dispatch(getHomePageProjects("recent"));
         dispatch(getHomePageProjects("trending"));
+
+        setTimeout(() => {
+            setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697256+(2).jpg")
+        }, 3000)
+
+        // setTimeout(() => {
+        //     setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697257+(4).jpg")
+        // }, 3500)
+
+        setTimeout(() => {
+            setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697262+(2).jpg")
+        }, 5500)
     }, [dispatch])
 
     const mostPopular = useSelector((state) => state.project.mostPopular)
@@ -104,109 +117,114 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         return result;
     }
 
+    const donateButton = (event) => {
+        event.preventDefault()
+        history.push("/discover")
+    }
+
+
     return (
         <>
             <nav>
                 <ul className="navBar">
                     <div className="navBar-first-fraction">
-                    <div>
-                        {!user && (
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-login"
+                        <NavLink
+                            className="navBar-home"
+                            to="/"
+                            exact={true}
+                            activeClassName="active"
                             onClick={() => {
                             setShowSignUpModal(false);
-                            setShowLoginModal((prev) => !prev);
-                            }}
-                        >
-                            Login
-                        </button>
-                        )}
-                        {showLoginModal && (
-                        <LoginForm setAuthenticated={setAuthenticated} />
-                        )}
-                    </div>
-                    <div>
-                        {!user && (
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-signup"
-                            onClick={() => {
                             setShowLoginModal(false);
-                            setShowSignUpModal((prev) => !prev);
                             }}
                         >
-                            Sign Up
-                        </button>
-                        )}
-                        {showSignUpModal && (
-                        <SignUpForm setAuthenticated={setAuthenticated} />
-                        )}
-                    </div>
+                            JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
+                        </NavLink>
                     </div>
                     <div className="navBar-second-fraction">
-                    <NavLink
-                        className="navBar-home"
-                        to="/"
-                        exact={true}
-                        activeClassName="active"
-                        onClick={() => {
-                        setShowSignUpModal(false);
-                        setShowLoginModal(false);
-                        }}
-                    >
-                        JumpStart<img className="navBar-logo" src="logo.png" alt=""></img>
-                    </NavLink>
-                    </div>
-                    <div className="navBar-third-fraction">
-                    <div>
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-create"
-                        onClick={() => {
-                            if (user) {
-                            setShowLoginModal(false);
-                            setShowSignUpModal(false);
-                            history.push("/new-project");
-                            } else {
-                            setShowLoginModal((prev) => !prev);
-                            setShowSignUpModal(false);
-                            }
-                        }}
-                        >
-                        Create a project
-                        </button>
-                    </div>
-                    <div>
-                        {
-                        <button
-                        id="navBar-buttons"
-                        className="navBar-buttons-search"
+                        <div id="navBar-button-container">
+                            <button
+                            className="navBar-buttons-create"
                             onClick={() => {
-                            setShowSignUpModal(false);
-                            setShowLoginModal(false);
-                            setShowSearchBarModal((prev) => !prev);
+                                if (user) {
+                                setShowLoginModal(false);
+                                setShowSignUpModal(false);
+                                history.push("/new-project");
+                                } else {
+                                setShowLoginModal((prev) => !prev);
+                                setShowSignUpModal(false);
+                                }
                             }}
-                        >
-                            Search
-                        </button>
-                        }
-                        {showSearchBarModal && <SearchBar />}
-                    </div>
-                    </div>
-
-
-                    <div>
-                    {user && <LogoutButton setAuthenticated={setAuthenticated} />}
+                            >
+                            Create a project
+                            </button>
+                        </div>
+                        <div id="navBar-button-container">
+                            {!user && (
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-signup"
+                                onClick={() => {
+                                setShowLoginModal(false);
+                                setShowSignUpModal((prev) => !prev);
+                                }}
+                            >
+                                Sign up
+                            </button>
+                            )}
+                            {showSignUpModal && (
+                            <SignUpForm setAuthenticated={setAuthenticated} />
+                            )}
+                        </div>
+                        <div id="navBar-button-container">
+                            {!user && (
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-login"
+                                onClick={() => {
+                                setShowSignUpModal(false);
+                                setShowLoginModal((prev) => !prev);
+                                }}
+                            >
+                                Login
+                            </button>
+                            )}
+                            {showLoginModal && (
+                            <LoginForm setAuthenticated={setAuthenticated} />
+                            )}
+                        </div>
+                        <div id="navBar-button-container">
+                            {
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-search"
+                                onClick={() => {
+                                setShowSignUpModal(false);
+                                setShowLoginModal(false);
+                                setShowSearchBarModal((prev) => !prev);
+                                }}
+                            >
+                                <i className="far fa-search"></i>Search
+                            </button>
+                            }
+                            {showSearchBarModal && <SearchBar />}
+                        </div>
+                        <div>
+                            {user && <LogoutButton setAuthenticated={setAuthenticated} />}
+                        </div>
                     </div>
                 </ul>
             </nav>
             <div className="homePage">
                 <div className="homePage-image-container">
-                    {/* <img className="homePage-image" src="" alt=""></img> */}
+                    <img className="homePage-image" src={backgroundImg} alt=""></img>
                 </div>
                 <div className="homePage-description-box">
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
+                    <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
+                    <div className="homePage-description-box-button-container">
+                        <button onClick={(event) => donateButton(event)} className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
+                    </div>
                 </div>
                 <div className="homePage-grid">
                     <h2 className="homePage-mostPopular-header">Most popular causes</h2>
@@ -232,7 +250,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <Link to='/discover' id="homePage-see-more-text" >See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -259,7 +277,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -286,7 +304,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                             </div>
                         </div>
                     </div>

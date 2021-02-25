@@ -1,3 +1,7 @@
 .discoverPage {
-    height: 200vh;
+    margin-top: 10vh;
+}
+
+.discoverPage-header {
+    padding-top: 200px;
 }

@@ -26,96 +26,92 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
   return (
     <nav>
       <ul className="navigation">
-        <div className="navigation-first-fraction">
-          <div>
-            {!user && (
-              <button
-              id="navigation-buttons"
-              className="navigation-buttons-login"
-                onClick={() => {
-                  setShowSignUpModal(false);
-                  setShowLoginModal((prev) => !prev);
-                }}
-              >
-                Login
-              </button>
-            )}
-            {showLoginModal && (
-              <LoginForm setAuthenticated={setAuthenticated} />
-            )}
-          </div>
-          <div>
-            {!user && (
-              <button
-              id="navigation-buttons"
-              className="navigation-buttons-signup"
-                onClick={() => {
-                  setShowLoginModal(false);
-                  setShowSignUpModal((prev) => !prev);
-                }}
-              >
-                Sign Up
-              </button>
-            )}
-            {showSignUpModal && (
-              <SignUpForm setAuthenticated={setAuthenticated} />
-            )}
-          </div>
-        </div>
-        <div className="navigation-second-fraction">
-          <NavLink
-            className="navigation-home"
-            to="/"
-            exact={true}
-            activeClassName="active"
-            onClick={() => {
-              setShowSignUpModal(false);
-              setShowLoginModal(false);
-            }}
-          >
-            JumpStart<img className="navigation-logo" src="logo.png" alt=""></img>
-          </NavLink>
-        </div>
-        <div className="navigation-third-fraction">
-          <div>
-            <button
-              id="navigation-buttons"
-              className="navigation-buttons-create"
-              onClick={() => {
-                if (user) {
-                  setShowLoginModal(false);
-                  setShowSignUpModal(false);
-                  history.push("/new-project");
-                } else {
-                  setShowLoginModal((prev) => !prev);
-                  setShowSignUpModal(false);
-                }
-              }}
-            >
-              Create a project
-            </button>
-          </div>
-          <div>
-            {
-              <button
-              id="navigation-buttons"
-              className="navigation-buttons-search"
-                onClick={() => {
+          <div className="navigation-first-fraction">
+              <NavLink
+                  className="navigation-home"
+                  to="/"
+                  exact={true}
+                  activeClassName="active"
+                  onClick={() => {
                   setShowSignUpModal(false);
                   setShowLoginModal(false);
-                  setShowSearchBarModal((prev) => !prev);
-                }}
+                  }}
               >
-                Search
-              </button>
-            }
-            {showSearchBarModal && <SearchBar />}
+                  JumpStart<img className="navigation-logo" src="logo.png" alt=""></img>
+              </NavLink>
           </div>
-        </div>
-
-        <div>
-          {user && <LogoutButton setAuthenticated={setAuthenticated} />}
-        </div>
+          <div className="navigation-second-fraction">
+              <div id="navigation-button-container">
+                  <button
+                  className="navigation-buttons-create"
+                  onClick={() => {
+                      if (user) {
+                      setShowLoginModal(false);
+                      setShowSignUpModal(false);
+                      history.push("/new-project");
+                      } else {
+                      setShowLoginModal((prev) => !prev);
+                      setShowSignUpModal(false);
+                      }
+                  }}
+                  >
+                  Create a project
+                  </button>
+              </div>
+              <div id="navigation-button-container">
+                  {!user && (
+                  <button
+                  id="navigation-buttons"
+                  className="navigation-buttons-signup"
+                      onClick={() => {
+                      setShowLoginModal(false);
+                      setShowSignUpModal((prev) => !prev);
+                      }}
+                  >
+                      Sign up
+                  </button>
+                  )}
+                  {showSignUpModal && (
+                  <SignUpForm setAuthenticated={setAuthenticated} />
+                  )}
+              </div>
+              <div id="navigation-button-container">
+                  {!user && (
+                  <button
+                  id="navigation-buttons"
+                  className="navigation-buttons-login"
+                      onClick={() => {
+                      setShowSignUpModal(false);
+                      setShowLoginModal((prev) => !prev);
+                      }}
+                  >
+                      Login
+                  </button>
+                  )}
+                  {showLoginModal && (
+                  <LoginForm setAuthenticated={setAuthenticated} />
+                  )}
+              </div>
+              <div id="navigation-button-container">
+                  {
+                  <button
+                  id="navigation-buttons"
+                  className="navigation-buttons-search"
+                      onClick={() => {
+                      setShowSignUpModal(false);
+                      setShowLoginModal(false);
+                      setShowSearchBarModal((prev) => !prev);
+                      }}
+                  >
+                      <i className="far fa-search"></i>Search
+                  </button>
+                  }
+                  {showSearchBarModal && <SearchBar />}
+              </div>
+              <div>
+                  {user && <LogoutButton setAuthenticated={setAuthenticated} />}
+              </div>
+          </div>
       </ul>
     </nav>
   );
