@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { createProject } from '../../store/project'
+import "./CreateProject.css"
 
 const CreateProject = () => {
 
@@ -52,54 +53,56 @@ const CreateProject = () => {
 
   return (
     <>
-      <h1>Tell Your Story</h1>
-      <form onSubmit={postProject}>
-        <div>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </div>
-        <div>
-          <input
-            type='text'
-            name='name'
-            placeholder="Name of Project"
-            onChange={updateName}
-            required
-          ></input>
-        </div>
-        <div>
-          <textarea
-            type='text'
-            name='description'
-            placeholder="Description of Project"
-            onChange={updateDescription}
-            required
-          ></textarea>
-        </div>
-        <div>
-          {/* <input type="button" id="loadFile" value="Choose a Profile Image" onClick={chooseImage} /> */}
-          <input placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
-        </div>
-        <div>
-          <input
-            type='number'
-            name='goal'
-            placeholder="Goal Amount"
-            onChange={updateGoalAmount}
-          ></input>
-        </div>
-        <div>
-          <input
-            type='number'
-            name='minimum'
-            placeholder="Minimum Pledge Amount"
-            onChange={updateMinPledge}
-          ></input>
-        </div>
-        <button type="submit" onClick={postProject}>Create</button>
-        <button type="submit" onClick={() => history.push("/")}>Cancel</button>
-      </form>
+      <div className="project-form-container">
+        <h1>Tell Your Story</h1>
+        <form onSubmit={postProject}>
+          <div>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </div>
+          <div>
+            <input
+              type='text'
+              name='name'
+              placeholder="Name of Project"
+              onChange={updateName}
+              required
+            ></input>
+          </div>
+          <div>
+            <textarea
+              type='text'
+              name='description'
+              placeholder="Description of Project"
+              onChange={updateDescription}
+              required
+            ></textarea>
+          </div>
+          <div>
+            {/* <input type="button" id="loadFile" value="Choose a Profile Image" onClick={chooseImage} /> */}
+            <input placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
+          </div>
+          <div>
+            <input
+              type='number'
+              name='goal'
+              placeholder="Goal Amount"
+              onChange={updateGoalAmount}
+            ></input>
+          </div>
+          <div>
+            <input
+              type='number'
+              name='minimum'
+              placeholder="Minimum Pledge Amount"
+              onChange={updateMinPledge}
+            ></input>
+          </div>
+          <button type="submit" onClick={postProject}>Create</button>
+          <button type="submit" onClick={() => history.push("/")}>Cancel</button>
+        </form>
+      </div>
     </>
   )
 }
