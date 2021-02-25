@@ -34,3 +34,4 @@ def update_donation(donationId):
         db.session.delete(donation)
         db.session.commit()
         return {'message': 'Delete was successful'}
+    return {'message': 'Invalid route'}
