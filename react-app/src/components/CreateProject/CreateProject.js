@@ -15,12 +15,13 @@ const CreateProject = () => {
   const [goalAmount, setGoalAmount] = useState()
   const [minPledge, setMinPledge] = useState()
   const [thumbnailImage, setThumbnailImage] = useState({ name: "" });
+  const [additionalImages, setAdditionalImages] = useState();
   const [errors, setErrors] = useState([]);
 
   const postProject = async (e) => {
     e.preventDefault()
     const newProject = await dispatch(
-      createProject(name, description, goalAmount, minPledge, thumbnailImage, userId)
+      createProject(name, description, goalAmount, minPledge, thumbnailImage, userId, additionalImages)
     )
     if (newProject.errors) {
       setErrors(newProject.errors)
@@ -46,11 +47,20 @@ const CreateProject = () => {
   const chooseImage = () => {
     document.getElementById('file').click();
   };
+  const chooseAdditionalImage = () => {
+    document.getElementById('additionalFile').click();
+  };
 
   const updateThumbnailImage = (e) => {
     const file = e.target.files[0];
 
     if (file) setThumbnailImage(file);
+  };
+
+  const updateAdditionalImages = (e) => {
+    const file = e.target.files;
+    console.log(file)
+    if (file) setAdditionalImages(file);
   };
 
   return (
@@ -89,6 +99,11 @@ const CreateProject = () => {
               onChange={updateDescription}
               required
             ></textarea>
+          </div>
+          <div>
+            <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
+            {/* <label for="image">   {additionalImages}</label> */}
+            <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
           </div>
           <div>
             <input
