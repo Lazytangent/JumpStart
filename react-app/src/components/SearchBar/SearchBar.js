@@ -91,6 +91,7 @@ const SearchBar = () => {
             </div>
             <div>
               {matches &&
+
                 matches.map((project, idx) => (
                   <li key={idx} className="searchBarMatches">
                     {!project.thumbnailImgUrl && (
@@ -120,14 +121,17 @@ const SearchBar = () => {
                         {/* <div className="searchBarMatches-content">
                           <p>Created by: {project.user.username}</p>
                           <p>
-                            Created by: {project.user.city},{" "}
-                            {getStateAbbreviation(project)}
+                          Created by: {project.user.city},{" "}
+                          {getStateAbbreviation(project)}
                           </p>
                         </div> */}
                       </>
                     )}
                   </li>
-                ))}
+                ))
+
+              }
+
             </div>
           </div>
         </SearchModal>
