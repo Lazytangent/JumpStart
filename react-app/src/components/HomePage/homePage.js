@@ -141,7 +141,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         history.push('/discover', {comingFrom: "trending"})
       }
 
-      console.log(history)
+
     return (
         <>
             <nav>

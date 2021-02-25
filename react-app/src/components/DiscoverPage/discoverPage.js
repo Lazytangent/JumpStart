@@ -20,9 +20,7 @@ const DiscoverPage = ({setAuthenticated}) => {
 
     const [cardFilter, setCardFilter] = useState([]);
     const [loaded, setLoaded] = useState(false)
-    // const [selected, setSelected] = useState("")
-    // const [comingFrom, setComingFrom] = useState();
-
+    const [selected, setSelected] = useState("")
 
     useEffect(() => {
         dispatch(getDiscoverPageProjects("recent"))
@@ -31,10 +29,13 @@ const DiscoverPage = ({setAuthenticated}) => {
         // dispatch(getDiscoverPageProjectsByLocation(userId))
         if(history.location.state.comingFrom && history.location.state.comingFrom === "popular") {
             setCardFilter(mostPopular)
+            // setSelected("selected")
         } else if (history.location.state.comingFrom && history.location.state.comingFrom === "recent") {
             setCardFilter(mostRecent)
+            // setSelected("selected")
         } else if(history.location.state.comingFrom && history.location.state.comingFrom === "trending") {
             setCardFilter(trending)
+            // setSelected("selected")
         }
     }, [dispatch])
 
@@ -91,10 +92,10 @@ const DiscoverPage = ({setAuthenticated}) => {
                     <div className="discoverPage-grid-header">Discover new causes </div>
                     <div className="discoverPage-grid-header-description">People around the world are raising money to help those in need.</div>
                     <div className="discoverPage-filter-box">
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(mostRecent)}>Recently Added</button>
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(mostPopular)}>Most Popular</button>
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(trending)}>Trending</button>
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(nearYou)}>Near You</button>
+                        <button id="discoverPage-filter-button"  onClick={(event) => setCardFilter(mostRecent)}>Recently Added</button>
+                        <button id="discoverPage-filter-button"  onClick={(event) => setCardFilter(mostPopular)}>Most Popular</button>
+                        <button id="discoverPage-filter-button"  onClick={(event) => setCardFilter(trending)}>Trending</button>
+                        <button id="discoverPage-filter-button"  onClick={(event) => setCardFilter(nearYou)}>Near You</button>
                     </div>
                 </div>
                 <div className="discoverPage-project-card-grid">
