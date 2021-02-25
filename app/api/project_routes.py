@@ -6,7 +6,7 @@ from app.config import Config
 from app.forms import CreateProject
 from app.helpers import allowed_file, upload_file_to_s3, \
     validation_errors_to_error_messages
-from app.models import Project, Donation, User
+from app.models import Project, Donation, User, db
 
 project_routes = Blueprint('projects', __name__)
 
