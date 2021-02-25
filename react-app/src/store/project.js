@@ -88,6 +88,10 @@ export const getProjectById = (projectId) => async (dispatch) => {
   return projects
 };
 
+export const updateDonation = (donationId, donationAmount, comment, anonymous) => async (dispatch) => {
+
+};
+
 export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
   const response = await fetch(`/api/projects/homepage/${optionalParameter}`)
   const projects = await response.json();
