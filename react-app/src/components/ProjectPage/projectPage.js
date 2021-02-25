@@ -29,7 +29,7 @@ const ProjectPage = () => {
           <p>This grid layout contains six columns and three rows:</p>
 
           <div class="grid-container">
-            <div class="item1">Header</div>
+            <div class="item1"><h1 className="project-header">{project.name}</h1></div>
             {/* <div class="item2">Menu</div> */}
             <div class="item3">
               <div className="item3 thumbnail">

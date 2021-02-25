@@ -15,6 +15,10 @@
   margin-top: 50px;
 }
 
+.project-header {
+  text-align: left;
+}
+
 .item1 { grid-area: header;}
 .item2 { grid-area: menu; }
 .item3 { grid-area: main;}
