@@ -31,7 +31,6 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
                   className="navigation-home"
                   to="/"
                   exact={true}
-                  activeClassName="active"
                   onClick={() => {
                   setShowSignUpModal(false);
                   setShowLoginModal(false);

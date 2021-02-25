@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
 import LogoutButton from "../auth/LogoutButton";
+import { getDiscoverPageProjects } from '../../store/project';
 import csc from "country-state-city";
 import "./homePage.css";
 
@@ -122,7 +123,25 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         history.push("/discover")
     }
 
+    const seeMorePopular = async (event) => {
+        event.preventDefault()
+        await dispatch(getDiscoverPageProjects("popular"))
+        history.push('/discover', {comingFrom: "popular"})
+      }
 
+    const seeMoreRecent = async (event) => {
+        event.preventDefault()
+        await dispatch(getDiscoverPageProjects("recent"))
+        history.push('/discover', {comingFrom: "recent"})
+      }
+
+    const seeMoreTrending = async (event) => {
+        event.preventDefault()
+        await dispatch(getDiscoverPageProjects("trending"))
+        history.push('/discover', {comingFrom: "trending"})
+      }
+
+      console.log(history)
     return (
         <>
             <nav>
@@ -132,7 +151,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             className="navBar-home"
                             to="/"
                             exact={true}
-                            activeClassName="active"
                             onClick={() => {
                             setShowSignUpModal(false);
                             setShowLoginModal(false);
@@ -253,7 +271,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link to='/discover' id="homePage-see-more-text" >See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <button onClick={(event) => seeMorePopular(event)} id="homePage-see-more-text" >See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -280,7 +298,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <button id="homePage-see-more-text" onClick={(event) => seeMoreRecent(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -307,7 +325,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <button id="homePage-see-more-text" onClick={(event) => seeMoreRecent(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>

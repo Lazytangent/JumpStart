@@ -8,34 +8,40 @@ import csc from "country-state-city";
 import './discoverPage.css';
 
 
-const DiscoverPage = () => {
+const DiscoverPage = ({setAuthenticated}) => {
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.session.user.id);
+    const history = useHistory();
+    // const userId = useSelector((state) => state.session.user.id);
 
-    const mostRecent = useSelector((state) => state.project.mostRecent)
     const mostPopular = useSelector((state) => state.project.mostPopular)
+    const mostRecent = useSelector((state) => state.project.mostRecent)
     const trending = useSelector((state) => state.project.trending)
     const nearYou = useSelector((state) => state.project.nearYou)
 
     const [cardFilter, setCardFilter] = useState([]);
     const [loaded, setLoaded] = useState(false)
-    const [selected, setSelected] = useState("")
+    // const [selected, setSelected] = useState("")
+    // const [comingFrom, setComingFrom] = useState();
+
 
     useEffect(() => {
         dispatch(getDiscoverPageProjects("recent"))
         dispatch(getDiscoverPageProjects("popular"))
         dispatch(getDiscoverPageProjects("trending"))
-        dispatch(getDiscoverPageProjectsByLocation(userId))
+        // dispatch(getDiscoverPageProjectsByLocation(userId))
+        if(history.location.state.comingFrom && history.location.state.comingFrom === "popular") {
+            setCardFilter(mostPopular)
+        } else if (history.location.state.comingFrom && history.location.state.comingFrom === "recent") {
+            setCardFilter(mostRecent)
+        } else if(history.location.state.comingFrom && history.location.state.comingFrom === "trending") {
+            setCardFilter(trending)
+        }
     }, [dispatch])
+
 
     useEffect(() => {
         setLoaded(true)
     }, [cardFilter])
-
-    useEffect(() => {
-        setCardFilter(mostRecent)
-    }, [mostRecent])
-
 
 
     const getPercentage = (project) => {
@@ -78,9 +84,8 @@ const DiscoverPage = () => {
 
     return (
         <>
-        {userId &&
           <div>
-            <Navigation />
+            <Navigation setAuthenticated={setAuthenticated} />
             <div className="discoverPage">
                 <div className="discoverPage-grid">
                     <div className="discoverPage-grid-header">Discover new causes </div>
@@ -112,10 +117,9 @@ const DiscoverPage = () => {
                                 </div>
                             </Link>
                         ))}
+                    </div>
                 </div>
             </div>
-        </div>
-        }
         </>
     )
 }
