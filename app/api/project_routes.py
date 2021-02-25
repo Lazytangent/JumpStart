@@ -80,3 +80,8 @@ def get_discoverpage_projects_by_location(userId):
         filter(User.state == state).all()
     projects = [project.to_dict() for project in all_projects]
     return jsonify(projects)
+
+
+@project_routes.route('/', methods=["POST"])
+def create_new_project():
+    pass
