@@ -51,10 +51,10 @@ function App() {
         </ProtectedRoute>
 
         <Route path="/" exact={true} authenticated={authenticated}>
-          <HomePage />
+          <HomePage setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/discover" exact={true} authenticated={authenticated}>
-          <DiscoverPage />
+          <DiscoverPage setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/:projectId" exact={true} authenticated={authenticated}>
           <ProjectPage />
