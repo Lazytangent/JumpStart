@@ -13,7 +13,7 @@ const CreateProject = () => {
   const [description, setDescription] = useState("")
   const [goalAmount, setGoalAmount] = useState()
   const [minPledge, setMinPledge] = useState()
-  const [thumbnailImage, setThumbnailImage] = useState();
+  const [thumbnailImage, setThumbnailImage] = useState({ name: "" });
   const [errors, setErrors] = useState([]);
 
   const postProject = async (e) => {
@@ -42,12 +42,13 @@ const CreateProject = () => {
     setMinPledge(e.target.value)
   }
 
-  // const chooseImage = () => {
-  //   document.getElementById('file').click();
-  // };
+  const chooseImage = () => {
+    document.getElementById('file').click();
+  };
 
   const updateThumbnailImage = (e) => {
     const file = e.target.files[0];
+
     if (file) setThumbnailImage(file);
   };
 
@@ -55,15 +56,16 @@ const CreateProject = () => {
     <>
       <div className="project-form-container">
         <h1>Tell Your Story</h1>
-        <form onSubmit={postProject}>
+        <form onSubmit={postProject} className="create-form">
           <div>
             {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <ul className="errors" key={idx}>{error}</ul>
             ))}
           </div>
           <div>
             <input
               type='text'
+              className="input-text"
               name='name'
               placeholder="Name of Project"
               onChange={updateName}
@@ -71,8 +73,15 @@ const CreateProject = () => {
             ></input>
           </div>
           <div>
+            <input type="button" id="loadFile" value="Choose a Profile Image" onClick={chooseImage} />
+            <label for="image">   {thumbnailImage.name}</label>
+            <input className="hide-this-button" placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
+          </div>
+          <div>
             <textarea
               type='text'
+              className="input-text"
+              rows="10"
               name='description'
               placeholder="Description of Project"
               onChange={updateDescription}
@@ -80,12 +89,9 @@ const CreateProject = () => {
             ></textarea>
           </div>
           <div>
-            {/* <input type="button" id="loadFile" value="Choose a Profile Image" onClick={chooseImage} /> */}
-            <input placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
-          </div>
-          <div>
             <input
               type='number'
+              className="input-text"
               name='goal'
               placeholder="Goal Amount"
               onChange={updateGoalAmount}
@@ -94,13 +100,14 @@ const CreateProject = () => {
           <div>
             <input
               type='number'
+              className="input-number"
               name='minimum'
               placeholder="Minimum Pledge Amount"
               onChange={updateMinPledge}
             ></input>
           </div>
-          <button type="submit" onClick={postProject}>Create</button>
-          <button type="submit" onClick={() => history.push("/")}>Cancel</button>
+          <button className="submit-button" type="submit" onClick={postProject}>Create</button>
+          <button className="cancel-button" type="submit" onClick={() => history.push("/")}>Cancel</button>
         </form>
       </div>
     </>
