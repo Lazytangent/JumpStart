@@ -3,7 +3,7 @@ const SET_MOST_RECENT = 'project/SET_MOST_RECENT'
 const SET_TRENDING = 'project/SET_TRENDING'
 const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
 const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
-const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
+export const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
 
 const setCurrentProject = (project) => {
   return {
