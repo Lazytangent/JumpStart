@@ -5,10 +5,9 @@ import Navigation from '../Navigation/navigation'
 const DiscoverPage = () => {
     return (
         <>
+        <div>
             <Navigation />
-            <div className="discoverPage">
-                <h2>DiscoverPage</h2>
-            </div>
+        </div>
         </>
     )
 }

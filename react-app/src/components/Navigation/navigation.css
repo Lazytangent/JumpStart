@@ -32,17 +32,18 @@
     justify-content: flex-end;
 }
 
-.navigation-home.active {
+.navigation-home {
     display: inline-flex;
     text-decoration: none;
     font-size: 35px;
+    color: #02a95c;
 }
 
 .navigation-logo {
     padding-top: 5%;
     height: 1.5rem;
     padding-left: 1%;
-    /* filter:  brightness(0) invert(1); */
+
 }
 
 button:hover {
