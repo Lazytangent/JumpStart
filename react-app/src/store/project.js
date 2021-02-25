@@ -1,17 +1,9 @@
-const CREATE_PROJECT = 'project/CREATE_PROJECT'
 const SET_MOST_POPULAR = 'project/SET_MOST_POPULAR'
 const SET_MOST_RECENT = 'project/SET_MOST_RECENT'
 const SET_TRENDING = 'project/SET_TRENDING'
 const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
 const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
 const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
-
-const createNewProject = (project) => {
-  return {
-    type: CREATE_PROJECT,
-    project
-  }
-}
 
 const setCurrentProject = (project) => {
   return {
@@ -48,11 +40,24 @@ const setNearYou = (projects) => {
   }
 };
 
-const setSearchedFor = (projects) => {
-  return {
-    type: SET_SEARCHED_FOR,
-    projects
+export const createProject = (name, description, goalAmount, minPledge, thumbnailImg, userId) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('description', description);
+  formData.append('goalAmount', goalAmount);
+  formData.append('minPledge', minPledge);
+  formData.append('userId', userId);
+  if (thumbnailImg) formData.append('thumbnailImg', thumbnailImg);
+
+  const response = await fetch('/api/projects/', {
+    method: "POST",
+    body: formData,
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
   }
+  return project;
 };
 
 export const getProjectById = (projectId) => async (dispatch) => {
