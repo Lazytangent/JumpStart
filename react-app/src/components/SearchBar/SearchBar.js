@@ -92,9 +92,9 @@ const SearchBar = () => {
               />
             </div>
             <div>
-              {matches &&
+              {matches && <div className="searchResults-container">
 
-                matches.map((project, idx) => (
+                {matches.map((project, idx) => (
                   <NavLink to={`/${project.id}`} className="a-link">
                     <li key={idx} className="searchBarMatches">
                       {!project.thumbnailImgUrl && (
@@ -133,6 +133,7 @@ const SearchBar = () => {
                     </li>
                   </NavLink>
                 ))
+                }</div>
 
               }
 
