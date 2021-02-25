@@ -281,7 +281,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             </div>
                         </div>
                     </div>
-                    <h2 className="homePage-nearYou-header">Causes near you</h2>
+                    <h2 className="homePage-nearYou-header">Trending causes</h2>
                     <div className="homePage-grid-near-you">
                         <div id="homePage-project-grid">
                             {trending &&
