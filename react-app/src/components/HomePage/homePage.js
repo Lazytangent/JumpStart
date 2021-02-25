@@ -195,7 +195,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                     </div>
                     </div>
 
-
                     <div>
                     {user && <LogoutButton setAuthenticated={setAuthenticated} />}
                     </div>
@@ -232,7 +231,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <Link to='/discover' id="homePage-see-more-text" >See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -259,7 +258,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -286,7 +285,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to=''>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
                             </div>
                         </div>
                     </div>
