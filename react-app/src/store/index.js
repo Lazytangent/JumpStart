@@ -3,12 +3,10 @@ import thunk from 'redux-thunk';
 
 import sessionReducer from './session';
 import projectReducer from './project';
-import donationReducer from './donations';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   project: projectReducer,
-  donations: donationReducer,
 });
 
 let enhancer;

@@ -16,7 +16,9 @@ def create_donation():
         form.populate_obj(donation)
         db.session.add(donation)
         db.session.commit()
-        return donation.to_dict()
+
+        project = Project.query.get(donation.projectId)
+        return project.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 

@@ -3,9 +3,9 @@ const SET_MOST_RECENT = 'project/SET_MOST_RECENT'
 const SET_TRENDING = 'project/SET_TRENDING'
 const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
 const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
-export const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
+const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
 
-const setCurrentProject = (project) => {
+export const setCurrentProject = (project) => {
   return {
     type: SET_CURRENT_PROJECT,
     project
@@ -52,6 +52,27 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
   const response = await fetch('/api/projects/', {
     method: "POST",
     body: formData,
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+};
+
+export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
+  const response = await fetch('/api/donations', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(
+      userId,
+      projectId,
+      donationAmount,
+      comment,
+      anonymous,
+    ),
   });
   const project = await response.json();
   if (!project.errors) {
