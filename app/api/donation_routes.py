@@ -18,3 +18,11 @@ def create_donation():
         db.session.commit()
         return donation.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
+@donation_routes.route('/donations/:donationId', methods=["PUT", "DELETE"])
+def update_donation():
+    if request.method == "PUT":
+        pass
+    elif request.method == "DELETE":
+        pass
