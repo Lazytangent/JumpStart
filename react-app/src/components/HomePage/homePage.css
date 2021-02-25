@@ -5,7 +5,7 @@
 }
 
 .homePage-image {
-    height: 60vh;
+    height: 65vh;
     width: 99vw;
     margin: 0;
     padding: 0;
@@ -26,7 +26,7 @@
     grid-template-columns: 30% 70%;
     grid-template-rows: 100%;
     position: absolute;
-    top: 50%;
+    top: 55%;
     left:17.5%;
     background-color: white;
     border-radius: 10px;
