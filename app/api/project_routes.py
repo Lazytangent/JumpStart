@@ -1,5 +1,11 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from sqlalchemy import asc, desc, func
+from werkzeug.utils import secure_filename
+
+from app.config import Config
+from app.forms import CreateProject
+from app.helpers import allowed_file, upload_file_to_s3, \
+    validation_errors_to_error_messages
 from app.models import Project, Donation, User
 
 project_routes = Blueprint('projects', __name__)
@@ -84,4 +90,18 @@ def get_discoverpage_projects_by_location(userId):
 
 @project_routes.route('/', methods=["POST"])
 def create_new_project():
-    pass
+    form = CreateProject()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        thumbnailImgUrl = None
+        if 'thumbnailImg' in request.files:
+            image = request.files['thumbnailImg']
+            image.filename = secure_filename(image.filename)
+            thumbnailImgUrl = upload_file_to_s3(image, Config.S3_BUCKET)
+        project = Project()
+        form.populate_obj(project)
+        project.thumbnailImgUrl = thumbnailImgUrl
+        db.session.add(project)
+        db.session.commit()
+        return project.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}
