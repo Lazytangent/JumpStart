@@ -1,4 +1,3 @@
-const CREATE_PROJECT = 'project/CREATE_PROJECT'
 const SET_MOST_POPULAR = 'project/SET_MOST_POPULAR'
 const SET_MOST_RECENT = 'project/SET_MOST_RECENT'
 const SET_TRENDING = 'project/SET_TRENDING'
