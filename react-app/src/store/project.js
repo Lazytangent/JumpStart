@@ -6,13 +6,6 @@ const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
 const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
 const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
 
-const createNewProject = (project) => {
-  return {
-    type: CREATE_PROJECT,
-    project
-  }
-}
-
 const setCurrentProject = (project) => {
   return {
     type: SET_CURRENT_PROJECT,
