@@ -56,11 +56,11 @@ function App() {
         <Route path="/discover" exact={true} authenticated={authenticated}>
           <DiscoverPage setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/:projectId" exact={true} authenticated={authenticated}>
-          <ProjectPage />
-        </Route>
         <Route path="/new-project" exact={true} authenticated={authenticated}>
           <CreateProject />
+        </Route>
+        <Route path="/:projectId" exact={true} authenticated={authenticated}>
+          <ProjectPage />
         </Route>
       </Switch>
     </>
