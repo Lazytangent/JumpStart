@@ -18,4 +18,4 @@ class Donation(db.Model):
         return {"id": self.id, "userId": self.userId, "projectId":
                 self.projectId, "donationAmount": self.donationAmount,
                 "comment": self.comment, "anonymous": self.anonymous,
-                "donator": self.user.username}
+                "donator": self.user.to_dict()}
