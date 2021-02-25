@@ -68,7 +68,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
 
         setTimeout(() => {
             setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697256+(2).jpg")
-        }, 2000)
+        }, 3000)
 
         // setTimeout(() => {
         //     setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697257+(4).jpg")
@@ -76,7 +76,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
 
         setTimeout(() => {
             setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697262+(2).jpg")
-        }, 4500)
+        }, 5500)
     }, [dispatch])
 
     const mostPopular = useSelector((state) => state.project.mostPopular)
@@ -115,6 +115,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
             }
         })
         return result;
+    }
+
+    const donateButton = (event) => {
+        event.preventDefault()
+        history.push("/discover")
     }
 
 
@@ -218,7 +223,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
                     <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
                     <div className="homePage-description-box-button-container">
-                        <button className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
+                        <button onClick={(event) => donateButton(event)} className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
                     </div>
                 </div>
                 <div className="homePage-grid">
