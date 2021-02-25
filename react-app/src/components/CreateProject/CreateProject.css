@@ -1,5 +1,5 @@
 .project-form-container {
-    z-index: 10;
+    /* z-index: 10; */
     position: absolute;
     top: 30%;
     left: 40%;
@@ -36,17 +36,18 @@
   width: 100%;
 }
 
-/* .choose-image {
+.choose-image {
   background-color:#00bc5e;
   color: white;
+
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 40%;
-} */
+}
 
-.submit-button, .cancel-button {
+.submit-button:hover, .cancel-button:hover, .choose-image:hover {
   opacity: 0.8;
 }
 

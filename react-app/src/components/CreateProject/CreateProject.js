@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { createProject } from '../../store/project'
 import "./CreateProject.css"
+import Navigation from '../Navigation/navigation'
 
 const CreateProject = () => {
 
@@ -54,6 +55,7 @@ const CreateProject = () => {
 
   return (
     <>
+      <Navigation />
       <div className="project-form-container">
         <h1>Tell Your Story</h1>
         <form onSubmit={postProject} className="create-form">
@@ -73,7 +75,7 @@ const CreateProject = () => {
             ></input>
           </div>
           <div>
-            <input type="button" id="loadFile" value="Choose a Profile Image" onClick={chooseImage} />
+            <input className="choose-image" type="button" id="loadFile" value="Choose a Thumbnail Image" onClick={chooseImage} />
             <label for="image">   {thumbnailImage.name}</label>
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
           </div>
