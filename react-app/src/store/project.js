@@ -49,7 +49,7 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
   formData.append('userId', userId);
   if (thumbnailImg) formData.append('thumbnailImg', thumbnailImg);
 
-  const response = await fetch('/api/projects', {
+  const response = await fetch('/api/projects/', {
     method: "POST",
     body: formData,
   });
