@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './DeleteButton.module.css';
 import { Modal } from '../../../context/Modal';
-import DeleteConfirmation from './DeleteConfirmation';
+import DeleteConfirmation from '../DeleteConfirmation';
 
 const DeleteButton = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
