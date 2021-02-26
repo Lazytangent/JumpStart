@@ -14,7 +14,7 @@ const DeleteConfirmation = ({ setShowDeleteModal }) => {
     e.preventDefault();
     dispatch(deleteProject(projectId));
     setShowDeleteModal(false);
-    history.push('/');
+    setTimeout(history.push('/'), 1000);
   };
 
   return (
