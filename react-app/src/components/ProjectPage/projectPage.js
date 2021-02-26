@@ -5,8 +5,18 @@ import projectReducer, { getProjectById } from "../../store/project";
 import logo_40x40 from "../SearchBar/logo_40x40.png";
 import "./projectPage.css";
 import Navigation from "../../components/Navigation/navigation"
+import { useModalContext } from "../../context/Modal";
 //a single change
 const ProjectPage = ({ setAuthenticated }) => {
+
+  const {
+    showLoginModal,
+    setShowLoginModal,
+    showDonateModal,
+    setShowDonateModal,
+  } = useModalContext();
+
+  const user = useSelector(state => state.session.user)
   const project = useSelector((state) => state.project.currentProject);
   const { projectId } = useParams();
   const dispatch = useDispatch();
@@ -41,7 +51,18 @@ const ProjectPage = ({ setAuthenticated }) => {
             </div>
             {/* <div class="item3">Main</div> */}
             <div class="item4 grid-div">
-              <div class="sticky-container">Donations</div>
+              <div class="sticky-container">
+                Donations
+                <button onClick={() => {
+                  if (user) {
+                    setShowDonateModal((prev) => !prev)
+                  } else {
+                    setShowLoginModal((prev) => !prev)
+                  }
+                }}>
+                  Donate
+                </button>
+              </div>
             </div>
             <div class="item5 grid-div">
               <h1 className="comments-header">
