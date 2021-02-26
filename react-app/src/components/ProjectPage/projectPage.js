@@ -65,9 +65,6 @@ const ProjectPage = ({ setAuthenticated }) => {
 
 
             <div className="description">{project.description}</div>
-            <div className="editYourProject-button">
-              {project.userId === user.id && <DeleteButton />}
-            </div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 Donations
