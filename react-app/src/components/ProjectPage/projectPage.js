@@ -36,6 +36,7 @@ const ProjectPage = () => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
+            <div className="description">{project.description}</div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">Donations</div>
             </div>

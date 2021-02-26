@@ -13,8 +13,6 @@
   margin-top: 50px;
 }
 
-
-
 .projectHeader {
   grid-area: projectHeader;
   text-align: left;
@@ -23,6 +21,10 @@
   grid-area: organizer;
   font-size: 16px;
   padding-bottom: 0px;
+}
+
+.description {
+  grid-area: description;
 }
 .projectImage {
   grid-area: projectImage;
@@ -53,6 +55,7 @@
     "projectHeader projectHeader projectHeader projectHeader projectHeader projectHeader"
     "projectImage projectImage projectImage projectImage donations donations"
     "organizer organizer organizer organizer donations donations"
+    "description description description description donations donations"
     "comments comments comments comments donations donations"
     "footer footer footer footer footer footer";
   grid-gap: 20px;
