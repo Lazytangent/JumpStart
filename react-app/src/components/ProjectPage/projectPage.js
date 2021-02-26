@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import projectReducer, { getProjectById } from "../../store/project";
@@ -18,6 +18,8 @@ const ProjectPage = ({ setAuthenticated }) => {
     setShowDonateModal,
   } = useModalContext();
 
+  const [topThree, setTopThree] = useState([]);
+
   const user = useSelector((state) => state.session.user);
   // console.log(user)
   const project = useSelector((state) => state.project.currentProject);
@@ -26,9 +28,17 @@ const ProjectPage = ({ setAuthenticated }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProjectById(projectId));
+    dispatch(getProjectById(projectId))
+
   }, [dispatch]);
 
+  useEffect(() => {
+    if(project) {
+      setTopThree(project.donations.sort((projectOne, projectTwo) => {
+         return projectTwo.donationAmount - projectOne.donationAmount
+       }).slice(0, 3))
+     }
+  }, [project])
 
   const getPercentage = (project) => {
     // let sum = 0
@@ -97,22 +107,28 @@ const getStateAbbreviation = (project) => {
             <div className="description">{project.description}</div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
-                Donations
-              <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
-              <div id="meter">
+                <h1 className="donations-box-header">Donations</h1>
+              <div id="projectCard-amount-projectPage">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+              <div id="meter-productPage">
                   <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
               </div>
-                <button
-                  onClick={() => {
-                    if (user !== null) {
-                      setShowDonateModal(true);
-                    } else {
-                      setShowLoginModal((prev) => !prev);
-                    }
-                  }}
-                >
-                  Donate
-                </button>
+              <button
+                className="donate-box-button"
+                onClick={() => {
+                  if (user !== null) {
+                    setShowDonateModal(true);
+                  } else {
+                    setShowLoginModal((prev) => !prev);
+                  }
+                }}
+              >
+                Donate
+              </button>
+              <div className="numberOfDonators">
+                <p className="numberOfDonators-text">{`${project.donations.length} people have donated`}</p>
+              </div>
+                <p className="top-donors">Top Donors</p>
+                {/* top 3 donors */}
               </div>
             </div>
             <div class="comments grid-div">
