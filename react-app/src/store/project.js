@@ -67,6 +67,7 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
 };
 
 export const updateProject = (projectId, name, description, goalAmount, minPledge, thumbnailImg, images) => async (dispatch) => {
+  console.log(images);
   const formData = new FormData();
   formData.append('name', name);
   formData.append('description', description);
@@ -76,9 +77,10 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
   if (images) {
     const num = images.length;
     for (let i = 0; i < num; i++) {
-      const innerNum = images[i].length;
-      for (let j = 0; j < innerNum; i++) {
-        formData.append('images', images[i][j]);
+      const fileList = images[i];
+      const innerNum = fileList.length;
+      for (let j = 0; j < innerNum; j++) {
+        formData.append('images', fileList[j]);
       }
     }
   }
@@ -218,9 +220,7 @@ export const deleteImage = (imageId) => async (dispatch) => {
     method: "DELETE",
   });
   const project = await response.json();
-  if (!project.errors) {
-    dispatch(setCurrentProject(project));
-  }
+
   return project;
 }
 
