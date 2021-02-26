@@ -215,10 +215,17 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             <LoginForm setAuthenticated={setAuthenticated} />
                             )}
                         </div>}
-                        { user &&
-                        <div>
-                            <LogoutButton setAuthenticated={setAuthenticated} />
-                        </div>}
+                        {user && (
+                        <div id="navBar-button-container">
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-login"
+                            onClick={onLogout}
+                            >
+                            Logout
+                            </button>
+                        </div>
+                        )}
                         <div id="navBar-button-container">
                             {
                             <button
