@@ -9,4 +9,4 @@ class CreateDonation(FlaskForm):
     donationAmount = IntegerField("donationAmount",
                                   validators=[DataRequired()])
     comment = StringField("comment", validators=[DataRequired()])
-    anonymous = BooleanField("anonymous", validators=[DataRequired()])
+    anonymous = BooleanField("anonymous")
