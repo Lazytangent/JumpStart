@@ -5,7 +5,7 @@ const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
 const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
 const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
 
-const setCurrentProject = (project) => {
+export const setCurrentProject = (project) => {
   return {
     type: SET_CURRENT_PROJECT,
     project
@@ -91,6 +91,27 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
   return project;
 }
 
+export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
+  const response = await fetch('/api/donations', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(
+      userId,
+      projectId,
+      donationAmount,
+      comment,
+      anonymous,
+    ),
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+}
+
 export const deleteProject = (projectId) => async (dispatch) => {
   const response = await fetch(`/api/projects/${projectId}`, {
     method: "DELETE",
@@ -105,6 +126,37 @@ export const getProjectById = (projectId) => async (dispatch) => {
   const projects = await response.json()
   dispatch(setCurrentProject(projects))
   return projects
+};
+
+export const updateDonation = (donationId, donationAmount, comment, anonymous) => async (dispatch) => {
+  const response = await fetch(`/api/donations/${donationId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(
+      donationId,
+      donationAmount,
+      comment,
+      anonymous,
+    ),
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+};
+
+export const deleteDonation = (donationId) => async (dispatch) => {
+  const response = await fetch(`/api/donations/${donationId}`, {
+    method: "DELETE",
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
 };
 
 export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
