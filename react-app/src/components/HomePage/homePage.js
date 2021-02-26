@@ -142,6 +142,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         history.push('/discover', {comingFrom: "trending"})
       }
 
+      console.log(history)
 
     return (
         <>
@@ -326,7 +327,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <button id="homePage-see-more-text" onClick={(event) => seeMoreRecent(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
+                                <button id="homePage-see-more-text" onClick={(event) => seeMoreTrending(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
