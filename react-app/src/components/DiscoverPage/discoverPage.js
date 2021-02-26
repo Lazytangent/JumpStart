@@ -113,8 +113,8 @@ const DiscoverPage = ({setAuthenticated}) => {
                     <div className="discoverPage-grid-header">Discover new causes </div>
                     <div className="discoverPage-grid-header-description">People around the world are raising money to help those in need.</div>
                     <div className="discoverPage-filter-box">
-                        <button id="discoverPage-filter-button" className={(selected === "mostRecent") ? "selected" : ""} onClick={(event) => recentFunction(mostRecent)}>Recently Added</button>
                         <button id="discoverPage-filter-button" className={(selected === "mostPopular") ? "selected" : ""} onClick={(event) => popularFunction(mostPopular)}>Most Popular</button>
+                        <button id="discoverPage-filter-button" className={(selected === "mostRecent") ? "selected" : ""} onClick={(event) => recentFunction(mostRecent)}>Recently Added</button>
                         <button id="discoverPage-filter-button" className={(selected === "trending") ? "selected" : ""} onClick={(event) => trendingFunction(trending)}>Trending</button>
                         <button id="discoverPage-filter-button" className={(selected === "nearYou") ? "selected" : ""} onClick={(event) => nearYouFunction(nearYou)}>Near You</button>
                     </div>
