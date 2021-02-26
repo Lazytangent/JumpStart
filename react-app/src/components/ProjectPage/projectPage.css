@@ -18,13 +18,14 @@
 }
 
 .project-container {
-  margin-top: 80px;
+  margin-top: 50px;
   background-color: #edeef0;
 }
 
 .projectHeader {
   grid-area: projectHeader;
   text-align: left;
+  margin-top: 80px;
 }
 
 .organizer {
@@ -71,10 +72,12 @@
 
 .grid-container {
   display: grid;
-  width: 80%;
-  margin: 0 auto;
+  width: 60.7%;
+  /* margin: 0 auto; */
+
+  margin-left: 17.5%;
   min-width: 800px;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr 0.75fr 0.75fr;
   grid-template-areas:
     "projectHeader projectHeader projectHeader projectHeader projectHeader projectHeader"
     "projectImage projectImage projectImage projectImage donations donations"
@@ -91,10 +94,12 @@
 .sticky-container {
   position: sticky;
   position: -webkit-sticky;
-  background:blue;
+  background:white;
   width: 300px;
   height: 500px;
   top: 100px;
+  border-radius: 5px;
+  box-shadow: 0 0.3125rem 1rem -0.1875rem rgb(0 0 0 / 20%);
 }
 
 .comment-avatar {
