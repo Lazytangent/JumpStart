@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import { Modal, useModalContext } from "../../context/Modal";
 import { updateProject, getProjectById } from '../../store/project'
+import DeleteIcon from '@material-ui/icons/Delete';
 import "./EditProject"
 
 
@@ -20,7 +21,7 @@ const EditProjectForm = () => {
   const [goalAmount, setGoalAmount] = useState(currentProject.goalAmount)
   const [minPledge, setMinPledge] = useState(currentProject.minPledge)
   const [thumbnailImage, setThumbnailImage] = useState("");
-  const [images, setAdditionalImages] = useState();
+  const [images, setAdditionalImages] = useState([]);
 
   const [errors, setErrors] = useState([]);
 
@@ -65,9 +66,9 @@ const EditProjectForm = () => {
   };
 
   const updateAdditionalImages = (e) => {
-    const file = e.target.files;
+    const file = e.target.files[0];
     console.log(file)
-    if (file) setAdditionalImages(file);
+    if (file) setAdditionalImages((prev) => [...prev, file]);
   };
 
 
@@ -112,13 +113,20 @@ const EditProjectForm = () => {
           <div>
             {project.images.map((img, idx) => (
 
-              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+              <div>
+                <span>
+                  <button className="delete-image-button">
+                    <DeleteIcon />
+                  </button>
+                </span>
+                {img.imageUrl.split(".s3.amazonaws.com/")[1]}
+              </div>
             ))}
-            <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
-            {/* {project.images.map((img, idx) => (
+            {/* {images.map((img, idx) => (
 
-              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+              <div>{img.}</div>
             ))} */}
+            <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
           </div>
           <div>

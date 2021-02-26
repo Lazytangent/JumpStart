@@ -10,6 +10,7 @@
 
 }
 
+
 .hide-this-button {
   display: none;
 }
@@ -53,3 +54,13 @@
 .errors {
   color: red;
 } */
+
+
+.delete-image-button {
+      background-color: none;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
