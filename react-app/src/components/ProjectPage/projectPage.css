@@ -71,10 +71,11 @@
 
 .grid-container {
   display: grid;
-  width: 80%;
-  margin: 0 auto;
+  width: 60.7%;
+  /* margin: 0 auto; */
+  margin-left: 17.5%;
   min-width: 800px;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr 0.75fr 0.75fr;
   grid-template-areas:
     "projectHeader projectHeader projectHeader projectHeader projectHeader projectHeader"
     "projectImage projectImage projectImage projectImage donations donations"
