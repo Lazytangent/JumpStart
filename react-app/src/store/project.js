@@ -76,7 +76,10 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
   if (images) {
     const num = images.length;
     for (let i = 0; i < num; i++) {
-      formData.append('images', images[i]);
+      const innerNum = images[i].length;
+      for (let j = 0; j < innerNum; i++) {
+        formData.append('images', images[i][j]);
+      }
     }
   }
 
