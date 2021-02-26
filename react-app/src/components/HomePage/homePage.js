@@ -258,7 +258,13 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
                     <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
                     <div className="homePage-description-box-button-container">
-                        <button onClick={(event) => donateButton(event)} className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
+                    <button
+              onClick={(event) => seeMoreRecent(event)}
+              className="homePage-description-box-button"
+            >
+              Donate
+              <img className="description-box-logo" src="logo.png" alt=""></img>
+            </button>
                     </div>
                 </div>
                 <div className="homePage-grid">
