@@ -5,7 +5,7 @@ import { createProject } from '../../store/project'
 import "./CreateProject.css"
 import Navigation from '../Navigation/navigation'
 
-const CreateProject = () => {
+const CreateProject = ({ setAuthenticated }) => {
 
   const userId = useSelector(state => state.session.user.id)
   const history = useHistory()
@@ -65,7 +65,7 @@ const CreateProject = () => {
 
   return (
     <>
-      <Navigation />
+      <Navigation setAuthenticated={setAuthenticated} />
       <div className="project-form-container">
         <h1>Tell Your Story</h1>
         <form onSubmit={postProject} className="create-form">

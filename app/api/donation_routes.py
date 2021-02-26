@@ -26,11 +26,8 @@ def create_donation():
                        methods=["PUT", "DELETE"])
 def update_donation(donation_id):
     donation = Donation.query.get(donation_id)
-    print(request.json)
     if request.method == "PUT":
-        print('-----------------------------------')
         form = CreateDonation()
-        print('-----------------------------------')
         form['userId'].data = donation.userId
         form['projectId'].data = donation.projectId
         form['csrf_token'].data = request.cookies['csrf_token']
