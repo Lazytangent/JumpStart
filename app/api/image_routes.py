@@ -9,7 +9,7 @@ from app.models import Project, Image, db
 image_routes = Blueprint('images', __name__)
 
 
-@image_routes.route('/<int:image_id', methods=["DELETE"])
+@image_routes.route('/<int:image_id>', methods=["DELETE"])
 def delete_image(image_id):
     image = Image.query.get(image_id)
     project = Project.query.get(image.projectId)
