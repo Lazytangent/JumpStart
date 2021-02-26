@@ -21,10 +21,6 @@ const ProjectPage = () => {
     <>
       {project && (
         <div className="project-container">
-          {/* <h1 className="project-header">{project.name}</h1>
-          <img src={project.thumbnailImgUrl} className='thumbnail'></img>
-          <div>{project.description}</div> */}
-
           <div class="grid-container">
             <div class="item1 grid-div">
               <h1 className="project-header">{project.name}</h1>
@@ -32,7 +28,10 @@ const ProjectPage = () => {
             {/* <div class="item2">Menu</div> */}
             <div className="item3">
               <div className="thumbnail">
-                <img src={project.thumbnailImgUrl}></img>
+                <img
+                  src={project.thumbnailImgUrl}
+                  alt="Varies project to project"
+                ></img>
               </div>
             </div>
             <div className="item2 grid-div">
