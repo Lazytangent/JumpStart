@@ -124,7 +124,7 @@ def update_project(projectId):
         form = CreateProject()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            thumbnailImgUrl = "/logo.png"
+            thumbnailImgUrl = project.thumbnailImgUrl
             if 'thumbnailImg' in request.files:
                 image = request.files['thumbnailImg']
                 if allowed_file(image.filename):
