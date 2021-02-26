@@ -7,7 +7,9 @@ import "./projectPage.css";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm";
-//a single change
+
+
+
 const ProjectPage = ({ setAuthenticated }) => {
   const {
     showLoginModal,
@@ -28,7 +30,7 @@ const ProjectPage = ({ setAuthenticated }) => {
     dispatch(getProjectById(projectId));
   }, [dispatch]);
 
-  const check = () => {
+  const editProject = () => {
     console.log("hello")
   }
 
@@ -53,10 +55,12 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
+            {session && project.userId && (session.id === project.userId) && (
 
-            <div className="editYourProject-button">
-              <button>Edit</button>
-            </div>
+              <div className="editYourProject-button">
+                <button onClick={editProject}>Edit</button>
+              </div>
+            )}
 
 
             <div className="description">{project.description}</div>
