@@ -8,34 +8,41 @@ import csc from "country-state-city";
 import './discoverPage.css';
 
 
-const DiscoverPage = () => {
+const DiscoverPage = ({setAuthenticated}) => {
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.session.user.id);
+    const history = useHistory();
+    // const userId = useSelector((state) => state.session.user.id);
 
-    const mostRecent = useSelector((state) => state.project.mostRecent)
     const mostPopular = useSelector((state) => state.project.mostPopular)
+    const mostRecent = useSelector((state) => state.project.mostRecent)
     const trending = useSelector((state) => state.project.trending)
     const nearYou = useSelector((state) => state.project.nearYou)
 
     const [cardFilter, setCardFilter] = useState([]);
     const [loaded, setLoaded] = useState(false)
     const [selected, setSelected] = useState("")
-
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getDiscoverPageProjects("recent"))
         dispatch(getDiscoverPageProjects("popular"))
         dispatch(getDiscoverPageProjects("trending"))
-        dispatch(getDiscoverPageProjectsByLocation(userId))
+        // dispatch(getDiscoverPageProjectsByLocation(userId))
+        if(history.location.state.comingFrom && history.location.state.comingFrom === "popular") {
+            setCardFilter(mostPopular)
+            setSelected("mostPopular")
+        } else if (history.location.state.comingFrom && history.location.state.comingFrom === "recent") {
+            setCardFilter(mostRecent)
+            setSelected("mostRecent")
+        } else if(history.location.state.comingFrom && history.location.state.comingFrom === "trending") {
+            setCardFilter(trending)
+            setSelected("trending")
+        }
     }, [dispatch])
+
 
     useEffect(() => {
         setLoaded(true)
     }, [cardFilter])
-
-    useEffect(() => {
-        setCardFilter(mostRecent)
-    }, [mostRecent])
-
 
 
     const getPercentage = (project) => {
@@ -76,20 +83,40 @@ const DiscoverPage = () => {
         return null;
     }
 
+    const recentFunction = (param) => {
+        setCardFilter(param)
+        setSelected("mostRecent")
+    }
+
+    const popularFunction = (param) => {
+        setCardFilter(param)
+        setSelected("mostPopular")
+    }
+
+    const trendingFunction = (param) => {
+        setCardFilter(param)
+        setSelected("trending")
+    }
+
+    const nearYouFunction = (param) => {
+        setCardFilter(param)
+        setSelected("nearYou")
+    }
+
+
     return (
         <>
-        {userId &&
           <div>
-            <Navigation />
+            <Navigation setAuthenticated={setAuthenticated} />
             <div className="discoverPage">
                 <div className="discoverPage-grid">
                     <div className="discoverPage-grid-header">Discover new causes </div>
                     <div className="discoverPage-grid-header-description">People around the world are raising money to help those in need.</div>
                     <div className="discoverPage-filter-box">
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(mostRecent)}>Recently Added</button>
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(mostPopular)}>Most Popular</button>
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(trending)}>Trending</button>
-                        <button id="discoverPage-filter-button" onClick={(event) => setCardFilter(nearYou)}>Near You</button>
+                        <button id="discoverPage-filter-button" className={(selected === "mostRecent") ? "selected" : ""} onClick={(event) => recentFunction(mostRecent)}>Recently Added</button>
+                        <button id="discoverPage-filter-button" className={(selected === "mostPopular") ? "selected" : ""} onClick={(event) => popularFunction(mostPopular)}>Most Popular</button>
+                        <button id="discoverPage-filter-button" className={(selected === "trending") ? "selected" : ""} onClick={(event) => trendingFunction(trending)}>Trending</button>
+                        <button id="discoverPage-filter-button" className={(selected === "nearYou") ? "selected" : ""} onClick={(event) => nearYouFunction(nearYou)}>Near You</button>
                     </div>
                 </div>
                 <div className="discoverPage-project-card-grid">
@@ -112,10 +139,9 @@ const DiscoverPage = () => {
                                 </div>
                             </Link>
                         ))}
+                    </div>
                 </div>
             </div>
-        </div>
-        }
         </>
     )
 }
