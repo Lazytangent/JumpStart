@@ -222,6 +222,8 @@
   color: #02a95c;
   font-size: 18px;
   transition: all .3s ease-out;
+  border: none;
+  background-color: transparent;
 }
 
 #homePage-see-more-text:hover {
@@ -284,6 +286,7 @@
 #navBar-buttons,
 .navBar-buttons-create {
  display: flex;
+ border: none;
 }
 
 .far {
@@ -300,7 +303,6 @@
   font-size: 20px;
   background-color: transparent;
   color: white;
-  border: transparent;
 }
 
 .navBar-buttons-login {
@@ -309,7 +311,6 @@
   font-size: 20px;
   background-color: transparent;
   color: white;
-  border:transparent;
 }
 
 .navBar-buttons-signup {
@@ -318,7 +319,6 @@
   font-size: 20px;
   background-color: transparent;
   color: white;
-  border:transparent;
 }
 
 #navBar-button-container {
@@ -341,8 +341,6 @@
 
 .navBar-buttons-create:hover {
   color: rgb(206, 206, 206);
-  border-color: rgb(206, 206, 206);
-  /* temporary */
 }
 
 #navBar-buttons:hover {

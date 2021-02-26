@@ -5,12 +5,13 @@
 }
 
 .discoverPage-grid {
+    margin-top: 8%;
     display: grid;
-    height: 15%;
+    height: 12%;
     width: 58%;
     margin-left: 21%;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 25% 25% 15% 35%;
+    grid-template-rows: 25% 30% 45%;
 }
 
 .discoverPage-grid-header {
@@ -36,14 +37,12 @@
 
 .discoverPage-filter-box {
     grid-column-start: 1;
-    grid-column-end: 3;
-    border-radius: 5px;
-    display: flex;
-    align-items: flex-start;
+    grid-column-end: 4;
 }
 
 .discoverPage-project-card-grid {
     display: grid;
+    margin-top: 2%;
     grid-template-columns: 1fr 1fr 1fr;
     width: 60%;
     height: 100vh;
@@ -75,15 +74,22 @@
 
 
 #discoverPage-filter-button {
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 1%;
+    padding-right: 2%;
     height: 100%;
     background-color: transparent;
     border: transparent;
     font-size: 18px;
     font-weight: bold;
+    color: rgba(0, 0, 0, .9);
+
 }
 
 #discoverPage-filter-button:hover {
     color: rgb(90, 90, 90);
+}
+
+.selected {
+    text-decoration: 2px solid underline;
+    text-decoration-color: #02a95c;
 }

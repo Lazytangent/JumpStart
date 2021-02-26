@@ -23,39 +23,38 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
     const user = useSelector((state) => state.session.user);
     const history = useHistory();
 
-    return (
-        <nav>
-            <ul className="navigation">
-                <div className="navigation-first-fraction">
-                    <NavLink
-                        className="navigation-home"
-                        to="/"
-                        exact={true}
-                        activeClassName="active"
-                        onClick={() => {
-                            setShowSignUpModal(false);
-                            setShowLoginModal(false);
-                        }}
-                    >
-                        JumpStart<img className="navigation-logo" src="logo.png" alt=""></img>
-                    </NavLink>
-                </div>
-                <div className="navigation-second-fraction">
-                    <div id="navigation-button-container">
-                        <button
-                            className="navigation-buttons-create"
-                            onClick={() => {
-                                if (user) {
-                                    setShowLoginModal(false);
-                                    setShowSignUpModal(false);
-                                    history.push("/new-project");
-                                } else {
-                                    setShowLoginModal((prev) => !prev);
-                                    setShowSignUpModal(false);
-                                }
-                            }}
-                        >
-                            Create a project
+  return (
+    <nav>
+      <ul className="navigation">
+          <div className="navigation-first-fraction">
+              <NavLink
+                  className="navigation-home"
+                  to="/"
+                  exact={true}
+                  onClick={() => {
+                  setShowSignUpModal(false);
+                  setShowLoginModal(false);
+                  }}
+              >
+                  JumpStart<img className="navigation-logo" src="logo.png" alt=""></img>
+              </NavLink>
+          </div>
+          <div className="navigation-second-fraction">
+              <div id="navigation-button-container">
+                  <button
+                  className="navigation-buttons-create"
+                  onClick={() => {
+                      if (user) {
+                      setShowLoginModal(false);
+                      setShowSignUpModal(false);
+                      history.push("/new-project");
+                      } else {
+                      setShowLoginModal((prev) => !prev);
+                      setShowSignUpModal(false);
+                      }
+                  }}
+                  >
+                  Create a project
                   </button>
                     </div>
                     {!user &&
