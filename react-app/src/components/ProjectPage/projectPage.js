@@ -8,7 +8,7 @@ import csc from "country-state-city";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm";
-
+import EditProjectForm from "../../components/EditProject/EditProject"
 
 
 const ProjectPage = ({ setAuthenticated }) => {
@@ -18,6 +18,8 @@ const ProjectPage = ({ setAuthenticated }) => {
     showDonateModal,
     setShowSignUpModal,
     setShowDonateModal,
+    showEditProjectModal,
+    setShowEditProjectModal
   } = useModalContext();
 
   const [topThree, setTopThree] = useState([]);
@@ -34,12 +36,17 @@ const ProjectPage = ({ setAuthenticated }) => {
 
   }, [dispatch]);
 
+  const editProject = () => {
+    setShowEditProjectModal(true);
+    // console.log('Hello')
+
+  }
   useEffect(() => {
-    if(project) {
+    if (project) {
       setTopThree(project.donations.sort((projectOne, projectTwo) => {
-         return projectTwo.donationAmount - projectOne.donationAmount
-       }).slice(0, 3))
-     }
+        return projectTwo.donationAmount - projectOne.donationAmount
+      }).slice(0, 3))
+    }
   }, [project])
 
   const getPercentage = (project) => {
@@ -51,36 +58,37 @@ const ProjectPage = ({ setAuthenticated }) => {
 
     // return (sum/project.goalAmount) * 100
     return 50
-}
-
-const getSum = (project) => {
-  let sum = 0
-
-  for (let i = 0; i < project.donations.length; i++) {
-      sum += project.donations[i].donationAmount;
   }
-  return sum
-}
 
-const getStateAbbreviation = (project) => {
-  let result;
-  const allStates = csc.getStatesOfCountry('US')
+  const getSum = (project) => {
+    let sum = 0
 
-  let stateName = project.user.state;
+    for (let i = 0; i < project.donations.length; i++) {
+      sum += project.donations[i].donationAmount;
+    }
+    return sum
+  }
 
-  allStates.forEach((state) => {
+  const getStateAbbreviation = (project) => {
+    let result;
+    const allStates = csc.getStatesOfCountry('US')
+
+    let stateName = project.user.state;
+
+    allStates.forEach((state) => {
       if (state.name === stateName) {
-          result = state.isoCode
+        result = state.isoCode
       }
-  })
-  return result;
-}
+    })
+    return result;
+  }
 
-console.log(topThree)
+
   return (
     <>
       <Navigation setAuthenticated={setAuthenticated} />
       {showDonateModal && <DonateForm />}
+      {showEditProjectModal && <EditProjectForm />}
       {project && (
         <div className="project-container">
           <div class="grid-container">
@@ -106,54 +114,59 @@ console.log(topThree)
             )}
 
 
-            <div className="description">{project.description}</div>
+            <div className="description">
+              <div>{project.description}</div>
+              {project.images.map((img, idx) => (
+                <img src={img.imageUrl}></img>
+              ))}
+            </div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 <h1 className="donations-box-header">Donations</h1>
-              <div id="projectCard-amount-projectPage">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
-              <div id="meter-productPage">
-                  <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
-              </div>
-              <button
-                className="donate-box-button"
-                onClick={() => {
-                  if (user !== null) {
-                    setShowDonateModal(true);
-                  } else {
-                    setShowLoginModal((prev) => !prev);
-                  }
-                }}
-              >
-                Donate
+                <div id="projectCard-amount-projectPage">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+                <div id="meter-productPage">
+                  <span id="progressBar" style={{ width: `${getPercentage(project)}%` }}></span>
+                </div>
+                <button
+                  className="donate-box-button"
+                  onClick={() => {
+                    if (user !== null) {
+                      setShowDonateModal(true);
+                    } else {
+                      setShowLoginModal((prev) => !prev);
+                    }
+                  }}
+                >
+                  Donate
               </button>
-              <p className="top-donors">Top Donors</p>
-              <div className="top-donors-container">
-                {topThree &&
-                topThree.map((project) => (
-                    <div className="comment-avatar-sticky">
-                              {project.donator.profileImageUrl ? (
-                                <div className="logoBackground-sticky">
-                                  <img
-                                    src={project.donator.profileImageUrl}
-                                    className="userProfilePictureSticky"
-                                    alt="JumpStart User"
-                                  ></img>
-                                </div>
-                              ) : (
-                                <div className="logoBackground-sticky">
-                                  <img
-                                  className="sticky-logo"
-                                    src={logo_40x40}
-                                    alt="JumpStart Logo"
-                                  ></img>
-                                </div>
-                              )}
-                            <div className="top-donor-name">{`${project.donator.username} $${Number(project.donationAmount)}`}</div></div>
-                ))}
-              <div className="numberOfDonators">
-                <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
-              </div>
-              </div>
+                <p className="top-donors">Top Donors</p>
+                <div className="top-donors-container">
+                  {topThree &&
+                    topThree.map((project) => (
+                      <div className="comment-avatar-sticky">
+                        {project.donator.profileImageUrl ? (
+                          <div className="logoBackground-sticky">
+                            <img
+                              src={project.donator.profileImageUrl}
+                              className="userProfilePictureSticky"
+                              alt="JumpStart User"
+                            ></img>
+                          </div>
+                        ) : (
+                            <div className="logoBackground-sticky">
+                              <img
+                                className="sticky-logo"
+                                src={logo_40x40}
+                                alt="JumpStart Logo"
+                              ></img>
+                            </div>
+                          )}
+                        <div className="top-donor-name">{`${project.donator.username} $${Number(project.donationAmount)}`}</div></div>
+                    ))}
+                  <div className="numberOfDonators">
+                    <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="comments grid-div">

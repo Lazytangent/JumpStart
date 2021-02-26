@@ -1,5 +1,4 @@
-.project-form-container {
-    /* z-index: 10; */
+/* .project-form-container {
     position: absolute;
     top: 30%;
     left: 40%;
@@ -15,7 +14,7 @@
   display: none;
 }
 
-.create-form {font-family: Arial, Helvetica, sans-serif;}
+.update {font-family: Arial, Helvetica, sans-serif;}
 
 .input-text, .input-number {
   width: 100%;
@@ -53,4 +52,4 @@
 
 .errors {
   color: red;
-}
+} */
