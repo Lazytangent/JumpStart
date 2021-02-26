@@ -80,7 +80,7 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
     }
   }
 
-  const response = await fetch('/api/projects/', {
+  const response = await fetch(`/api/projects/${projectId}`, {
     method: "POST",
     body: formData,
   });
@@ -90,6 +90,15 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
   }
   return project;
 }
+
+export const deleteProject = (projectId) => async (dispatch) => {
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: "DELETE",
+  });
+  const message = await response.json();
+  dispatch(setCurrentProject(null));
+  return message;
+};
 
 export const getProjectById = (projectId) => async (dispatch) => {
   const response = await fetch(`/api/projects/${projectId}`)
