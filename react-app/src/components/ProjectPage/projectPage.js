@@ -25,7 +25,6 @@ const ProjectPage = () => {
             <div class="item1 grid-div">
               <h1 className="project-header">{project.name}</h1>
             </div>
-            {/* <div class="item2">Menu</div> */}
             <div className="item3">
               <div className="thumbnail">
                 <img
@@ -37,12 +36,13 @@ const ProjectPage = () => {
             <div className="item2 grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
-            {/* <div class="item3">Main</div> */}
             <div class="item4 grid-div" id="donations-slider">
               <div class="sticky-container">Donations</div>
             </div>
             <div class="item5 grid-div">
               <h1 className="comments-header">
+                {/* As of Thursday night, this won't exclude anonymous donations 
+              So the count will probably (not tested) display a higher number than comments shown*/}
                 Comments ({project.donations.length})
               </h1>
               <ul className="donations-ul">
@@ -119,7 +119,6 @@ const ProjectPage = () => {
             <div className="footer grid-div">
               <p>FOOTER</p>
             </div>
-            {/* <div class="item6">Another Footer</div> */}
           </div>
         </div>
       )}

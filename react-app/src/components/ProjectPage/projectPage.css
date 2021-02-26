@@ -47,7 +47,6 @@
 .grid-container {
   display: grid;
   width: 80%;
-
   margin: 0 auto;
   min-width: 800px;
   grid-template-columns: repeat(6, 1fr);
