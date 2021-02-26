@@ -92,7 +92,7 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
 }
 
 export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
-  const response = await fetch('/api/donations', {
+  const response = await fetch('/api/donations/', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

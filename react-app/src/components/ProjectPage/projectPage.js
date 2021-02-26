@@ -4,9 +4,22 @@ import { useParams } from "react-router-dom";
 import projectReducer, { getProjectById } from "../../store/project";
 import logo_40x40 from "../SearchBar/logo_40x40.png";
 import "./projectPage.css";
-
+import Navigation from "../../components/Navigation/navigation"
+import { useModalContext } from "../../context/Modal";
+import DonateForm from "../../components/DonateForm/DonateForm"
 //a single change
-const ProjectPage = () => {
+const ProjectPage = ({ setAuthenticated }) => {
+
+  const {
+    showLoginModal,
+    setShowLoginModal,
+    showDonateModal,
+    setShowSignUpModal,
+    setShowDonateModal,
+  } = useModalContext();
+
+  const user = useSelector(state => state.session.user)
+  // console.log(user)
   const project = useSelector((state) => state.project.currentProject);
   const { projectId } = useParams();
   const dispatch = useDispatch();
@@ -19,6 +32,8 @@ const ProjectPage = () => {
 
   return (
     <>
+      <Navigation setAuthenticated={setAuthenticated} />
+      {showDonateModal && <DonateForm />}
       {project && (
         <div className="project-container">
           <div class="grid-container">
@@ -41,11 +56,22 @@ const ProjectPage = () => {
 }
             <div className="description">{project.description}</div>
             <div class="donations grid-div" id="donations-slider">
-              <div class="sticky-container">Donations</div>
+              <div class="sticky-container">
+                Donations
+                <button onClick={() => {
+                  if (user !== null) {
+                    setShowDonateModal(true)
+                  } else {
+                    setShowLoginModal((prev) => !prev)
+                  }
+                }}>
+                  Donate
+                </button>
+              </div>
             </div>
             <div class="comments grid-div">
               <h1 className="comments-header">
-                {/* As of Thursday night, this won't exclude anonymous donations 
+                {/* As of Thursday night, this won't exclude anonymous donations
               So the count will probably (not tested) display a higher number than comments shown*/}
                 Donations ({project.donations.length})
               </h1>
@@ -66,13 +92,13 @@ const ProjectPage = () => {
                                   ></img>
                                 </div>
                               ) : (
-                                <div className="logoBackground">
-                                  <img
-                                    src={logo_40x40}
-                                    alt="JumpStart Logo"
-                                  ></img>
-                                </div>
-                              )}
+                                  <div className="logoBackground">
+                                    <img
+                                      src={logo_40x40}
+                                      alt="JumpStart Logo"
+                                    ></img>
+                                  </div>
+                                )}
                             </div>
                             <div className="comment-header">
                               {donation.donator.username} donated $
