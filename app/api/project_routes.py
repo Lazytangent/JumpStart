@@ -94,7 +94,6 @@ def create_new_project():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         thumbnailImgUrl = "/logo.png"
-
         if 'thumbnailImg' in request.files:
             image = request.files['thumbnailImg']
             if allowed_file(image.filename):
