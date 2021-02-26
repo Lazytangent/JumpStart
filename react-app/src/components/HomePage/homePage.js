@@ -48,7 +48,6 @@ document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 storeScroll();
 
 const HomePage = ({ setAuthenticated, setShowModal }) => {
-    const [backgroundImg, setBackgroundImg] = useState("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697255+(3).jpg")
 
     const {
         showLoginModal,
@@ -68,18 +67,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         dispatch(getHomePageProjects("popular"));
         dispatch(getHomePageProjects("recent"));
         dispatch(getHomePageProjects("trending"));
-
-        setTimeout(() => {
-            setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697256+(2).jpg")
-        }, 3000)
-
-        // setTimeout(() => {
-        //     setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697257+(4).jpg")
-        // }, 3500)
-
-        setTimeout(() => {
-            setBackgroundImg("https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-anna-tarazevich-5697262+(2).jpg")
-        }, 5500)
     }, [dispatch])
 
     const mostPopular = useSelector((state) => state.project.mostPopular)
@@ -252,7 +239,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
             </nav>
             <div className="homePage">
                 <div className="homePage-image-container">
-                    <img className="homePage-image" src={backgroundImg} alt=""></img>
+                    <img className="homePage-image" src='https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-brett-sayles-2821220.jpg' alt=""></img>
                 </div>
                 <div className="homePage-description-box">
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
@@ -356,4 +343,4 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
 
 }
 
-export default HomePage;
+export default HomePage
