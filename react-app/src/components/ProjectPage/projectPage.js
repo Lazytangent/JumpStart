@@ -73,8 +73,8 @@ const getStateAbbreviation = (project) => {
   })
   return result;
 }
-  // console.log(project)
 
+console.log(topThree)
   return (
     <>
       <Navigation setAuthenticated={setAuthenticated} />
@@ -127,8 +127,13 @@ const getStateAbbreviation = (project) => {
               <div className="numberOfDonators">
                 <p className="numberOfDonators-text">{`${project.donations.length} people have donated`}</p>
               </div>
-                <p className="top-donors">Top Donors</p>
-                {/* top 3 donors */}
+              <p className="top-donors">Top Donors</p>
+              <div className="top-donors-container">
+                {topThree &&
+                topThree.map((project) => (
+                  <div className="top-donor-name">{`${project.donator.username}`}<p className="top-donor-amount">{`$${Number(project.donationAmount)}`}</p></div>
+                ))}
+              </div>
               </div>
             </div>
             <div class="comments grid-div">

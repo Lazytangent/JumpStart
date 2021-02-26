@@ -203,6 +203,10 @@ overflow: hidden;
 
 }
 
+.top-donors-container {
+  display: inline-block;
+}
+
 .comment-avatar {
   grid-area: comment-avatar;
   padding-top: 1em;
