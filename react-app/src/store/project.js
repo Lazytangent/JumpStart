@@ -210,6 +210,17 @@ export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) =
   return projects;
 };
 
+export const deleteImage = (imageId) => async (dispatch) => {
+  const response = await fetch(`/api/images/${imageId}`, {
+    method: "DELETE",
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+}
+
 const initialState = {
   mostPopular: null,
   mostRecent: null,
