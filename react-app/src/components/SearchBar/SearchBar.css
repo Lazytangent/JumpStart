@@ -12,8 +12,14 @@
 } */
 
 .searchResults-container {
-  max-height: 70vh;
+  width: 63%;
+  margin: 0 17%;
+  max-height: 60vh;
   overflow-y: scroll;
+}
+
+.searchResults-container::-webkit-scrollbar {
+  display: none;
 }
 
 .a-link {
@@ -23,10 +29,10 @@
 }
 
 .searchBar-input {
-  padding: 0.5rem;
-  margin: 2rem 0rem;
+  padding: 0.5rem ;
+  margin: 2rem 16%;
   /* margin-left: 2.5%; */
-  width: 100%;
+  width: 65%;
 }
 .searchBarMatches-container {
   margin: 0rem 2rem;
@@ -76,8 +82,8 @@
 
 #inputClose-button {
   position: fixed;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: .5rem;
+  right: 21.5rem;
   z-index: 3;
   border: none;
 }
