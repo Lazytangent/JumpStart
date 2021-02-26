@@ -26,15 +26,16 @@ def create_donation():
                        methods=["PUT", "DELETE"])
 def update_donation(donationId):
     donation = Donation.query.get(donationId)
+    project = Project.query.get(donationId.projectId)
     if request.method == "PUT":
         form = CreateDonation()
         if form.validate_on_submit():
             form.populate_obj(donation)
             db.session.commit()
-            return donation.to_dict()
+            return project.to_dict()
         return {'errors': validation_errors_to_error_messages(form.errors)}
     elif request.method == "DELETE":
         db.session.delete(donation)
         db.session.commit()
-        return {'message': 'Delete was successful'}
+        return project.to_dict()
     return {'message': 'Invalid route'}
