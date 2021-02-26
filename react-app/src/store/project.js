@@ -81,7 +81,7 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
   }
 
   const response = await fetch(`/api/projects/${projectId}`, {
-    method: "POST",
+    method: "PUT",
     body: formData,
   });
   const project = await response.json();

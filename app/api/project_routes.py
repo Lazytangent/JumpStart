@@ -122,6 +122,7 @@ def update_project(project_id):
     project = Project.query.get(project_id)
     if request.method == "PUT":
         form = CreateProject()
+        form['userId'].data = project.userId
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             thumbnailImgUrl = project.thumbnailImgUrl
