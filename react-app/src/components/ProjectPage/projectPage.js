@@ -22,8 +22,8 @@ const ProjectPage = () => {
       {project && (
         <div className="project-container">
           <div class="grid-container">
-            <div class="item1 grid-div">
-              <h1 className="project-header">{project.name}</h1>
+            <div class="projectHeader grid-div">
+              <h1>{project.name}</h1>
             </div>
             <div className="projectImage">
               <div className="thumbnail">

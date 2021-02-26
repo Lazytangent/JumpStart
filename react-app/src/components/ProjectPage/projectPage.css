@@ -13,12 +13,11 @@
   margin-top: 50px;
 }
 
-.project-header {
-  text-align: left;
-}
 
-.item1 {
-  grid-area: header;
+
+.projectHeader {
+  grid-area: projectHeader;
+  text-align: left;
 }
 .organizer {
   grid-area: organizer;
@@ -51,7 +50,7 @@
   min-width: 800px;
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
-    "header header header header header header"
+    "projectHeader projectHeader projectHeader projectHeader projectHeader projectHeader"
     "projectImage projectImage projectImage projectImage donations donations"
     "organizer organizer organizer organizer donations donations"
     "comments comments comments comments donations donations"
