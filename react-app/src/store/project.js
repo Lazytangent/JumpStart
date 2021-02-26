@@ -72,13 +72,13 @@ export const createDonation = (userId, projectId, donationAmount, comment, anony
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(
+    body: JSON.stringify({
       userId,
       projectId,
       donationAmount,
       comment,
       anonymous,
-    ),
+    }),
   });
   const project = await response.json();
   if (!project.errors) {
@@ -100,11 +100,11 @@ export const updateDonation = (donationId, donationAmount, comment, anonymous) =
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(
+    body: JSON.stringify({
       donationAmount,
       comment,
       anonymous,
-    ),
+    }),
   });
   const project = await response.json();
   if (!project.errors) {
