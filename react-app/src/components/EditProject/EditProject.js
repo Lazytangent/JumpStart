@@ -1,32 +1,39 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux"
-import { createProject } from '../../store/project'
-import "./CreateProject.css"
-import Navigation from '../Navigation/navigation'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom"
+import { Modal, useModalContext } from "../../context/Modal";
+import { updateProject, getProjectById } from '../../store/project'
+import "./EditProject"
 
-const CreateProject = ({ setAuthenticated }) => {
+
+const EditProjectForm = () => {
 
   const userId = useSelector(state => state.session.user.id)
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [goalAmount, setGoalAmount] = useState()
-  const [minPledge, setMinPledge] = useState()
-  const [thumbnailImage, setThumbnailImage] = useState({ name: "" });
-  const [additionalImages, setAdditionalImages] = useState();
+  const projectId = useSelector(state => state.project.currentProject.id)
+  const project = useSelector((state) => state.project.currentProject);
+  const currentProject = useSelector(state => state.project.currentProject)
+  const { showEditProjectModal, setShowEditProjectModal } = useModalContext();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [name, setName] = useState(currentProject.name)
+  const [description, setDescription] = useState(currentProject.description)
+  const [goalAmount, setGoalAmount] = useState(currentProject.goalAmount)
+  const [minPledge, setMinPledge] = useState(currentProject.minPledge)
+  const [thumbnailImage, setThumbnailImage] = useState("");
+  const [images, setAdditionalImages] = useState();
+
   const [errors, setErrors] = useState([]);
 
-  const postProject = async (e) => {
-    e.preventDefault()
-    const newProject = await dispatch(
-      createProject(name, description, goalAmount, minPledge, thumbnailImage, userId, additionalImages)
-    )
-    if (newProject.errors) {
-      setErrors(newProject.errors)
+  console.log(images)
+
+  const editDonation = async (e) => {
+    e.preventDefault();
+    const donation = await dispatch(updateProject(projectId, name, description, goalAmount, minPledge, thumbnailImage, images))
+    if (!donation.errors) {
+      setShowEditProjectModal(false);
+      dispatch(getProjectById(projectId))
     } else {
-      history.push(`/${newProject.id}`)
+      setErrors(donation.errors)
     }
   }
 
@@ -63,12 +70,14 @@ const CreateProject = ({ setAuthenticated }) => {
     if (file) setAdditionalImages(file);
   };
 
+
   return (
     <>
-      <Navigation setAuthenticated={setAuthenticated} />
-      <div className="project-form-container">
-        <h1>Tell Your Story</h1>
-        <form onSubmit={postProject} className="create-form">
+
+      <Modal onClose={() => setShowEditProjectModal(false)}>
+        {/* <div className="project-form-container"> */}
+        <h1>Update Your Story</h1>
+        <form onSubmit={editDonation} className="update-form">
           <div>
             {errors.map((error, idx) => (
               <ul className="errors" key={idx}>{error}</ul>
@@ -79,13 +88,13 @@ const CreateProject = ({ setAuthenticated }) => {
               type='text'
               className="input-text"
               name='name'
-              placeholder="Name of Project"
+              value={name}
               onChange={updateName}
               required
             ></input>
           </div>
           <div>
-            <input className="choose-image" type="button" id="loadFile" value="Choose a Thumbnail Image" onClick={chooseImage} />
+            <input className="choose-image" type="button" id="loadFile" value="New Thumbnail Image" onClick={chooseImage} />
             <label for="image">   {thumbnailImage.name}</label>
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
           </div>
@@ -95,14 +104,21 @@ const CreateProject = ({ setAuthenticated }) => {
               className="input-text"
               rows="10"
               name='description'
-              placeholder="Description of Project"
+              value={description}
               onChange={updateDescription}
               required
             ></textarea>
           </div>
           <div>
+            {project.images.map((img, idx) => (
+
+              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+            ))}
             <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
-            {/* <label for="image">   {additionalImages}</label> */}
+            {/* {project.images.map((img, idx) => (
+
+              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+            ))} */}
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
           </div>
           <div>
@@ -110,7 +126,7 @@ const CreateProject = ({ setAuthenticated }) => {
               type='number'
               className="input-text"
               name='goal'
-              placeholder="Goal Amount"
+              value={goalAmount}
               onChange={updateGoalAmount}
             ></input>
           </div>
@@ -119,16 +135,19 @@ const CreateProject = ({ setAuthenticated }) => {
               type='number'
               className="input-number"
               name='minimum'
-              placeholder="Minimum Pledge Amount"
+              value={minPledge}
               onChange={updateMinPledge}
             ></input>
           </div>
-          <button className="submit-button" type="submit" onClick={postProject}>Create</button>
+          <button className="submit-button" type="submit" onClick={editDonation}>Update</button>
           <button className="cancel-button" type="submit" onClick={() => history.push("/")}>Cancel</button>
         </form>
-      </div>
+        {/* </div> */}
+      </Modal>
+
     </>
   )
+
 }
 
-export default CreateProject;
+export default EditProjectForm;

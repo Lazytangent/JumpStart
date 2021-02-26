@@ -5,10 +5,9 @@
 }
 
 .logoBackground {
-  background-color: rgba(44, 252, 113, 0.26);
   padding: 5px 5px 0px 5px;
   border-radius: 50%;
-  border: 3px solid rgb(0, 177, 55);
+  border: 3px solid #02a95c;
 }
 
 .grid-div {
@@ -25,8 +24,7 @@
 .projectHeader {
   grid-area: projectHeader;
   text-align: left;
-  /* padding: 60px 0 0 20px; */
-  margin: 60px 0 0 20px;
+  margin-top: 80px;
 }
 
 .organizer {
@@ -34,10 +32,11 @@
   font-size: 16px;
   padding: 1em 0em;
   margin: 0em 1em;
-  background-color: rgb(0, 128, 0, 0.5);
+  background-color: #02a95c;
   vertical-align: center;
   border-radius: 99vw;
-  border: 3px solid rgb(0, 140, 0, 0.5);
+  border: 3px solid #02a95c;
+  color: white;
 }
 
 .description {
@@ -45,7 +44,6 @@
   line-height: 1.5em;
   margin: 1em 0em;
   font-size: 20px;
-  /* font-family: "Lato", sans-serif; */
 }
 .projectImage {
   grid-area: projectImage;
@@ -75,6 +73,7 @@
   display: grid;
   width: 60.7%;
   /* margin: 0 auto; */
+
   margin-left: 17.5%;
   min-width: 800px;
   grid-template-columns: 1fr 1fr 1fr 1fr 0.75fr 0.75fr;
@@ -88,14 +87,145 @@
   grid-gap: 20px;
   padding: 20px;
   background-color: white;
-  /* font-family: "Lato", sans-serif; */
 }
 
 .sticky-container {
-  background-color: blue;
-  height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: sticky;
-  top: 30px;
+  position: -webkit-sticky;
+  background: white;
+  width: 100%;
+  /* height: ; */
+  top: 100px;
+  border-radius: 5px;
+  box-shadow: 0 0.3125rem 1rem 0.1875rem rgb(0 0 0 / 20%);
+  padding-bottom: 15px;
+}
+
+.donations-box-header {
+  padding-top: 15px;
+}
+
+#projectCard-amount-projectPage {
+  font-weight: 550;
+  padding-top: 8%;
+  font-size: 18px;
+  color: black;
+}
+
+#meter-productPage {
+  box-sizing: content-box;
+  height: 10px; /* Can be anything */
+  position: relative;
+  margin-top: 2%; /* Just for demo spacing */
+  background: rgb(214, 214, 214);
+  border-radius: 10px;
+  width: 80%;
+}
+
+#meter-productPage > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #02a95c;
+  background-image: linear-gradient(center bottom, #02a95c 100%, #02a95c 100%);
+  /* box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4); */
+  position: relative;
+  overflow: hidden;
+}
+#meter-productPage > span:after,
+.animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: move 8s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+.numberOfDonators {
+  margin-top: 8%;
+  display: inline-flex;
+}
+
+.numberOfDonators-text {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.comment-avatar-sticky {
+  display: flex;
+}
+
+.donate-box-button {
+  margin-top: 8%;
+  height: 50px;
+  width: 80%;
+  font-size: 22px;
+  color: white;
+  border-width: 2px;
+  background-color: #02a95c;
+  border-color: #02a95c;
+  border-radius: 5px;
+}
+
+.donate-box-button:hover {
+  background-color: #049451;
+}
+
+.top-donors {
+  margin-top: 6%;
+  font-size: 25px;
+  text-decoration: underline;
+  text-decoration-color: 2px solid black;
+}
+
+.logoBackground-sticky {
+  margin-top: 15px;
+  margin-right: 5px;
+  margin-left: 45px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 3px solid #02a95c;
+}
+.sticky-logo {
+  padding-top: 4px;
+  height: 25px;
+  width: 25px;
+}
+
+.top-donor-name {
+  margin-top: 20px;
+  font-size: 25px;
+}
+
+.top-donors-container {
+  width: 100%;
 }
 
 .comment-avatar {
@@ -143,7 +273,6 @@
 
 .donation-listItem {
   list-style-type: none;
-  /* font-family: Trebuchet, Arial, sans-serif; */
 }
 
 .userProfilePicture {
@@ -159,16 +288,16 @@
   border-top: 2px solid grey;
 }
 
-.projectHeader > h1,
+/* .projectHeader > h1,
 .grid-div,
 .comment-content,
 .comment-header,
 .comments-header,
 .description {
   font-family: "Lato", sans-serif;
-}
+} */
 
 .bold {
-  font-weight: 900;
-  letter-spacing: 1px;
+  font-weight: bold;
+  /* letter-spacing: 1px; */
 }

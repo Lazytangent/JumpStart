@@ -1,0 +1,55 @@
+/* .project-form-container {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    margin-top: -80px;
+    margin-left: -190px;
+    width: 45%;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+.hide-this-button {
+  display: none;
+}
+
+.update {font-family: Arial, Helvetica, sans-serif;}
+
+.input-text, .input-number {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.submit-button, .cancel-button{
+  background-color:#00bc5e;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.choose-image {
+  background-color:#00bc5e;
+  color: white;
+
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+}
+
+.submit-button:hover, .cancel-button:hover, .choose-image:hover {
+  opacity: 0.8;
+}
+
+.errors {
+  color: red;
+} */

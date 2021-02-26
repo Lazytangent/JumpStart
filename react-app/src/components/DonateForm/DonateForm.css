@@ -30,7 +30,7 @@
 }
 
 .private-check {
-  margin-top: 1d -\440px;
+  margin-top: 13.5px;
   display: flex;
   align-items: baseline;
 }
@@ -64,7 +64,7 @@
 
 #anonymousLabel {
   font-size: 12px;
-  padding: 0em 2em 0em 0.5em;
+  padding: 1em 2em 0em 0.5em;
   display: inline-block;
   vertical-align: middle;
 }

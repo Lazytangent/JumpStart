@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory, NavLink } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import { getDiscoverPageProjects } from '../../store/project';
 import { getDiscoverPageProjectsByLocation } from '../../store/project';
 import Navigation from '../Navigation/navigation';
