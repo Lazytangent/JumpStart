@@ -114,6 +114,17 @@ export const updateDonation = (donationId, donationAmount, comment, anonymous) =
   return project;
 };
 
+export const deleteDonation = (donationId) => async (dispatch) => {
+  const response = await fetch(`/api/donations/${donationId}`, {
+    method: "DELETE",
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+};
+
 export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
   const response = await fetch(`/api/projects/homepage/${optionalParameter}`)
   const projects = await response.json();
