@@ -1,48 +1,129 @@
-
-
-.thumbnail img{
+.thumbnail img {
   /* height: 430px; */
-  max-height: 100%;
-  max-width: 100%;
+  /* max-height: 100%; */
+  width: 100%;
   /* width: 730px; */
 
   /* display: block; */
   /* height: auto; */
+  object-fit: cover;
+}
 
+.grid-div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
 }
 
 .project-container {
   margin-top: 50px;
 }
 
-.item1 { grid-area: header; }
-.item2 { grid-area: menu; }
-.item3 { grid-area: main;
-        max-width: 80%;
+.project-header {
+  text-align: left;
 }
-.item4 { grid-area: right; }
-.item5 { grid-area: footer; }
-.item6 {grid-area: a;}
+
+.item1 {
+  grid-area: header;
+}
+.item2 {
+  grid-area: organizer;
+  font-size: 16px;
+  padding-bottom: 0px;
+}
+.item3 {
+  grid-area: image;
+  padding: none;
+}
+.item4 {
+  grid-area: right;
+}
+.item5 {
+  grid-area: comments;
+}
+.footer {
+  grid-area: footer;
+}
 
 .grid-container {
   display: grid;
-  width: 70%;
+  width: 80%;
 
   margin: 0 auto;
   min-width: 800px;
+  grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
-    'header header header header header header'
-    'main main main main right right'
-    'menu footer footer footer footer footer'
-    'a a a a a a';
-  grid-gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
+    "header header header header header header"
+    "image image image image right right"
+    "organizer organizer organizer organizer right right"
+    "comments comments comments comments right right"
+    "footer footer footer footer footer footer";
+  /* 'a a a a right right'; */
+  grid-gap: 20px;
+  /* background-color: #2196f3; */
+  padding: 20px;
 }
 
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
+.sticky-container {
+  background-color: blue;
+  height: 560px;
+  position: sticky;
+  top: 30px;
+}
+
+.comment-avatar {
+  grid-area: comment-avatar;
+  padding: 1em;
+}
+.comment-header {
+  grid-area: comment-header;
+}
+
+.comment-content {
+  grid-area: comment-content;
+}
+
+.spacer {
+  grid-area: spacer;
+}
+
+.comment-footer {
+  grid-area: comment-footer;
+}
+
+.comment-header,
+.comment-content {
+  padding: 1em;
+}
+
+.donation-container {
+  display: grid;
+  grid-template-areas:
+    "comment-avatar comment-header"
+    "comment-avatar comment-content"
+    "spacer comment-footer";
+
+  grid-template-columns: 40px 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 1rem;
+  text-align: left;
+  margin: 2em 0;
+  border-bottom: 2px solid grey;
+}
+
+.donation-listItem {
+  list-style-type: none;
+}
+
+.userProfilePicture {
+  display: inline-block;
+}
+
+.comments-header {
+  text-align: left;
+}
+
+.donations-ul:first-child {
+  border-top: 2px solid grey;
 }
