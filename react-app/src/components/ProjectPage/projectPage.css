@@ -4,6 +4,13 @@
   border-radius: 5px;
 }
 
+.logoBackground {
+  background-color: rgba(44, 252, 113, 0.26);
+  padding: 5px 5px 0px 5px;
+  border-radius: 50%;
+  border: 3px solid rgb(0, 177, 55);
+}
+
 .grid-div {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
@@ -35,6 +42,7 @@
   grid-area: description;
   line-height: 1.5em;
   margin: 1em 0em;
+  font-size: 20px;
   /* font-family: "Lato", sans-serif; */
 }
 .projectImage {
@@ -87,6 +95,7 @@
   grid-area: comment-avatar;
   padding-top: 1em;
 }
+
 .comment-header {
   grid-area: comment-header;
 }
@@ -115,7 +124,7 @@
     "comment-avatar comment-content"
     "spacer comment-footer";
 
-  grid-template-columns: 40px 1fr;
+  grid-template-columns: 56px 1fr;
   grid-template-rows: auto;
   grid-row-gap: 0.5rem;
   grid-column-gap: 1rem;

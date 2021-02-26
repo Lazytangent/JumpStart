@@ -55,16 +55,20 @@ const ProjectPage = () => {
                           <div className="donation-container">
                             <div className="comment-avatar">
                               {donation.donator.profileImageUrl ? (
-                                <img
-                                  src={donation.donator.profileImageUrl}
-                                  className="userProfilePicture"
-                                  alt="JumpStart User"
-                                ></img>
+                                <div>
+                                  <img
+                                    src={donation.donator.profileImageUrl}
+                                    className="userProfilePicture"
+                                    alt="JumpStart User"
+                                  ></img>
+                                </div>
                               ) : (
-                                <img
-                                  src={logo_40x40}
-                                  alt="JumpStart Logo"
-                                ></img>
+                                <div className="logoBackground">
+                                  <img
+                                    src={logo_40x40}
+                                    alt="JumpStart Logo"
+                                  ></img>
+                                </div>
                               )}
                             </div>
                             <div className="comment-header">
