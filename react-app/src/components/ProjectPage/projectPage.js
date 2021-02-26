@@ -4,12 +4,11 @@ import { useParams } from "react-router-dom";
 import projectReducer, { getProjectById } from "../../store/project";
 import logo_40x40 from "../SearchBar/logo_40x40.png";
 import "./projectPage.css";
-import Navigation from "../../components/Navigation/navigation"
+import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
-import DonateForm from "../../components/DonateForm/DonateForm"
+import DonateForm from "../../components/DonateForm/DonateForm";
 //a single change
 const ProjectPage = ({ setAuthenticated }) => {
-
   const {
     showLoginModal,
     setShowLoginModal,
@@ -18,9 +17,10 @@ const ProjectPage = ({ setAuthenticated }) => {
     setShowDonateModal,
   } = useModalContext();
 
-  const user = useSelector(state => state.session.user)
+  const user = useSelector((state) => state.session.user);
   // console.log(user)
   const project = useSelector((state) => state.project.currentProject);
+  const session = useSelector((state) => state.session);
   const { projectId } = useParams();
   const dispatch = useDispatch();
 
@@ -51,20 +51,27 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
-            {
-            <div className="editYourProject-button"></div>
-}
+            {/* {session.user.id === project.userId ? (
+              <div className="editYourProject-button">deewfwe</div>
+            ) : (
+              "dd"
+            )} */}
+            <div className="editYourProject-button">
+              <button>Edit</button>
+            </div>
             <div className="description">{project.description}</div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 Donations
-                <button onClick={() => {
-                  if (user !== null) {
-                    setShowDonateModal(true)
-                  } else {
-                    setShowLoginModal((prev) => !prev)
-                  }
-                }}>
+                <button
+                  onClick={() => {
+                    if (user !== null) {
+                      setShowDonateModal(true);
+                    } else {
+                      setShowLoginModal((prev) => !prev);
+                    }
+                  }}
+                >
                   Donate
                 </button>
               </div>
@@ -92,13 +99,13 @@ const ProjectPage = ({ setAuthenticated }) => {
                                   ></img>
                                 </div>
                               ) : (
-                                  <div className="logoBackground">
-                                    <img
-                                      src={logo_40x40}
-                                      alt="JumpStart Logo"
-                                    ></img>
-                                  </div>
-                                )}
+                                <div className="logoBackground">
+                                  <img
+                                    src={logo_40x40}
+                                    alt="JumpStart Logo"
+                                  ></img>
+                                </div>
+                              )}
                             </div>
                             <div className="comment-header">
                               {donation.donator.username} donated $
