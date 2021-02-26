@@ -215,9 +215,7 @@ export const deleteImage = (imageId) => async (dispatch) => {
     method: "DELETE",
   });
   const project = await response.json();
-  if (!project.errors) {
-    dispatch(setCurrentProject(project));
-  }
+
   return project;
 }
 

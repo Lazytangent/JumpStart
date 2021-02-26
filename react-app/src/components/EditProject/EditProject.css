@@ -56,11 +56,11 @@
 } */
 
 
-.delete-image-button {
-      background-color: none;
+.delete-image-div:hover {
+      /* background-color: none;
     background-repeat:no-repeat;
-    border: none;
+    border: none; */
     cursor:pointer;
-    overflow: hidden;
-    outline:none;
+    /* overflow: hidden;
+    outline:none; */
 }
