@@ -28,7 +28,7 @@ const ProjectPage = ({ setAuthenticated }) => {
     dispatch(getProjectById(projectId));
   }, [dispatch]);
 
-  // console.log(project)
+
 
   return (
     <>
@@ -99,13 +99,13 @@ const ProjectPage = ({ setAuthenticated }) => {
                                   ></img>
                                 </div>
                               ) : (
-                                <div className="logoBackground">
-                                  <img
-                                    src={logo_40x40}
-                                    alt="JumpStart Logo"
-                                  ></img>
-                                </div>
-                              )}
+                                  <div className="logoBackground">
+                                    <img
+                                      src={logo_40x40}
+                                      alt="JumpStart Logo"
+                                    ></img>
+                                  </div>
+                                )}
                             </div>
                             <div className="comment-header">
                               {donation.donator.username} donated $
