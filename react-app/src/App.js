@@ -3,11 +3,14 @@ import { Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import HomePage from "./components/HomePage/homePage"
+import ProjectPage from "./components/ProjectPage/projectPage"
 import { authenticate } from './store/session';
+import CreateProject from './components/CreateProject/CreateProject';
+import DiscoverPage from './components/DiscoverPage/discoverPage.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +18,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       const user = await dispatch(authenticate());
       if (!user.errors) {
         setAuthenticated(true);
@@ -30,7 +33,6 @@ function App() {
 
   return (
     <>
-      <NavBar setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
@@ -42,14 +44,24 @@ function App() {
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+
+        <Route path="/" exact={true} authenticated={authenticated}>
+          <HomePage setAuthenticated={setAuthenticated} />
+        </Route>
+        <Route path="/discover" exact={true} authenticated={authenticated}>
+          <DiscoverPage setAuthenticated={setAuthenticated} />
+        </Route>
+        <Route path="/new-project" exact={true} authenticated={authenticated}>
+          <CreateProject />
+        </Route>
+        <Route path="/:projectId" exact={true} authenticated={authenticated}>
+          <ProjectPage setAuthenticated={setAuthenticated} />
+        </Route>
       </Switch>
     </>
   );

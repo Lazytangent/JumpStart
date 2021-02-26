@@ -8,6 +8,8 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.project_routes import project_routes
+from .api.donation_routes import donation_routes
 
 from .seeds import seed_commands
 
@@ -31,6 +33,8 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(project_routes, url_prefix='/api/projects')
+app.register_blueprint(donation_routes, url_prefix='/api/donations')
 db.init_app(app)
 Migrate(app, db)
 
@@ -42,6 +46,7 @@ CORS(app)
 # Therefore, we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
+
 
 @app.before_request
 def https_redirect():
@@ -68,6 +73,8 @@ def inject_csrf_token(response):
 @app.route('/<path:path>')
 def react_root(path):
     print("path", path)
-    if path == 'favicon.ico':
+    if path.endswith('.ico'):
         return app.send_static_file('favicon.ico')
+    elif path == 'logo.png':
+        return app.send_static_file('logo.png')
     return app.send_static_file('index.html')

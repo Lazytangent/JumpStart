@@ -1,0 +1,167 @@
+.thumbnail > img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.logoBackground {
+  background-color: rgba(44, 252, 113, 0.26);
+  padding: 5px 5px 0px 5px;
+  border-radius: 50%;
+  border: 3px solid rgb(0, 177, 55);
+}
+
+.grid-div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.project-container {
+  margin-top: 50px;
+  background-color: #edeef0;
+}
+
+.projectHeader {
+  grid-area: projectHeader;
+  text-align: left;
+}
+
+.organizer {
+  grid-area: organizer;
+  font-size: 16px;
+  padding: 1em 0em;
+  margin: 0em 1em;
+  background-color: rgb(0, 128, 0, 0.5);
+  vertical-align: center;
+  border-radius: 99vw;
+  border: 3px solid rgb(0, 140, 0, 0.5);
+}
+
+.description {
+  grid-area: description;
+  line-height: 1.5em;
+  margin: 1em 0em;
+  font-size: 20px;
+  /* font-family: "Lato", sans-serif; */
+}
+.projectImage {
+  grid-area: projectImage;
+  padding: none;
+}
+.donations {
+  grid-area: donations;
+}
+.comments {
+  grid-area: comments;
+}
+
+#donations-slider {
+  padding: 0;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #edeef0;
+}
+
+.grid-container {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+  min-width: 800px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    "projectHeader projectHeader projectHeader projectHeader projectHeader projectHeader"
+    "projectImage projectImage projectImage projectImage donations donations"
+    "spacer organizer organizer . donations donations"
+    "description description description description donations donations"
+    "comments comments comments comments donations donations"
+    "footer footer footer footer footer footer";
+  grid-gap: 20px;
+  padding: 20px;
+  background-color: white;
+  /* font-family: "Lato", sans-serif; */
+}
+
+.sticky-container {
+  background-color: blue;
+  height: 560px;
+  position: sticky;
+  top: 30px;
+}
+
+.comment-avatar {
+  grid-area: comment-avatar;
+  padding-top: 1em;
+}
+
+.comment-header {
+  grid-area: comment-header;
+}
+
+.comment-content {
+  grid-area: comment-content;
+}
+
+.spacer {
+  grid-area: spacer;
+}
+
+.comment-footer {
+  grid-area: comment-footer;
+}
+
+.comment-header,
+.comment-content {
+  padding: 1em;
+}
+
+.donation-container {
+  display: grid;
+  grid-template-areas:
+    "comment-avatar comment-header"
+    "comment-avatar comment-content"
+    "spacer comment-footer";
+
+  grid-template-columns: 56px 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 0.5rem;
+  grid-column-gap: 1rem;
+  text-align: left;
+  margin-top: 2em;
+  border-bottom: 2px solid grey;
+  padding-bottom: 2em;
+}
+
+.donation-listItem {
+  list-style-type: none;
+  /* font-family: Trebuchet, Arial, sans-serif; */
+}
+
+.userProfilePicture {
+  display: inline-block;
+}
+
+.comments-header {
+  text-align: left;
+  padding-bottom: 0.5em;
+}
+
+.donations-ul {
+  border-top: 2px solid grey;
+}
+
+.projectHeader > h1,
+.grid-div,
+.comment-content,
+.comment-header,
+.comments-header,
+.description {
+  font-family: "Lato", sans-serif;
+}
+
+.bold {
+  font-weight: 900;
+  letter-spacing: 1px;
+}

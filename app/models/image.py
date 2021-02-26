@@ -9,3 +9,10 @@ class Image(db.Model):
     imageUrl = db.Column(db.String(255), nullable=False)
 
     project = db.relationship("Project", back_populates="images")
+
+    def to_dict(self):
+        return {
+            "projectId": self.projectId,
+            "imageUrl": self.imageUrl,
+            "project": self.project.name
+        }

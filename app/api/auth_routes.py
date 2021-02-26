@@ -1,21 +1,15 @@
 from flask import Blueprint, jsonify, session, request
+from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.utils import secure_filename
+
+from app.config import Config
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
-from flask_login import current_user, login_user, logout_user, login_required
+from app.helpers import allowed_file, upload_file_to_s3, \
+    validation_errors_to_error_messages
 
 auth_routes = Blueprint('auth', __name__)
-
-
-def validation_errors_to_error_messages(validation_errors):
-    """
-    Simple function that turns the WTForms validation errors into a simple list
-    """
-    errorMessages = []
-    for field in validation_errors:
-        for error in validation_errors[field]:
-            errorMessages.append(f"{field} : {error}")
-    return errorMessages
 
 
 @auth_routes.route('/')
@@ -63,11 +57,15 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            password=form.data['password']
-        )
+        print(form.data)
+        profileImageUrl = None
+        if 'profileImage' in request.files:
+            image = request.files['profileImage']
+            image.filename = secure_filename(image.filename)
+            profileImageUrl = upload_file_to_s3(image, Config.S3_BUCKET)
+        user = User()
+        form.populate_obj(user)
+        user.profileImageUrl = profileImageUrl
         db.session.add(user)
         db.session.commit()
         login_user(user)

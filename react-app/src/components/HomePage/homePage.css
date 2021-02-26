@@ -1,0 +1,467 @@
+.homePage {
+    height: 250vh;
+    width: 99vw;
+
+}
+
+.homePage-image {
+    height: 65vh;
+    width: 99vw;
+    margin: 0;
+    padding: 0;
+}
+
+.homePage-image-container {
+    background-color: black;
+    height: 60vh;
+    width: 99vw;
+    margin: 0;
+    padding: 0;
+}
+
+.homePage-description-box {
+    height: 25%;
+    width: 65%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 100%;
+    position: absolute;
+    top: 55%;
+    left:17.5%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow:2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.homePage-description-image {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 10px 0 0 10px;
+  /* clip-path: ellipse(250px at 0% 50%) */
+}
+
+.homePage-description-box-body {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  margin-left: 2%;
+  margin-top: 5%;
+  font-size: 25px;
+}
+
+.homePage-description-box-button-container {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  margin-top: 16.5%;
+  margin-left: 38%;
+  display: inline-flex;
+}
+
+.homePage-description-box-button {
+  margin: 0;
+  padding: 0;
+  width: 155px;
+  height: 45px;
+  font-size: 30px;
+  border: 1px solid #02a95c;
+  background-color: white;
+  border-radius: 3px;
+  color:#02a95c;
+}
+
+.homePage-description-box-button:hover {
+  border: 1px solid #049451;
+  color:#049451;
+}
+
+.description-box-logo {
+  margin-top: 2%;
+  height: 1.5rem;
+  padding-left: 1%;
+}
+
+.homePage-grid {
+    height: 100%;
+    width: 55%;
+    margin-top: 10%;
+    margin-left: 22.5%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%;
+}
+
+.homePage-mostPopular-header {
+  grid-row-start: 1;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  font-size: 30px;
+}
+
+.homePage-mostRecent-header {
+  grid-row-start: 3;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  font-size: 30px;
+}
+
+.homePage-nearYou-header {
+  grid-row-start: 5;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 2%;
+  margin-bottom: 5%;
+  font-size: 30px;
+}
+
+#homePage-project-grid {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-template-rows: 85% 15%;
+}
+
+.homePage-grid-most-popular {
+    grid-row-start: 2;
+}
+
+.homePage-grid-most-recent {
+    grid-row-start: 4;
+}
+
+.homePage-grid-near-you {
+    grid-row-start: 6;
+}
+
+#homePage-project-card-link {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.25s ease-in 0s;
+}
+
+#homePage-project-card-link:hover {
+  cursor: pointer;
+  transform: translateY(-6px);
+
+}
+
+#projectCard-img {
+  margin: 0;
+  padding: 0;
+  border-radius: 5px 5px 0 0;
+  object-fit: fill;
+  max-width: 100%;
+  max-height: 260px;
+  height: 220px;
+}
+
+#homePage-project-card {
+  width: 90%;
+  border-radius: 10px;
+  box-shadow:2px 2px 5px rgb(224, 223, 223);
+}
+
+#homePage-project-card-text {
+  width: 90%;
+  margin: auto;
+}
+
+#projectCard-location {
+    padding-top: 4%;
+    font-weight: bold;
+    font-size: 20px;
+    color: #02a95c;
+}
+
+#projectCard-title {
+  font-weight: bold;
+  padding-top: .5%;
+  font-size: 20px;
+  color: black;
+  overflow: hidden;
+  max-width: 70ch;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+#projectCard-description {
+  padding-top: 5%;
+  font-size: 18px;
+  color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+#projectCard-amount {
+  font-weight:550;
+  padding-top: 2%;
+  font-size: 18px;
+  color: black;
+}
+
+#homePage-see-more {
+    grid-column-start: 3;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#homePage-see-more-text {
+  text-decoration: none;
+  color: #02a95c;
+  font-size: 18px;
+  transition: all .3s ease-out;
+  border: none;
+  background-color: transparent;
+}
+
+#homePage-see-more-text:hover {
+    cursor: pointer;
+    transform: translate(5px);
+}
+
+/* nav bar for home page changing on scroll */
+
+.navBar {
+  height: 8vh;
+  width: 100%;
+  display: grid;
+  position: fixed;
+  grid-template-columns: 17.5% 32.5% 32.5% 17.5%;
+  grid-template-rows: 1fr;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+  transition: background-color 0.6s;
+}
+
+.navBar-first-fraction {
+  grid-column-start: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navBar-second-fraction {
+  grid-column-start: 3;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.navBar-home {
+  display: inline-flex;
+  text-decoration: none;
+  color: white;
+}
+
+.navBar-home.active {
+  display: inline-flex;
+  text-decoration: none;
+  font-size: 35px;
+}
+
+.navBar-logo {
+  padding-top: 2.5%;
+  height: 1.5rem;
+  padding-left: 1%;
+  filter:  brightness(0) invert(1);
+}
+
+#navBar-buttons,
+.navBar-buttons-create {
+ display: flex;
+ border: none;
+}
+
+.far {
+  display: inline;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 5%;
+  margin-right: 4px;
+}
+
+.navBar-buttons-search {
+  height: 30px;
+  width: 80px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+.navBar-buttons-login {
+  height: 30px;
+  width: 55px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+.navBar-buttons-signup {
+  height: 30px;
+  width: 80px;
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+}
+
+#navBar-button-container {
+  text-align: center;
+
+}
+
+.navBar-buttons-create {
+  height: 35px;
+  width: 160px;
+  font-size: 18px;
+  background-color: transparent;
+  color: white;
+  border-width: 2px;
+  border-color: white;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 3%;
+}
+
+.navBar-buttons-create:hover {
+  color: rgb(206, 206, 206);
+}
+
+#navBar-buttons:hover {
+  color: rgb(206, 206, 206);
+}
+
+/* nav bar for home page changing on scroll */
+
+html:not([data-scroll="0"]) .navBar {
+  height: 8vh;
+  background-color: #fff;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+
+}
+
+html:not([data-scroll="0"]) .navBar-home {
+    color: #02a95c;
+}
+
+html:not([data-scroll="0"]) .navBar-logo {
+    filter:none;
+}
+
+html:not([data-scroll="0"]) #navBar-buttons {
+    color: black;
+}
+
+html:not([data-scroll="0"]) #navBar-buttons:hover {
+  color: rgb(90, 90, 90);
+}
+
+
+html:not([data-scroll="0"]) .navBar-buttons-create {
+  color:white;
+  background-color:#02a95c ;
+  border-color: #02a95c;
+  border-radius: 3px;
+}
+
+html:not([data-scroll="0"]) .navBar-buttons-create:hover {
+  color:white;
+  background-color:#049451 ;
+  border-color: #049451;
+  border-radius: 3px;
+}
+
+/* progress bar */
+
+#meter {
+    box-sizing: content-box;
+    height: 10px; /* Can be anything */
+    position: relative;
+    margin-top: 5%; /* Just for demo spacing */
+    background: rgb(214, 214, 214);
+    border-radius: 10px;
+    /* box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); */
+}
+
+#progressBar {
+  border-radius: 10px;
+}
+
+#meter > span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: #02a95c;
+    background-image: linear-gradient(
+      center bottom,
+      #02a95c 100%,
+      #02a95c 100%
+    );
+    /* box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+      inset 0 -2px 6px rgba(0, 0, 0, 0.4); */
+    position: relative;
+    overflow: hidden;
+}
+#meter > span:after,
+.animate > span > span {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    transparent 75%,
+    transparent
+  );
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: move 8s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+.animate > span:after {
+  display: none;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+button:hover {
+  cursor: pointer;
+}

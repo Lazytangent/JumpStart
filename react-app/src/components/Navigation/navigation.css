@@ -1,0 +1,111 @@
+.navigation {
+    height: 8vh;
+    width: 100%;
+    display: grid;
+    position: fixed;
+    grid-template-columns: 17.5% 32.5% 32.5% 17.5%;
+    grid-template-rows: 1fr;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+  }
+
+  .navigation-first-fraction {
+    grid-column-start: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .navigation-second-fraction {
+    grid-column-start: 3;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .navigation-home {
+    display: inline-flex;
+    text-decoration: none;
+    color:#02a95c;
+    font-size: 35px;
+  }
+
+  .navigation-logo {
+    padding-top: 2.5%;
+    height: 1.5rem;
+    padding-left: 1%;
+  }
+
+  #navigation-buttons,
+  .navigation-buttons-create {
+   display: flex;
+  }
+
+  .far {
+    display: inline;
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: 5%;
+    margin-right: 4px;
+  }
+
+  .navigation-buttons-search {
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    background-color: transparent;
+    color: black;
+    border: transparent;
+  }
+
+  .navigation-buttons-login {
+    height: 30px;
+    width: 55px;
+    font-size: 20px;
+    background-color: transparent;
+    color: black;
+    border:transparent;
+  }
+
+  .navigation-buttons-signup {
+    height: 30px;
+    width: 80px;
+    font-size: 20px;
+    background-color: transparent;
+    color: black;
+    border:transparent;
+  }
+
+  #navigation-button-container {
+    text-align: center;
+
+  }
+
+  .navigation-buttons-create {
+    height: 35px;
+    width: 160px;
+    font-size: 18px;
+    background-color: transparent;
+    color: white;
+    border-width: 2px;
+    background-color:#02a95c ;
+    border-color: #02a95c;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 3%;
+  }
+
+  .navigation-buttons-create:hover {
+    background-color:#049451 ;
+    /* temporary */
+  }
+
+  #navigation-buttons:hover {
+    color: rgb(90, 90, 90);
+  }
