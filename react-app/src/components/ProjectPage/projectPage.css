@@ -65,8 +65,21 @@
   background-color: #edeef0;
 }
 
+.editYourProject-buttonDiv {
+  grid-area: editYourProject-buttonDiv;
+  /* background-color: #02a95c; */
+}
+
 .editYourProject-button {
-  grid-area: editYourProject-button;
+  margin-top: 8%;
+  height: 50px;
+  width: 80%;
+  font-size: 22px;
+  color: white;
+  border-width: 2px;
+  background-color: #02a95c;
+  border-color: #02a95c;
+  border-radius: 5px;
 }
 
 .grid-container {
@@ -80,7 +93,7 @@
   grid-template-areas:
     "projectHeader projectHeader projectHeader projectHeader projectHeader projectHeader"
     "projectImage projectImage projectImage projectImage donations donations"
-    "spacer organizer organizer editYourProject-button donations donations"
+    "spacer organizer organizer editYourProject-buttonDiv donations donations"
     "description description description description donations donations"
     "comments comments comments comments donations donations"
     "footer footer footer footer footer footer";

@@ -8,8 +8,7 @@ import csc from "country-state-city";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm";
-import EditProjectForm from "../../components/EditProject/EditProject"
-
+import EditProjectForm from "../../components/EditProject/EditProject";
 
 const ProjectPage = ({ setAuthenticated }) => {
   const {
@@ -19,7 +18,7 @@ const ProjectPage = ({ setAuthenticated }) => {
     setShowSignUpModal,
     setShowDonateModal,
     showEditProjectModal,
-    setShowEditProjectModal
+    setShowEditProjectModal,
   } = useModalContext();
 
   const [topThree, setTopThree] = useState([]);
@@ -32,22 +31,24 @@ const ProjectPage = ({ setAuthenticated }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProjectById(projectId))
-
+    dispatch(getProjectById(projectId));
   }, [dispatch]);
 
   const editProject = () => {
     setShowEditProjectModal(true);
     // console.log('Hello')
-
-  }
+  };
   useEffect(() => {
     if (project) {
-      setTopThree(project.donations.sort((projectOne, projectTwo) => {
-        return projectTwo.donationAmount - projectOne.donationAmount
-      }).slice(0, 3))
+      setTopThree(
+        project.donations
+          .sort((projectOne, projectTwo) => {
+            return projectTwo.donationAmount - projectOne.donationAmount;
+          })
+          .slice(0, 3)
+      );
     }
-  }, [project])
+  }, [project]);
 
   const getPercentage = (project) => {
     // let sum = 0
@@ -57,32 +58,31 @@ const ProjectPage = ({ setAuthenticated }) => {
     // }
 
     // return (sum/project.goalAmount) * 100
-    return 50
-  }
+    return 50;
+  };
 
   const getSum = (project) => {
-    let sum = 0
+    let sum = 0;
 
     for (let i = 0; i < project.donations.length; i++) {
       sum += project.donations[i].donationAmount;
     }
-    return sum
-  }
+    return sum;
+  };
 
   const getStateAbbreviation = (project) => {
     let result;
-    const allStates = csc.getStatesOfCountry('US')
+    const allStates = csc.getStatesOfCountry("US");
 
     let stateName = project.user.state;
 
     allStates.forEach((state) => {
       if (state.name === stateName) {
-        result = state.isoCode
+        result = state.isoCode;
       }
-    })
+    });
     return result;
-  }
-
+  };
 
   return (
     <>
@@ -106,13 +106,9 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
-            {session && project.userId && (session.id === project.userId) && (
-
-              <div className="editYourProject-button">
-                <button onClick={editProject}>Edit</button>
-              </div>
+            {session && project.userId && session.id === project.userId && (
+              <div className="editYourProject-buttonDiv"></div>
             )}
-
 
             <div className="description">
               <div>{project.description}</div>
@@ -123,9 +119,14 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 <h1 className="donations-box-header">Donations</h1>
-                <div id="projectCard-amount-projectPage">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+                <div id="projectCard-amount-projectPage">{`$${getSum(
+                  project
+                )} raised out of $${project.goalAmount}`}</div>
                 <div id="meter-productPage">
-                  <span id="progressBar" style={{ width: `${getPercentage(project)}%` }}></span>
+                  <span
+                    id="progressBar"
+                    style={{ width: `${getPercentage(project)}%` }}
+                  ></span>
                 </div>
                 <button
                   className="donate-box-button"
@@ -138,7 +139,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                   }}
                 >
                   Donate
-              </button>
+                </button>
                 <p className="top-donors">Top Donors</p>
                 <div className="top-donors-container">
                   {topThree &&
@@ -153,20 +154,29 @@ const ProjectPage = ({ setAuthenticated }) => {
                             ></img>
                           </div>
                         ) : (
-                            <div className="logoBackground-sticky">
-                              <img
-                                className="sticky-logo"
-                                src={logo_40x40}
-                                alt="JumpStart Logo"
-                              ></img>
-                            </div>
-                          )}
-                        <div className="top-donor-name">{`${project.donator.username} $${Number(project.donationAmount)}`}</div></div>
+                          <div className="logoBackground-sticky">
+                            <img
+                              className="sticky-logo"
+                              src={logo_40x40}
+                              alt="JumpStart Logo"
+                            ></img>
+                          </div>
+                        )}
+                        <div className="top-donor-name">{`${
+                          project.donator.username
+                        } $${Number(project.donationAmount)}`}</div>
+                      </div>
                     ))}
                   <div className="numberOfDonators">
                     <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
                   </div>
                 </div>
+                <button
+                  className="editYourProject-button"
+                  onClick={editProject}
+                >
+                  Edit Project
+                </button>
               </div>
             </div>
             <div class="comments grid-div">
