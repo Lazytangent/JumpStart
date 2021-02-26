@@ -23,7 +23,7 @@ const ProjectPage = () => {
         <div className="project-container">
           <div class="grid-container">
             <div class="projectHeader grid-div">
-              <h1>{project.name}</h1>
+              <h1 className="bold">{project.name}</h1>
             </div>
             <div className="projectImage">
               <div className="thumbnail">
@@ -121,6 +121,7 @@ const ProjectPage = () => {
               <p>FOOTER</p>
             </div>
           </div>
+          <div>d</div>
         </div>
       )}
     </>
