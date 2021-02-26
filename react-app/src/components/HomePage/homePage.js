@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { getHomePageProjects } from '../../store/project.js';
 import { useModalContext } from "../../context/Modal";
+import { logout } from '../../store/session';
+import { getDiscoverPageProjects } from '../../store/project';
 import SearchBar from "../SearchBar/SearchBar";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
-import LogoutButton from "../auth/LogoutButton";
-import { getDiscoverPageProjects } from '../../store/project';
 import csc from "country-state-city";
 import "./homePage.css";
 
@@ -119,28 +119,29 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         return result;
     }
 
-    const donateButton = (event) => {
-        event.preventDefault()
-        history.push("/discover")
-    }
-
     const seeMorePopular = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("popular"))
         history.push('/discover', {comingFrom: "popular"})
-      }
+    }
 
     const seeMoreRecent = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("recent"))
         history.push('/discover', {comingFrom: "recent"})
-      }
+    }
 
     const seeMoreTrending = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("trending"))
         history.push('/discover', {comingFrom: "trending"})
-      }
+    }
+
+     const onLogout = async (e) => {
+        history.push("/");
+        await dispatch(logout());
+        setAuthenticated(false);
+    };
 
       console.log(history)
 
@@ -216,8 +217,8 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             )}
                         </div>}
                         { user &&
-                        <div>
-                            <LogoutButton setAuthenticated={setAuthenticated} />
+                        <div id="navBar-button-container">
+                            <button id="navBar-buttons" className="navBar-buttons-login" onClick={onLogout}>Logout</button>
                         </div>}
                         <div id="navBar-button-container">
                             {
@@ -246,7 +247,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
                     <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
                     <div className="homePage-description-box-button-container">
-                        <button onClick={(event) => donateButton(event)} className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
+                        <button onClick={(event) => seeMoreRecent(event)} className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
                     </div>
                 </div>
                 <div className="homePage-grid">
