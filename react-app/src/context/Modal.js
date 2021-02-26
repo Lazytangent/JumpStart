@@ -37,6 +37,8 @@ export const ModalProvider = ({ children }) => {
           setShowSearchBarModal,
           setShowDonateModal,
           showDonateModal,
+          showEditProjectModal,
+          setShowEditProjectModal
         }}
       >
         {children}

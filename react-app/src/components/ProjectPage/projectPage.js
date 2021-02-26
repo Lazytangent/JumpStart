@@ -7,7 +7,7 @@ import "./projectPage.css";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm";
-
+import EditProjectForm from "../../components/EditProject/EditProject"
 
 
 const ProjectPage = ({ setAuthenticated }) => {
@@ -17,6 +17,8 @@ const ProjectPage = ({ setAuthenticated }) => {
     showDonateModal,
     setShowSignUpModal,
     setShowDonateModal,
+    showEditProjectModal,
+    setShowEditProjectModal
   } = useModalContext();
 
   const user = useSelector((state) => state.session.user);
@@ -31,13 +33,15 @@ const ProjectPage = ({ setAuthenticated }) => {
   }, [dispatch]);
 
   const editProject = () => {
-    console.log("hello")
+    setShowEditProjectModal(true);
+    // console.log('Hello')
   }
 
   return (
     <>
       <Navigation setAuthenticated={setAuthenticated} />
       {showDonateModal && <DonateForm />}
+      {showEditProjectModal && <EditProjectForm />}
       {project && (
         <div className="project-container">
           <div class="grid-container">
