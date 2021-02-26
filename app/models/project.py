@@ -14,7 +14,9 @@ class Project(db.Model):
     isClosed = db.Column(db.Boolean, nullable=False, default=False)
 
     user = db.relationship("User", back_populates="projects")
-    donations = db.relationship("Donation", back_populates="project")
+    donations = db.relationship("Donation",
+                                cascade="all,delete",
+                                back_populates="project")
     images = db.relationship("Image", back_populates="project")
 
     def to_dict(self):
