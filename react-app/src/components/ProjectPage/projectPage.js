@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import projectReducer, { getProjectById } from "../../store/project";
 import logo_40x40 from "../SearchBar/logo_40x40.png";
 import "./projectPage.css";
+import csc from "country-state-city";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm";
@@ -21,6 +22,8 @@ const ProjectPage = ({ setAuthenticated }) => {
     setShowEditProjectModal
   } = useModalContext();
 
+  const [topThree, setTopThree] = useState([]);
+
   const user = useSelector((state) => state.session.user);
   // console.log(user)
   const project = useSelector((state) => state.project.currentProject);
@@ -29,13 +32,57 @@ const ProjectPage = ({ setAuthenticated }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProjectById(projectId));
+    dispatch(getProjectById(projectId))
+
   }, [dispatch]);
 
   const editProject = () => {
     setShowEditProjectModal(true);
     // console.log('Hello')
+
   }
+  useEffect(() => {
+    if (project) {
+      setTopThree(project.donations.sort((projectOne, projectTwo) => {
+        return projectTwo.donationAmount - projectOne.donationAmount
+      }).slice(0, 3))
+    }
+  }, [project])
+
+  const getPercentage = (project) => {
+    // let sum = 0
+
+    // for (let i = 0; i < project.donations.length; i++ ) {
+    //     sum += project.donations[i].donationAmount;
+    // }
+
+    // return (sum/project.goalAmount) * 100
+    return 50
+  }
+
+  const getSum = (project) => {
+    let sum = 0
+
+    for (let i = 0; i < project.donations.length; i++) {
+      sum += project.donations[i].donationAmount;
+    }
+    return sum
+  }
+
+  const getStateAbbreviation = (project) => {
+    let result;
+    const allStates = csc.getStatesOfCountry('US')
+
+    let stateName = project.user.state;
+
+    allStates.forEach((state) => {
+      if (state.name === stateName) {
+        result = state.isoCode
+      }
+    })
+    return result;
+  }
+
 
   return (
     <>
@@ -45,7 +92,7 @@ const ProjectPage = ({ setAuthenticated }) => {
       {project && (
         <div className="project-container">
           <div class="grid-container">
-            <div class="projectHeader grid-div">
+            <div class="projectHeader">
               <h1 className="bold">{project.name}</h1>
             </div>
             <div className="projectImage">
@@ -75,8 +122,13 @@ const ProjectPage = ({ setAuthenticated }) => {
             </div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
-                Donations
+                <h1 className="donations-box-header">Donations</h1>
+                <div id="projectCard-amount-projectPage">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+                <div id="meter-productPage">
+                  <span id="progressBar" style={{ width: `${getPercentage(project)}%` }}></span>
+                </div>
                 <button
+                  className="donate-box-button"
                   onClick={() => {
                     if (user !== null) {
                       setShowDonateModal(true);
@@ -86,7 +138,35 @@ const ProjectPage = ({ setAuthenticated }) => {
                   }}
                 >
                   Donate
-                </button>
+              </button>
+                <p className="top-donors">Top Donors</p>
+                <div className="top-donors-container">
+                  {topThree &&
+                    topThree.map((project) => (
+                      <div className="comment-avatar-sticky">
+                        {project.donator.profileImageUrl ? (
+                          <div className="logoBackground-sticky">
+                            <img
+                              src={project.donator.profileImageUrl}
+                              className="userProfilePictureSticky"
+                              alt="JumpStart User"
+                            ></img>
+                          </div>
+                        ) : (
+                            <div className="logoBackground-sticky">
+                              <img
+                                className="sticky-logo"
+                                src={logo_40x40}
+                                alt="JumpStart Logo"
+                              ></img>
+                            </div>
+                          )}
+                        <div className="top-donor-name">{`${project.donator.username} $${Number(project.donationAmount)}`}</div></div>
+                    ))}
+                  <div className="numberOfDonators">
+                    <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="comments grid-div">
