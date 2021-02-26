@@ -41,6 +41,11 @@
 .item5 {
   grid-area: comments;
 }
+
+#donations-slider {
+  padding: 0;
+}
+
 .footer {
   grid-area: footer;
 }

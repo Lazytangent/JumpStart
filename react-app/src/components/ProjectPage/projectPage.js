@@ -39,7 +39,7 @@ const ProjectPage = () => {
               {project.user.username} is organizing this fundraiser
             </div>
             {/* <div class="item3">Main</div> */}
-            <div class="item4 grid-div">
+            <div class="item4 grid-div" id="donations-slider">
               <div class="sticky-container">Donations</div>
             </div>
             <div class="item5 grid-div">
