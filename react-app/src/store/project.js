@@ -40,7 +40,7 @@ const setNearYou = (projects) => {
   }
 };
 
-export const createProject = (name, description, goalAmount, minPledge, thumbnailImg, userId) => async (dispatch) => {
+export const createProject = (name, description, goalAmount, minPledge, thumbnailImg, userId, images) => async (dispatch) => {
   const formData = new FormData();
   formData.append('name', name);
   formData.append('description', description);
@@ -48,6 +48,12 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
   formData.append('minPledge', minPledge);
   formData.append('userId', userId);
   if (thumbnailImg) formData.append('thumbnailImg', thumbnailImg);
+  if (images) {
+    const num = images.length;
+    for (let i = 0; i < num; i++) {
+      formData.append('images', images[i]);
+    }
+  }
 
   const response = await fetch('/api/projects/', {
     method: "POST",

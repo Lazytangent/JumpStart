@@ -39,7 +39,8 @@
   height: 100%;
   width: 100%;
   object-fit: fill;
-  border-radius: 10px 0% 20% 10px;
+  border-radius: 10px 0 0 10px;
+  /* clip-path: ellipse(250px at 0% 50%) */
 }
 
 .homePage-description-box-body {
@@ -221,6 +222,8 @@
   color: #02a95c;
   font-size: 18px;
   transition: all .3s ease-out;
+  border: none;
+  background-color: transparent;
 }
 
 #homePage-see-more-text:hover {
@@ -256,7 +259,7 @@
 .navBar-second-fraction {
   grid-column-start: 3;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: row-reverse;
   align-items: center;
 }
@@ -283,6 +286,7 @@
 #navBar-buttons,
 .navBar-buttons-create {
  display: flex;
+ border: none;
 }
 
 .far {
@@ -299,7 +303,6 @@
   font-size: 20px;
   background-color: transparent;
   color: white;
-  border: transparent;
 }
 
 .navBar-buttons-login {
@@ -308,7 +311,6 @@
   font-size: 20px;
   background-color: transparent;
   color: white;
-  border:transparent;
 }
 
 .navBar-buttons-signup {
@@ -317,7 +319,6 @@
   font-size: 20px;
   background-color: transparent;
   color: white;
-  border:transparent;
 }
 
 #navBar-button-container {
@@ -340,8 +341,6 @@
 
 .navBar-buttons-create:hover {
   color: rgb(206, 206, 206);
-  border-color: rgb(206, 206, 206);
-  /* temporary */
 }
 
 #navBar-buttons:hover {

@@ -14,5 +14,5 @@ class Image(db.Model):
         return {
             "projectId": self.projectId,
             "imageUrl": self.imageUrl,
-            "project": self.project.to_dict()
+            "project": self.project.name
         }

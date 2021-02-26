@@ -6,22 +6,22 @@ import SignUpForm from "../auth/SignUpForm";
 import LogoutButton from "../auth/LogoutButton";
 import SearchBar from "../SearchBar/SearchBar";
 import { useModalContext } from "../../context/Modal";
-import CreateProject from "../CreateProject";
+import CreateProject from "../CreateProject/CreateProject";
 import { useHistory } from "react-router-dom";
 import "./navigation.css";
 import "../HomePage/homePage.css";
 
 const Navigation = ({ setAuthenticated, setShowModal }) => {
-  const {
-    showLoginModal,
-    setShowLoginModal,
-    showSignUpModal,
-    setShowSignUpModal,
-    showSearchBarModal,
-    setShowSearchBarModal,
-  } = useModalContext();
-  const user = useSelector((state) => state.session.user);
-  const history = useHistory();
+    const {
+        showLoginModal,
+        setShowLoginModal,
+        showSignUpModal,
+        setShowSignUpModal,
+        showSearchBarModal,
+        setShowSearchBarModal,
+    } = useModalContext();
+    const user = useSelector((state) => state.session.user);
+    const history = useHistory();
 
   return (
     <nav>
@@ -31,7 +31,6 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
                   className="navigation-home"
                   to="/"
                   exact={true}
-                  activeClassName="active"
                   onClick={() => {
                   setShowSignUpModal(false);
                   setShowLoginModal(false);
@@ -57,64 +56,67 @@ const Navigation = ({ setAuthenticated, setShowModal }) => {
                   >
                   Create a project
                   </button>
-              </div>
-              <div id="navigation-button-container">
-                  {!user && (
-                  <button
-                  id="navigation-buttons"
-                  className="navigation-buttons-signup"
-                      onClick={() => {
-                      setShowLoginModal(false);
-                      setShowSignUpModal((prev) => !prev);
-                      }}
-                  >
-                      Sign up
+                    </div>
+                    {!user &&
+                        <div id="navigation-button-container">
+                            {!user && (
+                                <button
+                                    id="navigation-buttons"
+                                    className="navigation-buttons-signup"
+                                    onClick={() => {
+                                        setShowLoginModal(false);
+                                        setShowSignUpModal((prev) => !prev);
+                                    }}
+                                >
+                                    Sign up
+                                </button>
+                            )}
+                            {showSignUpModal && (
+                                <SignUpForm setAuthenticated={setAuthenticated} />
+                            )}
+                        </div>}
+                    {!user &&
+                        <div id="navigation-button-container">
+                            {!user && (
+                                <button
+                                    id="navigation-buttons"
+                                    className="navigation-buttons-login"
+                                    onClick={() => {
+                                        setShowSignUpModal(false);
+                                        setShowLoginModal((prev) => !prev);
+                                    }}
+                                >
+                                    Login
+                                </button>
+                            )}
+                            {showLoginModal && (
+                                <LoginForm setAuthenticated={setAuthenticated} />
+                            )}
+                        </div>}
+                    {user &&
+                        <div>
+                            <LogoutButton setAuthenticated={setAuthenticated} />
+                        </div>}
+                    <div id="navigation-button-container">
+                        {
+                            <button
+                                id="navigation-buttons"
+                                className="navigation-buttons-search"
+                                onClick={() => {
+                                    setShowSignUpModal(false);
+                                    setShowLoginModal(false);
+                                    setShowSearchBarModal((prev) => !prev);
+                                }}
+                            >
+                                <i className="far fa-search"></i>Search
                   </button>
-                  )}
-                  {showSignUpModal && (
-                  <SignUpForm setAuthenticated={setAuthenticated} />
-                  )}
-              </div>
-              <div id="navigation-button-container">
-                  {!user && (
-                  <button
-                  id="navigation-buttons"
-                  className="navigation-buttons-login"
-                      onClick={() => {
-                      setShowSignUpModal(false);
-                      setShowLoginModal((prev) => !prev);
-                      }}
-                  >
-                      Login
-                  </button>
-                  )}
-                  {showLoginModal && (
-                  <LoginForm setAuthenticated={setAuthenticated} />
-                  )}
-              </div>
-              <div id="navigation-button-container">
-                  {
-                  <button
-                  id="navigation-buttons"
-                  className="navigation-buttons-search"
-                      onClick={() => {
-                      setShowSignUpModal(false);
-                      setShowLoginModal(false);
-                      setShowSearchBarModal((prev) => !prev);
-                      }}
-                  >
-                      <i className="far fa-search"></i>Search
-                  </button>
-                  }
-                  {showSearchBarModal && <SearchBar />}
-              </div>
-              <div>
-                  {user && <LogoutButton setAuthenticated={setAuthenticated} />}
-              </div>
-          </div>
-      </ul>
-    </nav>
-  );
+                        }
+                        {showSearchBarModal && <SearchBar />}
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    );
 };
 
 export default Navigation;
