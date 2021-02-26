@@ -11,7 +11,7 @@ import './discoverPage.css';
 const DiscoverPage = ({setAuthenticated}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const userId = useSelector((state) => state.session.user.id);
+    const userId = useSelector((state) => state.session.user ? state.session.user.id : null);
 
     const mostPopular = useSelector((state) => state.project.mostPopular)
     const mostRecent = useSelector((state) => state.project.mostRecent)
@@ -26,7 +26,6 @@ const DiscoverPage = ({setAuthenticated}) => {
         dispatch(getDiscoverPageProjects("recent"))
         dispatch(getDiscoverPageProjects("popular"))
         dispatch(getDiscoverPageProjects("trending"))
-        // dispatch(getDiscoverPageProjectsByLocation(userId))
         if(history.location.state.comingFrom && history.location.state.comingFrom === "popular") {
             setCardFilter(mostPopular)
             setSelected("mostPopular")
@@ -98,9 +97,11 @@ const DiscoverPage = ({setAuthenticated}) => {
         setSelected("trending")
     }
 
+
     const nearYouFunction = (param) => {
         setCardFilter(param)
         setSelected("nearYou")
+        dispatch(getDiscoverPageProjectsByLocation(userId))
     }
 
 
@@ -116,7 +117,8 @@ const DiscoverPage = ({setAuthenticated}) => {
                         <button id="discoverPage-filter-button" className={(selected === "mostPopular") ? "selected" : ""} onClick={(event) => popularFunction(mostPopular)}>Most Popular</button>
                         <button id="discoverPage-filter-button" className={(selected === "mostRecent") ? "selected" : ""} onClick={(event) => recentFunction(mostRecent)}>Recently Added</button>
                         <button id="discoverPage-filter-button" className={(selected === "trending") ? "selected" : ""} onClick={(event) => trendingFunction(trending)}>Trending</button>
-                        <button id="discoverPage-filter-button" className={(selected === "nearYou") ? "selected" : ""} onClick={(event) => nearYouFunction(nearYou)}>Near You</button>
+                       {userId &&
+                       <button id="discoverPage-filter-button" className={(selected === "nearYou") ? "selected" : ""} onClick={(event) => nearYouFunction(nearYou)}>Near You</button>}
                     </div>
                 </div>
                 <div className="discoverPage-project-card-grid">
