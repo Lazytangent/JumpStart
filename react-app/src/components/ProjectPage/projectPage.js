@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import projectReducer, { getProjectById } from "../../store/project";
 import logo_40x40 from "../SearchBar/logo_40x40.png";
 import "./projectPage.css";
+import csc from "country-state-city";
 import Navigation from "../../components/Navigation/navigation"
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm"
@@ -28,6 +29,40 @@ const ProjectPage = ({ setAuthenticated }) => {
     dispatch(getProjectById(projectId));
   }, [dispatch]);
 
+
+  const getPercentage = (project) => {
+    // let sum = 0
+
+    // for (let i = 0; i < project.donations.length; i++ ) {
+    //     sum += project.donations[i].donationAmount;
+    // }
+
+    // return (sum/project.goalAmount) * 100
+    return 50
+}
+
+const getSum = (project) => {
+  let sum = 0
+
+  for (let i = 0; i < project.donations.length; i++) {
+      sum += project.donations[i].donationAmount;
+  }
+  return sum
+}
+
+const getStateAbbreviation = (project) => {
+  let result;
+  const allStates = csc.getStatesOfCountry('US')
+
+  let stateName = project.user.state;
+
+  allStates.forEach((state) => {
+      if (state.name === stateName) {
+          result = state.isoCode
+      }
+  })
+  return result;
+}
   // console.log(project)
 
   return (
@@ -58,6 +93,10 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 Donations
+              <div id="projectCard-amount">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+              <div id="meter">
+                  <span id="progressBar" style={{width: `${getPercentage(project)}%`}}></span>
+              </div>
                 <button onClick={() => {
                   if (user !== null) {
                     setShowDonateModal(true)
