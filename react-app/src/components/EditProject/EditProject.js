@@ -10,16 +10,21 @@ const EditProjectForm = () => {
 
   const userId = useSelector(state => state.session.user.id)
   const projectId = useSelector(state => state.project.currentProject.id)
+  const project = useSelector((state) => state.project.currentProject);
+  const currentProject = useSelector(state => state.project.currentProject)
   const { showEditProjectModal, setShowEditProjectModal } = useModalContext();
   const dispatch = useDispatch();
   const history = useHistory();
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [goalAmount, setGoalAmount] = useState()
-  const [minPledge, setMinPledge] = useState()
-  const [thumbnailImage, setThumbnailImage] = useState({ name: "" });
+  const [name, setName] = useState(currentProject.name)
+  const [description, setDescription] = useState(currentProject.description)
+  const [goalAmount, setGoalAmount] = useState(currentProject.goalAmount)
+  const [minPledge, setMinPledge] = useState(currentProject.minPledge)
+  const [thumbnailImage, setThumbnailImage] = useState("");
   const [images, setAdditionalImages] = useState();
+
   const [errors, setErrors] = useState([]);
+
+  console.log(images)
 
   const editDonation = async (e) => {
     e.preventDefault();
@@ -71,7 +76,7 @@ const EditProjectForm = () => {
 
       <Modal onClose={() => setShowEditProjectModal(false)}>
         {/* <div className="project-form-container"> */}
-        <h1>Tell Your Story</h1>
+        <h1>Update Your Story</h1>
         <form onSubmit={editDonation} className="update-form">
           <div>
             {errors.map((error, idx) => (
@@ -83,13 +88,13 @@ const EditProjectForm = () => {
               type='text'
               className="input-text"
               name='name'
-              placeholder="Name of Project"
+              value={name}
               onChange={updateName}
               required
             ></input>
           </div>
           <div>
-            <input className="choose-image" type="button" id="loadFile" value="Choose a Thumbnail Image" onClick={chooseImage} />
+            <input className="choose-image" type="button" id="loadFile" value="New Thumbnail Image" onClick={chooseImage} />
             <label for="image">   {thumbnailImage.name}</label>
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
           </div>
@@ -99,14 +104,21 @@ const EditProjectForm = () => {
               className="input-text"
               rows="10"
               name='description'
-              placeholder="Description of Project"
+              value={description}
               onChange={updateDescription}
               required
             ></textarea>
           </div>
           <div>
-            <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
+            {project.images.map((img, idx) => (
 
+              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+            ))}
+            <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
+            {/* {project.images.map((img, idx) => (
+
+              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+            ))} */}
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
           </div>
           <div>
@@ -114,7 +126,7 @@ const EditProjectForm = () => {
               type='number'
               className="input-text"
               name='goal'
-              placeholder="Goal Amount"
+              value={goalAmount}
               onChange={updateGoalAmount}
             ></input>
           </div>
@@ -123,7 +135,7 @@ const EditProjectForm = () => {
               type='number'
               className="input-number"
               name='minimum'
-              placeholder="Minimum Pledge Amount"
+              value={minPledge}
               onChange={updateMinPledge}
             ></input>
           </div>

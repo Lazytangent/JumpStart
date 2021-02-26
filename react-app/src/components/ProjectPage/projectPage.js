@@ -67,7 +67,12 @@ const ProjectPage = ({ setAuthenticated }) => {
             )}
 
 
-            <div className="description">{project.description}</div>
+            <div className="description">
+              <div>{project.description}</div>
+              {project.images.map((img, idx) => (
+                <img src={img.imageUrl}></img>
+              ))}
+            </div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 Donations
