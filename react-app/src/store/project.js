@@ -95,7 +95,23 @@ export const getProjectById = (projectId) => async (dispatch) => {
 };
 
 export const updateDonation = (donationId, donationAmount, comment, anonymous) => async (dispatch) => {
-
+  const response = await fetch(`/api/donations/${donationId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(
+      donationId,
+      donationAmount,
+      comment,
+      anonymous,
+    ),
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
 };
 
 export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
