@@ -66,6 +66,31 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
   return project;
 };
 
+export const updateProject = (projectId, name, description, goalAmount, minPledge, thumbnailImg, images) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('description', description);
+  formData.append('goalAmount', goalAmount);
+  formData.append('minPledge', minPledge);
+  if (thumbnailImg) formData.append('thumbnailImg', thumbnailImg);
+  if (images) {
+    const num = images.length;
+    for (let i = 0; i < num; i++) {
+      formData.append('images', images[i]);
+    }
+  }
+
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: "PUT",
+    body: formData,
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+}
+
 export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
   const response = await fetch('/api/donations', {
     method: "POST",
@@ -85,6 +110,15 @@ export const createDonation = (userId, projectId, donationAmount, comment, anony
     dispatch(setCurrentProject(project));
   }
   return project;
+}
+
+export const deleteProject = (projectId) => async (dispatch) => {
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: "DELETE",
+  });
+  const message = await response.json();
+  dispatch(setCurrentProject(null));
+  return message;
 };
 
 export const getProjectById = (projectId) => async (dispatch) => {
