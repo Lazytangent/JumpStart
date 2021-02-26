@@ -98,7 +98,7 @@
   position: -webkit-sticky;
   background:white;
   width: 300px;
-  height: 450px;
+  height: 460px;
   top: 100px;
   border-radius: 5px;
   box-shadow: 0 0.3125rem 1rem 0.1875rem rgb(0 0 0 / 20%);
@@ -212,7 +212,7 @@ overflow: hidden;
 }
 
 .logoBackground-sticky {
-  margin-top: 10px;
+  margin-top: 15px;
   margin-right: 5px;
   margin-left: 45px;
   height: 30px;
@@ -227,7 +227,7 @@ overflow: hidden;
 }
 
 .top-donor-name {
-  margin-top: 15px;
+  margin-top: 20px;
   font-size: 25px;
 }
 
