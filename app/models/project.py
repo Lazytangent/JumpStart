@@ -17,7 +17,9 @@ class Project(db.Model):
     donations = db.relationship("Donation",
                                 cascade="all,delete",
                                 back_populates="project")
-    images = db.relationship("Image", back_populates="project")
+    images = db.relationship("Image",
+                             cascade="all,delete",
+                             back_populates="project")
 
     def to_dict(self):
         return {
