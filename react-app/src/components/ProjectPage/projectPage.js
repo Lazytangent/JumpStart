@@ -86,39 +86,37 @@ const ProjectPage = ({ setAuthenticated }) => {
                 {project.donations &&
                   project.donations.map((donation, idx) => (
                     <>
-                      {!donation.anonymous && (
-                        <li key={idx} className="donation-listItem">
-                          <div className="donation-container">
-                            <div className="comment-avatar">
-                              {donation.donator.profileImageUrl ? (
-                                <div className="logoBackground">
-                                  <img
-                                    src={donation.donator.profileImageUrl}
-                                    className="userProfilePicture"
-                                    alt="JumpStart User"
-                                  ></img>
-                                </div>
-                              ) : (
-                                <div className="logoBackground">
-                                  <img
-                                    src={logo_40x40}
-                                    alt="JumpStart Logo"
-                                  ></img>
-                                </div>
-                              )}
-                            </div>
-                            <div className="comment-header">
-                              {donation.donator.username} donated $
-                              <b>{donation.donationAmount}</b>
-                            </div>
-                            <div className="comment-content">
-                              {donation.comment}
-                            </div>
-                            <div className="spacer"></div>
-                            <div className="comment-footer"></div>
+                      <li key={idx} className="donation-listItem">
+                        <div className="donation-container">
+                          <div className="comment-avatar">
+                            {donation.donator.profileImageUrl ? (
+                              <div className="logoBackground">
+                                <img
+                                  src={donation.donator.profileImageUrl}
+                                  className="userProfilePicture"
+                                  alt="JumpStart User"
+                                ></img>
+                              </div>
+                            ) : (
+                              <div className="logoBackground">
+                                <img
+                                  src={logo_40x40}
+                                  alt="JumpStart Logo"
+                                ></img>
+                              </div>
+                            )}
                           </div>
-                        </li>
-                      )}
+                          <div className="comment-header">
+                            {donation.donator.username} donated $
+                            <b>{donation.donationAmount}</b>
+                          </div>
+                          <div className="comment-content">
+                            {donation.comment}
+                          </div>
+                          <div className="spacer"></div>
+                          <div className="comment-footer"></div>
+                        </div>
+                      </li>
                     </>
                   ))}
                 <p>CHECKING</p>

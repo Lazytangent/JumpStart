@@ -1,31 +1,31 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, useModalContext } from "../../context/Modal";
-import { createDonation, getProjectById } from '../../store/project'
-import "./DonateForm.css"
-
+import { createDonation, getProjectById } from "../../store/project";
+import "./DonateForm.css";
 
 const DonateForm = () => {
-
-  const userId = useSelector(state => state.session.user.id)
-  const projectId = useSelector(state => state.project.currentProject.id)
+  const userId = useSelector((state) => state.session.user.id);
+  const projectId = useSelector((state) => state.project.currentProject.id);
   const { showDonateModal, setShowDonateModal } = useModalContext();
   const dispatch = useDispatch();
-  const [errors, setErrors] = useState([])
-  const [donationAmount, setDonationAmount] = useState()
-  const [comment, setComment] = useState("")
-  const [anonymous, setAnonymous] = useState(false)
+  const [errors, setErrors] = useState([]);
+  const [donationAmount, setDonationAmount] = useState();
+  const [comment, setComment] = useState("");
+  const [anonymous, setAnonymous] = useState(false);
 
   const makeDonation = async (e) => {
     e.preventDefault();
-    const donation = await dispatch(createDonation(userId, projectId, donationAmount, comment, anonymous))
+    const donation = await dispatch(
+      createDonation(userId, projectId, donationAmount, comment, anonymous)
+    );
     if (!donation.errors) {
       setShowDonateModal(false);
-      dispatch(getProjectById(projectId))
+      dispatch(getProjectById(projectId));
     } else {
-      setErrors(donation.errors)
+      setErrors(donation.errors);
     }
-  }
+  };
 
   const updateDonation = (e) => {
     setDonationAmount(e.target.value);
@@ -39,24 +39,23 @@ const DonateForm = () => {
     setAnonymous(!anonymous);
   };
 
-
   return (
     <>
-
       <Modal onClose={() => setShowDonateModal(false)}>
-        <div className='donate-form-container'>
-
+        <div className="donate-form-container">
           <form onSubmit={makeDonation} className="donate-form">
             <div>
               {errors.map((error, idx) => (
-                <ul className="donate-errors" key={idx}>{error}</ul>
+                <ul className="donate-errors" key={idx}>
+                  {error}
+                </ul>
               ))}
             </div>
             <div>
               <input
-                type='number'
+                type="number"
                 className="donation-number"
-                name='donation'
+                name="donation"
                 placeholder="Make a Donation"
                 onChange={updateDonation}
                 required
@@ -64,34 +63,46 @@ const DonateForm = () => {
             </div>
             <div>
               <textarea
-                type='text'
+                type="text"
                 className="donation-comment"
                 rows="10"
-                name='comment'
+                name="comment"
                 placeholder="Add an optional comment"
                 onChange={updateComment}
                 required
               ></textarea>
             </div>
-            <div>
+            <div className="anonymous-container">
               <input
-                type='checkbox'
+                type="checkbox"
                 className="private-check"
-                name='anonymous'
+                name="anonymous"
                 checked={anonymous}
                 onClick={updateAnonymous}
               ></input>
-              <label for="anonymous">Do you wish to make this donation anonymous</label>
+              <label
+                for="anonymous"
+                className="anonymousLabel"
+                id="anonymousLabel"
+              >
+                Do you wish to make this donation anonymous?
+              </label>
             </div>
-            <button className="submit-button-donate" type="submit">Donate</button>
-            <button className="cancel-button-donate" type="submit" onClick={() => setShowDonateModal(false)}>Cancel</button>
+            <button className="submit-button-donate" type="submit">
+              Donate
+            </button>
+            <button
+              className="cancel-button-donate"
+              type="submit"
+              onClick={() => setShowDonateModal(false)}
+            >
+              Cancel
+            </button>
           </form>
         </div>
       </Modal>
-
     </>
-  )
-
-}
+  );
+};
 
 export default DonateForm;
