@@ -22,13 +22,16 @@ def create_donation():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@donation_routes.route('/donations/<int:donationId>',
+@donation_routes.route('/<int:donation_id>',
                        methods=["PUT", "DELETE"])
-def update_donation(donationId):
-    donation = Donation.query.get(donationId)
-    project = Project.query.get(donationId.projectId)
+def update_donation(donation_id):
+    donation = Donation.query.get(donation_id)
+    project = Project.query.get(donation.projectId)
     if request.method == "PUT":
         form = CreateDonation()
+        form['userId'].data = donation.userId
+        form['projectId'].data = donation.projectId
+        form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             form.populate_obj(donation)
             db.session.commit()

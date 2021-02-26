@@ -101,7 +101,6 @@ export const updateDonation = (donationId, donationAmount, comment, anonymous) =
       "Content-Type": "application/json",
     },
     body: JSON.stringify(
-      donationId,
       donationAmount,
       comment,
       anonymous,
