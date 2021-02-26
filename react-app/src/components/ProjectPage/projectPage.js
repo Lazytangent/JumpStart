@@ -37,7 +37,7 @@ const ProjectPage = ({ setAuthenticated }) => {
       {project && (
         <div className="project-container">
           <div class="grid-container">
-            <div class="projectHeader grid-div">
+            <div class="projectHeader">
               <h1 className="bold">{project.name}</h1>
             </div>
             <div className="projectImage">

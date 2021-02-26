@@ -25,6 +25,8 @@
 .projectHeader {
   grid-area: projectHeader;
   text-align: left;
+  /* padding: 60px 0 0 20px; */
+  margin: 60px 0 0 20px;
 }
 
 .organizer {
