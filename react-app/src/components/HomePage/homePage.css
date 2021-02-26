@@ -1,15 +1,24 @@
 .homePage {
     height: 250vh;
     width: 99vw;
-
 }
 
 .homePage-image {
-    height: 65vh;
-    width: 99vw;
-    margin: 0;
-    padding: 0;
+  height: 609px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+@media (max-width:768px) {
+  .homePage-image {
+  height: 100px;
+  width: 100%;
+  }
+  /* this overwrites styles in same container
+  more generic to more specific */
+}
+
 
 .homePage-image-container {
     background-color: black;
@@ -32,6 +41,18 @@
     border-radius: 10px;
     box-shadow:2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width:768px) {
+  .homePage-description-box {
+  width: 90%;
+  left: 5%;
+  grid-template-rows: 70% 30%;
+  grid-column: 100%;
+  }
+  /* this overwrites styles in same container
+  more generic to more specific */
+}
+
 
 .homePage-description-image {
   grid-column-start: 1;
@@ -83,13 +104,19 @@
 }
 
 .homePage-grid {
-    height: 100%;
-    width: 55%;
+    margin-top: 150px;
+    padding: 35px 20% ;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+
+
+    /* width: 55%;
     margin-top: 10%;
     margin-left: 22.5%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%;
+    grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%; */
 }
 
 .homePage-mostPopular-header {
@@ -120,11 +147,10 @@
 }
 
 #homePage-project-grid {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 85% 15%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
 }
 
 .homePage-grid-most-popular {
@@ -140,8 +166,7 @@
 }
 
 #homePage-project-card-link {
-    display: flex;
-    justify-content: center;
+
     text-decoration: none;
     transition: all 0.25s ease-in 0s;
 }
@@ -157,15 +182,23 @@
   padding: 0;
   border-radius: 5px 5px 0 0;
   object-fit: fill;
-  max-width: 100%;
-  max-height: 260px;
+  width: 100%;
   height: 220px;
 }
 
+
 #homePage-project-card {
-  width: 90%;
+  width: 325px;
   border-radius: 10px;
   box-shadow:2px 2px 5px rgb(224, 223, 223);
+  padding-bottom: 25px;
+}
+@media (max-width:768px) {
+  #homePage-project-card {
+  margin: 50px 0;
+  }
+  /* this overwrites styles in same container
+  more generic to more specific */
 }
 
 #homePage-project-card-text {

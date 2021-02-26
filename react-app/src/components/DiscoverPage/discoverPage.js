@@ -11,12 +11,12 @@ import './discoverPage.css';
 const DiscoverPage = ({setAuthenticated}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const userId = useSelector((state) => state.session.user.id);
 
     const mostPopular = useSelector((state) => state.project.mostPopular)
     const mostRecent = useSelector((state) => state.project.mostRecent)
     const trending = useSelector((state) => state.project.trending)
     const nearYou = useSelector((state) => state.project.nearYou)
+    const user = useSelector((state) => state.session.user)
 
     const [cardFilter, setCardFilter] = useState([]);
     const [loaded, setLoaded] = useState(false)
@@ -26,7 +26,6 @@ const DiscoverPage = ({setAuthenticated}) => {
         dispatch(getDiscoverPageProjects("recent"))
         dispatch(getDiscoverPageProjects("popular"))
         dispatch(getDiscoverPageProjects("trending"))
-        // dispatch(getDiscoverPageProjectsByLocation(userId))
         if(history.location.state.comingFrom && history.location.state.comingFrom === "popular") {
             setCardFilter(mostPopular)
             setSelected("mostPopular")
@@ -99,10 +98,15 @@ const DiscoverPage = ({setAuthenticated}) => {
     }
 
     const nearYouFunction = (param) => {
-        setCardFilter(param)
-        setSelected("nearYou")
+        if(!user) {
+
+        }
+        setCardFilter(param);
+        setSelected("nearYou");
     }
 
+    // dispatch(getDiscoverPageProjectsByLocation(userId));
+    // const userId = useSelector((state) => state.session.user.id);
 
     return (
         <>
