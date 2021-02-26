@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { getHomePageProjects } from '../../store/project.js';
 import { useModalContext } from "../../context/Modal";
+import { logout } from '../../store/session';
 import SearchBar from "../SearchBar/SearchBar";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
@@ -142,7 +143,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         history.push('/discover', {comingFrom: "trending"})
       }
 
-      console.log(history)
+      const onLogout = async (e) => {
+        history.push("/");
+        await dispatch(logout());
+        setAuthenticated(false);
+      };
 
     return (
         <>
