@@ -65,6 +65,10 @@
   background-color: #edeef0;
 }
 
+.editYourProject-button {
+  grid-area: editYourProject-button;
+}
+
 .grid-container {
   display: grid;
   width: 80%;
@@ -74,7 +78,7 @@
   grid-template-areas:
     "projectHeader projectHeader projectHeader projectHeader projectHeader projectHeader"
     "projectImage projectImage projectImage projectImage donations donations"
-    "spacer organizer organizer . donations donations"
+    "spacer organizer organizer editYourProject-button donations donations"
     "description description description description donations donations"
     "comments comments comments comments donations donations"
     "footer footer footer footer footer footer";
