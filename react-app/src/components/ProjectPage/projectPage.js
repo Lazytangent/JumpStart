@@ -217,7 +217,13 @@ const ProjectPage = ({ setAuthenticated }) => {
                             {donation.comment}
                           </div>
                           <div className="spacer"></div>
-                          <div className="comment-footer"></div>
+                          <div className="comment-footer">
+                            {session &&
+                              donation.userId &&
+                              session.id === donation.userId && (
+                                <button>dwfee</button>
+                              )}
+                          </div>
                         </div>
                       </li>
                     </>
