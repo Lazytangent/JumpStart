@@ -34,8 +34,8 @@ export const ModalProvider = ({ children }) => {
           setShowSignUpModal,
           showSearchBarModal,
           setShowSearchBarModal,
+          setShowDonateModal,
           showDonateModal,
-          setShowDonateModal
         }}
       >
         {children}

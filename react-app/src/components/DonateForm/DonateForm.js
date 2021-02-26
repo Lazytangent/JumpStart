@@ -7,7 +7,7 @@ import { createDonation } from '../../store/project'
 const DonateForm = () => {
 
   const userId = useSelector(state => state.session.user.id)
-  const projectId = useSelector(state => state.project.currentProject.id)
+  // const projectId = useSelector(state => state.project.currentProject.id)
   const { showDonateModal, setShowDonateModal } = useModalContext();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([])
@@ -19,11 +19,11 @@ const DonateForm = () => {
 
   return (
     <>
-      {showDonateModal && (
-        <Modal onClose={() => setShowDonateModal(false)}>
-          <h1>Hello</h1>
-        </Modal>
-      )}
+      {/* {showDonateModal && ( */}
+      <Modal onClose={() => setShowDonateModal(false)}>
+        <h1>Hello</h1>
+      </Modal>
+      {/* )} */}
     </>
   )
 

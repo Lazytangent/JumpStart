@@ -6,6 +6,7 @@ import logo_40x40 from "../SearchBar/logo_40x40.png";
 import "./projectPage.css";
 import Navigation from "../../components/Navigation/navigation"
 import { useModalContext } from "../../context/Modal";
+import DonateForm from "../../components/DonateForm/DonateForm"
 //a single change
 const ProjectPage = ({ setAuthenticated }) => {
 
@@ -13,10 +14,12 @@ const ProjectPage = ({ setAuthenticated }) => {
     showLoginModal,
     setShowLoginModal,
     showDonateModal,
+    setShowSignUpModal,
     setShowDonateModal,
   } = useModalContext();
 
   const user = useSelector(state => state.session.user)
+  // console.log(user)
   const project = useSelector((state) => state.project.currentProject);
   const { projectId } = useParams();
   const dispatch = useDispatch();
@@ -30,6 +33,7 @@ const ProjectPage = ({ setAuthenticated }) => {
   return (
     <>
       <Navigation setAuthenticated={setAuthenticated} />
+      {showDonateModal && <DonateForm />}
       {project && (
         <div className="project-container">
           {/* <h1 className="project-header">{project.name}</h1>
@@ -54,8 +58,8 @@ const ProjectPage = ({ setAuthenticated }) => {
               <div class="sticky-container">
                 Donations
                 <button onClick={() => {
-                  if (user) {
-                    setShowDonateModal((prev) => !prev)
+                  if (user !== null) {
+                    setShowDonateModal(true)
                   } else {
                     setShowLoginModal((prev) => !prev)
                   }
