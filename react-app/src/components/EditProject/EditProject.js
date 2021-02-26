@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import { Modal, useModalContext } from "../../context/Modal";
-import { updateProject, getProjectById } from '../../store/project'
+import { updateProject, getProjectById, deleteImage } from '../../store/project'
 import DeleteIcon from '@material-ui/icons/Delete';
 import "./EditProject"
 
