@@ -11,6 +11,7 @@ class Project(db.Model):
     description = db.Column(db.Text, nullable=False)
     goalAmount = db.Column(db.Integer, nullable=False)
     minPledge = db.Column(db.Integer, nullable=False)
+    isClosed = db.Column(db.Boolean, nullable=False, default=False)
 
     user = db.relationship("User", back_populates="projects")
     donations = db.relationship("Donation", back_populates="project")
@@ -26,5 +27,6 @@ class Project(db.Model):
             "goalAmount": self.goalAmount,
             "minPledge": self.minPledge,
             "donations": [donation.to_dict() for donation in self.donations],
-            "user": self.user.to_dict()
+            "user": self.user.to_dict(),
+            "images": [image.to_dict() for image in self.images]
         }

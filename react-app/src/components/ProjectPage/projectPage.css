@@ -60,7 +60,7 @@
     "footer footer footer footer footer footer";
   /* 'a a a a right right'; */
   grid-gap: 20px;
-  background-color: #2196f3;
+  /* background-color: #2196f3; */
   padding: 20px;
 }
 
@@ -73,6 +73,7 @@
 
 .comment-avatar {
   grid-area: comment-avatar;
+  padding: 1em;
 }
 .comment-header {
   grid-area: comment-header;
@@ -90,6 +91,11 @@
   grid-area: comment-footer;
 }
 
+.comment-header,
+.comment-content {
+  padding: 1em;
+}
+
 .donation-container {
   display: grid;
   grid-template-areas:
@@ -103,8 +109,21 @@
   grid-column-gap: 1rem;
   text-align: left;
   margin: 2em 0;
+  border-bottom: 2px solid grey;
 }
 
 .donation-listItem {
   list-style-type: none;
+}
+
+.userProfilePicture {
+  display: inline-block;
+}
+
+.comments-header {
+  text-align: left;
+}
+
+.donations-ul:first-child {
+  border-top: 2px solid grey;
 }

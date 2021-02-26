@@ -4,11 +4,22 @@
   /* margin: 0px 5%; */
 }
 
-li.searchBarMatches:last-child {
-  /* margin-top: 0.5rem; */
-  /* background-color: yellow; */
+/* li:last-child {
+  margin-top: 0.5rem;
+  background-color: yellow;
   border-bottom: 1px solid lightgrey;
   margin-bottom: 2rem;
+} */
+
+.searchResults-container {
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.a-link {
+  margin-bottom: 0px;
+  text-decoration: none;
+  border: none;
 }
 
 .searchBar-input {
@@ -23,12 +34,13 @@ li.searchBarMatches:last-child {
 }
 .searchBarMatches {
   list-style-type: none;
-  /* margin-bottom: 0.5rem; */
   border-top: 1px solid lightgrey;
   min-height: 30px;
   padding: 1rem 0rem;
   display: flex;
+  color: black;
 }
+
 .searchBarMatches-content {
   padding-left: 1rem;
   float: left;

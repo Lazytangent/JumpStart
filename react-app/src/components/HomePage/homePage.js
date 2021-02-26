@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
 import LogoutButton from "../auth/LogoutButton";
+import { getDiscoverPageProjects } from '../../store/project';
 import csc from "country-state-city";
 import "./homePage.css";
 
@@ -62,6 +63,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getHomePageProjects("popular"));
         dispatch(getHomePageProjects("recent"));
         dispatch(getHomePageProjects("trending"));
@@ -122,6 +124,24 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         history.push("/discover")
     }
 
+    const seeMorePopular = async (event) => {
+        event.preventDefault()
+        await dispatch(getDiscoverPageProjects("popular"))
+        history.push('/discover', {comingFrom: "popular"})
+      }
+
+    const seeMoreRecent = async (event) => {
+        event.preventDefault()
+        await dispatch(getDiscoverPageProjects("recent"))
+        history.push('/discover', {comingFrom: "recent"})
+      }
+
+    const seeMoreTrending = async (event) => {
+        event.preventDefault()
+        await dispatch(getDiscoverPageProjects("trending"))
+        history.push('/discover', {comingFrom: "trending"})
+      }
+
 
     return (
         <>
@@ -132,7 +152,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             className="navBar-home"
                             to="/"
                             exact={true}
-                            activeClassName="active"
                             onClick={() => {
                             setShowSignUpModal(false);
                             setShowLoginModal(false);
@@ -159,6 +178,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             Create a project
                             </button>
                         </div>
+                        {!user &&
                         <div id="navBar-button-container">
                             {!user && (
                             <button
@@ -175,8 +195,9 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             {showSignUpModal && (
                             <SignUpForm setAuthenticated={setAuthenticated} />
                             )}
-                        </div>
-                        <div id="navBar-button-container">
+                        </div>}
+                        {!user &&
+                            <div id="navBar-button-container">
                             {!user && (
                             <button
                             id="navBar-buttons"
@@ -192,7 +213,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             {showLoginModal && (
                             <LoginForm setAuthenticated={setAuthenticated} />
                             )}
-                        </div>
+                        </div>}
+                        { user &&
+                        <div>
+                            <LogoutButton setAuthenticated={setAuthenticated} />
+                        </div>}
                         <div id="navBar-button-container">
                             {
                             <button
@@ -208,9 +233,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             </button>
                             }
                             {showSearchBarModal && <SearchBar />}
-                        </div>
-                        <div>
-                            {user && <LogoutButton setAuthenticated={setAuthenticated} />}
                         </div>
                     </div>
                 </ul>
@@ -250,7 +272,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link to='/discover' id="homePage-see-more-text" >See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <button onClick={(event) => seeMorePopular(event)} id="homePage-see-more-text" >See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -277,11 +299,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <button id="homePage-see-more-text" onClick={(event) => seeMoreRecent(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
-                    <h2 className="homePage-nearYou-header">Causes near you</h2>
+                    <h2 className="homePage-nearYou-header">Trending causes</h2>
                     <div className="homePage-grid-near-you">
                         <div id="homePage-project-grid">
                             {trending &&
@@ -304,7 +326,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <Link id="homePage-see-more-text" to='/discover'>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></Link>
+                                <button id="homePage-see-more-text" onClick={(event) => seeMoreRecent(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>

@@ -24,8 +24,6 @@ const ProjectPage = () => {
           {/* <h1 className="project-header">{project.name}</h1>
           <img src={project.thumbnailImgUrl} className='thumbnail'></img>
           <div>{project.description}</div> */}
-          <h1>Grid Layout</h1>
-          <p>This grid layout contains six columns and three rows:</p>
 
           <div class="grid-container">
             <div class="item1 grid-div">
@@ -45,8 +43,10 @@ const ProjectPage = () => {
               <div class="sticky-container">Donations</div>
             </div>
             <div class="item5 grid-div">
-              <h1>Comments ({project.donations.length})</h1>
-              <ul>
+              <h1 className="comments-header">
+                Comments ({project.donations.length})
+              </h1>
+              <ul className="donations-ul">
                 {project.donations &&
                   project.donations.map((donation, idx) => (
                     <>
