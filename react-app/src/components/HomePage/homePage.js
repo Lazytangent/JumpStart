@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { getHomePageProjects } from '../../store/project.js';
 import { useModalContext } from "../../context/Modal";
+import { logout } from '../../store/session';
 import SearchBar from "../SearchBar/SearchBar";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
@@ -142,6 +143,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         history.push('/discover', {comingFrom: "trending"})
       }
 
+      const onLogout = async (e) => {
+        history.push("/");
+        await dispatch(logout());
+        setAuthenticated(false);
+      };
 
     return (
         <>
@@ -214,10 +220,17 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                             <LoginForm setAuthenticated={setAuthenticated} />
                             )}
                         </div>}
-                        { user &&
-                        <div>
-                            <LogoutButton setAuthenticated={setAuthenticated} />
-                        </div>}
+                        {user && (
+                        <div id="navBar-button-container">
+                            <button
+                            id="navBar-buttons"
+                            className="navBar-buttons-login"
+                            onClick={onLogout}
+                            >
+                            Logout
+                            </button>
+                        </div>
+                        )}
                         <div id="navBar-button-container">
                             {
                             <button
@@ -245,7 +258,13 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
                     <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
                     <div className="homePage-description-box-button-container">
-                        <button onClick={(event) => donateButton(event)} className="homePage-description-box-button">Donate<img className="description-box-logo" src="logo.png" alt=""></img></button>
+                    <button
+              onClick={(event) => seeMoreRecent(event)}
+              className="homePage-description-box-button"
+            >
+              Donate
+              <img className="description-box-logo" src="logo.png" alt=""></img>
+            </button>
                     </div>
                 </div>
                 <div className="homePage-grid">
@@ -326,7 +345,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                                     </Link>
                                 ))}
                             <div id="homePage-see-more">
-                                <button id="homePage-see-more-text" onClick={(event) => seeMoreRecent(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
+                                <button id="homePage-see-more-text" onClick={(event) => seeMoreTrending(event)}>See more <i id="homePage-right-arrow" className="far fa-arrow-alt-circle-right"></i></button>
                             </div>
                         </div>
                     </div>

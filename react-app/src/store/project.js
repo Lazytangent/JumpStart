@@ -5,7 +5,7 @@ const SET_NEAR_YOU = 'project/SET_NEAR_YOU'
 const SET_SEARCHED_FOR = 'project/SET_SEARCHED_FOR'
 const SET_CURRENT_PROJECT = 'project/SET_CURRENT_PROJECT'
 
-const setCurrentProject = (project) => {
+export const setCurrentProject = (project) => {
   return {
     type: SET_CURRENT_PROJECT,
     project
@@ -48,7 +48,12 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
   formData.append('minPledge', minPledge);
   formData.append('userId', userId);
   if (thumbnailImg) formData.append('thumbnailImg', thumbnailImg);
-  if (images) formData.append('images', images);
+  if (images) {
+    const num = images.length;
+    for (let i = 0; i < num; i++) {
+      formData.append('images', images[i]);
+    }
+  }
 
   const response = await fetch('/api/projects/', {
     method: "POST",
@@ -61,11 +66,96 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
   return project;
 };
 
+export const updateProject = (projectId, name, description, goalAmount, minPledge, thumbnailImg, images) => async (dispatch) => {
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('description', description);
+  formData.append('goalAmount', goalAmount);
+  formData.append('minPledge', minPledge);
+  if (thumbnailImg) formData.append('thumbnailImg', thumbnailImg);
+  if (images) {
+    const num = images.length;
+    for (let i = 0; i < num; i++) {
+      formData.append('images', images[i]);
+    }
+  }
+
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: "PUT",
+    body: formData,
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+}
+
+export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
+  const response = await fetch('/api/donations', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId,
+      projectId,
+      donationAmount,
+      comment,
+      anonymous,
+    }),
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+}
+
+export const deleteProject = (projectId) => async (dispatch) => {
+  const response = await fetch(`/api/projects/${projectId}`, {
+    method: "DELETE",
+  });
+  const message = await response.json();
+  dispatch(setCurrentProject(null));
+  return message;
+};
+
 export const getProjectById = (projectId) => async (dispatch) => {
   const response = await fetch(`/api/projects/${projectId}`)
   const projects = await response.json()
   dispatch(setCurrentProject(projects))
   return projects
+};
+
+export const updateDonation = (donationId, donationAmount, comment, anonymous) => async (dispatch) => {
+  const response = await fetch(`/api/donations/${donationId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      donationAmount,
+      comment,
+      anonymous,
+    }),
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
+};
+
+export const deleteDonation = (donationId) => async (dispatch) => {
+  const response = await fetch(`/api/donations/${donationId}`, {
+    method: "DELETE",
+  });
+  const project = await response.json();
+  if (!project.errors) {
+    dispatch(setCurrentProject(project));
+  }
+  return project;
 };
 
 export const getHomePageProjects = (optionalParameter) => async (dispatch) => {
