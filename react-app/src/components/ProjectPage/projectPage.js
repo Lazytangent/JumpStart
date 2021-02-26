@@ -124,15 +124,33 @@ console.log(topThree)
               >
                 Donate
               </button>
-              <div className="numberOfDonators">
-                <p className="numberOfDonators-text">{`${project.donations.length} people have donated`}</p>
-              </div>
               <p className="top-donors">Top Donors</p>
               <div className="top-donors-container">
                 {topThree &&
                 topThree.map((project) => (
-                  <div className="top-donor-name">{`${project.donator.username}`}<p className="top-donor-amount">{`$${Number(project.donationAmount)}`}</p></div>
+                    <div className="comment-avatar-sticky">
+                              {project.donator.profileImageUrl ? (
+                                <div className="logoBackground-sticky">
+                                  <img
+                                    src={project.donator.profileImageUrl}
+                                    className="userProfilePictureSticky"
+                                    alt="JumpStart User"
+                                  ></img>
+                                </div>
+                              ) : (
+                                <div className="logoBackground-sticky">
+                                  <img
+                                  className="sticky-logo"
+                                    src={logo_40x40}
+                                    alt="JumpStart Logo"
+                                  ></img>
+                                </div>
+                              )}
+                            <div className="top-donor-name">{`${project.donator.username} $${Number(project.donationAmount)}`}</div></div>
                 ))}
+              <div className="numberOfDonators">
+                <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
+              </div>
               </div>
               </div>
             </div>

@@ -5,7 +5,6 @@
 }
 
 .logoBackground {
-  /* background-color: rgba(44, 252, 113, 0.26); */
   padding: 5px 5px 0px 5px;
   border-radius: 50%;
   border: 3px solid #02a95c;
@@ -99,7 +98,7 @@
   position: -webkit-sticky;
   background:white;
   width: 300px;
-  height: 500px;
+  height: 450px;
   top: 100px;
   border-radius: 5px;
   box-shadow: 0 0.3125rem 1rem 0.1875rem rgb(0 0 0 / 20%);
@@ -175,12 +174,17 @@ overflow: hidden;
 .numberOfDonators {
   margin-top: 8%;
   display: inline-flex;
-  justify-content: space-evenly;
 }
 
 .numberOfDonators-text {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
+}
+
+
+.comment-avatar-sticky {
+  display: flex;
+
 }
 
 .donate-box-button {
@@ -195,16 +199,40 @@ overflow: hidden;
     border-radius: 5px;
 }
 
+.donate-box-button:hover {
+  background-color:#049451 ;
+}
+
 .top-donors {
-  margin-top: 5%;
-  font-size: 19px;
+  margin-top: 6%;
+  font-size: 25px;
   text-decoration: underline;
   text-decoration-color: 2px solid black;
 
 }
 
+.logoBackground-sticky {
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-left: 45px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 3px solid #02a95c;
+}
+.sticky-logo {
+  padding-top: 4px;
+  height: 25px;
+  width: 25px;
+}
+
+.top-donor-name {
+  margin-top: 15px;
+  font-size: 25px;
+}
+
 .top-donors-container {
-  display: inline-block;
+  width: 100%;
 }
 
 .comment-avatar {
