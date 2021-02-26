@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import projectReducer, { getProjectById } from "../../store/project";
 import logo_40x40 from "../SearchBar/logo_40x40.png";
 import "./projectPage.css";
-
+import Navigation from "../../components/Navigation/navigation"
 //a single change
-const ProjectPage = () => {
+const ProjectPage = ({ setAuthenticated }) => {
   const project = useSelector((state) => state.project.currentProject);
   const { projectId } = useParams();
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const ProjectPage = () => {
 
   return (
     <>
+      <Navigation setAuthenticated={setAuthenticated} />
       {project && (
         <div className="project-container">
           {/* <h1 className="project-header">{project.name}</h1>
@@ -61,11 +62,11 @@ const ProjectPage = () => {
                                   alt="JumpStart User"
                                 ></img>
                               ) : (
-                                <img
-                                  src={logo_40x40}
-                                  alt="JumpStart Logo"
-                                ></img>
-                              )}
+                                  <img
+                                    src={logo_40x40}
+                                    alt="JumpStart Logo"
+                                  ></img>
+                                )}
                             </div>
                             <div className="comment-header">
                               {donation.donator.username} donated $

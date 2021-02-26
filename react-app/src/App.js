@@ -60,7 +60,7 @@ function App() {
           <CreateProject />
         </Route>
         <Route path="/:projectId" exact={true} authenticated={authenticated}>
-          <ProjectPage />
+          <ProjectPage setAuthenticated={setAuthenticated} />
         </Route>
       </Switch>
     </>
