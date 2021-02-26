@@ -9,7 +9,7 @@ import User from "./components/User";
 import HomePage from "./components/HomePage/homePage"
 import ProjectPage from "./components/ProjectPage/projectPage"
 import { authenticate } from './store/session';
-import CreateProject from './components/CreateProject';
+import CreateProject from './components/CreateProject/CreateProject';
 import DiscoverPage from './components/DiscoverPage/discoverPage.js';
 
 function App() {
@@ -56,11 +56,11 @@ function App() {
         <Route path="/discover" exact={true} authenticated={authenticated}>
           <DiscoverPage setAuthenticated={setAuthenticated} />
         </Route>
-        <Route path="/:projectId" exact={true} authenticated={authenticated}>
-          <ProjectPage />
-        </Route>
         <Route path="/new-project" exact={true} authenticated={authenticated}>
           <CreateProject />
+        </Route>
+        <Route path="/:projectId" exact={true} authenticated={authenticated}>
+          <ProjectPage />
         </Route>
       </Switch>
     </>
