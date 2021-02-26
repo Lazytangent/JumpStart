@@ -55,7 +55,7 @@ const ProjectPage = () => {
                           <div className="donation-container">
                             <div className="comment-avatar">
                               {donation.donator.profileImageUrl ? (
-                                <div>
+                                <div className="logoBackground">
                                   <img
                                     src={donation.donator.profileImageUrl}
                                     className="userProfilePicture"
