@@ -67,7 +67,7 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
 };
 
 export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
-  const response = await fetch('/api/donations', {
+  const response = await fetch('/api/donations/', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
