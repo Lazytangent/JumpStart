@@ -104,11 +104,7 @@ def create_new_project():
         project.thumbnailImgUrl = thumbnailImgUrl
         db.session.add(project)
         db.session.commit()
-        print('----------------------------------------------')
-        for file in request.files:
-            print(file)
         if 'images' in request.files:
-            print(request.files['images'])
             images = request.files.getlist('images')
             for image in images:
                 if allowed_file(image.filename):
