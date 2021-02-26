@@ -23,6 +23,7 @@ const EditProjectForm = () => {
   const [thumbnailImage, setThumbnailImage] = useState("");
   const [images, setAdditionalImages] = useState([]);
   const [deleteImageList, setDeleteImageList] = useState([])
+  const [imageList, setImageList] = useState([])
   const [errors, setErrors] = useState([]);
 
 
@@ -120,21 +121,17 @@ const EditProjectForm = () => {
           </div>
           <div>
             {project.images.map((img, idx) => (
-
-              <div>
-                <span>
-                  {/* <button onClick={() => deleteImageById(img.id)} className="delete-image-button"> */}
-                  <span onClick={() => deleteImageById(img.id)} className="delete-image-div">
-                    <DeleteIcon />
-                  </span>
-                </span>
-                {img.imageUrl.split(".s3.amazonaws.com/")[1]}
-              </div>
+              setImageList((prev) => [...prev, { id: img.id, url: img.imageUrl.split(".s3.amazonaws.com/")[1] }])
+              // <div>
+              //   <span>
+              //     <span onClick={() => deleteImageById(img.id)} className="delete-image-div">
+              //       <DeleteIcon />
+              //     </span>
+              //   </span>
+              //   {img.imageUrl.split(".s3.amazonaws.com/")[1]}
+              // </div>
             ))}
-            {/* {images.map((img, idx) => (
 
-              <div>{img.}</div>
-            ))} */}
             <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
           </div>
