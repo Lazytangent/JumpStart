@@ -10,7 +10,7 @@ donation_routes = Blueprint('donations', __name__)
 @donation_routes.route('/', methods=["POST"])
 def create_donation():
     form = CreateDonation()
-    form['csrf_token'] = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         donation = Donation()
         form.populate_obj(donation)
@@ -26,7 +26,6 @@ def create_donation():
                        methods=["PUT", "DELETE"])
 def update_donation(donation_id):
     donation = Donation.query.get(donation_id)
-    project = Project.query.get(donation.projectId)
     if request.method == "PUT":
         form = CreateDonation()
         form['userId'].data = donation.userId
@@ -35,10 +34,12 @@ def update_donation(donation_id):
         if form.validate_on_submit():
             form.populate_obj(donation)
             db.session.commit()
+            project = Project.query.get(donation.projectId)
             return project.to_dict()
         return {'errors': validation_errors_to_error_messages(form.errors)}
     elif request.method == "DELETE":
         db.session.delete(donation)
         db.session.commit()
+        project = Project.query.get(donation.projectId)
         return project.to_dict()
     return {'message': 'Invalid route'}
