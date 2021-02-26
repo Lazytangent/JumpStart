@@ -125,7 +125,7 @@ const EditProjectForm = () => {
                 onChange={updateMinPledge}
               ></input>
             </div>
-            <button className="submit-button" type="submit" onClick={postProject}>Create</button>
+            <button className="submit-button" type="submit" onClick={postProject}>Update</button>
             <button className="cancel-button" type="submit" onClick={() => history.push("/")}>Cancel</button>
           </form>
         </div>
