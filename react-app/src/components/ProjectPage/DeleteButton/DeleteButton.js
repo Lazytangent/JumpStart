@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import styles from './DeleteButton.module.css';
+import { Modal } from '../../../context/Modal';
+import DeleteConfirmation from './DeleteConfirmation';
 
 const DeleteButton = () => {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   return (
     <>
-      <h1>Delete this project</h1>
+      <button onClick={() => setShowDeleteModal((prev) => !prev)}>Delete</button>
+      {showDeleteModal && (
+        <Modal onClose={() => setShowDeleteModal(false)}>
+          <DeleteConfirmation setShowDeleteModal={setShowDeleteModal} />
+        </Modal>
+      )}
     </>
   );
 };

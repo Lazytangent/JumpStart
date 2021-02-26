@@ -59,6 +59,7 @@ const ProjectPage = ({ setAuthenticated }) => {
 
               <div className="editYourProject-button">
                 <button onClick={editProject}>Edit</button>
+                <DeleteButton />
               </div>
             )}
 
