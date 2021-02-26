@@ -117,9 +117,9 @@ def create_new_project():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@project_routes.route('/<int:projectId>', method=["PUT", "DELETE"])
-def update_project(projectId):
-    project = Project.query.get(projectId)
+@project_routes.route('/<int:project_id>', methods=["PUT", "DELETE"])
+def update_project(project_id):
+    project = Project.query.get(project_id)
     if request.method == "PUT":
         form = CreateProject()
         form['csrf_token'].data = request.cookies['csrf_token']
@@ -131,10 +131,8 @@ def update_project(projectId):
                     image.filename = secure_filename(image.filename)
                     thumbnailImgUrl = upload_file_to_s3(
                         image, Config.S3_BUCKET)
-            project = Project()
             form.populate_obj(project)
             project.thumbnailImgUrl = thumbnailImgUrl
-            db.session.add(project)
             db.session.commit()
             if 'images' in request.files:
                 images = request.files.getlist('images')
