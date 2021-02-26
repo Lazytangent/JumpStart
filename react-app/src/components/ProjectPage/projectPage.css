@@ -20,19 +20,19 @@
 .item1 {
   grid-area: header;
 }
-.item2 {
+.organizer {
   grid-area: organizer;
   font-size: 16px;
   padding-bottom: 0px;
 }
-.item3 {
-  grid-area: image;
+.projectImage {
+  grid-area: projectImage;
   padding: none;
 }
-.item4 {
-  grid-area: right;
+.donations {
+  grid-area: donations;
 }
-.item5 {
+.comments {
   grid-area: comments;
 }
 
@@ -52,9 +52,9 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-areas:
     "header header header header header header"
-    "image image image image right right"
-    "organizer organizer organizer organizer right right"
-    "comments comments comments comments right right"
+    "projectImage projectImage projectImage projectImage donations donations"
+    "organizer organizer organizer organizer donations donations"
+    "comments comments comments comments donations donations"
     "footer footer footer footer footer footer";
   grid-gap: 20px;
   padding: 20px;
