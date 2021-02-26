@@ -36,6 +36,9 @@ const ProjectPage = () => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
+            {
+            <div className="editYourProject-button"></div>
+}
             <div className="description">{project.description}</div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">Donations</div>
@@ -44,7 +47,7 @@ const ProjectPage = () => {
               <h1 className="comments-header">
                 {/* As of Thursday night, this won't exclude anonymous donations 
               So the count will probably (not tested) display a higher number than comments shown*/}
-                Comments ({project.donations.length})
+                Donations ({project.donations.length})
               </h1>
               <ul className="donations-ul">
                 {project.donations &&
