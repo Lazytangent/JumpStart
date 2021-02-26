@@ -7,6 +7,7 @@ import "./projectPage.css";
 import Navigation from "../../components/Navigation/navigation"
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm"
+import DeleteButton from './DeleteButton';
 //a single change
 const ProjectPage = ({ setAuthenticated }) => {
 
@@ -52,6 +53,9 @@ const ProjectPage = ({ setAuthenticated }) => {
               {project.user.username} is organizing this fundraiser
             </div>
             <div className="description">{project.description}</div>
+            <div className="editYourProject-button">
+              {project.userId === user.id && <DeleteButton />}
+            </div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 Donations
