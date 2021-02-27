@@ -53,10 +53,21 @@ const EditProjectForm = () => {
   }
 
   const deleteImageByName = (name) => {
-    // setAdditionalImages((prev) => prev.map((fileList) => {
-    //   Array.from(fileList).filter((image) => image.name === name)
-    // }))
-    console.log(images)
+    let result = [];
+    images.map((Filelist) => {
+      let file = Filelist
+      let newFile = []
+      for (let key in file) {
+        let number = Number(key)
+        if (number || number === 0) {
+          if (file[key].name !== name) {
+            newFile.push(file[key])
+          }
+        }
+      }
+      result.push(newFile)
+    })
+    setAdditionalImages(result)
   }
 
   const updateName = (e) => {
