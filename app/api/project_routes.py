@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy import asc, desc, func
+from sqlalchemy import desc, func
 from werkzeug.utils import secure_filename
 
 from app.config import Config
