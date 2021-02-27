@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import "./DonateForm.css"
 import { Modal, useModalContext } from "../../context/Modal";
 import { createDonation, getProjectById } from '../../store/project'
-import "./DonateForm.css"
 
 
 const DonateForm = () => {
-
+  const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
   const projectId = useSelector(state => state.project.currentProject.id)
+
   const { showDonateModal, setShowDonateModal } = useModalContext();
-  const dispatch = useDispatch();
   const [errors, setErrors] = useState([])
   const [donationAmount, setDonationAmount] = useState()
   const [comment, setComment] = useState("")
@@ -25,7 +26,7 @@ const DonateForm = () => {
     } else {
       setErrors(donation.errors)
     }
-  }
+  };
 
   const updateDonation = (e) => {
     setDonationAmount(e.target.value);
@@ -39,13 +40,10 @@ const DonateForm = () => {
     setAnonymous(!anonymous);
   };
 
-
   return (
     <>
-
       <Modal onClose={() => setShowDonateModal(false)}>
         <div className='donate-form-container'>
-
           <form onSubmit={makeDonation} className="donate-form">
             <div>
               {errors.map((error, idx) => (
@@ -87,10 +85,8 @@ const DonateForm = () => {
           </form>
         </div>
       </Modal>
-
     </>
-  )
-
-}
+  );
+};
 
 export default DonateForm;
