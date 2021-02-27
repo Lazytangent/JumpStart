@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory} from "react-router-dom";
+import csc from "country-state-city";
+
+import './discoverPage.css';
 import { getDiscoverPageProjects } from '../../store/project';
 import { getDiscoverPageProjectsByLocation } from '../../store/project';
 import Navigation from '../Navigation/navigation';
-import csc from "country-state-city";
-import './discoverPage.css';
 
 
 const DiscoverPage = ({setAuthenticated}) => {
@@ -21,6 +22,7 @@ const DiscoverPage = ({setAuthenticated}) => {
     const [cardFilter, setCardFilter] = useState([]);
     const [loaded, setLoaded] = useState(false)
     const [selected, setSelected] = useState("")
+
     useEffect(() => {
         window.scrollTo(0, 0)
         dispatch(getDiscoverPageProjects("recent"))
@@ -36,13 +38,11 @@ const DiscoverPage = ({setAuthenticated}) => {
             setCardFilter(trending)
             setSelected("trending")
         }
-    }, [dispatch])
-
+    }, [dispatch, history.location.state.comingFrom, mostPopular, mostRecent, trending])
 
     useEffect(() => {
         setLoaded(true)
     }, [cardFilter])
-
 
     const getPercentage = (project) => {
         // let sum = 0
@@ -53,7 +53,7 @@ const DiscoverPage = ({setAuthenticated}) => {
 
         // return (sum/project.goalAmount) * 100
         return 50
-    }
+    };
 
     const getSum = (project) => {
         let sum = 0
@@ -62,7 +62,7 @@ const DiscoverPage = ({setAuthenticated}) => {
             sum += project.donations[i].donationAmount;
         }
         return sum
-    }
+    };
 
     const getStateAbbreviation = (project) => {
         let result;
@@ -72,37 +72,37 @@ const DiscoverPage = ({setAuthenticated}) => {
 
         allStates.forEach((state) => {
             if (state.name === stateName) {
-                result = state.isoCode
+                result = state.isoCode;
             }
         })
         return result;
-    }
+    };
 
     if(!loaded) {
         return null;
     }
 
     const recentFunction = (param) => {
-        setCardFilter(param)
-        setSelected("mostRecent")
-    }
+        setCardFilter(param);
+        setSelected("mostRecent");
+    };
 
     const popularFunction = (param) => {
-        setCardFilter(param)
-        setSelected("mostPopular")
-    }
+        setCardFilter(param);
+        setSelected("mostPopular");
+    };
 
     const trendingFunction = (param) => {
-        setCardFilter(param)
-        setSelected("trending")
-    }
+        setCardFilter(param);
+        setSelected("trending");
+    };
 
 
     const nearYouFunction = (param) => {
-        setCardFilter(param)
-        setSelected("nearYou")
-        dispatch(getDiscoverPageProjectsByLocation(userId))
-    }
+        setCardFilter(param);
+        setSelected("nearYou");
+        dispatch(getDiscoverPageProjectsByLocation(userId));
+    };
 
 
     return (
@@ -145,7 +145,7 @@ const DiscoverPage = ({setAuthenticated}) => {
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default DiscoverPage;

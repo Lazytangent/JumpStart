@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import projectReducer, { getProjectById } from "../../store/project";
-import logo_40x40 from "../SearchBar/logo_40x40.png";
+// import csc from "country-state-city";
+
 import "./projectPage.css";
-import csc from "country-state-city";
+import { getProjectById } from "../../store/project";
+import logo_40x40 from "../SearchBar/logo_40x40.png";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm"
 import EditProjectForm from "../../components/EditProject/EditProject"
 import DeleteButton from './DeleteButton';
-//a single change
-
 
 const ProjectPage = ({ setAuthenticated }) => {
   const {
-    showLoginModal,
     setShowLoginModal,
     showDonateModal,
-    setShowSignUpModal,
     setShowDonateModal,
     showEditProjectModal,
     setShowEditProjectModal
@@ -27,7 +24,6 @@ const ProjectPage = ({ setAuthenticated }) => {
   const [topThree, setTopThree] = useState([]);
 
   const user = useSelector((state) => state.session.user);
-  // console.log(user)
   const project = useSelector((state) => state.project.currentProject);
   const session = useSelector((state) => state.session.user);
   const { projectId } = useParams();
@@ -35,14 +31,12 @@ const ProjectPage = ({ setAuthenticated }) => {
 
   useEffect(() => {
     dispatch(getProjectById(projectId))
-
-  }, [dispatch]);
+  }, [dispatch, projectId]);
 
   const editProject = () => {
     setShowEditProjectModal(true);
-    // console.log('Hello')
+  };
 
-  }
   useEffect(() => {
     if (project) {
       setTopThree(project.donations.sort((projectOne, projectTwo) => {
@@ -59,32 +53,31 @@ const ProjectPage = ({ setAuthenticated }) => {
     // }
 
     // return (sum/project.goalAmount) * 100
-    return 50
-  }
+    return 50;
+  };
 
   const getSum = (project) => {
-    let sum = 0
+    let sum = 0;
 
     for (let i = 0; i < project.donations.length; i++) {
       sum += project.donations[i].donationAmount;
     }
-    return sum
-  }
+    return sum;
+  };
 
-  const getStateAbbreviation = (project) => {
-    let result;
-    const allStates = csc.getStatesOfCountry('US')
+  // const getStateAbbreviation = (project) => {
+  //   let result;
+  //   const allStates = csc.getStatesOfCountry('US');
 
-    let stateName = project.user.state;
+  //   let stateName = project.user.state;
 
-    allStates.forEach((state) => {
-      if (state.name === stateName) {
-        result = state.isoCode
-      }
-    })
-    return result;
-  }
-
+  //   allStates.forEach((state) => {
+  //     if (state.name === stateName) {
+  //       result = state.isoCode;
+  //     }
+  //   });
+  //   return result;
+  // };
 
   return (
     <>
@@ -115,13 +108,11 @@ const ProjectPage = ({ setAuthenticated }) => {
                 <DeleteButton />
               </div>
             )}
-
-
             <div className="description">
               <div>{project.description}</div>
               {project.images.map((img, idx) => (
                 <div className="image-description-container">
-                  <img className="images-in-description" src={img.imageUrl}></img>
+                  <img alt="" className="images-in-description" src={img.imageUrl}></img>
                 </div>
               ))}
             </div>
