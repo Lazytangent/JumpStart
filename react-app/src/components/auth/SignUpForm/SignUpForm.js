@@ -8,8 +8,8 @@ import { signUp, login } from "../../../store/session";
 import { Modal, useModalContext } from "../../../context/Modal";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
-  const { showSignUpModal, setShowSignUpModal } = useModalContext();
   const dispatch = useDispatch();
+  const { showSignUpModal, setShowSignUpModal } = useModalContext();
 
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
@@ -50,7 +50,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     const demoPassword = "password";
     setTimeout(await dispatch(login(demoEmail, demoPassword)), 1000);
     setShowSignUpModal(false);
-  }
+  };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);

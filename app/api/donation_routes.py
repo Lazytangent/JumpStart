@@ -16,9 +16,9 @@ def create_donation():
         form.populate_obj(donation)
         db.session.add(donation)
         db.session.commit()
-
         project = Project.query.get(donation.projectId)
         return project.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
@@ -26,20 +26,25 @@ def create_donation():
                        methods=["PUT", "DELETE"])
 def update_donation(donation_id):
     donation = Donation.query.get(donation_id)
+
     if request.method == "PUT":
         form = CreateDonation()
         form['userId'].data = donation.userId
         form['projectId'].data = donation.projectId
         form['csrf_token'].data = request.cookies['csrf_token']
+
         if form.validate_on_submit():
             form.populate_obj(donation)
             db.session.commit()
             project = Project.query.get(donation.projectId)
             return project.to_dict()
+
         return {'errors': validation_errors_to_error_messages(form.errors)}
+
     elif request.method == "DELETE":
         db.session.delete(donation)
         db.session.commit()
         project = Project.query.get(donation.projectId)
         return project.to_dict()
+
     return {'message': 'Invalid route'}

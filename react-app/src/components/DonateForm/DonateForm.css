@@ -1,20 +1,9 @@
-/* .donate-form-container {
+.donate-form {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    position: absolute;
-    top: 30%;
-    left: 40%;
-    margin-top: -80px;
-    margin-left: -190px;
-    width: 45%;
-    height: 100%;
-    overflow: hidden;
-
-} */
-
-
-.donate-form {font-family: Arial, Helvetica, sans-serif;}
-
-.donation-number, .donation-comment {
+.donation-number,
+.donation-comment {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -23,7 +12,8 @@
   box-sizing: border-box;
 }
 
-.submit-button-donate, .cancel-button-donate{
+.submit-button-donate,
+.cancel-button-donate{
   background-color:#00bc5e;
   color: white;
   padding: 14px 20px;
@@ -33,9 +23,8 @@
   width: 100%;
 }
 
-
-
-.submit-button-donate:hover, .cancel-button-donate:hover {
+.submit-button-donate:hover,
+.cancel-button-donate:hover {
   opacity: 0.8;
 }
 

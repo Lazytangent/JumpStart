@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -12,8 +13,9 @@ import { authenticate } from './store/session';
 import CreateProject from './components/CreateProject/CreateProject';
 import DiscoverPage from './components/DiscoverPage/discoverPage.js';
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
+
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
@@ -65,6 +67,6 @@ function App() {
       </Switch>
     </>
   );
-}
+};
 
 export default App;

@@ -1,36 +1,35 @@
 .homePage {
-    height: 250vh;
-    width: 99vw;
-
+  height: 250vh;
+  width: 99vw;
 }
 
 .homePage-image {
-    height: 65vh;
-    width: 99vw;
-    margin: 0;
-    padding: 0;
+  height: 65vh;
+  width: 99vw;
+  margin: 0;
+  padding: 0;
 }
 
 .homePage-image-container {
-    background-color: black;
-    height: 65vh;
-    width: 99vw;
-    margin: 0;
-    padding: 0;
+  background-color: black;
+  height: 65vh;
+  width: 99vw;
+  margin: 0;
+  padding: 0;
 }
 
 .homePage-description-box {
-    height: 25%;
-    width: 65%;
-    display: grid;
-    grid-template-columns: 30% 70%;
-    grid-template-rows: 100%;
-    position: absolute;
-    top: 56%;
-    left:17.5%;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow:2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+  height: 25%;
+  width: 65%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100%;
+  position: absolute;
+  top: 56%;
+  left: 17.5%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 
 .homePage-description-image {
@@ -70,12 +69,12 @@
   border: 2px solid #02a95c;
   background-color: white;
   border-radius: 3px;
-  color:#02a95c;
+  color: #02a95c;
 }
 
 .homePage-description-box-button:hover {
   border: 2px solid #049451;
-  color:#049451;
+  color: #049451;
 }
 
 .description-box-logo {
@@ -85,13 +84,13 @@
 }
 
 .homePage-grid {
-    height: 100%;
-    width: 55%;
-    margin-top: 8%;
-    margin-left: 22.5%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%;
+  height: 100%;
+  width: 55%;
+  margin-top: 8%;
+  margin-left: 22.5%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%;
 }
 
 .homePage-mostPopular-header {
@@ -122,36 +121,35 @@
 }
 
 #homePage-project-grid {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 85% 15%;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-rows: 85% 15%;
 }
 
 .homePage-grid-most-popular {
-    grid-row-start: 2;
+  grid-row-start: 2;
 }
 
 .homePage-grid-most-recent {
-    grid-row-start: 4;
+  grid-row-start: 4;
 }
 
 .homePage-grid-near-you {
-    grid-row-start: 6;
+  grid-row-start: 6;
 }
 
 #homePage-project-card-link {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.25s ease-in 0s;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s ease-in 0s;
 }
 
 #homePage-project-card-link:hover {
   cursor: pointer;
   transform: translateY(-6px);
-
 }
 
 #projectCard-img {
@@ -167,7 +165,7 @@
 #homePage-project-card {
   width: 90%;
   border-radius: 10px;
-  box-shadow:2px 2px 5px rgb(224, 223, 223);
+  box-shadow: 2px 2px 5px rgb(224, 223, 223);
 }
 
 #homePage-project-card-text {
@@ -176,21 +174,21 @@
 }
 
 #projectCard-location {
-    padding-top: 4%;
-    font-weight: bold;
-    font-size: 20px;
-    color: #02a95c;
+  padding-top: 4%;
+  font-weight: bold;
+  font-size: 20px;
+  color: #02a95c;
 }
 
 #projectCard-title {
   font-weight: bold;
-  padding-top: .5%;
+  padding-top: 0.5%;
   font-size: 20px;
   color: black;
   overflow: hidden;
   max-width: 70ch;
   text-overflow: ellipsis;
-  white-space: nowrap
+  white-space: nowrap;
 }
 
 #projectCard-description {
@@ -204,33 +202,32 @@
   -webkit-box-orient: vertical;
 }
 
-
 #projectCard-amount {
-  font-weight:550;
+  font-weight: 550;
   padding-top: 2%;
   font-size: 18px;
   color: black;
 }
 
 #homePage-see-more {
-    grid-column-start: 3;
-    display:flex;
-    justify-content: flex-end;
-    align-items: center;
+  grid-column-start: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 #homePage-see-more-text {
   text-decoration: none;
   color: #02a95c;
   font-size: 18px;
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
   border: none;
   background-color: transparent;
 }
 
 #homePage-see-more-text:hover {
-    cursor: pointer;
-    transform: translate(5px);
+  cursor: pointer;
+  transform: translate(5px);
 }
 
 /* nav bar for home page changing on scroll */
@@ -281,12 +278,12 @@
   padding-top: 2.5%;
   height: 1.5rem;
   padding-left: 1%;
-  filter:  brightness(0) invert(1);
+  filter: brightness(0) invert(1);
 }
 
 #navBar-buttons {
- display: flex;
- border: none;
+  display: flex;
+  border: none;
 }
 
 .far {
@@ -326,7 +323,6 @@
 
 #navBar-button-container {
   text-align: center;
-
 }
 
 .navBar-buttons-create {
@@ -358,36 +354,34 @@ html:not([data-scroll="0"]) .navBar {
   height: 8vh;
   background-color: #fff;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
-
 }
 
 html:not([data-scroll="0"]) .navBar-home {
-    color: #02a95c;
+  color: #02a95c;
 }
 
 html:not([data-scroll="0"]) .navBar-logo {
-    filter:none;
+  filter: none;
 }
 
 html:not([data-scroll="0"]) #navBar-buttons {
-    color: black;
+  color: black;
 }
 
 html:not([data-scroll="0"]) #navBar-buttons:hover {
   color: rgb(90, 90, 90);
 }
 
-
 html:not([data-scroll="0"]) .navBar-buttons-create {
-  color:white;
-  background-color:#02a95c ;
+  color: white;
+  background-color: #02a95c;
   border-color: #02a95c;
   border-radius: 3px;
 }
 
 html:not([data-scroll="0"]) .navBar-buttons-create:hover {
-  color:white;
-  background-color:#049451 ;
+  color: white;
+  background-color: #049451;
   border-color: #049451;
   border-radius: 3px;
 }
@@ -395,13 +389,13 @@ html:not([data-scroll="0"]) .navBar-buttons-create:hover {
 /* progress bar */
 
 #meter {
-    box-sizing: content-box;
-    height: 10px; /* Can be anything */
-    position: relative;
-    margin-top: 5%; /* Just for demo spacing */
-    background: rgb(214, 214, 214);
-    border-radius: 10px;
-    /* box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); */
+  box-sizing: content-box;
+  height: 10px; /* Can be anything */
+  position: relative;
+  margin-top: 5%; /* Just for demo spacing */
+  background: rgb(214, 214, 214);
+  border-radius: 10px;
+  /* box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); */
 }
 
 #progressBar {
@@ -409,22 +403,18 @@ html:not([data-scroll="0"]) .navBar-buttons-create:hover {
 }
 
 #meter > span {
-    display: block;
-    height: 100%;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background-color: #02a95c;
-    background-image: linear-gradient(
-      center bottom,
-      #02a95c 100%,
-      #02a95c 100%
-    );
-    /* box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #02a95c;
+  background-image: linear-gradient(center bottom, #02a95c 100%, #02a95c 100%);
+  /* box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
       inset 0 -2px 6px rgba(0, 0, 0, 0.4); */
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 #meter > span:after,
 .animate > span > span {
@@ -434,16 +424,7 @@ html:not([data-scroll="0"]) .navBar-buttons-create:hover {
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.2) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.2) 75%,
-    transparent 75%,
-    transparent
-  );
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
   z-index: 1;
   background-size: 50px 50px;
   animation: move 8s linear infinite;

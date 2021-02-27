@@ -5,16 +5,15 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
+from .config import Config
 from .models import db, User
+from .seeds import seed_commands
+
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.project_routes import project_routes
 from .api.donation_routes import donation_routes
 from .api.image_routes import image_routes
-
-from .seeds import seed_commands
-
-from .config import Config
 
 app = Flask(__name__)
 

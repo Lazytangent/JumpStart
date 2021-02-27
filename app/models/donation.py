@@ -15,7 +15,12 @@ class Donation(db.Model):
     project = db.relationship("Project", back_populates="donations")
 
     def to_dict(self):
-        return {"id": self.id, "userId": self.userId, "projectId":
-                self.projectId, "donationAmount": self.donationAmount,
-                "comment": self.comment, "anonymous": self.anonymous,
-                "donator": self.user.to_dict()}
+        return {
+            "id": self.id,
+            "userId": self.userId,
+            "projectId": self.projectId,
+            "donationAmount": self.donationAmount,
+            "comment": self.comment,
+            "anonymous": self.anonymous,
+            "donator": self.user.to_dict()
+        }
