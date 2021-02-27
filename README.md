@@ -64,4 +64,5 @@ Users can:
 
 ## Two Challenges
 
-## Two Code Snippets
+In our edit project form, we opted to make the user experience a little easier by letting users choose multiple images in two different ways. Since there might be images that were already uploaded for the project, we had to have two different ways of letting users delete uploaded images. While the backend was fairly straightforward, getting React to render what we wanted proved to be a little more difficult. In the end, we made use of the File API's FileList object and its similarities to
+JavaScript's arrays to make the process easier.
