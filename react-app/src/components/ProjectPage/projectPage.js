@@ -232,7 +232,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                                   Edit Comment
                                 </button>
                               )}
-                            {showEditCommentModal && <EditComment />}
+                            {showEditCommentModal && <EditComment idx={idx} />}
                           </div>
                         </div>
                       </li>

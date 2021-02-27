@@ -4,12 +4,14 @@ import { Modal, useModalContext } from "../../context/Modal";
 import { createDonation, getProjectById } from "../../store/project";
 import "./EditComment.css";
 
-const EditComment = () => {
+const EditComment = ({ idx }) => {
   const userId = useSelector((state) => state.session.user.id);
-  const projectId = useSelector((state) => state.project.currentProject.id);
+  const donationComment = useSelector(
+    (state) => state.project.currentProject.donations[idx].comment
+  );
   const { showEditCommentModal, setShowEditCommentModal } = useModalContext();
   const dispatch = useDispatch();
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState({});
 
   const editComment = async (e) => {
     e.preventDefault();
@@ -33,7 +35,9 @@ const EditComment = () => {
                 name="comment"
                 placeholder="Add an optional comment"
                 onChange={updateComment}
-              ></textarea>
+              >
+                {donationComment}
+              </textarea>
             </div>
             <button className="editComment-submitButton" type="submit">
               Confirm
