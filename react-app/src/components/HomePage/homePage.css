@@ -13,7 +13,7 @@
 
 .homePage-image-container {
     background-color: black;
-    height: 60vh;
+    height: 65vh;
     width: 99vw;
     margin: 0;
     padding: 0;
@@ -26,7 +26,7 @@
     grid-template-columns: 30% 70%;
     grid-template-rows: 100%;
     position: absolute;
-    top: 55%;
+    top: 56%;
     left:17.5%;
     background-color: white;
     border-radius: 10px;
@@ -46,16 +46,17 @@
 .homePage-description-box-body {
   grid-column-start: 2;
   grid-row-start: 1;
-  margin-left: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 5%;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .homePage-description-box-button-container {
   grid-column-start: 2;
   grid-row-start: 1;
-  margin-top: 16.5%;
-  margin-left: 38%;
+  margin-top: 17%;
+  margin-left: 45%;
   display: inline-flex;
 }
 
@@ -65,14 +66,15 @@
   width: 155px;
   height: 45px;
   font-size: 30px;
-  border: 1px solid #02a95c;
+  font-weight: bold;
+  border: 2px solid #02a95c;
   background-color: white;
   border-radius: 3px;
   color:#02a95c;
 }
 
 .homePage-description-box-button:hover {
-  border: 1px solid #049451;
+  border: 2px solid #049451;
   color:#049451;
 }
 
@@ -85,7 +87,7 @@
 .homePage-grid {
     height: 100%;
     width: 55%;
-    margin-top: 10%;
+    margin-top: 8%;
     margin-left: 22.5%;
     display: grid;
     grid-template-columns: 1fr;
@@ -259,7 +261,6 @@
 .navBar-second-fraction {
   grid-column-start: 3;
   display: flex;
-  justify-content: space-evenly;
   flex-direction: row-reverse;
   align-items: center;
 }
@@ -283,8 +284,7 @@
   filter:  brightness(0) invert(1);
 }
 
-#navBar-buttons,
-.navBar-buttons-create {
+#navBar-buttons {
  display: flex;
  border: none;
 }
@@ -292,7 +292,7 @@
 .far {
   display: inline;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 20px;
   margin-top: 5%;
   margin-right: 4px;
 }
@@ -300,25 +300,28 @@
 .navBar-buttons-search {
   height: 30px;
   width: 80px;
-  font-size: 20px;
+  font-size: 25px;
   background-color: transparent;
   color: white;
+  margin-right: 70px;
 }
 
 .navBar-buttons-login {
   height: 30px;
   width: 55px;
-  font-size: 20px;
+  font-size: 25px;
   background-color: transparent;
   color: white;
+  margin-right: 55px;
 }
 
 .navBar-buttons-signup {
   height: 30px;
-  width: 80px;
-  font-size: 20px;
+  width: 90px;
+  font-size: 25px;
   background-color: transparent;
   color: white;
+  margin-right: 50px;
 }
 
 #navBar-button-container {
@@ -327,9 +330,11 @@
 }
 
 .navBar-buttons-create {
+  display: flex;
+  border: none;
   height: 35px;
-  width: 160px;
-  font-size: 18px;
+  width: 190px;
+  font-size: 25px;
   background-color: transparent;
   color: white;
   border-width: 2px;

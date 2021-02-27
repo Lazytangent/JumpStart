@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import { Modal, useModalContext } from "../../context/Modal";
-import { updateProject, getProjectById } from '../../store/project'
-import "./EditProject"
+import { updateProject, getProjectById, deleteImage } from '../../store/project'
+import DeleteIcon from '@material-ui/icons/Delete';
+import "./EditProject.css"
 
 
 const EditProjectForm = () => {
@@ -20,21 +21,29 @@ const EditProjectForm = () => {
   const [goalAmount, setGoalAmount] = useState(currentProject.goalAmount)
   const [minPledge, setMinPledge] = useState(currentProject.minPledge)
   const [thumbnailImage, setThumbnailImage] = useState("");
-  const [images, setAdditionalImages] = useState();
-
+  const [images, setAdditionalImages] = useState([]);
+  const [deleteImageList, setDeleteImageList] = useState([])
   const [errors, setErrors] = useState([]);
 
-  console.log(images)
+
 
   const editDonation = async (e) => {
     e.preventDefault();
     const donation = await dispatch(updateProject(projectId, name, description, goalAmount, minPledge, thumbnailImage, images))
     if (!donation.errors) {
       setShowEditProjectModal(false);
+      deleteImageList.map((id) => {
+        dispatch(deleteImage(id))
+      })
       dispatch(getProjectById(projectId))
+
     } else {
       setErrors(donation.errors)
     }
+  }
+
+  const deleteImageById = (id) => {
+    setDeleteImageList((prev) => [...prev, id])
   }
 
   const updateName = (e) => {
@@ -67,7 +76,7 @@ const EditProjectForm = () => {
   const updateAdditionalImages = (e) => {
     const file = e.target.files;
     console.log(file)
-    if (file) setAdditionalImages(file);
+    if (file) setAdditionalImages((prev) => [...prev, file]);
   };
 
 
@@ -112,13 +121,21 @@ const EditProjectForm = () => {
           <div>
             {project.images.map((img, idx) => (
 
-              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+              <div>
+                <span>
+                  {/* <button onClick={() => deleteImageById(img.id)} className="delete-image-button"> */}
+                  <span onClick={() => deleteImageById(img.id)} className="delete-image-div">
+                    <DeleteIcon />
+                  </span>
+                </span>
+                {img.imageUrl.split(".s3.amazonaws.com/")[1]}
+              </div>
             ))}
-            <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
-            {/* {project.images.map((img, idx) => (
+            {/* {images.map((img, idx) => (
 
-              <div>{img.imageUrl.split(".s3.amazonaws.com/")[1]}</div>
+              <div>{img.}</div>
             ))} */}
+            <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
           </div>
           <div>
