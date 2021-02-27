@@ -53,7 +53,6 @@
   line-height: 1.5em;
   margin: 1em 0em;
   font-size: 20px;
-
 }
 .projectImage {
   grid-area: projectImage;
@@ -97,7 +96,6 @@
   grid-gap: 20px;
   padding: 20px;
   background-color: white;
-
 }
 
 .sticky-container {
@@ -106,7 +104,7 @@
   align-items: center;
   position: sticky;
   position: -webkit-sticky;
-  background:white;
+  background: white;
   width: 300px;
   height: 460px;
   top: 100px;
@@ -119,7 +117,7 @@
 }
 
 #projectCard-amount-projectPage {
-  font-weight:550;
+  font-weight: 550;
   padding-top: 8%;
   font-size: 18px;
   color: black;
@@ -127,12 +125,12 @@
 
 #meter-productPage {
   box-sizing: content-box;
-    height: 10px; /* Can be anything */
-    position: relative;
-    margin-top: 2%; /* Just for demo spacing */
-    background: rgb(214, 214, 214);
-    border-radius: 10px;
-    width: 80%;
+  height: 10px; /* Can be anything */
+  position: relative;
+  margin-top: 2%; /* Just for demo spacing */
+  background: rgb(214, 214, 214);
+  border-radius: 10px;
+  width: 80%;
 }
 
 #meter-productPage > span {
@@ -143,11 +141,7 @@
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   background-color: #02a95c;
-  background-image: linear-gradient(
-    center bottom,
-    #02a95c 100%,
-    #02a95c 100%
-  );
+  background-image: linear-gradient(center bottom, #02a95c 100%, #02a95c 100%);
   /* box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
     inset 0 -2px 6px rgba(0, 0, 0, 0.4); */
   position: relative;
@@ -155,30 +149,21 @@
 }
 #meter-productPage > span:after,
 .animate > span > span {
-content: "";
-position: absolute;
-top: 0;
-left: 0;
-bottom: 0;
-right: 0;
-background-image: linear-gradient(
-  -45deg,
-  rgba(255, 255, 255, 0.2) 25%,
-  transparent 25%,
-  transparent 50%,
-  rgba(255, 255, 255, 0.2) 50%,
-  rgba(255, 255, 255, 0.2) 75%,
-  transparent 75%,
-  transparent
-);
-z-index: 1;
-background-size: 50px 50px;
-animation: move 8s linear infinite;
-border-top-right-radius: 8px;
-border-bottom-right-radius: 8px;
-border-top-left-radius: 20px;
-border-bottom-left-radius: 20px;
-overflow: hidden;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  z-index: 1;
+  background-size: 50px 50px;
+  animation: move 8s linear infinite;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
 }
 
 .numberOfDonators {
@@ -191,26 +176,24 @@ overflow: hidden;
   font-weight: bold;
 }
 
-
 .comment-avatar-sticky {
   display: flex;
-
 }
 
 .donate-box-button {
-    margin-top: 8%;
-    height: 50px;
-    width: 80%;
-    font-size: 22px;
-    color: white;
-    border-width: 2px;
-    background-color:#02a95c ;
-    border-color: #02a95c;
-    border-radius: 5px;
+  margin-top: 8%;
+  height: 50px;
+  width: 80%;
+  font-size: 22px;
+  color: white;
+  border-width: 2px;
+  background-color: #02a95c;
+  border-color: #02a95c;
+  border-radius: 5px;
 }
 
 .donate-box-button:hover {
-  background-color:#049451 ;
+  background-color: #049451;
 }
 
 .top-donors {
@@ -218,7 +201,6 @@ overflow: hidden;
   font-size: 25px;
   text-decoration: underline;
   text-decoration-color: 2px solid black;
-
 }
 
 .logoBackground-sticky {
@@ -290,7 +272,6 @@ overflow: hidden;
 
 .donation-listItem {
   list-style-type: none;
-
 }
 
 .userProfilePicture {
