@@ -67,6 +67,7 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
 };
 
 export const updateProject = (projectId, name, description, goalAmount, minPledge, thumbnailImg, images) => async (dispatch) => {
+  console.log(images);
   const formData = new FormData();
   formData.append('name', name);
   formData.append('description', description);
@@ -76,7 +77,11 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
   if (images) {
     const num = images.length;
     for (let i = 0; i < num; i++) {
-      formData.append('images', images[i]);
+      const fileList = images[i];
+      const innerNum = fileList.length;
+      for (let j = 0; j < innerNum; j++) {
+        formData.append('images', fileList[j]);
+      }
     }
   }
 
@@ -209,6 +214,15 @@ export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) =
   }
   return projects;
 };
+
+export const deleteImage = (imageId) => async (dispatch) => {
+  const response = await fetch(`/api/images/${imageId}`, {
+    method: "DELETE",
+  });
+  const project = await response.json();
+
+  return project;
+}
 
 const initialState = {
   mostPopular: null,

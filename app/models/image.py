@@ -14,5 +14,6 @@ class Image(db.Model):
         return {
             "projectId": self.projectId,
             "imageUrl": self.imageUrl,
-            "project": self.project.name
+            "project": self.project.name,
+            "id": self.id
         }

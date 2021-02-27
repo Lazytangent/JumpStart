@@ -117,7 +117,9 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div className="description">
               <div>{project.description}</div>
               {project.images.map((img, idx) => (
-                <img src={img.imageUrl}></img>
+                <div className="image-description-container">
+                  <img className="images-in-description" src={img.imageUrl}></img>
+                </div>
               ))}
             </div>
             <div class="donations grid-div" id="donations-slider">
