@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, useModalContext } from "../../context/Modal";
 import { createDonation, getProjectById } from "../../store/project";
+import { updateProject } from "../../store/project";
 import "./EditComment.css";
 
 const EditComment = ({ idx }) => {
@@ -11,11 +12,10 @@ const EditComment = ({ idx }) => {
   );
   const { showEditCommentModal, setShowEditCommentModal } = useModalContext();
   const dispatch = useDispatch();
-  const [comment, setComment] = useState({});
+  const [comment, setComment] = useState(donationComment);
 
   const editComment = async (e) => {
     e.preventDefault();
-    // const donationComment = ''
   };
 
   const updateComment = (e) => {
@@ -36,7 +36,7 @@ const EditComment = ({ idx }) => {
                 placeholder="Add an optional comment"
                 onChange={updateComment}
               >
-                {donationComment}
+                {comment}
               </textarea>
             </div>
             <button className="editComment-submitButton" type="submit">
