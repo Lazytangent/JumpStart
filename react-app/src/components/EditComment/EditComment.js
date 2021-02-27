@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, useModalContext } from "../../context/Modal";
 import { updateDonation, getProjectById } from "../../store/project";
@@ -16,29 +16,46 @@ const EditComment = ({ idx }) => {
   const [anonymous, setAnonymous] = useState(donation.anonymous);
   const [comment, setComment] = useState(donation.comment);
 
+  const [errors, setErrors] = useState([]);
+
   const editComment = async (e) => {
     e.preventDefault();
     const donation = await dispatch(
       updateDonation(donationId, donationAmount, comment, anonymous)
     );
-    // if(!donation.errors) {
-    //   setShowEditCommentModal(false);
-
-    // }
+    if (!donation.errors) {
+      setShowEditCommentModal(false);
+    } else {
+      setErrors(donation.errors);
+    }
   };
 
   const updateComment = (e) => {
     setComment(e.target.value);
   };
 
+  function focusCommentTextArea() {
+    document.getElementById("commentModal-textarea").focus();
+  }
+
+  useEffect(() => {
+    focusCommentTextArea();
+  });
+
   return (
     <>
       <Modal onClose={() => setShowEditCommentModal(false)}>
         <div className="editCommentForm-container">
+          {errors.map((error, idx) => (
+            <ul className="errors" key={idx}>
+              {error}
+            </ul>
+          ))}
           <form onSubmit={editComment} className="editComment-form">
             <div>
               <textarea
                 type="text"
+                id="commentModal-textarea"
                 className="editComment-textarea"
                 rows="10"
                 name="comment"
