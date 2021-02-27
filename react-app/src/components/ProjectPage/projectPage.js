@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import csc from "country-state-city";
+// import csc from "country-state-city";
 
 import "./projectPage.css";
 import { getProjectById } from "../../store/project";
@@ -65,19 +65,19 @@ const ProjectPage = ({ setAuthenticated }) => {
     return sum;
   };
 
-  const getStateAbbreviation = (project) => {
-    let result;
-    const allStates = csc.getStatesOfCountry('US');
+  // const getStateAbbreviation = (project) => {
+  //   let result;
+  //   const allStates = csc.getStatesOfCountry('US');
 
-    let stateName = project.user.state;
+  //   let stateName = project.user.state;
 
-    allStates.forEach((state) => {
-      if (state.name === stateName) {
-        result = state.isoCode;
-      }
-    });
-    return result;
-  };
+  //   allStates.forEach((state) => {
+  //     if (state.name === stateName) {
+  //       result = state.isoCode;
+  //     }
+  //   });
+  //   return result;
+  // };
 
   return (
     <>
@@ -112,7 +112,7 @@ const ProjectPage = ({ setAuthenticated }) => {
               <div>{project.description}</div>
               {project.images.map((img, idx) => (
                 <div className="image-description-container">
-                  <img className="images-in-description" src={img.imageUrl}></img>
+                  <img alt="" className="images-in-description" src={img.imageUrl}></img>
                 </div>
               ))}
             </div>

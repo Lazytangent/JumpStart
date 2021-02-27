@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom'
 import logo_40x40 from "./logo_40x40.png";
-import csc from "country-state-city";
+// import csc from "country-state-city";
 import { SearchModal, useModalContext } from "../../context/Modal";
 import "./SearchBar.css";
 
@@ -14,24 +14,24 @@ const SearchBar = () => {
     document.getElementById("searchModalInput").focus();
   }
 
-  const getStateAbbreviation = (project) => {
-    let result;
-    const allStates = csc.getStatesOfCountry("US");
+  // const getStateAbbreviation = (project) => {
+  //   let result;
+  //   const allStates = csc.getStatesOfCountry("US");
 
-    let stateName = project.user.state;
+  //   let stateName = project.user.state;
 
-    allStates.forEach((state) => {
-      if (state.name === stateName) {
-        result = state.isoCode;
-      }
-    });
-    return result;
-  };
+  //   allStates.forEach((state) => {
+  //     if (state.name === stateName) {
+  //       result = state.isoCode;
+  //     }
+  //   });
+  //   return result;
+  // };
 
   const searchProjects = async (searchText) => {
     const response = await fetch("/api/projects/all");
     const allProjects = await response.json();
-    let stringCheck = searchText.replace(/[\[\]']+/g, "");
+    let stringCheck = searchText.replace(/[[\]']+/g, "");
     stringCheck = stringCheck.replaceAll("\\", "");
     let projectMatches = allProjects.filter((project) => {
       const regex = new RegExp(`${stringCheck}`, "gi");
@@ -85,7 +85,7 @@ const SearchBar = () => {
               {matches && <div className="searchResults-container">
 
                 {matches.map((project, idx) => (
-                  <NavLink to={`/${project.id}`} className="a-link">
+                  <NavLink key={idx} to={`/${project.id}`} className="a-link">
                     <li key={idx} className="searchBarMatches">
                       {!project.thumbnailImgUrl && (
                         <div className="logo_30x30-container">

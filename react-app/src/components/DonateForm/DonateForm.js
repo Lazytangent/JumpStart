@@ -5,13 +5,12 @@ import "./DonateForm.css"
 import { Modal, useModalContext } from "../../context/Modal";
 import { createDonation, getProjectById } from '../../store/project'
 
-
 const DonateForm = () => {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.session.user.id)
   const projectId = useSelector(state => state.project.currentProject.id)
 
-  const { showDonateModal, setShowDonateModal } = useModalContext();
+  const { setShowDonateModal } = useModalContext();
   const [errors, setErrors] = useState([])
   const [donationAmount, setDonationAmount] = useState()
   const [comment, setComment] = useState("")

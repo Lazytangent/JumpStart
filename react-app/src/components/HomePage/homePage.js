@@ -113,10 +113,10 @@ const HomePage = ({ setAuthenticated }) => {
         return result;
     };
 
-    const donateButton = (event) => {
-        event.preventDefault()
-        history.push("/discover")
-    };
+    // const donateButton = (event) => {
+    //     event.preventDefault()
+    //     history.push("/discover")
+    // };
 
     const seeMorePopular = async (event) => {
         event.preventDefault()
