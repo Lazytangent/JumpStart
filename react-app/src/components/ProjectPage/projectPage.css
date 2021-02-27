@@ -260,6 +260,7 @@
 
 .comment-footer {
   grid-area: comment-footer;
+  padding: 1em;
 }
 
 .comment-header,

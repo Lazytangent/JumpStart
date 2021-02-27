@@ -9,6 +9,7 @@ import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm";
 import EditProjectForm from "../../components/EditProject/EditProject";
+import EditComment from "../../components/EditComment/EditComment";
 
 const ProjectPage = ({ setAuthenticated }) => {
   const {
@@ -19,12 +20,13 @@ const ProjectPage = ({ setAuthenticated }) => {
     setShowDonateModal,
     showEditProjectModal,
     setShowEditProjectModal,
+    showEditCommentModal,
+    setShowEditCommentModal,
   } = useModalContext();
 
   const [topThree, setTopThree] = useState([]);
 
   const user = useSelector((state) => state.session.user);
-  // console.log(user)
   const project = useSelector((state) => state.project.currentProject);
   const session = useSelector((state) => state.session.user);
   const { projectId } = useParams();
@@ -221,8 +223,16 @@ const ProjectPage = ({ setAuthenticated }) => {
                             {session &&
                               donation.userId &&
                               session.id === donation.userId && (
-                                <button>dwfee</button>
+                                <button
+                                  className="editComment-button"
+                                  onClick={() => {
+                                    setShowEditCommentModal((prev) => !prev);
+                                  }}
+                                >
+                                  Edit Comment
+                                </button>
                               )}
+                            {showEditCommentModal && <EditComment />}
                           </div>
                         </div>
                       </li>
