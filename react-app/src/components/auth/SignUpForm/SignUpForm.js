@@ -34,7 +34,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         setAuthenticated(true);
         setShowSignUpModal(false);
       } else {
-        setErrors(user.errors);
+        const errors = user.errors.map(error => error.split(' : ')[1]);
+        setErrors(errors);
       }
     } else {
       setErrors([
