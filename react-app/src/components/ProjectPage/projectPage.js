@@ -7,8 +7,10 @@ import "./projectPage.css";
 import csc from "country-state-city";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
-import DonateForm from "../../components/DonateForm/DonateForm";
+import DonateForm from "../../components/DonateForm/DonateForm"
 import EditProjectForm from "../../components/EditProject/EditProject"
+import DeleteButton from './DeleteButton';
+//a single change
 
 
 const ProjectPage = ({ setAuthenticated }) => {
@@ -110,6 +112,7 @@ const ProjectPage = ({ setAuthenticated }) => {
 
               <div className="editYourProject-button">
                 <button onClick={editProject}>Edit</button>
+                <DeleteButton />
               </div>
             )}
 

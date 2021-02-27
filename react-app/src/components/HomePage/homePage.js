@@ -72,6 +72,13 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
     const mostPopular = useSelector((state) => state.project.mostPopular)
     const mostRecent = useSelector((state) => state.project.mostRecent)
     const trending = useSelector((state) => state.project.trending)
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (mostPopular && mostRecent && trending) {
+            setIsLoaded(true);
+        }
+    }, [mostPopular, mostRecent, trending])
 
     const getPercentage = (project) => {
         // let sum = 0
@@ -116,25 +123,29 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("popular"))
         history.push('/discover', {comingFrom: "popular"})
-      }
+    }
 
     const seeMoreRecent = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("recent"))
         history.push('/discover', {comingFrom: "recent"})
-      }
+    }
 
     const seeMoreTrending = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("trending"))
         history.push('/discover', {comingFrom: "trending"})
-      }
+    }
 
-      const onLogout = async (e) => {
+    const onLogout = async (e) => {
         history.push("/");
         await dispatch(logout());
         setAuthenticated(false);
-      };
+    };
+
+    if (!isLoaded) {
+        return null;
+    }
 
     return (
         <>
