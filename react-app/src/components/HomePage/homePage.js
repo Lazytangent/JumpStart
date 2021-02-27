@@ -239,11 +239,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
             </nav>
             <div className="homePage">
                 <div className="homePage-image-container">
-                    <img className="homePage-image" src='https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-brett-sayles-2821220.jpg' alt=""></img>
+                    <img className="homePage-image" src='https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-brett-sayles-2821225.jpg' alt=""></img>
                 </div>
                 <div className="homePage-description-box">
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
-                    <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
+                    <p className="homePage-description-box-body">Fundraising for the people and places you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
                     <div className="homePage-description-box-button-container">
                     <button
               onClick={(event) => seeMoreRecent(event)}
