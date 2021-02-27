@@ -67,7 +67,6 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
 };
 
 export const updateProject = (projectId, name, description, goalAmount, minPledge, thumbnailImg, images) => async (dispatch) => {
-  console.log(images);
   const formData = new FormData();
   formData.append('name', name);
   formData.append('description', description);
@@ -94,7 +93,7 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
     dispatch(setCurrentProject(project));
   }
   return project;
-}
+};
 
 export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
   const response = await fetch('/api/donations/', {
@@ -115,7 +114,7 @@ export const createDonation = (userId, projectId, donationAmount, comment, anony
     dispatch(setCurrentProject(project));
   }
   return project;
-}
+};
 
 export const deleteProject = (projectId) => async (dispatch) => {
   const response = await fetch(`/api/projects/${projectId}`, {
@@ -222,7 +221,7 @@ export const deleteImage = (imageId) => async (dispatch) => {
   const project = await response.json();
 
   return project;
-}
+};
 
 const initialState = {
   mostPopular: null,
