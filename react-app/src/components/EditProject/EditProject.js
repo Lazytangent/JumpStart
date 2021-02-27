@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom"
 import { Modal, useModalContext } from "../../context/Modal";
@@ -26,7 +26,11 @@ const EditProjectForm = () => {
   const [imageList, setImageList] = useState([])
   const [errors, setErrors] = useState([]);
 
-
+  useEffect(() => {
+    if (project) {
+      setImageList(project.images)
+    }
+  }, [project])
 
   const editDonation = async (e) => {
     e.preventDefault();
@@ -45,6 +49,14 @@ const EditProjectForm = () => {
 
   const deleteImageById = (id) => {
     setDeleteImageList((prev) => [...prev, id])
+    setImageList((prev) => prev.filter(image => image.id !== id))
+  }
+
+  const deleteImageByName = (name) => {
+    // setAdditionalImages((prev) => prev.map((fileList) => {
+    //   Array.from(fileList).filter((image) => image.name === name)
+    // }))
+    console.log(images)
   }
 
   const updateName = (e) => {
@@ -76,11 +88,10 @@ const EditProjectForm = () => {
 
   const updateAdditionalImages = (e) => {
     const file = e.target.files;
-    console.log(file)
     if (file) setAdditionalImages((prev) => [...prev, file]);
   };
 
-
+  console.log(images)
   return (
     <>
 
@@ -120,16 +131,28 @@ const EditProjectForm = () => {
             ></textarea>
           </div>
           <div>
-            {project.images.map((img, idx) => (
-              setImageList((prev) => [...prev, { id: img.id, url: img.imageUrl.split(".s3.amazonaws.com/")[1] }])
-              // <div>
-              //   <span>
-              //     <span onClick={() => deleteImageById(img.id)} className="delete-image-div">
-              //       <DeleteIcon />
-              //     </span>
-              //   </span>
-              //   {img.imageUrl.split(".s3.amazonaws.com/")[1]}
-              // </div>
+            {project && imageList.map((img, idx) => (
+              < div >
+                <span>
+                  <span onClick={() => deleteImageById(img.id)} className="delete-image-div">
+                    <DeleteIcon />
+                  </span>
+                </span>
+                { img.imageUrl.split(".s3.amazonaws.com/")[1]}
+              </div>
+            ))}
+            {images && images.map((fileList) => (
+              Array.from(fileList).map((image) => (
+                < div >
+                  <span>
+                    <span onClick={() => deleteImageByName(image.name)} className="delete-image-div">
+                      <DeleteIcon />
+                    </span>
+                  </span>
+                  {image.name}
+                </div>
+              ))
+
             ))}
 
             <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
