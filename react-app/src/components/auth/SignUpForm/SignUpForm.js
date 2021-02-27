@@ -34,7 +34,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         setAuthenticated(true);
         setShowSignUpModal(false);
       } else {
-        setErrors(user.errors);
+        const errors = user.errors.map(error => error.split(' : ')[1]);
+        setErrors(errors);
       }
     } else {
       setErrors([
@@ -110,9 +111,11 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               <h2 className={styles.header}>Sign Up</h2>
             </div>
             <div className={styles.errorsDiv}>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
+              <ul className={styles.errorsDivUl}>
+                {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+                ))}
+              </ul>
             </div>
             <div className={styles.formFieldContainer}>
               <input

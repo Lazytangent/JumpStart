@@ -19,7 +19,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     if (!user.errors) {
       setShowLoginModal(false);
     } else {
-      setErrors(user.errors);
+      setErrors(["Provided credentials are invalid."]);
     }
   };
 
@@ -61,9 +61,11 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               <h2 className={styles.header}>Log In</h2>
             </div>
             <div className={styles.errorsDiv}>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
+              <ul className={styles.errorsDivUl}>
+                {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+                ))}
+              </ul>
             </div>
             <div className={styles.formFieldContainer}>
               <input
