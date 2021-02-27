@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import { createProject } from '../../store/project'
+
 import "./CreateProject.css"
+import { createProject } from '../../store/project'
 import Navigation from '../Navigation/navigation'
 
 const CreateProject = ({ setAuthenticated }) => {
