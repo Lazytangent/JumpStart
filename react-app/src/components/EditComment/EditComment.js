@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, useModalContext } from "../../context/Modal";
-import { createDonation, getProjectById } from "../../store/project";
-import { updateProject } from "../../store/project";
+import { updateDonation, getProjectById } from "../../store/project";
 import "./EditComment.css";
 
 const EditComment = ({ idx }) => {
   const userId = useSelector((state) => state.session.user.id);
-  const donationComment = useSelector(
-    (state) => state.project.currentProject.donations[idx].comment
+  const donation = useSelector(
+    (state) => state.project.currentProject.donations[idx]
   );
   const { showEditCommentModal, setShowEditCommentModal } = useModalContext();
   const dispatch = useDispatch();
-  const [comment, setComment] = useState(donationComment);
+  const [donationId, setDonationId] = useState(donation.id);
+  const [donationAmount, setDonationAmount] = useState(donation.donationAmount);
+  const [anonymous, setAnonymous] = useState(donation.anonymous);
+  const [comment, setComment] = useState(donation.comment);
 
   const editComment = async (e) => {
     e.preventDefault();
+    const donation = await dispatch(
+      updateDonation(donationId, donationAmount, comment, anonymous)
+    );
+    // if(!donation.errors) {
+    //   setShowEditCommentModal(false);
+
+    // }
   };
 
   const updateComment = (e) => {
