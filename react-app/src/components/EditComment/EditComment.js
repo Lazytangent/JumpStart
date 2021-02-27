@@ -68,16 +68,18 @@ const EditComment = ({ idx }) => {
                 {comment}
               </textarea>
             </div>
-            <button className="editComment-submitButton" type="submit">
-              Confirm
-            </button>
-            <button
-              className="editComment-cancelButton"
-              type="submit"
-              onClick={() => setShowEditCommentModal(false)}
-            >
-              Cancel
-            </button>
+            <div className="editCommentButtons-container">
+              <button className="editComment-submitButton" type="submit">
+                Confirm
+              </button>
+              <button
+                className="editComment-cancelButton"
+                type="submit"
+                onClick={() => setShowEditCommentModal(false)}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </Modal>
