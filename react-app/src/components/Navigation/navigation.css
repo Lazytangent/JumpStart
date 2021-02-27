@@ -24,9 +24,8 @@
   .navigation-second-fraction {
     grid-column-start: 3;
     display: flex;
-    justify-content: space-evenly;
     flex-direction: row-reverse;
-    align-items: center;
+    align-items: center;;
   }
 
   .navigation-home {
@@ -42,44 +41,39 @@
     padding-left: 1%;
   }
 
-  #navigation-buttons,
-  .navigation-buttons-create {
-   display: flex;
-  }
-
-  .far {
-    display: inline;
-    text-decoration: none;
-    font-size: 15px;
-    margin-top: 5%;
-    margin-right: 4px;
+  #navigation-buttons {
+    display: flex;
+    border: none;
   }
 
   .navigation-buttons-search {
     height: 30px;
     width: 80px;
-    font-size: 20px;
+    font-size: 25px;
     background-color: transparent;
     color: black;
     border: transparent;
+    margin-right: 70px;
   }
 
   .navigation-buttons-login {
     height: 30px;
     width: 55px;
-    font-size: 20px;
+    font-size: 25px;
     background-color: transparent;
     color: black;
     border:transparent;
+    margin-right: 55px;
   }
 
   .navigation-buttons-signup {
     height: 30px;
-    width: 80px;
-    font-size: 20px;
+    width: 85px;
+    font-size: 25px;
     background-color: transparent;
     color: black;
     border:transparent;
+    margin-right: 55px;
   }
 
   #navigation-button-container {
@@ -88,9 +82,11 @@
   }
 
   .navigation-buttons-create {
+    display: flex;
+    border: none;
     height: 35px;
-    width: 160px;
-    font-size: 18px;
+    width: 190px;
+    font-size: 25px;
     background-color: transparent;
     color: white;
     border-width: 2px;

@@ -57,7 +57,7 @@ function App() {
           <DiscoverPage setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/new-project" exact={true} authenticated={authenticated}>
-          <CreateProject />
+          <CreateProject setAuthenticated={setAuthenticated} />
         </Route>
         <Route path="/:projectId" exact={true} authenticated={authenticated}>
           <ProjectPage setAuthenticated={setAuthenticated} />

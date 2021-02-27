@@ -22,6 +22,8 @@
     font-size: 40px;
     color: rgba(0, 0, 0, .8);
     font-weight: bold;
+    padding: 0;
+    margin: 0;
 }
 
 .discoverPage-grid-header-description {
@@ -33,6 +35,7 @@
     align-items: flex-start;
     font-size: 24px;
     color: rgba(0, 0, 0, .8);
+    padding-left: 1.4px;
 }
 
 .discoverPage-filter-box {

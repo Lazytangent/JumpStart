@@ -72,6 +72,13 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
     const mostPopular = useSelector((state) => state.project.mostPopular)
     const mostRecent = useSelector((state) => state.project.mostRecent)
     const trending = useSelector((state) => state.project.trending)
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        if (mostPopular && mostRecent && trending) {
+            setIsLoaded(true);
+        }
+    }, [mostPopular, mostRecent, trending])
 
     const getPercentage = (project) => {
         // let sum = 0
@@ -116,25 +123,29 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("popular"))
         history.push('/discover', {comingFrom: "popular"})
-      }
+    }
 
     const seeMoreRecent = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("recent"))
         history.push('/discover', {comingFrom: "recent"})
-      }
+    }
 
     const seeMoreTrending = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("trending"))
         history.push('/discover', {comingFrom: "trending"})
-      }
+    }
 
-      const onLogout = async (e) => {
+    const onLogout = async (e) => {
         history.push("/");
         await dispatch(logout());
         setAuthenticated(false);
-      };
+    };
+
+    if (!isLoaded) {
+        return null;
+    }
 
     return (
         <>
@@ -239,11 +250,11 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
             </nav>
             <div className="homePage">
                 <div className="homePage-image-container">
-                    <img className="homePage-image" src='https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-brett-sayles-2821220.jpg' alt=""></img>
+                    <img className="homePage-image" src='https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-brett-sayles-2821225.jpg' alt=""></img>
                 </div>
                 <div className="homePage-description-box">
                     <img className="homePage-description-image" src="https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-rodnae-productions-6647119.jpg" alt=""></img>
-                    <p className="homePage-description-box-body">Fundraising for the people and causes you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
+                    <p className="homePage-description-box-body">Fundraising for the people and places you care about. Joining is easy, start finding causes you care about, and give them a Jump!</p>
                     <div className="homePage-description-box-button-container">
                     <button
               onClick={(event) => seeMoreRecent(event)}

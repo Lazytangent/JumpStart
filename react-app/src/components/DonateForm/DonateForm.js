@@ -70,7 +70,6 @@ const DonateForm = () => {
                 name='comment'
                 placeholder="Add an optional comment"
                 onChange={updateComment}
-                required
               ></textarea>
             </div>
             <div>

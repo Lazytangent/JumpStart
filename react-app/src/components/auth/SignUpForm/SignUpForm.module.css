@@ -121,3 +121,14 @@
   border-color: #02a95c;
   border-style: solid;
 }
+
+.errorsDiv {
+  padding:0.3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.errorsDivUrl {
+  list-style: none;
+  color: red;
+}
