@@ -18,6 +18,13 @@ const EditComment = ({ idx }) => {
 
   const [errors, setErrors] = useState([]);
 
+  function focusCommentTextArea() {
+    const textArea = document.getElementById("commentModal-textarea");
+    setTimeout(() => {
+      textArea.focus();
+    }, 300);
+  }
+
   const editComment = async (e) => {
     e.preventDefault();
     const donation = await dispatch(
@@ -33,10 +40,6 @@ const EditComment = ({ idx }) => {
   const updateComment = (e) => {
     setComment(e.target.value);
   };
-
-  function focusCommentTextArea() {
-    document.getElementById("commentModal-textarea").focus();
-  }
 
   useEffect(() => {
     focusCommentTextArea();
