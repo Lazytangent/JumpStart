@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory, NavLink } from "react-router-dom";
+import csc from "country-state-city";
+
+import "./homePage.css";
 import { getHomePageProjects } from '../../store/project.js';
 import { useModalContext } from "../../context/Modal";
 import { logout } from '../../store/session';
 import SearchBar from "../SearchBar/SearchBar";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../auth/SignUpForm";
-import LogoutButton from "../auth/LogoutButton";
 import { getDiscoverPageProjects } from '../../store/project';
-import csc from "country-state-city";
-import "./homePage.css";
 
 // The debounce function receives our function as a parameter
 const debounce = (fn) => {
@@ -47,8 +47,7 @@ document.addEventListener('scroll', debounce(storeScroll), { passive: true });
 // Update scroll position for first time
 storeScroll();
 
-const HomePage = ({ setAuthenticated, setShowModal }) => {
-
+const HomePage = ({ setAuthenticated }) => {
     const {
         showLoginModal,
         setShowLoginModal,
@@ -60,7 +59,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
 
     const user = useSelector((state) => state.session.user);
     const history = useHistory();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -78,7 +77,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
         if (mostPopular && mostRecent && trending) {
             setIsLoaded(true);
         }
-    }, [mostPopular, mostRecent, trending])
+    }, [mostPopular, mostRecent, trending]);
 
     const getPercentage = (project) => {
         // let sum = 0
@@ -89,53 +88,53 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
 
         // return (sum/project.goalAmount) * 100
         return 50
-    }
+    };
 
     const getSum = (project) => {
-        let sum = 0
+        let sum = 0;
 
         for (let i = 0; i < project.donations.length; i++) {
             sum += project.donations[i].donationAmount;
         }
-        return sum
-    }
+        return sum;
+    };
 
     const getStateAbbreviation = (project) => {
         let result;
-        const allStates = csc.getStatesOfCountry('US')
+        const allStates = csc.getStatesOfCountry('US');
 
         let stateName = project.user.state;
 
         allStates.forEach((state) => {
             if (state.name === stateName) {
-                result = state.isoCode
+                result = state.isoCode;
             }
-        })
+        });
         return result;
-    }
+    };
 
     const donateButton = (event) => {
         event.preventDefault()
         history.push("/discover")
-    }
+    };
 
     const seeMorePopular = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("popular"))
         history.push('/discover', {comingFrom: "popular"})
-    }
+    };
 
     const seeMoreRecent = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("recent"))
         history.push('/discover', {comingFrom: "recent"})
-    }
+    };
 
     const seeMoreTrending = async (event) => {
         event.preventDefault()
         await dispatch(getDiscoverPageProjects("trending"))
         history.push('/discover', {comingFrom: "trending"})
-    }
+    };
 
     const onLogout = async (e) => {
         history.push("/");
@@ -351,7 +350,6 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
             </div>
         </>
     );
-
-}
+};
 
 export default HomePage
