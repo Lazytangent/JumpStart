@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+
 import './index.css';
 import App from './App';
 import configureStore from './store';
@@ -18,8 +19,7 @@ if (process.env.NODE_ENV !== "production") {
   window.projectActions = projectActions;
 }
 
-ReactDOM.render(
-  <React.StrictMode>
+const Root = () => (
     <Provider store={store}>
       <ModalProvider>
         <BrowserRouter>
@@ -27,6 +27,11 @@ ReactDOM.render(
         </BrowserRouter>
       </ModalProvider>
     </Provider>
+);
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Root />
   </React.StrictMode>,
   document.getElementById('root')
 );

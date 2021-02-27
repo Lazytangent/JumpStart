@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logo_40x40 from "./logo_40x40.png";
 import csc from "country-state-city";
-import { getHomePageProjects } from "../../store/project";
 import { SearchModal, useModalContext } from "../../context/Modal";
 import "./SearchBar.css";
-import Navigation from "../Navigation/navigation";
 
 const SearchBar = () => {
-  // const dispatch = useDispatch();
   const { showSearchBarModal, setShowSearchBarModal } = useModalContext();
   const [search, setSearch] = useState("");
   const [matches, setMatches] = useState("");
@@ -17,13 +13,6 @@ const SearchBar = () => {
   function focusSearchBar() {
     document.getElementById("searchModalInput").focus();
   }
-
-  // function escapeRegExp(str) {
-  //   if (!_.isString(str)) {
-  //     return "";
-  //   }
-  //   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-  // }
 
   const getStateAbbreviation = (project) => {
     let result;
@@ -62,6 +51,7 @@ const SearchBar = () => {
 
     setMatches(projectMatches);
   };
+
   useEffect(() => {
     focusSearchBar();
   });
