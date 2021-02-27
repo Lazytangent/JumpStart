@@ -6,10 +6,11 @@ import "./CreateProject.css"
 import Navigation from '../Navigation/navigation'
 
 const CreateProject = ({ setAuthenticated }) => {
-
-  const userId = useSelector(state => state.session.user.id)
   const history = useHistory()
   const dispatch = useDispatch()
+
+  const userId = useSelector(state => state.session.user.id)
+
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [goalAmount, setGoalAmount] = useState()
@@ -28,25 +29,28 @@ const CreateProject = ({ setAuthenticated }) => {
     } else {
       history.push(`/${newProject.id}`)
     }
-  }
+  };
 
   const updateName = (e) => {
     setName(e.target.value)
-  }
+  };
 
   const updateDescription = (e) => {
     setDescription(e.target.value)
-  }
+  };
+
   const updateGoalAmount = (e) => {
     setGoalAmount(e.target.value)
-  }
+  };
+
   const updateMinPledge = (e) => {
     setMinPledge(e.target.value)
-  }
+  };
 
   const chooseImage = () => {
     document.getElementById('file').click();
   };
+
   const chooseAdditionalImage = () => {
     document.getElementById('additionalFile').click();
   };
@@ -59,7 +63,6 @@ const CreateProject = ({ setAuthenticated }) => {
 
   const updateAdditionalImages = (e) => {
     const file = e.target.files;
-    console.log(file)
     if (file) setAdditionalImages(file);
   };
 
@@ -128,7 +131,7 @@ const CreateProject = ({ setAuthenticated }) => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default CreateProject;

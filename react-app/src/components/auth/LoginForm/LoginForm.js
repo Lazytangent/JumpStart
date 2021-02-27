@@ -6,9 +6,10 @@ import styles from "./LoginForm.module.css";
 import { login } from "../../../store/session";
 import { Modal, useModalContext } from "../../../context/Modal";
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
-  const { showLoginModal, setShowLoginModal } = useModalContext();
+const LoginForm = ({ authenticated }) => {
   const dispatch = useDispatch();
+
+  const { showLoginModal, setShowLoginModal } = useModalContext();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
