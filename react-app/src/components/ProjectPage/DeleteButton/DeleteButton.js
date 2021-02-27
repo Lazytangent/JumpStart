@@ -9,7 +9,7 @@ const DeleteButton = () => {
 
   return (
     <>
-      <button onClick={() => setShowDeleteModal((prev) => !prev)}>Delete</button>
+      <button className={styles.deleteButton} onClick={() => setShowDeleteModal((prev) => !prev)}>Delete</button>
       {showDeleteModal && (
         <Modal onClose={() => setShowDeleteModal(false)}>
           <DeleteConfirmation setShowDeleteModal={setShowDeleteModal} />
