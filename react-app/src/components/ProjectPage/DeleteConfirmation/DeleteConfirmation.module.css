@@ -1,0 +1,35 @@
+.modalContainer {
+  padding: 0.5rem;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.25rem;
+}
+
+.yesBtn {
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  background-color: #e03916;
+  color: white;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.yesBtn:hover {
+  background-color: #941300;
+}
+
+.noBtn {
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+  background-color: #02a95c;
+  color: white;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.noBtn:hover {
+  background-color: #049451;
+}

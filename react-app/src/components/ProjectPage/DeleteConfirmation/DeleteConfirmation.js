@@ -18,10 +18,12 @@ const DeleteConfirmation = ({ setShowDeleteModal }) => {
   };
 
   return (
-    <div>
-      <label>Are you sure that you want to delete this project?</label>
-      <button onClick={confirmation}>Yes</button>
-      <button onClick={() => setShowDeleteModal(false)}>No</button>
+    <div className={styles.modalContainer}>
+      <h3>Are you sure that you want to delete this project?</h3>
+      <div className={styles.btnContainer}>
+        <button className={styles.yesBtn} onClick={confirmation}>Yes</button>
+        <button className={styles.noBtn} onClick={() => setShowDeleteModal(false)}>No</button>
+      </div>
     </div>
   );
 };
