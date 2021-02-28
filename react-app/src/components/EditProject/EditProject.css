@@ -72,7 +72,10 @@
   margin: 2em;
 }
 
-.chooseImage-button {
+.chooseImage-button,
+.chooseAdditionalImage-button,
+.updateProjectCancel-button,
+.updateProjectSubmit-button {
   background-color: #00bc5e;
   color: white;
   padding: 14px 20px;
@@ -80,6 +83,7 @@
   border: none;
   cursor: pointer;
   width: 100%;
+  border-radius: 3px;
 }
 
 .editProject-textArea {
@@ -90,4 +94,14 @@
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+.chooseImage-button:hover,
+.chooseAdditionalImage-button:hover,
+.updateProjectCancel-button:hover,
+.updateProjectSubmit-button:hover {
+  opacity: 0.8;
+}
+
+.chooseAdditionalImage-button {
 }

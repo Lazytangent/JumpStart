@@ -203,7 +203,7 @@ const EditProjectForm = () => {
                   ))
                 )}
               <input
-                className="choose-image"
+                className="chooseAdditionalImage-button"
                 type="button"
                 id="loadFile"
                 value="Choose a Additional Images"
@@ -238,14 +238,14 @@ const EditProjectForm = () => {
               ></input>
             </div>
             <button
-              className="submit-button"
+              className="updateProjectSubmit-button"
               type="submit"
               onClick={editDonation}
             >
               Update
             </button>
             <button
-              className="cancel-button"
+              className="updateProjectCancel-button"
               type="submit"
               onClick={() => history.push("/")}
             >
