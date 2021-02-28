@@ -1,11 +1,5 @@
 .editCommentForm-container {
   margin: 2em;
-  /* display: grid;
-  grid-template-areas:
-    "editComment-textarea editComment-textarea"
-    "commentConfirmButton commentCancelButton";
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px; */
 }
 
 .editComment-textarea {
@@ -39,11 +33,4 @@
   padding: 14px 20px;
   border: none;
   border-radius: 3px;
-}
-
-.editCommentButtons-container {
-  /* display: grid;
-  grid-template-areas: "commentConfirmButton commentCancelButton";
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px; */
 }

@@ -298,6 +298,14 @@
   padding-bottom: 0.5em;
 }
 
+.editComment-button {
+  background-color: #02a95c;
+  color: white;
+  padding: 7px;
+  border: none;
+  border-radius: 3px;
+}
+
 .donations-ul {
   border-top: 2px solid grey;
 }

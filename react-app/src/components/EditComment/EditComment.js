@@ -15,7 +15,6 @@ const EditComment = ({ idx }) => {
   const [donationAmount, setDonationAmount] = useState(donation.donationAmount);
   const [anonymous, setAnonymous] = useState(donation.anonymous);
   const [comment, setComment] = useState(donation.comment);
-  const [selectedTargets, setSelectedTargets] = useState("");
 
   const [errors, setErrors] = useState([]);
 
@@ -44,10 +43,8 @@ const EditComment = ({ idx }) => {
   };
 
   useEffect(() => {
-    if (showEditCommentModal) {
-      focusCommentTextArea();
-    }
-  }, [showEditCommentModal]);
+    focusCommentTextArea();
+  });
 
   return (
     <>
