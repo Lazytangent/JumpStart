@@ -31,6 +31,7 @@ const ProjectPage = ({ setAuthenticated }) => {
   const session = useSelector((state) => state.session.user);
   const { projectId } = useParams();
   const dispatch = useDispatch();
+  const [donationId, setDonationId] = useState()
 
   useEffect(() => {
     dispatch(getProjectById(projectId));
@@ -55,11 +56,11 @@ const ProjectPage = ({ setAuthenticated }) => {
   const getPercentage = (project) => {
     let sum = 0
 
-    for (let i = 0; i < project.donations.length; i++ ) {
-        sum += project.donations[i].donationAmount;
+    for (let i = 0; i < project.donations.length; i++) {
+      sum += project.donations[i].donationAmount;
     }
 
-    const percentage = (sum/project.goalAmount) * 100;
+    const percentage = (sum / project.goalAmount) * 100;
     if (percentage < 100) return percentage;
     else return 100;
   };
@@ -92,6 +93,8 @@ const ProjectPage = ({ setAuthenticated }) => {
       <Navigation setAuthenticated={setAuthenticated} />
       {showDonateModal && <DonateForm />}
       {showEditProjectModal && <EditProjectForm />}
+      {showEditCommentModal && <EditComment idx={donationId} />}
+
       {project && (
         <div className="project-container">
           <div class="grid-container">
@@ -159,17 +162,16 @@ const ProjectPage = ({ setAuthenticated }) => {
                             ></img>
                           </div>
                         ) : (
-                          <div className="logoBackground-sticky">
-                            <img
-                              className="sticky-logo"
-                              src={logo_40x40}
-                              alt="JumpStart Logo"
-                            ></img>
-                          </div>
-                        )}
-                        <div className="top-donor-name">{`${
-                          project.donator.username
-                        } $${Number(project.donationAmount)}`}</div>
+                            <div className="logoBackground-sticky">
+                              <img
+                                className="sticky-logo"
+                                src={logo_40x40}
+                                alt="JumpStart Logo"
+                              ></img>
+                            </div>
+                          )}
+                        <div className="top-donor-name">{`${project.donator.username
+                          } $${Number(project.donationAmount)}`}</div>
                       </div>
                     ))}
                   <div className="numberOfDonators">
@@ -182,7 +184,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                       className="editYourProject-button"
                       onClick={editProject}
                     >
-                    Edit Project
+                      Edit Project
                     </button>
                     <DeleteButton />
                   </>
@@ -202,7 +204,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                       <li key={idx} className="donation-listItem">
                         <div className="donation-container">
                           <div className="comment-avatar">
-                            {donation.donator.profileImageUrl ? (
+                            {(donation.donator.profileImageUrl && donation.anonymous === false) ? (
                               <div className="logoBackground">
                                 <img
                                   src={donation.donator.profileImageUrl}
@@ -211,16 +213,16 @@ const ProjectPage = ({ setAuthenticated }) => {
                                 ></img>
                               </div>
                             ) : (
-                              <div className="logoBackground">
-                                <img
-                                  src={logo_40x40}
-                                  alt="JumpStart Logo"
-                                ></img>
-                              </div>
-                            )}
+                                <div className="logoBackground">
+                                  <img
+                                    src={logo_40x40}
+                                    alt="JumpStart Logo"
+                                  ></img>
+                                </div>
+                              )}
                           </div>
                           <div className="comment-header">
-                            {donation.donator.username} donated $
+                            {(donation.anonymous === false) ? donation.donator.username : 'Anonymous'} donated $
                             <b>{donation.donationAmount}</b>
                           </div>
                           <div className="comment-content">
@@ -234,13 +236,14 @@ const ProjectPage = ({ setAuthenticated }) => {
                                 <button
                                   className="editComment-button"
                                   onClick={() => {
+                                    setDonationId(idx)
                                     setShowEditCommentModal((prev) => !prev);
                                   }}
                                 >
                                   Edit Comment
                                 </button>
                               )}
-                            {showEditCommentModal && <EditComment idx={idx} />}
+                            {/* {showEditCommentModal && <EditComment idx={donationId} />} */}
                           </div>
                         </div>
                       </li>

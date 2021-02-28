@@ -5,6 +5,7 @@ import { updateDonation } from "../../store/project";
 import "./EditComment.css";
 
 const EditComment = ({ idx }) => {
+
   const donation = useSelector(
     (state) => state.project.currentProject.donations[idx]
   );
@@ -66,10 +67,10 @@ const EditComment = ({ idx }) => {
               placeholder="Add an optional comment"
               onChange={updateComment}
             >
-              {comment}
+
             </textarea>
 
-            <button className="editComment-submitButton" type="submit">
+            <button className="editComment-submitButton" type="submit" onClick={() => console.log(idx)}>
               Confirm
             </button>
             <button
