@@ -52,6 +52,41 @@ def seed_donations():
                      comment="I wanted to help!",
                      anonymous=False
                     )
+    seven = Donation(
+                    userId=1,
+                    projectId=9,
+                    donationAmount=90,
+                    comment="I wanted to help!",
+                    anonymous=False
+                   )
+    eight = Donation(
+                    userId=1,
+                    projectId=8,
+                    donationAmount=100,
+                    comment="",
+                    anonymous=True
+                    )
+    nine = Donation(
+                    userId=1,
+                    projectId=7,
+                    donationAmount=200,
+                    comment="Happy to help!",
+                    anonymous=False
+                    )
+    ten = Donation(
+                    userId=1,
+                    projectId=6,
+                    donationAmount=2000,
+                    comment="",
+                    anonymous=True
+                    )
+    eleven = Donation(
+                    userId=1,
+                    projectId=10,
+                    donationAmount=150,
+                    comment="",
+                    anonymous=True
+                    )
 
     new_donations = []
     with open('./app/seeds/donations.json') as f:
@@ -61,7 +96,7 @@ def seed_donations():
             new_donations.append(new_donation)
 
 
-    db.session.add_all([one, two, three, four, five, six])
+    db.session.add_all([one, two, three, four, five, six, seven, eight, nine, ten, eleven])
     db.session.add_all(new_donations)
     db.session.commit()
 
