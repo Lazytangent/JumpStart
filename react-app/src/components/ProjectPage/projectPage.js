@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-// import csc from "country-state-city";
+import csc from "country-state-city";
 
 import "./projectPage.css";
 import { getProjectById } from "../../store/project";
 import logo_40x40 from "../SearchBar/logo_40x40.png";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
-import DonateForm from "../../components/DonateForm/DonateForm"
-import EditProjectForm from "../../components/EditProject/EditProject"
-import DeleteButton from './DeleteButton';
+import DonateForm from "../../components/DonateForm/DonateForm";
+import EditProjectForm from "../../components/EditProject/EditProject";
+import EditComment from "../../components/EditComment/EditComment";
+import DeleteButton from "./DeleteButton";
 
 const ProjectPage = ({ setAuthenticated }) => {
   const {
@@ -18,7 +19,9 @@ const ProjectPage = ({ setAuthenticated }) => {
     showDonateModal,
     setShowDonateModal,
     showEditProjectModal,
-    setShowEditProjectModal
+    setShowEditProjectModal,
+    showEditCommentModal,
+    setShowEditCommentModal,
   } = useModalContext();
 
   const [topThree, setTopThree] = useState([]);
@@ -30,7 +33,7 @@ const ProjectPage = ({ setAuthenticated }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProjectById(projectId))
+    dispatch(getProjectById(projectId));
   }, [dispatch, projectId]);
 
   const editProject = () => {
@@ -39,11 +42,15 @@ const ProjectPage = ({ setAuthenticated }) => {
 
   useEffect(() => {
     if (project) {
-      setTopThree(project.donations.sort((projectOne, projectTwo) => {
-        return projectTwo.donationAmount - projectOne.donationAmount
-      }).slice(0, 3))
+      setTopThree(
+        project.donations
+          .sort((projectOne, projectTwo) => {
+            return projectTwo.donationAmount - projectOne.donationAmount;
+          })
+          .slice(0, 3)
+      );
     }
-  }, [project])
+  }, [project]);
 
   const getPercentage = (project) => {
     // let sum = 0
@@ -65,19 +72,19 @@ const ProjectPage = ({ setAuthenticated }) => {
     return sum;
   };
 
-  // const getStateAbbreviation = (project) => {
-  //   let result;
-  //   const allStates = csc.getStatesOfCountry('US');
+  const getStateAbbreviation = (project) => {
+    let result;
+    const allStates = csc.getStatesOfCountry("US");
 
-  //   let stateName = project.user.state;
+    let stateName = project.user.state;
 
-  //   allStates.forEach((state) => {
-  //     if (state.name === stateName) {
-  //       result = state.isoCode;
-  //     }
-  //   });
-  //   return result;
-  // };
+    allStates.forEach((state) => {
+      if (state.name === stateName) {
+        result = state.isoCode;
+      }
+    });
+    return result;
+  };
 
   return (
     <>
@@ -101,8 +108,7 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
-            {session && project.userId && (session.id === project.userId) && (
-
+            {session && project.userId && session.id === project.userId && (
               <div className="editYourProject-button">
                 <button onClick={editProject}>Edit</button>
                 <DeleteButton />
@@ -112,16 +118,25 @@ const ProjectPage = ({ setAuthenticated }) => {
               <div>{project.description}</div>
               {project.images.map((img, idx) => (
                 <div className="image-description-container">
-                  <img alt="" className="images-in-description" src={img.imageUrl}></img>
+                  <img
+                    alt=""
+                    className="images-in-description"
+                    src={img.imageUrl}
+                  ></img>
                 </div>
               ))}
             </div>
             <div class="donations grid-div" id="donations-slider">
               <div class="sticky-container">
                 <h1 className="donations-box-header">Donations</h1>
-                <div id="projectCard-amount-projectPage">{`$${getSum(project)} raised out of $${project.goalAmount}`}</div>
+                <div id="projectCard-amount-projectPage">{`$${getSum(
+                  project
+                )} raised out of $${project.goalAmount}`}</div>
                 <div id="meter-productPage">
-                  <span id="progressBar" style={{ width: `${getPercentage(project)}%` }}></span>
+                  <span
+                    id="progressBar"
+                    style={{ width: `${getPercentage(project)}%` }}
+                  ></span>
                 </div>
                 <button
                   className="donate-box-button"
@@ -134,7 +149,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                   }}
                 >
                   Donate
-              </button>
+                </button>
                 <p className="top-donors">Top Donors</p>
                 <div className="top-donors-container">
                   {topThree &&
@@ -149,20 +164,29 @@ const ProjectPage = ({ setAuthenticated }) => {
                             ></img>
                           </div>
                         ) : (
-                            <div className="logoBackground-sticky">
-                              <img
-                                className="sticky-logo"
-                                src={logo_40x40}
-                                alt="JumpStart Logo"
-                              ></img>
-                            </div>
-                          )}
-                        <div className="top-donor-name">{`${project.donator.username} $${Number(project.donationAmount)}`}</div></div>
+                          <div className="logoBackground-sticky">
+                            <img
+                              className="sticky-logo"
+                              src={logo_40x40}
+                              alt="JumpStart Logo"
+                            ></img>
+                          </div>
+                        )}
+                        <div className="top-donor-name">{`${
+                          project.donator.username
+                        } $${Number(project.donationAmount)}`}</div>
+                      </div>
                     ))}
                   <div className="numberOfDonators">
                     <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
                   </div>
                 </div>
+                <button
+                  className="editYourProject-button"
+                  onClick={editProject}
+                >
+                  Edit Project
+                </button>
               </div>
             </div>
             <div class="comments grid-div">
@@ -175,39 +199,51 @@ const ProjectPage = ({ setAuthenticated }) => {
                 {project.donations &&
                   project.donations.map((donation, idx) => (
                     <>
-                      {!donation.anonymous && (
-                        <li key={idx} className="donation-listItem">
-                          <div className="donation-container">
-                            <div className="comment-avatar">
-                              {donation.donator.profileImageUrl ? (
-                                <div className="logoBackground">
-                                  <img
-                                    src={donation.donator.profileImageUrl}
-                                    className="userProfilePicture"
-                                    alt="JumpStart User"
-                                  ></img>
-                                </div>
-                              ) : (
-                                  <div className="logoBackground">
-                                    <img
-                                      src={logo_40x40}
-                                      alt="JumpStart Logo"
-                                    ></img>
-                                  </div>
-                                )}
-                            </div>
-                            <div className="comment-header">
-                              {donation.donator.username} donated $
-                              <b>{donation.donationAmount}</b>
-                            </div>
-                            <div className="comment-content">
-                              {donation.comment}
-                            </div>
-                            <div className="spacer"></div>
-                            <div className="comment-footer"></div>
+                      <li key={idx} className="donation-listItem">
+                        <div className="donation-container">
+                          <div className="comment-avatar">
+                            {donation.donator.profileImageUrl ? (
+                              <div className="logoBackground">
+                                <img
+                                  src={donation.donator.profileImageUrl}
+                                  className="userProfilePicture"
+                                  alt="JumpStart User"
+                                ></img>
+                              </div>
+                            ) : (
+                              <div className="logoBackground">
+                                <img
+                                  src={logo_40x40}
+                                  alt="JumpStart Logo"
+                                ></img>
+                              </div>
+                            )}
                           </div>
-                        </li>
-                      )}
+                          <div className="comment-header">
+                            {donation.donator.username} donated $
+                            <b>{donation.donationAmount}</b>
+                          </div>
+                          <div className="comment-content">
+                            {donation.comment}
+                          </div>
+                          <div className="spacer"></div>
+                          <div className="comment-footer">
+                            {session &&
+                              donation.userId &&
+                              session.id === donation.userId && (
+                                <button
+                                  className="editComment-button"
+                                  onClick={() => {
+                                    setShowEditCommentModal((prev) => !prev);
+                                  }}
+                                >
+                                  Edit Comment
+                                </button>
+                              )}
+                            {showEditCommentModal && <EditComment idx={idx} />}
+                          </div>
+                        </div>
+                      </li>
                     </>
                   ))}
                 <p>CHECKING</p>

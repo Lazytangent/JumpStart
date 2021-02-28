@@ -18,12 +18,14 @@ const DonateForm = () => {
 
   const makeDonation = async (e) => {
     e.preventDefault();
-    const donation = await dispatch(createDonation(userId, projectId, donationAmount, comment, anonymous))
+    const donation = await dispatch(
+      createDonation(userId, projectId, donationAmount, comment, anonymous)
+    );
     if (!donation.errors) {
       setShowDonateModal(false);
-      dispatch(getProjectById(projectId))
+      dispatch(getProjectById(projectId));
     } else {
-      setErrors(donation.errors)
+      setErrors(donation.errors);
     }
   };
 
@@ -42,18 +44,20 @@ const DonateForm = () => {
   return (
     <>
       <Modal onClose={() => setShowDonateModal(false)}>
-        <div className='donate-form-container'>
+        <div className="donate-form-container">
           <form onSubmit={makeDonation} className="donate-form">
             <div>
               {errors.map((error, idx) => (
-                <ul className="donate-errors" key={idx}>{error}</ul>
+                <ul className="donate-errors" key={idx}>
+                  {error}
+                </ul>
               ))}
             </div>
             <div>
               <input
-                type='number'
+                type="number"
                 className="donation-number"
-                name='donation'
+                name="donation"
                 placeholder="Make a Donation"
                 onChange={updateDonation}
                 required
@@ -61,26 +65,41 @@ const DonateForm = () => {
             </div>
             <div>
               <textarea
-                type='text'
+                type="text"
                 className="donation-comment"
                 rows="10"
-                name='comment'
+                name="comment"
                 placeholder="Add an optional comment"
                 onChange={updateComment}
+                required
               ></textarea>
             </div>
-            <div>
+            <div className="anonymous-container">
               <input
-                type='checkbox'
+                type="checkbox"
                 className="private-check"
-                name='anonymous'
+                name="anonymous"
                 checked={anonymous}
                 onClick={updateAnonymous}
               ></input>
-              <label for="anonymous">Do you wish to make this donation anonymous</label>
+              <label
+                for="anonymous"
+                className="anonymousLabel"
+                id="anonymousLabel"
+              >
+                Do you wish to make this donation anonymous?
+              </label>
             </div>
-            <button className="submit-button-donate" type="submit">Donate</button>
-            <button className="cancel-button-donate" type="submit" onClick={() => setShowDonateModal(false)}>Cancel</button>
+            <button className="submit-button-donate" type="submit">
+              Donate
+            </button>
+            <button
+              className="cancel-button-donate"
+              type="submit"
+              onClick={() => setShowDonateModal(false)}
+            >
+              Cancel
+            </button>
           </form>
         </div>
       </Modal>
