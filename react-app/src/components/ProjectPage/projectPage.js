@@ -25,6 +25,7 @@ const ProjectPage = ({ setAuthenticated }) => {
   } = useModalContext();
 
   const [topThree, setTopThree] = useState([]);
+  const [donations, setDonations] = useState([]);
 
   const user = useSelector((state) => state.session.user);
   const project = useSelector((state) => state.project.currentProject);
@@ -43,12 +44,18 @@ const ProjectPage = ({ setAuthenticated }) => {
 
   useEffect(() => {
     if (project) {
+      const arr = project.donations.slice();
       setTopThree(
-        project.donations
-          .sort((projectOne, projectTwo) => {
+        arr.sort((projectOne, projectTwo) => {
             return projectTwo.donationAmount - projectOne.donationAmount;
           })
           .slice(0, 3)
+      );
+      const sortedDonations = project.donations.slice();
+      setDonations(
+        sortedDonations.sort((projectOne, projectTwo) => {
+          return projectTwo.id - projectOne.id;
+        })
       );
     }
   }, [project]);
@@ -199,7 +206,7 @@ const ProjectPage = ({ setAuthenticated }) => {
               </h1>
               <ul className="donations-ul">
                 {project.donations &&
-                  project.donations.map((donation, idx) => (
+                  donations.map((donation, idx) => (
                     <>
                       <li key={idx} className="donation-listItem">
                         <div className="donation-container">
