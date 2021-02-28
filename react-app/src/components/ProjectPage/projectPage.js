@@ -53,14 +53,15 @@ const ProjectPage = ({ setAuthenticated }) => {
   }, [project]);
 
   const getPercentage = (project) => {
-    // let sum = 0
+    let sum = 0
 
-    // for (let i = 0; i < project.donations.length; i++ ) {
-    //     sum += project.donations[i].donationAmount;
-    // }
+    for (let i = 0; i < project.donations.length; i++ ) {
+        sum += project.donations[i].donationAmount;
+    }
 
-    // return (sum/project.goalAmount) * 100
-    return 50;
+    const percentage = (sum/project.goalAmount) * 100;
+    if (percentage < 100) return percentage;
+    else return 100;
   };
 
   const getSum = (project) => {
@@ -108,12 +109,6 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
-            {session && project.userId && session.id === project.userId && (
-              <div className="editYourProject-button">
-                <button onClick={editProject}>Edit</button>
-                <DeleteButton />
-              </div>
-            )}
             <div className="description">
               <div>{project.description}</div>
               {project.images.map((img, idx) => (
@@ -181,12 +176,17 @@ const ProjectPage = ({ setAuthenticated }) => {
                     <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
                   </div>
                 </div>
-                <button
-                  className="editYourProject-button"
-                  onClick={editProject}
-                >
-                  Edit Project
-                </button>
+                {session && project.userId && session.id === project.userId && (
+                  <>
+                    <button
+                      className="editYourProject-button"
+                      onClick={editProject}
+                    >
+                    Edit Project
+                    </button>
+                    <DeleteButton />
+                  </>
+                )}
               </div>
             </div>
             <div class="comments grid-div">

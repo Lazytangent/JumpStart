@@ -4,6 +4,9 @@
   border-radius: 0.35rem;
   margin: 0.15rem;
   color: white;
+  width: 80%;
+  height: 50px;
+  font-size: 22px;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
