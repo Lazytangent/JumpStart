@@ -1,15 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, useModalContext } from "../../context/Modal";
-import { updateDonation, getProjectById } from "../../store/project";
+import { updateDonation } from "../../store/project";
 import "./EditComment.css";
 
 const EditComment = ({ idx }) => {
-  const userId = useSelector((state) => state.session.user.id);
   const donation = useSelector(
     (state) => state.project.currentProject.donations[idx]
   );
-  const { showEditCommentModal, setShowEditCommentModal } = useModalContext();
+  const { setShowEditCommentModal } = useModalContext();
   const dispatch = useDispatch();
   const [donationId, setDonationId] = useState(donation.id);
   const [donationAmount, setDonationAmount] = useState(donation.donationAmount);
