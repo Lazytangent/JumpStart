@@ -1,7 +1,39 @@
 .editCommentForm-container {
   margin: 1em;
+  /* display: grid;
+  grid-template-areas:
+    "editComment-textarea editComment-textarea"
+    "commentConfirmButton commentCancelButton";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px; */
 }
 
 .editComment-textarea {
   padding: 12px 20px;
+  grid-area: editComment-textarea;
+}
+
+.editComment-form {
+  margin: 1em 0em;
+  display: grid;
+  grid-template-areas:
+    "editComment-textarea editComment-textarea"
+    "commentConfirmButton commentCancelButton";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.editCommment-submitButton {
+  grid-area: commentConfirmButton;
+}
+
+.editCommment-cancelButton {
+  grid-area: commentCancelButton;
+}
+
+.editCommentButtons-container {
+  /* display: grid;
+  grid-template-areas: "commentConfirmButton commentCancelButton";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px; */
 }

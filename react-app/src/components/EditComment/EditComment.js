@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, useModalContext } from "../../context/Modal";
 import { updateDonation, getProjectById } from "../../store/project";
@@ -15,14 +15,16 @@ const EditComment = ({ idx }) => {
   const [donationAmount, setDonationAmount] = useState(donation.donationAmount);
   const [anonymous, setAnonymous] = useState(donation.anonymous);
   const [comment, setComment] = useState(donation.comment);
+  const [selectedTargets, setSelectedTargets] = useState("");
 
   const [errors, setErrors] = useState([]);
 
+  const textAreaRef = useRef(null);
+
   function focusCommentTextArea() {
-    const textArea = document.getElementById("commentModal-textarea");
-    setTimeout(() => {
-      textArea.focus();
-    }, 300);
+    let commentLength = comment.length;
+    textAreaRef.current.focus();
+    textAreaRef.current.setSelectionRange(commentLength, commentLength);
   }
 
   const editComment = async (e) => {
@@ -42,8 +44,10 @@ const EditComment = ({ idx }) => {
   };
 
   useEffect(() => {
-    focusCommentTextArea();
-  });
+    if (showEditCommentModal) {
+      focusCommentTextArea();
+    }
+  }, [showEditCommentModal]);
 
   return (
     <>
@@ -55,31 +59,30 @@ const EditComment = ({ idx }) => {
             </ul>
           ))}
           <form onSubmit={editComment} className="editComment-form">
-            <div>
-              <textarea
-                type="text"
-                id="commentModal-textarea"
-                className="editComment-textarea"
-                rows="10"
-                name="comment"
-                placeholder="Add an optional comment"
-                onChange={updateComment}
-              >
-                {comment}
-              </textarea>
-            </div>
-            <div className="editCommentButtons-container">
-              <button className="editComment-submitButton" type="submit">
-                Confirm
-              </button>
-              <button
-                className="editComment-cancelButton"
-                type="submit"
-                onClick={() => setShowEditCommentModal(false)}
-              >
-                Cancel
-              </button>
-            </div>
+            <textarea
+              type="text"
+              id="commentModal-textarea"
+              className="editComment-textarea"
+              ref={textAreaRef}
+              value={comment}
+              rows="10"
+              name="comment"
+              placeholder="Add an optional comment"
+              onChange={updateComment}
+            >
+              {comment}
+            </textarea>
+
+            <button className="editComment-submitButton" type="submit">
+              Confirm
+            </button>
+            <button
+              className="editComment-cancelButton"
+              type="submit"
+              onClick={() => setShowEditCommentModal(false)}
+            >
+              Cancel
+            </button>
           </form>
         </div>
       </Modal>
