@@ -36,36 +36,36 @@ const App = () => {
 
   return (
     <>
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
-        </ProtectedRoute>
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+          </Route>
+          <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+            <User />
+          </ProtectedRoute>
 
-        <Route path="/" exact={true} authenticated={authenticated}>
-          <HomePage setAuthenticated={setAuthenticated} />
-        </Route>
-        <Route path="/discover" exact={true} authenticated={authenticated}>
-          <DiscoverPage setAuthenticated={setAuthenticated} />
-        </Route>
-        <Route path="/new-project" exact={true} authenticated={authenticated}>
-          <CreateProject setAuthenticated={setAuthenticated} />
-        </Route>
-        <Route path="/:projectId" exact={true} authenticated={authenticated}>
-          <ProjectPage setAuthenticated={setAuthenticated} />
-        </Route>
-      </Switch>
+          <Route path="/" exact={true} authenticated={authenticated}>
+            <HomePage setAuthenticated={setAuthenticated} />
+          </Route>
+          <Route path="/discover" exact={true} authenticated={authenticated}>
+            <DiscoverPage setAuthenticated={setAuthenticated} />
+          </Route>
+          <Route path="/new-project" exact={true} authenticated={authenticated}>
+            <CreateProject setAuthenticated={setAuthenticated} />
+          </Route>
+          <Route path="/:projectId" exact={true} authenticated={authenticated}>
+            <ProjectPage setAuthenticated={setAuthenticated} />
+          </Route>
+        </Switch>
       <Footer/>
     </>
   );
