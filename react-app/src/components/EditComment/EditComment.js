@@ -66,7 +66,7 @@ const EditComment = ({ idx }) => {
               placeholder="Add an optional comment"
               onChange={updateComment}
             >
-              {comment}
+
             </textarea>
 
             <button className="editComment-submitButton" type="submit">
