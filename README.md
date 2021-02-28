@@ -1,98 +1,68 @@
-# Flask React Project
-<!-- # hello -->
-This is the backend for the Flask React project.
+# JumpStart
 
-## Getting started
+<p align="center">
+<img src="/react-app/public/logo.png" />
+</p>
 
-1. Clone this repository (only this branch)
+## What is it?
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+JumpStart is a clone of Kickstarter with some GoFundMe influences.
 
-2. Install dependencies
+## Developing
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+To start local development for this application, you'll need to:
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+1. `git clone` this repo
+2. `cd` into the local repo
+3. Run `pipenv install` in the root of the project
+4. Create your own `.env` file in the root of the project based on the `.env.example` there
+5. Create a user that matches the user you identified in your `.env` file in PostgreSQL
+6. Create a database that matches the database you identified in your `.env` file in PostgreSQL
+7. Go into the pipenv shell with `pipenv shell`
+8. Run `flask db upgrade` to apply the migrations to your local database
+9. Run `flask seed all` to seed your local database with our seeder content
+10. Open another terminal and `cd` into the `react-app` directory and `npm install` there
+11. Create your own `.env` file in the `react-app` directory based on the `.env.example` there
+12. Start your Flask backend in the terminal that's in the root of the local project with `flask run`
+13. Run `npm start` in your `react-app` directory to start the React app. This should open in your default browser.
+14. Be sure to make your own branch for your changes before pushing up to GitHub.
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+## Technologies Used
 
-   ```bash
-   pipenv shell
-   ```
+* PostgreSQL
+* Python
+* Flask
+* SQLAlchemy
+* Alembic
+* WTForms
+* React
+* JavaScript
+* AWS S3
+* Redux
+* Heroku
 
-   ```bash
-   flask db upgrade
-   ```
+## Live Site
 
-   ```bash
-   flask seed all
-   ```
+[Here's](https://jump--start.herokuapp.com/) a link to the live app!
 
-   ```bash
-   flask run
-   ```
+## Wiki
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+[Here's](https://github.com/Lazytangent/JumpStart/wiki) a link to our documentation!
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+## Features
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+Users can:
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+* Create Projects
+* View Projects
+* Update their Projects
+* Delete their Projects
+* Create Donations on others' Projects
+* View Donations on all Projects
+* Update their Donations
+* Delete their Comment on their Donation
 
-## Deploy to Heroku
+## Two Challenges
 
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
+In our edit project form, we opted to make the user experience a little easier by letting users choose multiple images in two different ways. Since there might be images that were already uploaded for the project, we had to have two different ways of letting users delete uploaded images. While the backend was fairly straightforward, getting React to render what we wanted proved to be a little more difficult. In the end, we made use of the File API's FileList object and its similarities to
+JavaScript's arrays to make the process easier.

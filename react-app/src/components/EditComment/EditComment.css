@@ -1,0 +1,36 @@
+.editCommentForm-container {
+  margin: 2em;
+}
+
+.editComment-textarea {
+  padding: 12px 20px;
+  grid-area: editComment-textarea;
+}
+
+.editComment-form {
+  min-width: 269px;
+  margin: 1em 0em;
+  display: grid;
+  grid-template-areas:
+    "editComment-textarea editComment-textarea"
+    "commentConfirmButton commentCancelButton";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.editCommment-submitButton {
+  grid-area: commentConfirmButton;
+}
+
+.editCommment-cancelButton {
+  grid-area: commentCancelButton;
+}
+
+.editComment-submitButton,
+.editComment-cancelButton {
+  background-color: #02a95c;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 3px;
+}

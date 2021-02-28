@@ -46,12 +46,8 @@ def seed_users():
                   state='Colorado'
                 )
 
-    db.session.add(demo)
-    db.session.add(jesse)
-    db.session.add(peter)
-    db.session.add(reed)
-    db.session.add(dillon)
 
+    db.session.add_all([demo, jesse, peter, reed, dillon])
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.

@@ -34,12 +34,8 @@ def seed_projects():
                    goalAmount=20000,
                    minPledge=5)
 
-    db.session.add(one)
-    db.session.add(two)
-    db.session.add(three)
-    db.session.add(four)
-    db.session.add(five)
 
+    db.session.add_all([one, two, three, four, five])
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the projects table.

@@ -24,19 +24,6 @@
   border-radius: 0.5rem;
 }
 
-/*
--
--
--
---
-SPACING TO MAKE SURE I DON'T CHANGE MODAL CSS
-DELETE LATER
---
--
--
--
-*/
-
 #searchModal {
   position: fixed;
   top: 0;
@@ -47,8 +34,6 @@ DELETE LATER
   z-index: 2;
   height: 7%;
   width: 100%;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 #searchModal-background {
@@ -63,8 +48,5 @@ DELETE LATER
 #searchModal-content {
   position: absolute;
   background-color: white;
-  /* border-radius: 0.5rem; */
   width: 100%;
-  /* border-radius: none; */
-  /* height: 7%; */
 }
