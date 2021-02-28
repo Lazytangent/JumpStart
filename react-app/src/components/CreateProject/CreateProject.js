@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import "./CreateProject.css"
 import { createProject } from '../../store/project'
 import Navigation from '../Navigation/navigation'
+import DeleteIcon from "@material-ui/icons/Delete"
 
 const CreateProject = ({ setAuthenticated }) => {
   const history = useHistory()
@@ -127,8 +128,11 @@ const CreateProject = ({ setAuthenticated }) => {
               onChange={updateMinPledge}
             ></input>
           </div>
-          <button className="submit-button" type="submit" onClick={postProject}>Create</button>
-          <button className="cancel-button" type="submit" onClick={() => history.push("/")}>Cancel</button>
+          <div className="submit-cancel-container">
+
+            <button className="submit-button" type="submit" onClick={postProject}>Create</button>
+            <button className="cancel-button" type="submit" onClick={() => history.push("/")}>Cancel</button>
+          </div>
         </form>
       </div>
     </>
