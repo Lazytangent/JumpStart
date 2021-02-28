@@ -18,13 +18,14 @@ const CreateProject = ({ setAuthenticated }) => {
   const [goalAmount, setGoalAmount] = useState()
   const [minPledge, setMinPledge] = useState()
   const [thumbnailImage, setThumbnailImage] = useState({ name: "" });
-  const [additionalImages, setAdditionalImages] = useState();
+  const [images, setAdditionalImages] = useState([])
   const [errors, setErrors] = useState([]);
+
 
   const postProject = async (e) => {
     e.preventDefault()
     const newProject = await dispatch(
-      createProject(name, description, goalAmount, minPledge, thumbnailImage, userId, additionalImages)
+      createProject(name, description, goalAmount, minPledge, thumbnailImage, userId, images)
     )
     if (newProject.errors) {
       setErrors(newProject.errors)
@@ -32,6 +33,29 @@ const CreateProject = ({ setAuthenticated }) => {
       history.push(`/${newProject.id}`)
     }
   };
+
+  const deleteThumbNailImage = () => {
+    setThumbnailImage({ name: "" })
+  };
+
+  const deleteImageByName = (name) => {
+    let result = [];
+    images.forEach((Filelist) => {
+      let file = Filelist;
+      let newFile = [];
+      for (let key in file) {
+        let number = Number(key);
+        if (number || number === 0) {
+          if (file[key].name !== name) {
+            newFile.push(file[key]);
+          }
+        }
+      }
+      result.push(newFile);
+    });
+    setAdditionalImages(result);
+  };
+
 
   const updateName = (e) => {
     setName(e.target.value)
@@ -65,7 +89,7 @@ const CreateProject = ({ setAuthenticated }) => {
 
   const updateAdditionalImages = (e) => {
     const file = e.target.files;
-    if (file) setAdditionalImages(file);
+    if (file) setAdditionalImages((prev) => [...prev, file]);
   };
 
   return (
@@ -90,8 +114,18 @@ const CreateProject = ({ setAuthenticated }) => {
             ></input>
           </div>
           <div>
+            {(thumbnailImage.name !== "") && <div>
+              <span>
+                <span
+                  onClick={deleteThumbNailImage}
+                  className="delete-image-div"
+                >
+                  <DeleteIcon />
+                </span>
+              </span>
+              {thumbnailImage.name}
+            </div>}
             <input className="choose-image" type="button" id="loadFile" value="Choose a Thumbnail Image" onClick={chooseImage} />
-            <label for="image">   {thumbnailImage.name}</label>
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" id="file" type="file" name="image" onChange={updateThumbnailImage} />
           </div>
           <div>
@@ -106,6 +140,22 @@ const CreateProject = ({ setAuthenticated }) => {
             ></textarea>
           </div>
           <div>
+            {images &&
+              images.map((fileList) =>
+                Array.from(fileList).map((image) => (
+                  <div>
+                    <span>
+                      <span
+                        onClick={() => deleteImageByName(image.name)}
+                        className="delete-image-div"
+                      >
+                        <DeleteIcon />
+                      </span>
+                    </span>
+                    {image.name}
+                  </div>
+                ))
+              )}
             <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
             {/* <label for="image">   {additionalImages}</label> */}
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
