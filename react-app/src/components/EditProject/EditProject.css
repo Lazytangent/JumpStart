@@ -1,23 +1,24 @@
 /* .project-form-container {
-    position: absolute;
-    top: 30%;
-    left: 40%;
-    margin-top: -80px;
-    margin-left: -190px;
-    width: 45%;
-    height: 100%;
-    overflow: hidden;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  margin-top: -80px;
+  margin-left: -190px;
+  width: 45%;
+  height: 100%;
+  overflow: hidden;
+} */
 
-}
-
-
-.hide-this-button {
+/* .hide-this-button {
   display: none;
 }
 
-.update {font-family: Arial, Helvetica, sans-serif;}
+.update {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-.input-text, .input-number {
+.input-text,
+.input-number {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -26,8 +27,9 @@
   box-sizing: border-box;
 }
 
-.submit-button, .cancel-button{
-  background-color:#00bc5e;
+.submit-button,
+.cancel-button {
+  background-color: #00bc5e;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -37,7 +39,7 @@
 }
 
 .choose-image {
-  background-color:#00bc5e;
+  background-color: #00bc5e;
   color: white;
 
   padding: 14px 20px;
@@ -47,7 +49,9 @@
   width: 40%;
 }
 
-.submit-button:hover, .cancel-button:hover, .choose-image:hover {
+.submit-button:hover,
+.cancel-button:hover,
+.choose-image:hover {
   opacity: 0.8;
 }
 
@@ -55,12 +59,49 @@
   color: red;
 } */
 
-
 .delete-image-div:hover {
-      /* background-color: none;
+  /* background-color: none;
     background-repeat:no-repeat;
     border: none; */
-    cursor:pointer;
-    /* overflow: hidden;
+  cursor: pointer;
+  /* overflow: hidden;
     outline:none; */
+}
+
+.editProject-container {
+  margin: 2em;
+}
+
+.chooseImage-button,
+.chooseAdditionalImage-button,
+.updateProjectCancel-button,
+.updateProjectSubmit-button {
+  background-color: #00bc5e;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.editProject-textArea {
+  width: 100%;
+  min-width: 269px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.chooseImage-button:hover,
+.chooseAdditionalImage-button:hover,
+.updateProjectCancel-button:hover,
+.updateProjectSubmit-button:hover {
+  opacity: 0.8;
+}
+
+.chooseAdditionalImage-button {
 }
