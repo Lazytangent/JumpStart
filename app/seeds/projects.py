@@ -1,3 +1,4 @@
+import json
 from werkzeug.security import generate_password_hash
 from app.models import db, Project
 
@@ -54,7 +55,16 @@ def seed_projects():
         goalAmount=20000,
         minPledge=5)
 
+    new_projects = []
+    with open('./app/seeds/projects.json') as f:
+        data = json.load(f)
+        for project in data:
+            new_project = Project(**project)
+            new_projects.append(new_project)
+
+
     db.session.add_all([one, two, three, four, five])
+    db.session.add_all(new_projects)
     db.session.commit()
 
 
