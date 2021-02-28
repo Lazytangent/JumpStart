@@ -108,12 +108,6 @@ const ProjectPage = ({ setAuthenticated }) => {
             <div className="organizer grid-div">
               {project.user.username} is organizing this fundraiser
             </div>
-            {session && project.userId && session.id === project.userId && (
-              <div className="editYourProject-button">
-                <button onClick={editProject}>Edit</button>
-                <DeleteButton />
-              </div>
-            )}
             <div className="description">
               <div>{project.description}</div>
               {project.images.map((img, idx) => (
@@ -181,12 +175,17 @@ const ProjectPage = ({ setAuthenticated }) => {
                     <h1 className="numberOfDonators-text">{`Total donations: ${project.donations.length}`}</h1>
                   </div>
                 </div>
-                <button
-                  className="editYourProject-button"
-                  onClick={editProject}
-                >
-                  Edit Project
-                </button>
+                {session && project.userId && session.id === project.userId && (
+                  <>
+                    <button
+                      className="editYourProject-button"
+                      onClick={editProject}
+                    >
+                    Edit Project
+                    </button>
+                    <DeleteButton />
+                  </>
+                )}
               </div>
             </div>
             <div class="comments grid-div">
