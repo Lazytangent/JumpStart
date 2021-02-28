@@ -221,7 +221,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                               )}
                           </div>
                           <div className="comment-header">
-                            {donation.donator.username} donated $
+                            {(donation.anonymous === false) ? donation.donator.username : 'Anonymous'} donated $
                             <b>{donation.donationAmount}</b>
                           </div>
                           <div className="comment-content">
