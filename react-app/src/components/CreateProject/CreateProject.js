@@ -127,8 +127,11 @@ const CreateProject = ({ setAuthenticated }) => {
               onChange={updateMinPledge}
             ></input>
           </div>
-          <button className="submit-button" type="submit" onClick={postProject}>Create</button>
-          <button className="cancel-button" type="submit" onClick={() => history.push("/")}>Cancel</button>
+          <div className="submit-cancel-container">
+
+            <button className="submit-button" type="submit" onClick={postProject}>Create</button>
+            <button className="cancel-button" type="submit" onClick={() => history.push("/")}>Cancel</button>
+          </div>
         </form>
       </div>
     </>
