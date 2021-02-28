@@ -53,14 +53,15 @@ const ProjectPage = ({ setAuthenticated }) => {
   }, [project]);
 
   const getPercentage = (project) => {
-    // let sum = 0
+    let sum = 0
 
-    // for (let i = 0; i < project.donations.length; i++ ) {
-    //     sum += project.donations[i].donationAmount;
-    // }
+    for (let i = 0; i < project.donations.length; i++ ) {
+        sum += project.donations[i].donationAmount;
+    }
 
-    // return (sum/project.goalAmount) * 100
-    return 50;
+    const percentage = (sum/project.goalAmount) * 100;
+    if (percentage < 100) return percentage;
+    else return 100;
   };
 
   const getSum = (project) => {
