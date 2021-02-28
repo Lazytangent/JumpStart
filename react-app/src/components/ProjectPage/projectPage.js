@@ -32,7 +32,7 @@ const ProjectPage = ({ setAuthenticated }) => {
   const session = useSelector((state) => state.session.user);
   const { projectId } = useParams();
   const dispatch = useDispatch();
-  const [donationId, setDonationId] = useState()
+  const [donationId, setDonationId] = useState();
 
   useEffect(() => {
     dispatch(getProjectById(projectId));
@@ -46,7 +46,8 @@ const ProjectPage = ({ setAuthenticated }) => {
     if (project) {
       const arr = project.donations.slice();
       setTopThree(
-        arr.sort((projectOne, projectTwo) => {
+        arr
+          .sort((projectOne, projectTwo) => {
             return projectTwo.donationAmount - projectOne.donationAmount;
           })
           .slice(0, 3)
@@ -61,7 +62,7 @@ const ProjectPage = ({ setAuthenticated }) => {
   }, [project]);
 
   const getPercentage = (project) => {
-    let sum = 0
+    let sum = 0;
 
     for (let i = 0; i < project.donations.length; i++) {
       sum += project.donations[i].donationAmount;
@@ -136,7 +137,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                 <h1 className="donations-box-header">Donations</h1>
                 <div id="projectCard-amount-projectPage">{`$${getSum(
                   project
-                )} raised out of $${project.goalAmount}`}</div>
+                ).toLocaleString()} raised out of $${project.goalAmount.toLocaleString()}`}</div>
                 <div id="meter-productPage">
                   <span
                     id="progressBar"
@@ -169,16 +170,19 @@ const ProjectPage = ({ setAuthenticated }) => {
                             ></img>
                           </div>
                         ) : (
-                            <div className="logoBackground-sticky">
-                              <img
-                                className="sticky-logo"
-                                src={logo_40x40}
-                                alt="JumpStart Logo"
-                              ></img>
-                            </div>
-                          )}
-                        <div className="top-donor-name">{`${project.donator.username
-                          } $${Number(project.donationAmount)}`}</div>
+                          <div className="logoBackground-sticky">
+                            <img
+                              className="sticky-logo"
+                              src={logo_40x40}
+                              alt="JumpStart Logo"
+                            ></img>
+                          </div>
+                        )}
+                        <div className="top-donor-name">{`${
+                          project.donator.username
+                        } $${Number(
+                          project.donationAmount
+                        ).toLocaleString()}`}</div>
                       </div>
                     ))}
                   <div className="numberOfDonators">
@@ -211,7 +215,8 @@ const ProjectPage = ({ setAuthenticated }) => {
                       <li key={idx} className="donation-listItem">
                         <div className="donation-container">
                           <div className="comment-avatar">
-                            {(donation.donator.profileImageUrl && donation.anonymous === false) ? (
+                            {donation.donator.profileImageUrl &&
+                            donation.anonymous === false ? (
                               <div className="logoBackground">
                                 <img
                                   src={donation.donator.profileImageUrl}
@@ -220,17 +225,20 @@ const ProjectPage = ({ setAuthenticated }) => {
                                 ></img>
                               </div>
                             ) : (
-                                <div className="logoBackground">
-                                  <img
-                                    src={logo_40x40}
-                                    alt="JumpStart Logo"
-                                  ></img>
-                                </div>
-                              )}
+                              <div className="logoBackground">
+                                <img
+                                  src={logo_40x40}
+                                  alt="JumpStart Logo"
+                                ></img>
+                              </div>
+                            )}
                           </div>
                           <div className="comment-header">
-                            {(donation.anonymous === false) ? donation.donator.username : 'Anonymous'} donated $
-                            <b>{donation.donationAmount}</b>
+                            {donation.anonymous === false
+                              ? donation.donator.username
+                              : "Anonymous"}{" "}
+                            donated $
+                            <b>{donation.donationAmount.toLocaleString()}</b>
                           </div>
                           <div className="comment-content">
                             {donation.comment}
@@ -243,7 +251,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                                 <button
                                   className="editComment-button"
                                   onClick={() => {
-                                    setDonationId(idx)
+                                    setDonationId(idx);
                                     setShowEditCommentModal((prev) => !prev);
                                   }}
                                 >
@@ -256,40 +264,6 @@ const ProjectPage = ({ setAuthenticated }) => {
                       </li>
                     </>
                   ))}
-                <p>CHECKING</p>
-                <p>TO</p>
-                <p>MAKE</p>
-                <p>SURE</p>
-                <p>STICKY</p>
-                <p>SLIDES</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
               </ul>
             </div>
             <div className="footer grid-div">
