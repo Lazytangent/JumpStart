@@ -88,6 +88,14 @@
   border: none;
 }
 
+/* #inputClose-button {
+  position: fixed;
+  top: 0.5rem;
+  right: 21.5rem;
+  z-index: 3;
+  border: none;
+} */
+
 #inputClose-icon {
   background-color: white;
   color: rgb(43, 43, 43);
