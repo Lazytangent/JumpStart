@@ -25,12 +25,14 @@ const ProjectPage = ({ setAuthenticated }) => {
   } = useModalContext();
 
   const [topThree, setTopThree] = useState([]);
+  const [donations, setDonations] = useState([]);
 
   const user = useSelector((state) => state.session.user);
   const project = useSelector((state) => state.project.currentProject);
   const session = useSelector((state) => state.session.user);
   const { projectId } = useParams();
   const dispatch = useDispatch();
+  const [donationId, setDonationId] = useState();
 
   useEffect(() => {
     dispatch(getProjectById(projectId));
@@ -42,12 +44,19 @@ const ProjectPage = ({ setAuthenticated }) => {
 
   useEffect(() => {
     if (project) {
+      const arr = project.donations.slice();
       setTopThree(
-        project.donations
+        arr
           .sort((projectOne, projectTwo) => {
             return projectTwo.donationAmount - projectOne.donationAmount;
           })
           .slice(0, 3)
+      );
+      const sortedDonations = project.donations.slice();
+      setDonations(
+        sortedDonations.sort((projectOne, projectTwo) => {
+          return projectTwo.id - projectOne.id;
+        })
       );
     }
   }, [project]);
@@ -92,6 +101,8 @@ const ProjectPage = ({ setAuthenticated }) => {
       <Navigation setAuthenticated={setAuthenticated} />
       {showDonateModal && <DonateForm />}
       {showEditProjectModal && <EditProjectForm />}
+      {showEditCommentModal && <EditComment idx={donationId} />}
+
       {project && (
         <div className="project-container">
           <div class="grid-container">
@@ -199,12 +210,13 @@ const ProjectPage = ({ setAuthenticated }) => {
               </h1>
               <ul className="donations-ul">
                 {project.donations &&
-                  project.donations.map((donation, idx) => (
+                  donations.map((donation, idx) => (
                     <>
                       <li key={idx} className="donation-listItem">
                         <div className="donation-container">
                           <div className="comment-avatar">
-                            {donation.donator.profileImageUrl ? (
+                            {donation.donator.profileImageUrl &&
+                            donation.anonymous === false ? (
                               <div className="logoBackground">
                                 <img
                                   src={donation.donator.profileImageUrl}
@@ -222,7 +234,10 @@ const ProjectPage = ({ setAuthenticated }) => {
                             )}
                           </div>
                           <div className="comment-header">
-                            {donation.donator.username} donated $
+                            {donation.anonymous === false
+                              ? donation.donator.username
+                              : "Anonymous"}{" "}
+                            donated $
                             <b>{donation.donationAmount.toLocaleString()}</b>
                           </div>
                           <div className="comment-content">
@@ -236,52 +251,19 @@ const ProjectPage = ({ setAuthenticated }) => {
                                 <button
                                   className="editComment-button"
                                   onClick={() => {
+                                    setDonationId(idx);
                                     setShowEditCommentModal((prev) => !prev);
                                   }}
                                 >
                                   Edit Comment
                                 </button>
                               )}
-                            {showEditCommentModal && <EditComment idx={idx} />}
+                            {/* {showEditCommentModal && <EditComment idx={donationId} />} */}
                           </div>
                         </div>
                       </li>
                     </>
                   ))}
-                <p>CHECKING</p>
-                <p>TO</p>
-                <p>MAKE</p>
-                <p>SURE</p>
-                <p>STICKY</p>
-                <p>SLIDES</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
-                <p>...</p>
               </ul>
             </div>
             <div className="footer grid-div">
