@@ -1,6 +1,7 @@
 .homePage {
-  height: 250vh;
+  height: 300vh;
   width: 99vw;
+  position: relative;
 }
 
 .homePage-image {
@@ -19,13 +20,13 @@
 }
 
 .homePage-description-box {
-  height: 25%;
+  height: 8%;
   width: 65%;
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 100%;
   position: absolute;
-  top: 56%;
+  top: 18%;
   left: 17.5%;
   background-color: white;
   border-radius: 10px;
@@ -84,13 +85,13 @@
 }
 
 .homePage-grid {
-  height: 100%;
   width: 55%;
-  margin-top: 8%;
+  height: 70%;
+  margin-top: 11%;
   margin-left: 22.5%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%;
+  grid-template-rows: 2.25% 26% 9.75% 26% 9.75% 26% 2.75%;
 }
 
 .homePage-mostPopular-header {
