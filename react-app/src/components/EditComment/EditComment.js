@@ -4,10 +4,12 @@ import { Modal, useModalContext } from "../../context/Modal";
 import { updateDonation } from "../../store/project";
 import "./EditComment.css";
 
-const EditComment = ({ idx }) => {
+const EditComment = ({ id }) => {
 
   const donation = useSelector(
-    (state) => state.project.currentProject.donations[idx]
+    (state) => state.project.currentProject.donations.find(donation => {
+      return donation.id === id
+    })
   );
   const { setShowEditCommentModal } = useModalContext();
   const dispatch = useDispatch();
@@ -70,7 +72,7 @@ const EditComment = ({ idx }) => {
 
             </textarea>
 
-            <button className="editComment-submitButton" type="submit" onClick={() => console.log(idx)}>
+            <button className="editComment-submitButton" type="submit" onClick={() => console.log(id)}>
               Confirm
             </button>
             <button

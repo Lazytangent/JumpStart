@@ -101,7 +101,7 @@ const ProjectPage = ({ setAuthenticated }) => {
       <Navigation setAuthenticated={setAuthenticated} />
       {showDonateModal && <DonateForm />}
       {showEditProjectModal && <EditProjectForm />}
-      {showEditCommentModal && <EditComment idx={donationId} />}
+      {showEditCommentModal && <EditComment id={donationId} />}
 
       {project && (
         <div className="project-container">
@@ -251,7 +251,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                                 <button
                                   className="editComment-button"
                                   onClick={() => {
-                                    setDonationId(idx);
+                                    setDonationId(donation.id);
                                     setShowEditCommentModal((prev) => !prev);
                                   }}
                                 >
