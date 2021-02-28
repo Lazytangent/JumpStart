@@ -22,11 +22,7 @@ export const ModalProvider = ({ children }) => {
   const [showSearchBarModal, setShowSearchBarModal] = useState(false);
   const [showDonateModal, setShowDonateModal] = useState(false);
   const [showEditProjectModal, setShowEditProjectModal] = useState(false);
-<<<<<<< HEAD
   const [showEditCommentModal, setShowEditCommentModal] = useState(false);
-=======
-
->>>>>>> f1b1ebddd79ed60dbc594c51ebbba2821dc9ef3b
   useEffect(() => {
     setValue(modalRef.current);
   }, []);
