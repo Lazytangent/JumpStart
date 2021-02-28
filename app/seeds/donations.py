@@ -1,3 +1,4 @@
+import json
 from werkzeug.security import generate_password_hash
 from app.models import db, Donation
 
@@ -52,8 +53,16 @@ def seed_donations():
                      anonymous=False
                     )
 
-    db.session.add_all([one, two, three, four, five, six])
+    new_donations = []
+    with open('./app/seeds/donations.json') as f:
+        data = json.load(f)
+        for donation in data:
+            new_donation = Donation(**donation)
+            new_donations.append(new_donation)
 
+
+    db.session.add_all([one, two, three, four, five, six])
+    db.session.add_all(new_donations)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
