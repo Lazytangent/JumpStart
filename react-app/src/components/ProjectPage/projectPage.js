@@ -242,7 +242,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                                   Edit Comment
                                 </button>
                               )}
-                            {showEditCommentModal && donationId && <EditComment idx={donationId} />}
+                            {showEditCommentModal && <EditComment idx={donationId} />}
                           </div>
                         </div>
                       </li>
