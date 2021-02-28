@@ -1,0 +1,23 @@
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+
+    width: 100%;
+    border-top: 1px solid lightgrey;
+    font-family: Calibre, Helvetica, Arial, sans-serif;
+}
+
+#footer-content {
+    color: rgba(30, 130, 76, 1);
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+#footer-icon {
+    padding-right: 5px;
+
+}

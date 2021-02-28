@@ -12,6 +12,7 @@ import ProjectPage from "./components/ProjectPage/projectPage"
 import { authenticate } from './store/session';
 import CreateProject from './components/CreateProject/CreateProject';
 import DiscoverPage from './components/DiscoverPage/discoverPage.js';
+import Footer from './components/Footer/Footer.js';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ const App = () => {
           <ProjectPage setAuthenticated={setAuthenticated} />
         </Route>
       </Switch>
+      <Footer/>
     </>
   );
 };
