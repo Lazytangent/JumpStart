@@ -247,7 +247,7 @@ const EditProjectForm = () => {
           <button
             className="cancel-button"
             type="submit"
-            onClick={() => history.push("/")}
+            onClick={() => setShowEditProjectModal(false)}
           >
             Cancel
           </button>
