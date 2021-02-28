@@ -18,14 +18,14 @@ const CreateProject = ({ setAuthenticated }) => {
   const [goalAmount, setGoalAmount] = useState()
   const [minPledge, setMinPledge] = useState()
   const [thumbnailImage, setThumbnailImage] = useState({ name: "" });
-  const [imageList, setImageList] = useState([])
-  const [additionalImages, setAdditionalImages] = useState();
+  const [images, setAdditionalImages] = useState([])
   const [errors, setErrors] = useState([]);
+
 
   const postProject = async (e) => {
     e.preventDefault()
     const newProject = await dispatch(
-      createProject(name, description, goalAmount, minPledge, thumbnailImage, userId, additionalImages)
+      createProject(name, description, goalAmount, minPledge, thumbnailImage, userId, images)
     )
     if (newProject.errors) {
       setErrors(newProject.errors)
@@ -38,23 +38,23 @@ const CreateProject = ({ setAuthenticated }) => {
     setThumbnailImage({ name: "" })
   };
 
-  // const deleteImageByName = (name) => {
-  //   let result = [];
-  //   images.forEach((Filelist) => {
-  //     let file = Filelist;
-  //     let newFile = [];
-  //     for (let key in file) {
-  //       let number = Number(key);
-  //       if (number || number === 0) {
-  //         if (file[key].name !== name) {
-  //           newFile.push(file[key]);
-  //         }
-  //       }
-  //     }
-  //     result.push(newFile);
-  //   });
-  //   setAdditionalImages(result);
-  // };
+  const deleteImageByName = (name) => {
+    let result = [];
+    images.forEach((Filelist) => {
+      let file = Filelist;
+      let newFile = [];
+      for (let key in file) {
+        let number = Number(key);
+        if (number || number === 0) {
+          if (file[key].name !== name) {
+            newFile.push(file[key]);
+          }
+        }
+      }
+      result.push(newFile);
+    });
+    setAdditionalImages(result);
+  };
 
 
   const updateName = (e) => {
@@ -89,7 +89,7 @@ const CreateProject = ({ setAuthenticated }) => {
 
   const updateAdditionalImages = (e) => {
     const file = e.target.files;
-    if (file) setAdditionalImages(file);
+    if (file) setAdditionalImages((prev) => [...prev, file]);
   };
 
   return (
@@ -140,8 +140,8 @@ const CreateProject = ({ setAuthenticated }) => {
             ></textarea>
           </div>
           <div>
-            {/* {imagList &&
-              imageList.map((fileList) =>
+            {images &&
+              images.map((fileList) =>
                 Array.from(fileList).map((image) => (
                   <div>
                     <span>
@@ -155,7 +155,7 @@ const CreateProject = ({ setAuthenticated }) => {
                     {image.name}
                   </div>
                 ))
-              )} */}
+              )}
             <input className="choose-image" type="button" id="loadFile" value="Choose a Additional Images" onClick={chooseAdditionalImage} />
             {/* <label for="image">   {additionalImages}</label> */}
             <input className="hide-this-button" placeholder="Choose a Thumbnail Image" multiple="true" id="additionalFile" type="file" name="image" onChange={updateAdditionalImages} />
