@@ -203,7 +203,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                       <li key={idx} className="donation-listItem">
                         <div className="donation-container">
                           <div className="comment-avatar">
-                            {donation.donator.profileImageUrl ? (
+                            {(donation.donator.profileImageUrl && donation.anonymous === false) ? (
                               <div className="logoBackground">
                                 <img
                                   src={donation.donator.profileImageUrl}
