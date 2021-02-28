@@ -122,137 +122,137 @@ const EditProjectForm = () => {
   return (
     <>
       <Modal onClose={() => setShowEditProjectModal(false)}>
-        {/* <div className="project-form-container"> */}
-        <h1>Update Your Story</h1>
-        <form onSubmit={editDonation} className="update-form">
-          <div>
-            {errors.map((error, idx) => (
-              <ul className="errors" key={idx}>
-                {error}
-              </ul>
-            ))}
-          </div>
-          <div>
-            <input
-              type="text"
-              className="input-text"
-              name="name"
-              value={name}
-              onChange={updateName}
-              required
-            ></input>
-          </div>
-          <div>
-            <input
-              className="choose-image"
-              type="button"
-              id="loadFile"
-              value="New Thumbnail Image"
-              onClick={chooseImage}
-            />
-            <label for="image"> {thumbnailImage.name}</label>
-            <input
-              className="hide-this-button"
-              placeholder="Choose a Thumbnail Image"
-              id="file"
-              type="file"
-              name="image"
-              onChange={updateThumbnailImage}
-            />
-          </div>
-          <div>
-            <textarea
-              type="text"
-              className="input-text"
-              rows="10"
-              name="description"
-              value={description}
-              onChange={updateDescription}
-              required
-            ></textarea>
-          </div>
-          <div>
-            {project &&
-              imageList.map((img, idx) => (
-                <div>
-                  <span>
-                    <span
-                      onClick={() => deleteImageById(img.id)}
-                      className="delete-image-div"
-                    >
-                      <DeleteIcon />
-                    </span>
-                  </span>
-                  {img.imageUrl.split(".s3.amazonaws.com/")[1]}
-                </div>
+        <div className="editProject-container">
+          <h1>Update Your Story</h1>
+          <form onSubmit={editDonation} className="update-form">
+            <div>
+              {errors.map((error, idx) => (
+                <ul className="errors" key={idx}>
+                  {error}
+                </ul>
               ))}
-            {images &&
-              images.map((fileList) =>
-                Array.from(fileList).map((image) => (
+            </div>
+            <div>
+              <input
+                type="text"
+                className="editProject-textArea"
+                name="name"
+                value={name}
+                onChange={updateName}
+                required
+              ></input>
+            </div>
+            <div>
+              <input
+                className="chooseImage-button"
+                type="button"
+                id="loadFile"
+                value="New Thumbnail Image"
+                onClick={chooseImage}
+              />
+              <label for="image"> {thumbnailImage.name}</label>
+              <input
+                className="hide-this-button"
+                placeholder="Choose a Thumbnail Image"
+                id="file"
+                type="file"
+                name="image"
+                onChange={updateThumbnailImage}
+              />
+            </div>
+            <div>
+              <textarea
+                type="text"
+                className="input-text"
+                rows="10"
+                name="description"
+                value={description}
+                onChange={updateDescription}
+                required
+              ></textarea>
+            </div>
+            <div>
+              {project &&
+                imageList.map((img, idx) => (
                   <div>
                     <span>
                       <span
-                        onClick={() => deleteImageByName(image.name)}
+                        onClick={() => deleteImageById(img.id)}
                         className="delete-image-div"
                       >
                         <DeleteIcon />
                       </span>
                     </span>
-                    {image.name}
+                    {img.imageUrl.split(".s3.amazonaws.com/")[1]}
                   </div>
-                ))
-              )}
-            <input
-              className="choose-image"
-              type="button"
-              id="loadFile"
-              value="Choose a Additional Images"
-              onClick={chooseAdditionalImage}
-            />
-            <input
-              className="hide-this-button"
-              placeholder="Choose a Thumbnail Image"
-              multiple="true"
-              id="additionalFile"
-              type="file"
-              name="image"
-              onChange={updateAdditionalImages}
-            />
-          </div>
-          <div>
-            <input
-              type="number"
-              className="input-text"
-              name="goal"
-              value={goalAmount}
-              onChange={updateGoalAmount}
-            ></input>
-          </div>
-          <div>
-            <input
-              type="number"
-              className="input-number"
-              name="minimum"
-              value={minPledge}
-              onChange={updateMinPledge}
-            ></input>
-          </div>
-          <button
-            className="submit-button"
-            type="submit"
-            onClick={editDonation}
-          >
-            Update
-          </button>
-          <button
-            className="cancel-button"
-            type="submit"
-            onClick={() => setShowEditProjectModal(false)}
-          >
-            Cancel
-          </button>
-        </form>
-        {/* </div> */}
+                ))}
+              {images &&
+                images.map((fileList) =>
+                  Array.from(fileList).map((image) => (
+                    <div>
+                      <span>
+                        <span
+                          onClick={() => deleteImageByName(image.name)}
+                          className="delete-image-div"
+                        >
+                          <DeleteIcon />
+                        </span>
+                      </span>
+                      {image.name}
+                    </div>
+                  ))
+                )}
+              <input
+                className="chooseAdditionalImage-button"
+                type="button"
+                id="loadFile"
+                value="Choose a Additional Images"
+                onClick={chooseAdditionalImage}
+              />
+              <input
+                className="hide-this-button"
+                placeholder="Choose a Thumbnail Image"
+                multiple="true"
+                id="additionalFile"
+                type="file"
+                name="image"
+                onChange={updateAdditionalImages}
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                className="input-text"
+                name="goal"
+                value={goalAmount}
+                onChange={updateGoalAmount}
+              ></input>
+            </div>
+            <div>
+              <input
+                type="number"
+                className="input-number"
+                name="minimum"
+                value={minPledge}
+                onChange={updateMinPledge}
+              ></input>
+            </div>
+            <button
+              className="updateProjectSubmit-button"
+              type="submit"
+              onClick={editDonation}
+            >
+              Update
+            </button>
+            <button
+              className="updateProjectCancel-button"
+              type="submit"
+              onClick={() => setShowEditProjectModal(false)}
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
       </Modal>
     </>
   );
