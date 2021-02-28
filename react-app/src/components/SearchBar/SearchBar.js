@@ -85,7 +85,7 @@ const SearchBar = () => {
               {matches && (
                 <div className="searchResults-container">
                   {matches.map((project, idx) => (
-                    <NavLink key={idx} to={`/${project.id}`} className="a-link">
+                    <NavLink key={idx} to={`/${project.id}`} className="a-link" onClick={() => setShowSearchBarModal(false)}>
                       <li key={idx} className="searchBarMatches">
                         {!project.thumbnailImgUrl && (
                           <div className="logo_30x30-container">
