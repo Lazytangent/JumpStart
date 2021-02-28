@@ -6,6 +6,7 @@ import React, {
   useContext,
 } from "react";
 import ReactDOM from "react-dom";
+
 import "./Modal.css";
 
 const ModalContext = createContext();
@@ -14,13 +15,18 @@ export const useModalContext = () => useContext(ModalContext);
 
 export const ModalProvider = ({ children }) => {
   const modalRef = useRef();
+
   const [value, setValue] = useState();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showSearchBarModal, setShowSearchBarModal] = useState(false);
   const [showDonateModal, setShowDonateModal] = useState(false);
   const [showEditProjectModal, setShowEditProjectModal] = useState(false);
+<<<<<<< HEAD
   const [showEditCommentModal, setShowEditCommentModal] = useState(false);
+=======
+
+>>>>>>> f1b1ebddd79ed60dbc594c51ebbba2821dc9ef3b
   useEffect(() => {
     setValue(modalRef.current);
   }, []);

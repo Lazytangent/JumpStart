@@ -52,12 +52,7 @@ def seed_donations():
                      anonymous=False
                     )
 
-    db.session.add(one)
-    db.session.add(two)
-    db.session.add(three)
-    db.session.add(four)
-    db.session.add(five)
-    db.session.add(six)
+    db.session.add_all([one, two, three, four, five, six])
 
     db.session.commit()
 

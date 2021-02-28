@@ -8,8 +8,8 @@ import { signUp, login } from "../../../store/session";
 import { Modal, useModalContext } from "../../../context/Modal";
 
 const SignUpForm = ({ authenticated, setAuthenticated }) => {
-  const { showSignUpModal, setShowSignUpModal } = useModalContext();
   const dispatch = useDispatch();
+  const { showSignUpModal, setShowSignUpModal } = useModalContext();
 
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
@@ -34,7 +34,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         setAuthenticated(true);
         setShowSignUpModal(false);
       } else {
-        setErrors(user.errors);
+        const errors = user.errors.map(error => error.split(' : ')[1]);
+        setErrors(errors);
       }
     } else {
       setErrors([
@@ -49,7 +50,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     const demoPassword = "password";
     setTimeout(await dispatch(login(demoEmail, demoPassword)), 1000);
     setShowSignUpModal(false);
-  }
+  };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -110,9 +111,11 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               <h2 className={styles.header}>Sign Up</h2>
             </div>
             <div className={styles.errorsDiv}>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
+              <ul className={styles.errorsDivUl}>
+                {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+                ))}
+              </ul>
             </div>
             <div className={styles.formFieldContainer}>
               <input

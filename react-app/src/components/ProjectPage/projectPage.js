@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import projectReducer, { getProjectById } from "../../store/project";
-import logo_40x40 from "../SearchBar/logo_40x40.png";
-import "./projectPage.css";
 import csc from "country-state-city";
+
+import "./projectPage.css";
+import { getProjectById } from "../../store/project";
+import logo_40x40 from "../SearchBar/logo_40x40.png";
 import Navigation from "../../components/Navigation/navigation";
 import { useModalContext } from "../../context/Modal";
 import DonateForm from "../../components/DonateForm/DonateForm";
 import EditProjectForm from "../../components/EditProject/EditProject";
 import EditComment from "../../components/EditComment/EditComment";
+import DeleteButton from "./DeleteButton";
 
 const ProjectPage = ({ setAuthenticated }) => {
   const {
-    showLoginModal,
     setShowLoginModal,
     showDonateModal,
-    setShowSignUpModal,
     setShowDonateModal,
     showEditProjectModal,
     setShowEditProjectModal,
@@ -34,12 +34,12 @@ const ProjectPage = ({ setAuthenticated }) => {
 
   useEffect(() => {
     dispatch(getProjectById(projectId));
-  }, [dispatch]);
+  }, [dispatch, projectId]);
 
   const editProject = () => {
     setShowEditProjectModal(true);
-    // console.log('Hello')
   };
+
   useEffect(() => {
     if (project) {
       setTopThree(
@@ -109,13 +109,21 @@ const ProjectPage = ({ setAuthenticated }) => {
               {project.user.username} is organizing this fundraiser
             </div>
             {session && project.userId && session.id === project.userId && (
-              <div className="editYourProject-buttonDiv"></div>
+              <div className="editYourProject-button">
+                <button onClick={editProject}>Edit</button>
+                <DeleteButton />
+              </div>
             )}
-
             <div className="description">
               <div>{project.description}</div>
               {project.images.map((img, idx) => (
-                <img src={img.imageUrl}></img>
+                <div className="image-description-container">
+                  <img
+                    alt=""
+                    className="images-in-description"
+                    src={img.imageUrl}
+                  ></img>
+                </div>
               ))}
             </div>
             <div class="donations grid-div" id="donations-slider">

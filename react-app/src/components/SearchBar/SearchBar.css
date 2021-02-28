@@ -29,7 +29,7 @@
 }
 
 .searchBar-input {
-  padding: 0.5rem ;
+  padding: 0.5rem;
   margin: 2rem 16%;
   /* margin-left: 2.5%; */
   width: 65%;
@@ -82,7 +82,7 @@
 
 #inputClose-button {
   position: fixed;
-  top: .5rem;
+  top: 0.5rem;
   right: 21.5rem;
   z-index: 3;
   border: none;

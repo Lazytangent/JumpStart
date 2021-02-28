@@ -1,95 +1,94 @@
 .discoverPage {
-    margin-top: 12vh;
-    width: 100%;
-    height: 200vh;
+  margin-top: 12vh;
+  width: 100%;
+  height: 200vh;
 }
 
 .discoverPage-grid {
-    margin-top: 8%;
-    display: grid;
-    height: 12%;
-    width: 58%;
-    margin-left: 21%;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 25% 30% 45%;
+  margin-top: 8%;
+  display: grid;
+  height: 12%;
+  width: 58%;
+  margin-left: 21%;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 25% 30% 45%;
 }
 
 .discoverPage-grid-header {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    display: flex;
-    align-items: flex-end;
-    font-size: 40px;
-    color: rgba(0, 0, 0, .8);
-    font-weight: bold;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: flex;
+  align-items: flex-end;
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
 }
 
 .discoverPage-grid-header-description {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    margin-top: 1.5%;
-    display: flex;
-    align-items: flex-start;
-    font-size: 24px;
-    color: rgba(0, 0, 0, .8);
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  margin-top: 1.5%;
+  display: flex;
+  align-items: flex-start;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.8);
+  padding-left: 1.4px;
 }
 
 .discoverPage-filter-box {
-    grid-column-start: 1;
-    grid-column-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 4;
 }
 
 .discoverPage-project-card-grid {
-    display: grid;
-    margin-top: 2%;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 60%;
-    height: 100vh;
-    margin-left: 20%;
-    justify-items: center;
-    justify-content: center;
+  display: grid;
+  margin-top: 2%;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 60%;
+  height: 100vh;
+  margin-left: 20%;
+  justify-items: center;
+  justify-content: center;
 }
 
-
 #discoverPage-project-card-link {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.25s ease-in 0s;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s ease-in 0s;
 }
 
 #discoverPage-project-card-link:hover {
-    cursor: pointer;
-    transform: translateY(-6px);
+  cursor: pointer;
+  transform: translateY(-6px);
+}
 
-  }
-
-  #discoverPage-project-card {
-    width: 85%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow:2px 2px 5px rgb(224, 223, 223);
-  }
-
+#discoverPage-project-card {
+  width: 85%;
+  height: 90%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgb(224, 223, 223);
+}
 
 #discoverPage-filter-button {
-    padding-left: 1%;
-    padding-right: 2%;
-    height: 100%;
-    background-color: transparent;
-    border: transparent;
-    font-size: 18px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, .9);
-
+  padding-left: 1%;
+  padding-right: 2%;
+  height: 100%;
+  background-color: transparent;
+  border: transparent;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 #discoverPage-filter-button:hover {
-    color: rgb(90, 90, 90);
+  color: rgb(90, 90, 90);
 }
 
 .selected {
-    text-decoration: 2px solid underline;
-    text-decoration-color: #02a95c;
+  text-decoration: 2px solid underline;
+  text-decoration-color: #02a95c;
 }

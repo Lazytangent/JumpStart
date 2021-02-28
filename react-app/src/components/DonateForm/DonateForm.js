@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import "./DonateForm.css"
 import { Modal, useModalContext } from "../../context/Modal";
-import { createDonation, getProjectById } from "../../store/project";
-import "./DonateForm.css";
+import { createDonation, getProjectById } from '../../store/project'
 
 const DonateForm = () => {
-  const userId = useSelector((state) => state.session.user.id);
-  const projectId = useSelector((state) => state.project.currentProject.id);
-  const { showDonateModal, setShowDonateModal } = useModalContext();
   const dispatch = useDispatch();
-  const [errors, setErrors] = useState([]);
-  const [donationAmount, setDonationAmount] = useState();
-  const [comment, setComment] = useState("");
-  const [anonymous, setAnonymous] = useState(false);
+  const userId = useSelector(state => state.session.user.id)
+  const projectId = useSelector(state => state.project.currentProject.id)
+
+  const { setShowDonateModal } = useModalContext();
+  const [errors, setErrors] = useState([])
+  const [donationAmount, setDonationAmount] = useState()
+  const [comment, setComment] = useState("")
+  const [anonymous, setAnonymous] = useState(false)
 
   const makeDonation = async (e) => {
     e.preventDefault();

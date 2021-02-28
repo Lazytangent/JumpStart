@@ -76,7 +76,11 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
   if (images) {
     const num = images.length;
     for (let i = 0; i < num; i++) {
-      formData.append('images', images[i]);
+      const fileList = images[i];
+      const innerNum = fileList.length;
+      for (let j = 0; j < innerNum; j++) {
+        formData.append('images', fileList[j]);
+      }
     }
   }
 
@@ -89,7 +93,7 @@ export const updateProject = (projectId, name, description, goalAmount, minPledg
     dispatch(setCurrentProject(project));
   }
   return project;
-}
+};
 
 export const createDonation = (userId, projectId, donationAmount, comment, anonymous) => async (dispatch) => {
   const response = await fetch('/api/donations/', {
@@ -110,7 +114,7 @@ export const createDonation = (userId, projectId, donationAmount, comment, anony
     dispatch(setCurrentProject(project));
   }
   return project;
-}
+};
 
 export const deleteProject = (projectId) => async (dispatch) => {
   const response = await fetch(`/api/projects/${projectId}`, {
@@ -208,6 +212,15 @@ export const getDiscoverPageProjects = (optionalParameter) => async (dispatch) =
       return projects
   }
   return projects;
+};
+
+export const deleteImage = (imageId) => async (dispatch) => {
+  const response = await fetch(`/api/images/${imageId}`, {
+    method: "DELETE",
+  });
+  const project = await response.json();
+
+  return project;
 };
 
 const initialState = {
