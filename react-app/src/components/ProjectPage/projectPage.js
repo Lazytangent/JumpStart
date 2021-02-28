@@ -93,6 +93,7 @@ const ProjectPage = ({ setAuthenticated }) => {
       <Navigation setAuthenticated={setAuthenticated} />
       {showDonateModal && <DonateForm />}
       {showEditProjectModal && <EditProjectForm />}
+      {showEditCommentModal && <EditComment idx={donationId} />}
 
       {project && (
         <div className="project-container">
@@ -242,7 +243,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                                   Edit Comment
                                 </button>
                               )}
-                            {showEditCommentModal && <EditComment idx={donationId} />}
+                            {/* {showEditCommentModal && <EditComment idx={donationId} />} */}
                           </div>
                         </div>
                       </li>
