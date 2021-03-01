@@ -45,6 +45,7 @@
 @media (max-width:768px) {
   .homePage-description-box {
   width: 90%;
+  height: 15%;
   left: 5%;
   grid-template-rows: 70% 30%;
   grid-column: 100%;
@@ -64,6 +65,12 @@
   /* clip-path: ellipse(250px at 0% 50%) */
 }
 
+@media (max-width:768px) {
+  .homePage-description-image {
+    height: 100px;
+  }
+}
+
 .homePage-description-box-body {
   grid-column-start: 2;
   grid-row-start: 1;
@@ -72,6 +79,16 @@
   font-size: 25px;
 }
 
+@media (max-width:768px) {
+  .homePage-description-box-body {
+    margin-top: 1%;
+  font-size: 15px;
+  }
+  /* this overwrites styles in same container
+  more generic to more specific */
+}
+
+
 .homePage-description-box-button-container {
   grid-column-start: 2;
   grid-row-start: 1;
@@ -79,6 +96,16 @@
   margin-left: 38%;
   display: inline-flex;
 }
+
+@media (max-width:768px) {
+  .homePage-description-box-button-container {
+    margin-top: 30.5%;
+   margin-left: 25%;
+  }
+  /* this overwrites styles in same container
+  more generic to more specific */
+}
+
 
 .homePage-description-box-button {
   margin: 0;
@@ -92,6 +119,16 @@
   color:#02a95c;
 }
 
+@media (max-width:768px) {
+  .homePage-description-box-button {
+    font-size: 15px;
+    width: 100px;
+    height: 20px;
+  }
+  /* this overwrites styles in same container
+  more generic to more specific */
+}
+
 .homePage-description-box-button:hover {
   border: 1px solid #049451;
   color:#049451;
@@ -101,6 +138,16 @@
   margin-top: 2%;
   height: 1.5rem;
   padding-left: 1%;
+}
+
+@media (max-width:768px) {
+  .description-box-logo {
+    margin-top: 2%;
+  height: 15px;
+  padding-left: 1%;
+  }
+  /* this overwrites styles in same container
+  more generic to more specific */
 }
 
 .homePage-grid {
@@ -119,6 +166,12 @@
     grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%; */
 }
 
+@media (max-width:768px) {
+  .homePage-grid {
+    margin-top: 100px;
+  }
+}
+
 .homePage-mostPopular-header {
   grid-row-start: 1;
   display: flex;
@@ -126,6 +179,12 @@
   margin-left: 2%;
   margin-bottom: 5%;
   font-size: 30px;
+}
+
+@media (max-width:768px) {
+  .homePage-mostPopular-header {
+    font-size: 20px;
+  }
 }
 
 .homePage-mostRecent-header {
@@ -137,6 +196,12 @@
   font-size: 30px;
 }
 
+@media (max-width:768px) {
+  .homePage-mostRecent-header {
+    font-size: 19px;
+  }
+}
+
 .homePage-nearYou-header {
   grid-row-start: 5;
   display: flex;
@@ -144,6 +209,12 @@
   margin-left: 2%;
   margin-bottom: 5%;
   font-size: 30px;
+}
+
+@media (max-width:768px) {
+  .homePage-nearYou-header {
+    font-size: 20px;
+  }
 }
 
 #homePage-project-grid {
@@ -235,6 +306,9 @@
   -webkit-box-orient: vertical;
 }
 
+.homePage-section-container {
+  margin-top: 5%;
+}
 
 #projectCard-amount {
   font-weight:550;

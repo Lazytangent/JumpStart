@@ -330,7 +330,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                 </div>
             </div>
           </div>
-          {/* <h2 className="homePage-mostRecent-header">
+          <h2 className="homePage-mostRecent-header">
             Most recent fundraisers
           </h2>
           <div className="homePage-grid-most-recent">
@@ -384,10 +384,10 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                 ></i>
               </button>
             </div>{" "}
-          </div> */}
-          {/* <h2 className="homePage-nearYou-header">Trending causes</h2>
-          <div className="homePage-grid-near-you"> */}
-            {/* <div id="homePage-project-grid">
+          </div>
+          <h2 className="homePage-nearYou-header">Trending causes</h2>
+          <div className="homePage-grid-near-you">
+            <div id="homePage-project-grid">
               {trending &&
                 trending.map((project) => (
                   <Link
@@ -437,7 +437,7 @@ const HomePage = ({ setAuthenticated, setShowModal }) => {
                 </button>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </>
