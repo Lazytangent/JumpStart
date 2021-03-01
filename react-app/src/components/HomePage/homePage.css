@@ -319,7 +319,7 @@
   font-size: 25px;
   background-color: transparent;
   color: white;
-  margin-right: 50px;
+  margin-right: 40px;
 }
 
 #navBar-button-container {
@@ -338,7 +338,6 @@
   border-color: white;
   border-radius: 3px;
   display: inline-block;
-  margin-bottom: 3%;
 }
 
 .navBar-buttons-create:hover {
