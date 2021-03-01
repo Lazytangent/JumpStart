@@ -19,7 +19,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [state, setState] = useState("");
   const [stateCode, setStateCode] = useState("");
   const [city, setCity] = useState("");
-  const [profileImage, setProfileImage] = useState();
+  // const [profileImage, setProfileImage] = useState();
 
   const listOfStates = csc.getStatesOfCountry("US");
   const listOfCities = csc.getCitiesOfState("US", stateCode);
@@ -27,7 +27,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     const user = await dispatch(
-      signUp(username, email, password, city, state, profileImage)
+      signUp(username, email, password, city, state)
     );
     if (password === repeatPassword) {
       if (!user.errors) {
@@ -84,14 +84,14 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
     setCity(e.target.value);
   };
 
-  const chooseImage = () => {
-    document.getElementById('file').click();
-  };
+  // const chooseImage = () => {
+  //   document.getElementById('file').click();
+  // };
 
-  const updateProfileImage = (e) => {
-    const file = e.target.files[0];
-    if (file) setProfileImage(file);
-  };
+  // const updateProfileImage = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) setProfileImage(file);
+  // };
 
   if (authenticated) {
     return <Redirect to="/" />;
@@ -177,10 +177,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
                 required={true}
               ></input>
             </div>
-            <div className={styles.btnContainer}>
+            {/* <div className={styles.btnContainer}>
               <input type="button" className={styles.imageBtn} id="loadFile" value="Choose a Profile Image" onClick={chooseImage}/>
               <input placeholder="Choose a Profile Image" id="file" className={`${styles.formField} ${styles.fileInput}`} type="file" name="image" onChange={updateProfileImage} />
-            </div>
+            </div> */}
             <div className={styles.btnContainer}>
               <button className={styles.submitBtn} type="submit">Sign Up</button>
             </div>

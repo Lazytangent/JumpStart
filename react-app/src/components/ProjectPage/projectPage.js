@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import csc from "country-state-city";
 
 import "./projectPage.css";
 import { getProjectById } from "../../store/project";
@@ -80,20 +79,6 @@ const ProjectPage = ({ setAuthenticated }) => {
       sum += project.donations[i].donationAmount;
     }
     return sum;
-  };
-
-  const getStateAbbreviation = (project) => {
-    let result;
-    const allStates = csc.getStatesOfCountry("US");
-
-    let stateName = project.user.state;
-
-    allStates.forEach((state) => {
-      if (state.name === stateName) {
-        result = state.isoCode;
-      }
-    });
-    return result;
   };
 
   return (
@@ -237,8 +222,8 @@ const ProjectPage = ({ setAuthenticated }) => {
                             {donation.anonymous === false
                               ? donation.donator.username
                               : "Anonymous"}{" "}
-                            donated $
-                            <b>{donation.donationAmount.toLocaleString()}</b>
+                            donated
+                            <b> ${donation.donationAmount.toLocaleString()}</b>
                           </div>
                           <div className="comment-content">
                             {donation.comment}
@@ -266,11 +251,7 @@ const ProjectPage = ({ setAuthenticated }) => {
                   ))}
               </ul>
             </div>
-            <div className="footer grid-div">
-              <p>FOOTER</p>
-            </div>
           </div>
-          <div>d</div>
         </div>
       )}
     </>

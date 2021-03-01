@@ -1,13 +1,12 @@
 .discoverPage {
-  margin-top: 12vh;
+  margin-top: 2vh;
   width: 100%;
-  height: 150vh;
 }
 
 .discoverPage-grid {
   margin-top: 8%;
   display: grid;
-  height: 12%;
+  height: 190px;
   width: 58%;
   margin-left: 21%;
   grid-template-columns: 1fr 1fr 1fr;
@@ -48,7 +47,6 @@
   margin-top: 2%;
   grid-template-columns: 1fr 1fr 1fr;
   width: 60%;
-  height: 100vh;
   margin-left: 20%;
   justify-items: center;
   justify-content: center;
@@ -67,10 +65,11 @@
 }
 
 #discoverPage-project-card {
-  width: 85%;
-  height: 90%;
+  width: 320px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgb(224, 223, 223);
+  padding-bottom: 15px;
+  margin-bottom: 50px;
 }
 
 #discoverPage-filter-button {
