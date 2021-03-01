@@ -3,10 +3,7 @@
     justify-content: space-evenly;
     align-items: center;
     background-color: white;
-    position: fixed;
     height: 8vh;
-    bottom: 0;
-    left: 0;
     width: 100%;
     border-top: 1px solid lightgrey;
     font-family: Calibre, Helvetica, Arial, sans-serif;

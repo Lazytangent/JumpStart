@@ -55,6 +55,53 @@ def seed_projects():
         goalAmount=20000,
         minPledge=5)
 
+    six = Project(
+        userId=5,
+        name="Save our school",
+        thumbnailImgUrl=
+        "https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-max-fischer-5212357.jpg",
+        description=
+        "Our school is going to close unless we can raise enough money to keep it open. If it closes, we have to travel an hour to the next school everyday, and the bus won't pick us up. This means our mom wouldn't be able to work.",
+        goalAmount=30000,
+        minPledge=10)
+    seven = Project(
+        userId=3,
+        name="Help our church",
+        thumbnailImgUrl=
+        "https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-pixabay-65922.jpg",
+        description=
+        "Our Church is going to close unless we can raise enough money to keep it open. If it closes, our whole community would have to change where they go to church. Any help you can give would be great.",
+        goalAmount=15000,
+        minPledge=1)
+    eight = Project(
+        userId=4,
+        name="Piano lessons",
+        thumbnailImgUrl=
+        "https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-any-lane-5727883.jpg",
+        description=
+        "I am trying to pay for piano lessons. I need an extra curicular activity to get into harvard, and I have no money to pay for paino lessons. If you can help me, I would really appreciate it, and it will help my chances a ton!",
+        goalAmount=3000,
+        minPledge=1)
+    nine = Project(
+        userId=3,
+        name="Save our dad",
+        thumbnailImgUrl=
+        "https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-sora-shimazaki-5668473.jpg",
+        description=
+        "I am trying to pay for a lawyer to help our dad fight against a crime he was charged for that he did not commit. The lawyer appointed to him does not want to help. Please help us pay to give our dad justice!",
+        goalAmount=20000,
+        minPledge=3)
+    ten = Project(
+        userId=2,
+        name="New computer",
+        thumbnailImgUrl=
+        "https://jumpstartjesse.s3.us-east-2.amazonaws.com/pexels-hitarth-jadhav-220357.jpg",
+        description=
+        "I lost my job during covid and I am trying to pay for a coding bootcamp. I need a small down payment to join the course since there is no deferral payment option. This will help me get a new job!  ",
+        goalAmount=5000,
+        minPledge=2)
+
+
     new_projects = []
     with open('./app/seeds/projects.json') as f:
         data = json.load(f)
@@ -63,7 +110,7 @@ def seed_projects():
             new_projects.append(new_project)
 
 
-    db.session.add_all([one, two, three, four, five])
+    db.session.add_all([one, two, three, four, five, six, seven, eight, nine, ten])
     db.session.add_all(new_projects)
     db.session.commit()
 

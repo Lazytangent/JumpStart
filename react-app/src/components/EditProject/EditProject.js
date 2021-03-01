@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import "./EditProject.css";
@@ -13,7 +12,6 @@ import {
 
 const EditProjectForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const projectId = useSelector((state) => state.project.currentProject.id);
   const project = useSelector((state) => state.project.currentProject);

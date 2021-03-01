@@ -1,6 +1,7 @@
 .homePage {
-  height: 250vh;
+  height: 300vh;
   width: 99vw;
+  position: relative;
 }
 
 .homePage-image {
@@ -19,13 +20,13 @@
 }
 
 .homePage-description-box {
-  height: 25%;
+  height: 8%;
   width: 65%;
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 100%;
   position: absolute;
-  top: 56%;
+  top: 18%;
   left: 17.5%;
   background-color: white;
   border-radius: 10px;
@@ -84,13 +85,13 @@
 }
 
 .homePage-grid {
-  height: 100%;
   width: 55%;
-  margin-top: 8%;
+  height: 70%;
+  margin-top: 11%;
   margin-left: 22.5%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 6.25% 22% 9.75% 22% 9.75% 22% 8.25%;
+  grid-template-rows: 2.25% 26% 9.75% 26% 9.75% 26% 2.75%;
 }
 
 .homePage-mostPopular-header {
@@ -157,8 +158,7 @@
   padding: 0;
   border-radius: 5px 5px 0 0;
   object-fit: fill;
-  max-width: 100%;
-  max-height: 260px;
+  width: 320px;
   height: 220px;
 }
 
@@ -318,7 +318,7 @@
   font-size: 25px;
   background-color: transparent;
   color: white;
-  margin-right: 50px;
+  margin-right: 40px;
 }
 
 #navBar-button-container {
@@ -328,8 +328,8 @@
 .navBar-buttons-create {
   display: flex;
   border: none;
-  height: 35px;
-  width: 190px;
+  height: 40px;
+  width: 195px;
   font-size: 25px;
   background-color: transparent;
   color: white;
@@ -337,7 +337,6 @@
   border-color: white;
   border-radius: 3px;
   display: inline-block;
-  margin-bottom: 3%;
 }
 
 .navBar-buttons-create:hover {
@@ -394,7 +393,7 @@ html:not([data-scroll="0"]) .navBar-buttons-create:hover {
   position: relative;
   margin-top: 5%; /* Just for demo spacing */
   background: rgb(214, 214, 214);
-  border-radius: 10px;
+  border-radius: 3px;
   /* box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3); */
 }
 

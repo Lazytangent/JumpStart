@@ -73,7 +73,7 @@
   background-color: transparent;
   color: black;
   border: transparent;
-  margin-right: 55px;
+  margin-right: 40px;
 }
 
 #navigation-button-container {
@@ -83,8 +83,8 @@
 .navigation-buttons-create {
   display: flex;
   border: none;
-  height: 35px;
-  width: 190px;
+  height: 40px;
+  width: 195px;
   font-size: 25px;
   background-color: transparent;
   color: white;
@@ -93,7 +93,6 @@
   border-color: #02a95c;
   border-radius: 3px;
   display: inline-block;
-  margin-bottom: 3%;
 }
 
 .navigation-buttons-create:hover {
