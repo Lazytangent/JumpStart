@@ -25,6 +25,7 @@
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  border-radius: 5px;
 }
 
 .submit-cancel-container {
@@ -42,6 +43,7 @@
   border: none;
   cursor: pointer;
   width: 60%;
+  border-radius: 5px;
 }
 
 .choose-image {
@@ -52,6 +54,7 @@
   border: none;
   cursor: pointer;
   width: 40%;
+  border-radius: 5px;
 }
 
 .submit-button:hover,

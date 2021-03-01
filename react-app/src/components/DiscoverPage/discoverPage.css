@@ -1,6 +1,7 @@
 .discoverPage {
   margin-top: 2vh;
   width: 100%;
+  min-height: 82vh;
 }
 
 .discoverPage-grid {
