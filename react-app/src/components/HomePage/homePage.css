@@ -159,11 +159,10 @@
   border-radius: 5px 5px 0 0;
   object-fit: fill;
   width: 320px;
-  height: 220px;
 }
 
 #homePage-project-card {
-  width: 90%;
+  width: 320px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgb(224, 223, 223);
 }
