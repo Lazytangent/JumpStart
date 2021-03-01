@@ -51,7 +51,11 @@ export const createProject = (name, description, goalAmount, minPledge, thumbnai
   if (images) {
     const num = images.length;
     for (let i = 0; i < num; i++) {
-      formData.append('images', images[i]);
+      const fileList = images[i];
+      const innerNum = fileList.length;
+      for (let j = 0; j < innerNum; j++) {
+        formData.append('images', fileList[j]);
+      }
     }
   }
 

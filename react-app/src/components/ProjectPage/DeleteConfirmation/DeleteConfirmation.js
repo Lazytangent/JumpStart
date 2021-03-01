@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
 import styles from './DeleteConfirmation.module.css';
-import { deleteProject } from '../../../store/project';
+import { deleteProject, getHomePageProjects } from '../../../store/project';
 
 const DeleteConfirmation = ({ setShowDeleteModal }) => {
   const { projectId } = useParams();
@@ -14,6 +14,9 @@ const DeleteConfirmation = ({ setShowDeleteModal }) => {
     e.preventDefault();
     dispatch(deleteProject(projectId));
     setShowDeleteModal(false);
+    dispatch(getHomePageProjects("popular"));
+    dispatch(getHomePageProjects("recent"));
+    dispatch(getHomePageProjects("trending"));
     setTimeout(history.push('/'), 1000);
   };
 
