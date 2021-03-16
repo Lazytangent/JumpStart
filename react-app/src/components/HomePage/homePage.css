@@ -285,6 +285,14 @@
   border: none;
 }
 
+@media (max-width: 1440px) {
+  #navBar-buttons {
+    height: 20px;
+    width: 75px;
+    font-size: 20px;
+  }
+}
+
 .far {
   display: inline;
   text-decoration: none;
