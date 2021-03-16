@@ -169,11 +169,12 @@ const DiscoverPage = ({ setAuthenticated }) => {
                   to={`${project.id}`}
                 >
                   <div id="discoverPage-project-card" value={project.id}>
-                    <div>
+                    <div className="project-card-image-container">
                       <img
                         id="projectCard-img"
                         src={project.thumbnailImgUrl}
                         alt=""
+                        className="project-card-image"
                       ></img>
                     </div>
                     <div id="homePage-project-card-text">

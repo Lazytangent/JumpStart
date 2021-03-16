@@ -164,7 +164,9 @@ const ProjectPage = ({ setAuthenticated }) => {
                           </div>
                         )}
                         <div className="top-donor-name">{`${
-                          project.donator.username
+                          `${!project.anonymous ?
+                              `${project.donator.username}` :
+                              "Anonymous"}`
                         } $${Number(
                           project.donationAmount
                         ).toLocaleString()}`}</div>

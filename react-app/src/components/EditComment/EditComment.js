@@ -13,11 +13,7 @@ const EditComment = ({ id }) => {
   );
   const { setShowEditCommentModal } = useModalContext();
   const dispatch = useDispatch();
-  const [donationId, setDonationId] = useState(donation.id);
-  const [donationAmount, setDonationAmount] = useState(donation.donationAmount);
-  const [anonymous, setAnonymous] = useState(donation.anonymous);
   const [comment, setComment] = useState(donation.comment);
-
   const [errors, setErrors] = useState([]);
 
   const textAreaRef = useRef(null);
@@ -30,13 +26,13 @@ const EditComment = ({ id }) => {
 
   const editComment = async (e) => {
     e.preventDefault();
-    const donation = await dispatch(
-      updateDonation(donationId, donationAmount, comment, anonymous)
+    const updatedDonation = await dispatch(
+      updateDonation(donation.id, donation.donationAmount, comment, donation.anonymous)
     );
-    if (!donation.errors) {
+    if (!updatedDonation.errors) {
       setShowEditCommentModal(false);
     } else {
-      setErrors(donation.errors);
+      setErrors(updatedDonation.errors);
     }
   };
 
