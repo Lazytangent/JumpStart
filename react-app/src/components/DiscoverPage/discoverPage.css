@@ -92,3 +92,18 @@
   text-decoration: 2px solid underline;
   text-decoration-color: #02a95c;
 }
+
+.project-card-image-container {
+  height: 320px;
+  width: 320px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow:hidden;
+}
+
+.project-card-image {
+  object-fit: cover;
+  object-position: center;
+  height: 320px;
+  width: 320px;
+}
