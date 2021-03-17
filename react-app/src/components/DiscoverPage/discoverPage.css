@@ -94,7 +94,7 @@
 }
 
 .project-card-image-container {
-  height: 320px;
+  height: 213px;
   width: 320px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -104,6 +104,6 @@
 .project-card-image {
   object-fit: cover;
   object-position: center;
-  height: 320px;
+  height: 213px;
   width: 320px;
 }
